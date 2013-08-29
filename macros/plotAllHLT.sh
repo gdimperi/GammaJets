@@ -1,0 +1,4 @@
+./plotStraightReverseCuts.py --dataFiles="data_hlt30_nosel_wRho.txt" --mcFiles="mc_hlt30_nosel_wRho.txt" --additionalText="HLT 30" --plotsDir="plots_hlt30_StraightReverseCut/"
+./plotStraightReverseCuts.py --dataFiles="data_hlt50_nosel_wRho.txt" --mcFiles="mc_hlt50_nosel_wRho.txt" --additionalText="HLT 50" --plotsDir="plots_hlt50_StraightReverseCut/"
+./plotStraightReverseCuts.py --dataFiles="data_hlt75_nosel_wRho.txt" --mcFiles="mc_hlt75_nosel_wRho.txt" --additionalText="HLT 75" --plotsDir="plots_hlt75_StraightReverseCut/"
+./plotStraightReverseCuts.py --dataFiles="data_hlt90_nosel_wRho.txt" --mcFiles="mc_hlt90_nosel_wRho.txt" --additionalText="HLT 90" --plotsDir="plots_hlt90_StraightReverseCut/"
