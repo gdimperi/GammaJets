@@ -1,0 +1,99 @@
+#include "TCanvas.h"
+#include "string"
+#include "sstream"
+#include "iostream"
+#include "cstdio"
+#include "TFile.h"
+#include "TH1F.h"
+#include "TChain.h"
+#include "TTree.h"
+#include "vector"
+#include "TGraphAsymmErrors.h"
+#include "TBranch.h"
+
+void IsoCutGenLevel(){
+
+  vector<string> hlt;
+  hlt.push_back("hltcut30");
+  hlt.push_back("hltcut50");
+  hlt.push_back("hltcut75");
+  hlt.push_back("hltcut90");
+
+  //loading MC to fit
+  TChain mc("finalTree");
+  for(int i=0; i<hlt.size(); i++){
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-120to170_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  //mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-1400to1800_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());  
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-170to300_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  //mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-300to470_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-30to50_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+
+  //mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-470to800_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-50to80_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  //mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-800to1400_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-80to120_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_170_250_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_20_30_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_250_350_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_30_80_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_350_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_80_170_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  }
+
+  float iso03PhotGen;
+  float iRecoPhotMatchGen;
+  float etaPhotGen;
+  float ptPhot;
+  float etaPhot;
+  float weight;
+  int NrecoPhot;
+
+  TBranch* b_iso03PhotGen;
+  TBranch* b_iRecoPhotMatchGen;
+  TBranch* b_etaPhotGen;
+  TBranch* b_ptPhot;
+  TBranch* b_etaPhot;
+  TBranch* b_weight;
+  TBranch* b_NrecoPhot;
+
+  mc.SetBranchAddress("iso03PhotGen", &iso03PhotGen, &b_iso03PhotGen);
+  mc.SetBranchAddress("iRecoPhotMatchGen", &iRecoPhotMatchGen, &b_iRecoPhotMatchGen);
+  mc.SetBranchAddress("etaPhotGen", &etaPhotGen, &b_etaPhotGen);
+  mc.SetBranchAddress("ptPhot", &ptPhot, &b_ptPhot);
+  mc.SetBranchAddress("etaPhot", &etaPhot, &b_etaPhot);
+  mc.SetBranchAddress("weight", &weight, &b_weight);
+  mc.SetBranchAddress("NrecoPhot", &NrecoPhot, &b_NrecoPhot);
+  
+  Long64_t nentries = mc.GetEntriesFast();
+
+  TH1F* h_gen = new TH1F("h_gen", "h_gen", 25, 0., 10.);
+  TH1F* h_presel = new TH1F("h_presel", "h_presel", 25, 0., 10.);
+
+  for(Long64_t entry=0; entry<nentries; entry++){
+    mc.GetEvent(entry);
+    if(entry%10000==0)std::cout<<entry<<std::endl;
+    if(iRecoPhotMatchGen>-1 && NrecoPhot>0){
+      if(abs(etaPhotGen)<1.4442){
+	h_gen->Fill(iso03PhotGen, weight);
+      }
+      if(abs(etaPhotGen)<1.4442 && ptPhot>0. ){
+	h_presel->Fill(iso03PhotGen, weight);
+      }
+    }
+
+  }
+
+
+  TCanvas* c1 = new TCanvas("c1", "c1", 1);
+
+  h_gen->Draw();
+  c1->SaveAs("plot_debug.png");
+
+  h_presel->Divide(h_gen);
+  
+  h_presel->Draw();
+  c1->SaveAs("plot_cutGenLev_GJet.root");
+  c1->SaveAs("plot_cutGenLev_GJet.pdf");
+  c1->SaveAs("plot_cutGenLev_GJet.png");
+}
+

@@ -1,0 +1,84 @@
+#include "TCanvas.h"
+#include "string"
+#include "sstream"
+#include "iostream"
+#include "cstdio"
+#include "TFile.h"
+#include "TH1F.h"
+#include "TChain.h"
+#include "TTree.h"
+#include "vector"
+#include "TGraphAsymmErrors.h"
+
+
+void IsoDistr(){
+
+  vector<string> hlt;
+  hlt.push_back("hltcut30");
+  hlt.push_back("hltcut50");
+  hlt.push_back("hltcut75");
+  hlt.push_back("hltcut90");
+
+  //loading MC to fit
+  TChain mc("finalTree");
+  for(int i=0; i<hlt.size(); i++){
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-120to170_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  //mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-1400to1800_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());  
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-170to300_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  //mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-300to470_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-30to50_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//
+//  //mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-470to800_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-50to80_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  //mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-800to1400_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+//  mc.Add(("/t3/users/vtavolar/GammaJets/output/G_Pt-80to120_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_170_250_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_20_30_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_250_350_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_30_80_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_350_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  mc.Add(("/t3/users/vtavolar/GammaJets/output/QCDEM_Pt_80_170_8TeV_pythia6_"+hlt[i]+"_hltiso0_mvaWP0_efficiencyStudy.root").c_str());
+  }
+
+  //TTree* tree = (TTree*)mc.Get("finalTree");
+  //  TH1F* h_pt = new TH1F();
+  // TH1F* h_pt_gen = new TH1F();
+
+  string cut, cut_gen;
+
+//  std::stringstream sstm;
+//  std::stringstream sstm_gen;
+//  sstm << "(etaPhot<1.4442 && ptPhot> " << ptMin << " " <<" ptPhot< " << ptMax <<" mvaIdPhot>0.711099)*weight";
+//  cut = sstm.str();
+//  std::cout<<cut<<std::endl;
+//
+//  sstm_gen << "(etaPhotGen<1.4442 && ptPhotGen> " << ptMin <<" ptPhotGen< " << ptMax <<")";
+//  cut_gen = sstm_gen.str();
+
+
+  TCanvas* c1 = new TCanvas("c1", "c1", 1);
+
+//  mc.Draw("iso03PhotGen>>h(25, 0., 10.)", "(iRecoPhotMatchGen>-1 && abs(etaPhotGen)<1.4442)*weight", "e1");
+//  //  TH1F* h = new TH1F();
+//  //  h->Sumw2();
+//  TH1F* h = (TH1F*)((TH1F*)gPad->GetPrimitive("h"))->Clone("h");
+  mc.Draw("iso03PhotGen>>h_presel(25, 0., 10.)", "(iRecoPhotMatchGen>-1 && abs(etaPhot)<1.4442 && ptPhot>0.)*weight", "e1");
+  //  TH1F* h_presel = new TH1F();
+  //  h_presel->Sumw2();
+  TH1F* h_presel = (TH1F*)((TH1F*)gPad->GetPrimitive("h_presel"))->Clone("h_presel");
+
+//  h->SetLineColor(kRed);
+//  h->Draw();
+//  h_presel->Draw("same");
+
+  //  TGraphAsymmErrors* g = new TGraphAsymmErrors();
+
+  //g->BayesDivide(h_presel, h);
+
+  
+  h_presel->Draw();
+  c1->SaveAs("plot_IsoDistr_QCD.root");
+  c1->SaveAs("plot_IsoDistr_QCD.pdf");
+  c1->SaveAs("plot_IsoDistr_QCD.png");
+}
+
