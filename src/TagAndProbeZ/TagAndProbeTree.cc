@@ -19,8 +19,9 @@ using std::cout;
 using std::endl;
 
 
-TagAndProbeTree::TagAndProbeTree(TTree *tree, const TString& outname) : tree_reader_V8(tree), jsonFile(0) //, scaleCorrections_(0)
+TagAndProbeTree::TagAndProbeTree(TTree *tree, const TString& outname) : tree_reader_V9(tree), jsonFile(0) //, scaleCorrections_(0)
 {  
+  std::cout << "Creating output file " << outname << std::endl;
   hOutputFile = TFile::Open(outname, "RECREATE" ) ;
   
   // must be set by the user 
@@ -570,16 +571,53 @@ void TagAndProbeTree::Loop() {
     //cout << "saving variables in tree" << endl;
 
     bool atLeastOneTag=false;
-
+    
     for(int j=0; j<nEle; j++) 
       {
 	isTagTightEle[j]=leptonCutsEle2012(j, eletag_tight2012, &idpasseletag2012);
 	isTagMediumEle[j]=leptonCutsEle2012(j, eletag_medium2012, &idpasseletag2012);
 	isTagLooseEle[j]=leptonCutsEle2012(j, eletag_loose2012, &idpasseletag2012);
-	if (isTagLooseEle[j] || isTagMediumEle[j] || isTagTightEle[j])
-	  atLeastOneTag=true;
+	if (isTagLooseEle[j] || isTagMediumEle[j] || isTagTightEle[j]) atLeastOneTag=true;
+	
+	// match with HLt candidates 
+	TVector3 recoEle;
+	recoEle.SetPtEtaPhi(electron_pt[j],electron_eta[j],electron_phi[j]);
+
+	float deltaRmin17 = 0.3;
+	int i_nEle17=-1;
+	for(int jhlt=0; jhlt<trg17_mass50_ele_n; jhlt++) {
+	  TVector3 trig;
+	  if (trg17_mass50_ele_et[jhlt]<=0 || fabs(trg17_mass50_ele_eta[jhlt])>2.5 || fabs(trg17_mass50_ele_phi[jhlt])>TMath::Pi() ) continue;
+	  trig.SetPtEtaPhi(trg17_mass50_ele_et[jhlt], trg17_mass50_ele_eta[jhlt], trg17_mass50_ele_phi[jhlt]);
+	  if(recoEle.DeltaR(trig) < deltaRmin17) {
+	    deltaRmin17 = recoEle.DeltaR(trig);
+	    i_nEle17 = jhlt;
+	  }
+	}
+	
+	float deltaRmin20 = 0.3;
+	int i_nEle20=-1;
+	for(int jhlt=0; jhlt<trg20_mass50_ele_n; jhlt++) {
+	  TVector3 trig;
+	  if (trg20_mass50_ele_et[jhlt]<=0 || fabs(trg20_mass50_ele_eta[jhlt])>2.5 || fabs(trg20_mass50_ele_phi[jhlt])>TMath::Pi() ) continue;
+	  trig.SetPtEtaPhi(trg20_mass50_ele_et[jhlt], trg20_mass50_ele_eta[jhlt], trg20_mass50_ele_phi[jhlt]);
+	  if(recoEle.DeltaR(trig) < deltaRmin20) {
+	    deltaRmin20 = recoEle.DeltaR(trig);
+	    i_nEle20 = jhlt;
+	  }
+	}
+	
+	if (i_nEle17>-1)
+	  isTrig17Mass50MatchedEle[j]=1;
+	else
+	  isTrig17Mass50MatchedEle[j]=0;
+	
+	if (i_nEle20>-1)
+	  isTrig20Mass50MatchedEle[j]=1;
+	else
+	  isTrig20Mass50MatchedEle[j]=0;
       }
-    
+
     for(int j=0; j<nPhot; j++) 
       {
 	isProbePreselPhot[j]= (PhotonMITPreSelection(j,0,0) 
@@ -1090,10 +1128,10 @@ void TagAndProbeTree::SetAllMVA() {
     tmvaReaderID_Single_Endcap->BookMVA("BDT","/afs/cern.ch/user/g/gdimperi/public/4Chiara/weights_gradBoost_EE/TMVAClassification_BDT.weights.xml");
   */
   
-  std::cout << "Booking PhotonID EB MVA with file /afs/cern.ch/user/g/gdimperi/public/4Chiara/weights_withRho_EB/TMVAClassification_BDTG.weights.xml" << endl;
-  tmvaReaderID_Single_Barrel->BookMVA("BDT","/afs/cern.ch/user/g/gdimperi/public/4Chiara/weights_withRho_EB/TMVAClassification_BDTG.weights.xml");
-  std::cout << "Booking PhotonID EE MVA with file /afs/cern.ch/user/g/gdimperi/public/4Chiara/weights_withRho_EE/TMVAClassification_BDTG.weights.xml" << endl;
-  tmvaReaderID_Single_Endcap->BookMVA("BDT","/afs/cern.ch/user/g/gdimperi/public/4Chiara/weights_withRho_EE/TMVAClassification_BDTG.weights.xml");
+  std::cout << "Booking PhotonID EB MVA with file " << photonLevelNewIDMVA_EB << endl;
+  tmvaReaderID_Single_Barrel->BookMVA("BDT",photonLevelNewIDMVA_EB);
+  std::cout << "Booking PhotonID EE MVA with file " << photonLevelNewIDMVA_EE  << endl;
+  tmvaReaderID_Single_Endcap->BookMVA("BDT",photonLevelNewIDMVA_EE);
   
 }
 
@@ -1235,7 +1273,18 @@ void TagAndProbeTree::bookOutputTree()
   ana_tree->Branch("ntrkiso04Phot", ntrkiso04Phot, "ntrkiso04Phot[nPhot]/I");   //[nPhot]
   ana_tree->Branch("hcalovecal04Phot", hcalovecal04Phot, "hcalovecal04Phot[nPhot]/F");   //[nPhot]
   ana_tree->Branch("ecaliso04Phot", ecaliso04Phot, "ecaliso04Phot[nPhot]/F");   //[nPhot]
-
+  ana_tree->Branch("pid_pfIsoFPRCharged03", pid_pfIsoFPRCharged03, "pid_pfIsoFPRCharged03[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRNeutral03", pid_pfIsoFPRNeutral03, "pid_pfIsoFPRNeutral03[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRPhoton03",  pid_pfIsoFPRPhoton03,  "pid_pfIsoFPRPhoton03[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRRandomConeCharged03", pid_pfIsoFPRRandomConeCharged03, "pid_pfIsoFPRRandomConeCharged03[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRRandomConeNeutral03", pid_pfIsoFPRRandomConeNeutral03, "pid_pfIsoFPRRandomConeNeutral03[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRRandomConePhoton03",  pid_pfIsoFPRRandomConePhoton03,  "pid_pfIsoFPRRandomConePhoton03[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRCharged04", pid_pfIsoFPRCharged04, "pid_pfIsoFPRCharged04[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRNeutral04", pid_pfIsoFPRNeutral04, "pid_pfIsoFPRNeutral04[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRPhoton04",  pid_pfIsoFPRPhoton04,  "pid_pfIsoFPRPhoton04[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRRandomConeCharged04", pid_pfIsoFPRRandomConeCharged04, "pid_pfIsoFPRRandomConeCharged04[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRRandomConeNeutral04", pid_pfIsoFPRRandomConeNeutral04, "pid_pfIsoFPRRandomConeNeutral04[nPhot]/F");   //[nPhot]
+  ana_tree->Branch("pid_pfIsoFPRRandomConePhoton04",  pid_pfIsoFPRRandomConePhoton04,  "pid_pfIsoFPRRandomConePhoton04[nPhot]/F");   //[nPhot]  
   ana_tree->Branch("nEle", &nEle, "nEle/I");
   ana_tree->Branch("isGenMatchEle", isGenMatchEle , "isGenMatchEle[nEle]/I" );
   ana_tree->Branch("genMatchIndexEle", genMatchIndexEle , "genMatchIndexEle[nEle]/I" );
@@ -1245,11 +1294,8 @@ void TagAndProbeTree::bookOutputTree()
   ana_tree->Branch("isTagTightEle", isTagTightEle , "isTagTightEle[nEle]/I" );
   ana_tree->Branch("isTagMediumEle", isTagMediumEle , "isTagMediumEle[nEle]/I" );
   ana_tree->Branch("isTagLooseEle", isTagLooseEle , "isTagLooseEle[nEle]/I" );
-  
-
-
-
-
+  ana_tree->Branch("isTrig17Mass50MatchedEle", isTrig17Mass50MatchedEle, "isTrig17Mass50MatchedEle[nEle]/I");
+  ana_tree->Branch("isTrig20Mass50MatchedEle", isTrig20Mass50MatchedEle, "isTrig20Mass50MatchedEle[nEle]/I");
 
 
   // triggering paths      

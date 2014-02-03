@@ -1,7 +1,7 @@
 #ifndef TagAndProbeTree_h
 #define TagAndProbeTree_h
 
-#include "tree_reader_V8.h"
+#include "tree_reader_V9.h"
 #include "PhotonIdCuts.h"
 #include "LeptonIdCuts.h"
 #include "EnergyScaleCorrection.h"
@@ -36,7 +36,7 @@ using std::vector;
 #define NGENJETS 200
 #define NMC 150
 
-class TagAndProbeTree : public tree_reader_V8 {
+class TagAndProbeTree : public tree_reader_V9 {
 
 public:
   
@@ -112,13 +112,14 @@ private:
   TLorentzVector correctMet(TLorentzVector uncormet, bool smearing = 1, bool scale = 0, bool PUremoval = 0);
   TLorentzVector shiftMet(TLorentzVector uncormet);
 
-   Int_t           run;
-   Int_t           event;
-   Int_t           lumi;
-   Int_t           isMC;
-   Int_t           nvtx;
-   Int_t           vtxId;
-   Int_t           npu;
+/*    Int_t           run; */
+/*    Int_t           event; */
+/*    Int_t           lumi; */
+/*    Int_t           isMC; */
+/*    Int_t           nvtx; */
+    Int_t           vtxId; 
+/*    Int_t           npu; */
+
 
 
    Float_t         pu_weight;
@@ -129,6 +130,8 @@ private:
    Float_t         r9_weight[20]; //nPhot
    //Float_t         rhoAllJets;
    //Float_t         rhoPF;
+
+
    Int_t           nEleMC;
    Int_t           idEleMC[10];   //[nEleMC]
    Int_t           pdgIdEleMC[10];   //[nEleMC]
@@ -147,6 +150,7 @@ private:
    Int_t           isProbeMediumPhot[20];   //[nPhot]
    Int_t           isProbeLoosePhot[20];   //[nPhot]
    Float_t         mvaIDPhot[20];   //[nPhot]
+
    /*
    Float_t         ePhot[20];   //[nPhot]
    Float_t         escPhot[20];   //[nPhot]
@@ -250,8 +254,11 @@ private:
    Int_t           isTagTightEle[20];   //[nEle]
    Int_t           isTagMediumEle[20];   //[nEle]
    Int_t           isTagLooseEle[20];   //[nEle]
-   vector<string>  *firedHLTNames;
-   Float_t         epfMet;
+   Int_t           isTrig17Mass50MatchedEle[20];   //[nEle]
+   Int_t           isTrig20Mass50MatchedEle[20];   //[nEle]
+
+/*    vector<string>  *firedHLTNames; */
+/*    Float_t         epfMet; */
 
 
 //electrons
@@ -313,6 +320,7 @@ private:
    Float_t         invMassEle;
    */
    // List of branches
+   /*
    TBranch        *b_genpt;   //!
    TBranch        *b_genProcessId;   //!
    TBranch        *b_genQScale;   //!
@@ -908,7 +916,7 @@ private:
    TBranch        *b_CosmicMuon_OuterPoint_y;   //!
    TBranch        *b_CosmicMuon_OuterPoint_z;   //!
    TBranch        *b_Xsec;   //!
-   
+   */   
 
    /*
   // defines photon CiC ID cuts for all cut levels

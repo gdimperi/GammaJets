@@ -2,8 +2,9 @@
 
 samples={}
 
-mc_dir="root://pccmsrm27.cern.ch///cms/local/crovelli/GammaJets/reduced/redntp.53xv2.cicpfloose.noCorrections.GammaJets_newNtuples_v5/merged2/"
-data_dir="root://pccmsrm27.cern.ch///cms/local/crovelli/GammaJets/reduced/redntp.53xv2_data.cicpfloose.noCorrections.GammaJets_newNtuples_v5/merged2"
+mc_dir="/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2/merged/"
+data_dir="/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2/merged/"
+
              #  name                     #index        #filename                                     #xsec    #kfac         #directory
 samples["QCDEM_Pt_20_30_8TeV_pythia6"]=[1,"redntp_QCD_Pt_20_30_EMEnriched_TuneZ2star_8TeV_pythia6.root",288600000 * 0.0101 ,1., mc_dir]
 samples["QCDEM_Pt_30_80_8TeV_pythia6"]=[2,"redntp_QCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6.root",74330000 * 0.0621 ,1. , mc_dir]
@@ -22,13 +23,28 @@ samples["G_Pt-170to300_8TeV_pythia6"]=[12,"redntp_G_Pt-170to300_TuneZ2star_8TeV_
 samples["G_Pt-300to470_8TeV_pythia6"]=[13,"redntp_G_Pt-300to470_TuneZ2star_8TeV_pythia6.root",0.2119244,1. ,mc_dir]
 samples["G_Pt-470to800_8TeV_pythia6"]=[14,"redntp_G_Pt-470to800_TuneZ2star_8TeV_pythia6.root",0.2119244,1. ,mc_dir]
 samples["G_Pt-800to1400_8TeV_pythia6"]=[15,"redntp_G_Pt-800to1400_TuneZ2star_8TeV_pythia6.root",0.007077847,1. ,mc_dir]
-samples["G_Pt-1400to1800_8TeV_pythia6"]=[16,"redntp_G_Pt-1400to1800_TuneZ2star_8TeV_pythia6.root",4.510327e-5,1. ,mc_dir]
+#samples["G_Pt-1400to1800_8TeV_pythia6"]=[16,"redntp_G_Pt-1400to1800_TuneZ2star_8TeV_pythia6.root",4.510327e-5,1. ,mc_dir]
 
 #data sampleIndex=0 for data
-samples["Photon-Run2012A-recover-06Aug2012"]=[0, "redntp_Photon-Run2012A-recover-06Aug2012-v1.root" , 1, 1 ,data_dir]
-samples["Photon_Run2012A-13Jul2012"] = [0,"redntp_Photon_Run2012A-13Jul2012-v1.root",1,1,data_dir]
-samples["Photon_Run2012B-13Jul2012"] = [0,"redntp_SinglePhoton_Run2012B-13Jul2012-v1.root",1,1,data_dir]
-samples["Photon_Run2012C-24Aug2012"] = [0,"redntp_SinglePhoton_Run2012C-24Aug2012-v1.root",1,1,data_dir]
-samples["Photon_Run2012C-EcalRecover_11Dec2012"] = [0,"redntp_SinglePhoton_Run2012C-EcalRecover_11Dec2012-v1.root",1,1,data_dir]
-samples["Photon_Run2012C-PromptReco-v2"] = [0,"redntp_SinglePhoton_Run2012C-PromptReco-v2.root",1,1,data_dir]
-samples["Photon_Run2012D-PromptReco-v1"] = [0, "redntp_SinglePhoton_Run2012D-PromptReco-v1.root",1,1,data_dir]
+samples["Photon_Run2012A-22Jan2013"] = [0,"redntp_Photon_Run2012A-22Jan2013-v1.root",1,1,data_dir]
+samples["Photon_Run2012B-22Jan2013"] = [0,"redntp_SinglePhoton_Run2012B-22Jan2013-v1.root",1,1,data_dir]
+samples["Photon_Run2012C-22Jan2013"] = [0,"redntp_SinglePhoton_Run2012C-22Jan2013-v1.root",1,1,data_dir]
+##samples["SinglePhotonParked_Run2012D-22Jan2013"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_A"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_A.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_B"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_B.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_C"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_C.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_D"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_D.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_E"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_E.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_F"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_F.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_G"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_G.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_H"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_H.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_I"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_I.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_L"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_L.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_M"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_M.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_N"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_N.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_O"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_O.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_P"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_P.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_Q"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_Q.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_R"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_R.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_S"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_S.root",1,1,data_dir]
+samples["SinglePhotonParked_Run2012D-22Jan2013_T"] = [0,"redntp_SinglePhotonParked_Run2012D-22Jan2013-v1_T.root",1,1,data_dir]

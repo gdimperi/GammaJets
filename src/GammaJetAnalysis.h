@@ -33,8 +33,12 @@ public :
    float          xsec; //pb
    float          normLumi;//pb^(-1)
 
+   TString mvaWeights_EB;
+   TString mvaWeights_EE;
 
+   TString       selectionType;
    // Cuts values                   
+
    float ptphot1_mincut;
    float ptphot1_maxcut;
 /*    int ebcat; */
@@ -56,16 +60,24 @@ public :
    bool isHLT_50(bool isoCut);
    bool isHLT_75(bool isoCut);
    bool isHLT_90(bool isoCut);
+   bool isHLT_135();
    bool isHLT_150();
    bool passHLT(bool isoCut);
    int effectiveAreaRegion(float theEta);
+   int   isIsolatedGenPhot(const int& phot);
+   float isoGen03(const int& phot);
    float GetPUWeight();
    float GetSampleWeight();
 
    std::vector<int> sortedPtPhotons();
+   std::vector<int> sortedPtGenPhotons();
    std::vector<int> preselectedPhotons(const std::vector<int>& photons);
    std::vector<int> selectedPhotons(const std::vector<int>& photons);
    float combinedPfIso03(const int& phot);
+   float combinedPfIso03(float isoCharged03, float isoNeutral03, float isoPhoton03, const int& pho);
+   float correctedPfIsoCharged03(float* isoCharged03, const int& phot);
+   float correctedPfIsoNeutrals03(float* isoNeutral03, const int& phot);
+   float correctedPfIsoPhotons03(float* isoPhoton03, const int& phot);
 
    // To read photon ID MVA
    void SetAllMVA(); 
@@ -75,7 +87,8 @@ public :
    void BookFinalTree();
 
    void FillTreeEvent(float weight);
-   void FillTreePhot(const int& ipho);
+   void FillTreePhot(const int& ipho,bool isPreselected, bool isSelected);
+   void FillTreeGenPhot(const int& ipho);
 
    TMVA::Reader *tmvaReaderID_Single_Barrel, *tmvaReaderID_Single_Endcap;
    float tmva_photonid_etawidth, tmva_photonid_phiwidth;
@@ -84,7 +97,7 @@ public :
    float tmva_photonid_pt,       tmva_photonid_sceta;
    float tmva_photonid_rr;
    float tmva_photonid_nPhot, tmva_photonid_isMatchedPhot, tmva_photonid_ptWeight; 
-   
+   float tmva_photonid_eventrho;
 
    GammaJetAnalysis(TTree *tree=0);
    virtual ~GammaJetAnalysis();
@@ -100,7 +113,7 @@ public :
 #endif
 
 #ifdef GammaJetAnalysis_cxx
-GammaJetAnalysis::GammaJetAnalysis(TTree *tree) : fChain(0) , isMVAinitialized(false), dopureweight(true), hltiso(true)
+GammaJetAnalysis::GammaJetAnalysis(TTree *tree) : fChain(0) , hltiso(true), isMVAinitialized(false), dopureweight(true) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
@@ -175,7 +188,19 @@ void GammaJetAnalysis::Init(TTree *tree)
    fChain->SetBranchAddress("pu_weight50", &pu_weight50, &b_pu_weight50);
    fChain->SetBranchAddress("pu_weight75", &pu_weight75, &b_pu_weight75);
    fChain->SetBranchAddress("pu_weight90", &pu_weight90, &b_pu_weight90);
+   fChain->SetBranchAddress("pu_weight135", &pu_weight135, &b_pu_weight135);
+   fChain->SetBranchAddress("pu_weight150", &pu_weight150, &b_pu_weight150);
    fChain->SetBranchAddress("nPhot_gen", &nPhot_gen, &b_nPhot_gen);
+   fChain->SetBranchAddress("deltaRMatch_gen", deltaRMatch_gen, &b_deltaRMatch_gen);
+   fChain->SetBranchAddress("ptTrueMatch_gen", ptTrueMatch_gen, &b_ptTrueMatch_gen);
+   fChain->SetBranchAddress("etaMatch_gen", etaMatch_gen, &b_etaMatch_gen);
+   fChain->SetBranchAddress("phiMatch_gen", phiMatch_gen, &b_phiMatch_gen);
+   fChain->SetBranchAddress("ptRecoMatch_gen", ptRecoMatch_gen, &b_ptRecoMatch_gen);
+   fChain->SetBranchAddress("iRecoPhotMatch_gen", iRecoPhotMatch_gen, &b_iRecoPhotMatch_gen);
+   fChain->SetBranchAddress("iso02_gen", iso02_gen, &b_iso02_gen);
+   fChain->SetBranchAddress("iso03_gen", iso03_gen, &b_iso03_gen);
+   fChain->SetBranchAddress("iso04_gen", iso04_gen, &b_iso04_gen);
+   fChain->SetBranchAddress("iso05_gen", iso05_gen, &b_iso05_gen);
    fChain->SetBranchAddress("nPhot_presel", &nPhot_presel, &b_nPhot_presel);
    fChain->SetBranchAddress("ptPhot_presel", ptPhot_presel, &b_ptPhot_presel);
    fChain->SetBranchAddress("ePhot_presel", ePhot_presel, &b_ePhot_presel);
@@ -206,6 +231,18 @@ void GammaJetAnalysis::Init(TTree *tree)
    fChain->SetBranchAddress("pid_pfIsoNeutrals04ForCiC_presel", pid_pfIsoNeutrals04ForCiC_presel, &b_pid_pfIsoNeutrals04ForCiC_presel);
    fChain->SetBranchAddress("pid_pfIsoNeutrals05ForCiC_presel", pid_pfIsoNeutrals05ForCiC_presel, &b_pid_pfIsoNeutrals05ForCiC_presel);
    fChain->SetBranchAddress("pid_pfIsoNeutrals06ForCiC_presel", pid_pfIsoNeutrals06ForCiC_presel, &b_pid_pfIsoNeutrals06ForCiC_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRCharged03_presel", pid_pfIsoFPRCharged03_presel, &b_pid_pfIsoFPRCharged03_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRNeutral03_presel", pid_pfIsoFPRNeutral03_presel, &b_pid_pfIsoFPRNeutral03_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRPhoton03_presel", pid_pfIsoFPRPhoton03_presel, &b_pid_pfIsoFPRPhoton03_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRRandomConeCharged03_presel", pid_pfIsoFPRRandomConeCharged03_presel, &b_pid_pfIsoFPRRandomConeCharged03_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRRandomConeNeutral03_presel", pid_pfIsoFPRRandomConeNeutral03_presel, &b_pid_pfIsoFPRRandomConeNeutral03_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRRandomConePhoton03_presel", pid_pfIsoFPRRandomConePhoton03_presel, &b_pid_pfIsoFPRRandomConePhoton03_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRCharged04_presel", pid_pfIsoFPRCharged04_presel, &b_pid_pfIsoFPRCharged04_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRNeutral04_presel", pid_pfIsoFPRNeutral04_presel, &b_pid_pfIsoFPRNeutral04_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRPhoton04_presel", pid_pfIsoFPRPhoton04_presel, &b_pid_pfIsoFPRPhoton04_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRRandomConeCharged04_presel", pid_pfIsoFPRRandomConeCharged04_presel, &b_pid_pfIsoFPRRandomConeCharged04_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRRandomConeNeutral04_presel", pid_pfIsoFPRRandomConeNeutral04_presel, &b_pid_pfIsoFPRRandomConeNeutral04_presel);
+   fChain->SetBranchAddress("pid_pfIsoFPRRandomConePhoton04_presel", pid_pfIsoFPRRandomConePhoton04_presel, &b_pid_pfIsoFPRRandomConePhoton04_presel);
    fChain->SetBranchAddress("pid_scetawid_presel", pid_scetawid_presel, &b_pid_scetawid_presel);
    fChain->SetBranchAddress("pid_scphiwid_presel", pid_scphiwid_presel, &b_pid_scphiwid_presel);
    fChain->SetBranchAddress("pid_lambdaRatio_presel", pid_lambdaRatio_presel, &b_pid_lambdaRatio_presel);
@@ -218,13 +255,12 @@ void GammaJetAnalysis::Init(TTree *tree)
    fChain->SetBranchAddress("rhoPF", &rhoPF, &b_rhoPF);
    fChain->SetBranchAddress("rr_presel", rr_presel, &b_rr_presel);
    fChain->SetBranchAddress("isMatchedPhot", isMatchedPhot, &b_isMatchedPhot);
-   fChain->SetBranchAddress("deltaRGenReco", deltaRGenReco, &b_deltaRGenReco);
-   fChain->SetBranchAddress("deltaRGenReco_EB_nopresel", deltaRGenReco_EB_nopresel, &b_deltaRGenReco_EB_nopresel);
-   fChain->SetBranchAddress("deltaRGenReco_EE_nopresel", deltaRGenReco_EE_nopresel, &b_deltaRGenReco_EE_nopresel);
-   fChain->SetBranchAddress("eTrue_EB_nopresel", eTrue_EB_nopresel, &b_eTrue_EB_nopresel);
-   fChain->SetBranchAddress("eTrue_EE_nopresel", eTrue_EE_nopresel, &b_eTrue_EE_nopresel);
-   fChain->SetBranchAddress("eReco_EB_matched", eReco_EB_matched, &b_eReco_EB_matched);
-   fChain->SetBranchAddress("eReco_EE_matched", eReco_EE_matched, &b_eReco_EE_matched);
+   fChain->SetBranchAddress("iMatchedPhot", iMatchedPhot, &b_iMatchedPhot);
+   fChain->SetBranchAddress("isTrig20CaloVLMatchedPhot", isTrig20CaloVLMatchedPhot, &b_isTrig20CaloVLMatchedPhot);
+   fChain->SetBranchAddress("isTrig30CaloVLMatchedPhot", isTrig30CaloVLMatchedPhot, &b_isTrig30CaloVLMatchedPhot);
+   fChain->SetBranchAddress("isTrig50CaloVLMatchedPhot", isTrig50CaloVLMatchedPhot, &b_isTrig50CaloVLMatchedPhot);
+   fChain->SetBranchAddress("isTrig75CaloVLMatchedPhot", isTrig75CaloVLMatchedPhot, &b_isTrig75CaloVLMatchedPhot);
+   fChain->SetBranchAddress("isTrig90CaloVLMatchedPhot", isTrig90CaloVLMatchedPhot, &b_isTrig90CaloVLMatchedPhot);
    fChain->SetBranchAddress("vtxId", &vtxId, &b_vtxId);
    fChain->SetBranchAddress("firedHLTNames", &firedHLTNames, &b_firedHLTNames);
    Notify();

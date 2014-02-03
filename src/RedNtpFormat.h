@@ -19,7 +19,20 @@ Float_t         pu_weight30;
 Float_t         pu_weight50;
 Float_t         pu_weight75;
 Float_t         pu_weight90;
+Float_t         pu_weight135;
+Float_t         pu_weight150;
 Int_t           nPhot_gen;
+Float_t         deltaRMatch_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         ptTrueMatch_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         etaMatch_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         phiMatch_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         ptRecoMatch_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         iRecoPhotMatch_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         iso02_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         iso03_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         iso04_gen[NPHOTGENMAX]; //[nPhot_gen]
+Float_t         iso05_gen[NPHOTGENMAX]; //[nPhot_gen]
+
 Int_t           nPhot_presel;
 Float_t         ptPhot_presel[NPHOTMAX];   //[nPhot_presel]
 Float_t         ePhot_presel[NPHOTMAX];   //[nPhot_presel]
@@ -50,6 +63,18 @@ Float_t         pid_pfIsoNeutrals03ForCiC_presel[NPHOTMAX];   //[nPhot_presel]
 Float_t         pid_pfIsoNeutrals04ForCiC_presel[NPHOTMAX];   //[nPhot_presel]
 Float_t         pid_pfIsoNeutrals05ForCiC_presel[NPHOTMAX];   //[nPhot_presel]
 Float_t         pid_pfIsoNeutrals06ForCiC_presel[NPHOTMAX];   //[nPhot_presel]
+Float_t         pid_pfIsoFPRCharged03_presel[NPHOTMAX];   //[nPhot_presel] 
+Float_t         pid_pfIsoFPRNeutral03_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRPhoton03_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRRandomConeCharged03_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRRandomConeNeutral03_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRRandomConePhoton03_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRCharged04_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRNeutral04_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRPhoton04_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRRandomConeCharged04_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRRandomConeNeutral04_presel[NPHOTMAX];   //[nPhot_presel]  
+Float_t         pid_pfIsoFPRRandomConePhoton04_presel[NPHOTMAX];   //[nPhot_presel]  
 Float_t         pid_scetawid_presel[NPHOTMAX];   //[nPhot_presel]
 Float_t         pid_scphiwid_presel[NPHOTMAX];   //[nPhot_presel]
 Float_t         pid_lambdaRatio_presel[NPHOTMAX];   //[nPhot_presel]
@@ -62,14 +87,17 @@ Float_t         rhoAllJets;
 Float_t         rhoPF;
 Float_t         rr_presel[NPHOTMAX];   //[nPhot_presel]
 Int_t           isMatchedPhot[NPHOTMAX];   //[nPhot_presel]
-
-Float_t         deltaRGenReco[NPHOTGENMAX];   //[nPhot_gen]
-Float_t         deltaRGenReco_EB_nopresel[NPHOTGENMAX];   //[nPhot_gen]
-Float_t         deltaRGenReco_EE_nopresel[NPHOTGENMAX];   //[nPhot_gen]
-Float_t         eTrue_EB_nopresel[NPHOTGENMAX];   //[nPhot_gen]
-Float_t         eTrue_EE_nopresel[NPHOTGENMAX];   //[nPhot_gen]
-Float_t         eReco_EB_matched[NPHOTGENMAX];   //[nPhot_gen]
-Float_t         eReco_EE_matched[NPHOTGENMAX];   //[nPhot_gen]
+Int_t           iMatchedPhot[NPHOTMAX];   //[nPhot_presel] 
+Int_t           isTrig20CaloVLMatchedPhot[NPHOTMAX];   //[nPhot_presel] 
+Int_t           isTrig30CaloVLMatchedPhot[NPHOTMAX];   //[nPhot_presel] 
+Int_t           isTrig50CaloVLMatchedPhot[NPHOTMAX];   //[nPhot_presel] 
+Int_t           isTrig75CaloVLMatchedPhot[NPHOTMAX];   //[nPhot_presel] 
+Int_t           isTrig90CaloVLMatchedPhot[NPHOTMAX];   //[nPhot_presel]           
+Float_t         hltCandPt20CaloVLPhot[NPHOTMAX];   //[nPhot_presel]  
+Float_t         hltCandPt30CaloVLPhot[NPHOTMAX];   //[nPhot_presel]  
+Float_t         hltCandPt50CaloVLPhot[NPHOTMAX];   //[nPhot_presel]  
+Float_t         hltCandPt75CaloVLPhot[NPHOTMAX];   //[nPhot_presel]  
+Float_t         hltCandPt90CaloVLPhot[NPHOTMAX];   //[nPhot_presel]  
 Int_t           vtxId;
 
 std::vector<std::string>  *firedHLTNames;
@@ -93,7 +121,19 @@ std::vector<std::string>  *firedHLTNames;
    TBranch        *b_pu_weight50;   //!
    TBranch        *b_pu_weight75;   //!
    TBranch        *b_pu_weight90;   //!
+   TBranch        *b_pu_weight135;   //!
+   TBranch        *b_pu_weight150;   //!
    TBranch        *b_nPhot_gen;   //!
+   TBranch        *b_deltaRMatch_gen; //!
+   TBranch        *b_ptTrueMatch_gen; //!
+   TBranch        *b_etaMatch_gen; //!
+   TBranch        *b_phiMatch_gen; //!
+   TBranch        *b_ptRecoMatch_gen; //!
+   TBranch        *b_iRecoPhotMatch_gen; //!
+   TBranch        *b_iso02_gen; //!
+   TBranch        *b_iso03_gen; //!
+   TBranch        *b_iso04_gen; //!
+   TBranch        *b_iso05_gen; //!
    TBranch        *b_nPhot_presel;   //!
    TBranch        *b_ptPhot_presel;   //!
    TBranch        *b_ePhot_presel;   //!
@@ -124,6 +164,18 @@ std::vector<std::string>  *firedHLTNames;
    TBranch        *b_pid_pfIsoNeutrals04ForCiC_presel;   //!
    TBranch        *b_pid_pfIsoNeutrals05ForCiC_presel;   //!
    TBranch        *b_pid_pfIsoNeutrals06ForCiC_presel;   //!
+   TBranch        *b_pid_pfIsoFPRCharged03_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRNeutral03_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRPhoton03_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRRandomConeCharged03_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRRandomConeNeutral03_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRRandomConePhoton03_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRCharged04_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRNeutral04_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRPhoton04_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRRandomConeCharged04_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRRandomConeNeutral04_presel;   //! 
+   TBranch        *b_pid_pfIsoFPRRandomConePhoton04_presel;   //! 
    TBranch        *b_pid_scetawid_presel;   //!
    TBranch        *b_pid_scphiwid_presel;   //!
    TBranch        *b_pid_lambdaRatio_presel;   //!
@@ -136,12 +188,16 @@ std::vector<std::string>  *firedHLTNames;
    TBranch        *b_rhoPF;   //!
    TBranch        *b_rr_presel;   //!
    TBranch        *b_isMatchedPhot;   //!
-   TBranch        *b_deltaRGenReco;   //!
-   TBranch        *b_deltaRGenReco_EB_nopresel;   //!
-   TBranch        *b_deltaRGenReco_EE_nopresel;   //!
-   TBranch        *b_eTrue_EB_nopresel;   //!
-   TBranch        *b_eTrue_EE_nopresel;   //!
-   TBranch        *b_eReco_EB_matched;   //!
-   TBranch        *b_eReco_EE_matched;   //!
+   TBranch        *b_iMatchedPhot;   //! 
+   TBranch        *b_isTrig20CaloVLMatchedPhot;   //! 
+   TBranch        *b_isTrig30CaloVLMatchedPhot;   //! 
+   TBranch        *b_isTrig50CaloVLMatchedPhot;   //! 
+   TBranch        *b_isTrig75CaloVLMatchedPhot;   //! 
+   TBranch        *b_isTrig90CaloVLMatchedPhot;   //!    
+   TBranch        *b_hltCandPt20CaloVLPhot;   //!
+   TBranch        *b_hltCandPt30CaloVLPhot;   //!
+   TBranch        *b_hltCandPt50CaloVLPhot;   //!
+   TBranch        *b_hltCandPt75CaloVLPhot;   //!
+   TBranch        *b_hltCandPt90CaloVLPhot;   //!
    TBranch        *b_vtxId;   //!
    TBranch        *b_firedHLTNames;   //!

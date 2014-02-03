@@ -28,10 +28,11 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
+  std::cout << "Arguments passed " << argc << std::endl;
   //================ Parameters 
-  if(argc<2 || argc>11) {
+  if(argc<2 || argc>13) {
     //    cout << "Usage:  ./tmp/tagandprobeApp listfile outputfile jsonfile(optional) puweight(optional) scaleCorrections(optional)\n" 
-     cout << "Usage:  ./tmp/singlegammaApp listfile outputfile jsonfile(optional) puweight(optional) puweight_HLT30(optional) puweight_HLT50(optional) puweight_HLT75(optional) puweight_HLT90(optional) scaleCorrections(optional)\n"
+    cout << "Usage:  ./tmp/tagandprobeApp listfile outputfile jsonfile(optional) puweight(optional) puweight_HLT30(optional) puweight_HLT50(optional) puweight_HLT75(optional) puweight_HLT90(optional) r9weight(optional) scaleCorrections(optional)\n"
 	 << "  listfile:    list of root files incusing protocol eg dcap:/// .....\n"
 	 << "  outputfile:  name of output root file  eg output.root\n"
 	 << "  jsonfile: jsonfile used to select RUN/LS when looping over data. -1 if not used\n"
@@ -41,10 +42,11 @@ int main(int argc, char* argv[]) {
          << "  puweight_HLT75: puweight for MC nPU reweighting corresponding to HLT75 selected data. -1 if not used\n"
          << "  puweight_HLT90: puweight for MC nPU reweighting corresponding to HLT90 selected data. -1 if not used\n" 
          << "  r9weight: r9weight for MC and data reweighting. -1 if not used\n" 
-	 << "  scalCorrection: ....\n"
+	 << "  EB weights for MVA\n"
+	 << "  EE weights for MVA\n"
 	 << endl;
-    exit(-1);
-    }
+     exit(-1);
+  }
   
   // Input list
   char listName[500];
@@ -101,9 +103,9 @@ int main(int argc, char* argv[]) {
   //tool.SetNtotXsection( ntot, myxsec );
   //  tool.photonLevelNewIDMVA_EB=std::string(argv[4]);
   //  tool.photonLevelNewIDMVA_EE=std::string(argv[5]);
-
+  
   if (argc>3 && std::string(argv[3]) != "-1") {
-    cout << "SetR9Weights" << endl;
+    cout << "SetJsonFile" << endl;
     tool.SetJsonFile(argv[3]);
   }
   if (argc>4 && std::string(argv[4]) != "-1"){
@@ -133,6 +135,14 @@ int main(int argc, char* argv[]) {
   if (argc>9 && std::string(argv[9]) != "-1") {
      cout << "SetR9Weights" << endl;
      tool.SetR9Weights(std::string(argv[9]));
+  }
+  if (argc>10 && std::string(argv[10]) != "-1") {
+     cout << "Set EB photon ID MVa" << endl;
+     tool.photonLevelNewIDMVA_EB=std::string(argv[10]);
+  }
+  if (argc>11 && std::string(argv[11]) != "-1") {
+     cout << "Set EE photon ID MVa" << endl;
+     tool.photonLevelNewIDMVA_EE=std::string(argv[11]);
   }
 
   /*

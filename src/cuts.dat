@@ -2,9 +2,12 @@
 
 cuts={}
 
-cuts['normLumi']=124.2
-cuts['hltcut']=75
-cuts['hltiso']=0
-cuts['mvaIDWP']=2
-cuts['ptMin']=90
-cuts['ptMax']=9999999.
+cuts['normLumi']=2.862                # 19712., 2.862, 22.260, 133.552, 279.472, 13771., 19712.
+cuts['hltcut']=30                     # 0,       30,     50,     75,      90,    135,     150
+cuts['hltiso']=0                      # 0 to use paths with ID only; 1 for ID+iso paths 
+cuts['mvaIDWP']=4                     # use 4 not to apply and ID
+cuts['ptMin']=40.                     #          40,     65,     90,     105,    165,     180  
+cuts['ptMax']=65.                     #          65,     90,    105,     165,    180,    200000
+cuts['selectionType']='pippo'         # efficiencyStudy
+cuts['mvaWeights_EB']='/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/GammaJets/src/reduced_analysis/doMVA/weights_30_01_14_EB/TMVAClassification_BDTG.weights.xml'
+cuts['mvaWeights_EE']='/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/GammaJets/src/reduced_analysis/doMVA/weights_30_01_14_EE/TMVAClassification_BDTG.weights.xml'
