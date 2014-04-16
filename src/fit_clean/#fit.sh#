@@ -1,0 +1,4 @@
+#!/bin/bash
+
+declare -A PTBINS
+PTBINS["hltcut30"]=() 

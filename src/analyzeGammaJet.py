@@ -12,8 +12,20 @@ import multiprocessing
 from itertools import repeat
 
 #Some global options
+<<<<<<< HEAD
 xrootd_server="pccmsrm24.cern.ch"
 output_dir="/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/"
+=======
+
+# TO RUN AT CERN
+xrootd_server="pccmsrm27.cern.ch"
+output_dir="/cms/local/meridian/GammaJets/output"
+
+#TO RUN IN ROME
+xrootd_server=""
+output_dir="/t3/users/meridian/GammaJets/output/"
+
+>>>>>>> 4532db635d12cfa04eeb6298ce1055a4d57ca394
 tmp_dir="/tmp/"+str(os.environ['USER'])
 
 mc_dir="root://pccmsrm24.cern.ch/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2"
@@ -68,12 +80,23 @@ def analyzeSample( (sample,mycuts,samples) ):
 #    print sample,mycuts,samples
     #the real worker code
     print "Analyzing sample "+ sample + ": " + str(samples[sample])
-    f=TFile.Open(samples[sample][4]+"/"+samples[sample][1])
-    a=f.Get("AnaTree")
-    a_h1=f.Get("ptphotgen1")
+#    f=TFile.Open(samples[sample][4]+"/"+samples[sample][1])
+    f=TChain("AnaTree")
+    histos=[]
+    for file in [ line.strip() for line in open(samples[sample][1],'r') if not line.strip().startswith('#') ]:
+        print file
+        f.Add(file)
+        myFile=TFile.Open(file)
+        myFile.ls()
+        histos.append(myFile.Get("ptphotgen1"))
+        #    a=f.Get("AnaTree")
+    if len(histos)>0:
+        a_h1=histos[0].Clone(histos[0].GetName()+"_sum")
+        for i in range(1,len(histos)):
+            a_h1.Add(histos[i])
     #        a.Print()
-
-    analyzer = GammaJetAnalysis(a)
+    print str(sample)+" has "+str(a_h1.Integral())+ " events"
+    analyzer=GammaJetAnalysis(f)
     analyzer.sampleIndex=samples[sample][0]
     analyzer.sampleName=str(sample)
     analyzer.sampleSize=a_h1.Integral()
@@ -83,24 +106,47 @@ def analyzeSample( (sample,mycuts,samples) ):
     analyzer.hltcut=mycuts['hltcut']
     analyzer.hltiso=mycuts['hltiso']
     analyzer.mvaIDWP=mycuts['mvaIDWP']
+<<<<<<< HEAD
     analyzer.mvaWeights_EB=mycuts['mvaWeights_EB']
     analyzer.mvaWeights_EE=mycuts['mvaWeights_EE']
     analyzer.selectionType=mycuts['selectionType']
     outfileName=str(sample)+"_hltcut"+str(analyzer.hltcut)+"_hltiso"+str(analyzer.hltiso)+"_mvaWP"+str(analyzer.mvaIDWP)+".root"
+=======
+    if (mycuts['selectionType']!="efficiencyStudy"): 
+        outfileName=str(sample)+"_hltcut"+str(analyzer.hltcut)+"_hltiso"+str(analyzer.hltiso)+"_mvaWP"+str(analyzer.mvaIDWP)+".root"
+    else:
+        outfileName=str(sample)+"_mvaWP"+str(analyzer.mvaIDWP)+"_efficiencyStudy.root"
+>>>>>>> 4532db635d12cfa04eeb6298ce1055a4d57ca394
     analyzer.outputFile=tmp_dir+"/"+outfileName
+    subprocess.check_call("mkdir -p "+tmp_dir,shell=True)
     #to be linked to the hlt cut in the future
     analyzer.ptphot1_mincut=mycuts['ptMin']
     analyzer.ptphot1_maxcut=mycuts['ptMax']
+    analyzer.selectionType=mycuts['selectionType']
+    analyzer.mvaWeights_EB=mycuts['mvaWeights_EB']
+    analyzer.mvaWeights_EE=mycuts['mvaWeights_EE']
     analyzer.Loop()
     
     #Copying file towards final destination
+<<<<<<< HEAD
     rm_command="xrd "+xrootd_server+" rm "+output_dir+"/"+outfileName
     # subprocess.call(rm_command,shell=True)    # chiara: questo e' temporaneo  
     #copy_command="xrdcp "+tmp_dir+"/"+outfileName+" root://"+xrootd_server+"//"+output_dir+"/"+outfileName
     copy_command="mv "+tmp_dir+"/"+outfileName+" "+output_dir+"/"+outfileName    # chiara: questo e' temporaneo 
     subprocess.check_call(copy_command,shell=True)
+=======
+    if (options.location == "cern"):
+        rm_command="xrd "+xrootd_server+" rm "+output_dir+"/"+outfileName
+        subprocess.call(rm_command,shell=True)
+        copy_command="xrdcp "+tmp_dir+"/"+outfileName+" root://"+xrootd_server+"//"+output_dir+"/"+outfileName 
+        subprocess.check_call(copy_command,shell=True)
+    elif (options.location == "rome"):
+        rm_command="rm "+output_dir+"/"+outfileName
+        subprocess.call(rm_command,shell=True)
+        copy_command="cp "+tmp_dir+"/"+outfileName+" "+output_dir+"/"+outfileName 
+        subprocess.check_call(copy_command,shell=True)
+>>>>>>> 4532db635d12cfa04eeb6298ce1055a4d57ca394
     print "Copied file into "+output_dir+"/"+outfileName
-
 
 if __name__ == "__main__":
     parser = OptionParser(option_list=[
@@ -117,6 +163,11 @@ if __name__ == "__main__":
         make_option("--numberOfCPU",
                     action="store", type="int", dest="numberOfCPU",
                     default=-1,
+                    help="", metavar=""
+                    ),
+        make_option("--location",
+                    action="store", type="string", dest="location",
+                    default="rome",
                     help="", metavar=""
                     ),
         ])
