@@ -1,0 +1,78 @@
+{
+//=========Macro generated from canvas: etaPhot/etaPhot
+//=========  (Wed Feb  5 21:49:46 2014) by ROOT version5.32/00
+   TCanvas *etaPhot = new TCanvas("etaPhot", "etaPhot",1,1,1000,876);
+   gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
+   etaPhot->SetHighLightColor(2);
+   etaPhot->Range(-3.975,-0.1234568,3.525,1.111111);
+   etaPhot->SetFillColor(0);
+   etaPhot->SetBorderMode(0);
+   etaPhot->SetBorderSize(2);
+   etaPhot->SetTickx(1);
+   etaPhot->SetLeftMargin(0.13);
+   etaPhot->SetRightMargin(0.07);
+   etaPhot->SetFrameFillStyle(0);
+   etaPhot->SetFrameBorderMode(0);
+   
+   TGraphAsymmErrors *grae = new TGraphAsymmErrors(20);
+   grae->SetName("divide_etaPhot_mc_EEBkg__recoAndID_by_etaPhot_mc_Bkg_EE");
+   grae->SetTitle("etaPhot_mc_Bkg_EE_recoAndID");
+
+   Int_t ci;   // for color index setting
+   ci = TColor::GetColor("#ff00ff");
+   grae->SetLineColor(ci);
+   grae->SetLineWidth(2);
+   grae->SetPoint(0,-2.45,0.1950219);
+   grae->SetPointError(0,0.05,0.05,0.01693275,0.01693275);
+   grae->SetPoint(1,-2.35,0.2703992);
+   grae->SetPointError(1,0.05,0.05,0.01372583,0.01372583);
+   grae->SetPoint(2,-2.25,0.3091396);
+   grae->SetPointError(2,0.05,0.05,0.0152218,0.0152218);
+   grae->SetPoint(3,-2.15,0.3145586);
+   grae->SetPointError(3,0.05,0.05,0.01679209,0.01679209);
+   grae->SetPoint(4,-2.05,0.3362727);
+   grae->SetPointError(4,0.05,0.05,0.01755311,0.01755311);
+   grae->SetPoint(5,-1.95,0.3496694);
+   grae->SetPointError(5,0.05,0.05,0.01544022,0.01544022);
+   grae->SetPoint(6,-1.85,0.3439911);
+   grae->SetPointError(6,0.05,0.05,0.0146019,0.0146019);
+   grae->SetPoint(7,-1.75,0.3833659);
+   grae->SetPointError(7,0.05,0.05,0.01622323,0.01622323);
+   grae->SetPoint(8,-1.65,0.4117778);
+   grae->SetPointError(8,0.05,0.05,0.01588117,0.01588117);
+   grae->SetPoint(9,-1.55,0.4269313);
+   grae->SetPointError(9,0.05,0.05,0.03495564,0.03495564);
+   grae->SetPoint(10,1.55,0.4014786);
+   grae->SetPointError(10,0.05,0.05,0.02896694,0.02896694);
+   grae->SetPoint(11,1.65,0.4327313);
+   grae->SetPointError(11,0.05,0.05,0.01960219,0.01960219);
+   grae->SetPoint(12,1.75,0.3373549);
+   grae->SetPointError(12,0.05,0.05,0.01335863,0.01335863);
+   grae->SetPoint(13,1.85,0.3439919);
+   grae->SetPointError(13,0.05,0.05,0.01990502,0.01990502);
+   grae->SetPoint(14,1.95,0.3675129);
+   grae->SetPointError(14,0.05,0.05,0.01752766,0.01752766);
+   grae->SetPoint(15,2.05,0.3338827);
+   grae->SetPointError(15,0.05,0.05,0.01758858,0.01758858);
+   grae->SetPoint(16,2.15,0.3211459);
+   grae->SetPointError(16,0.05,0.05,0.01578051,0.01578051);
+   grae->SetPoint(17,2.25,0.319242);
+   grae->SetPointError(17,0.05,0.05,0.0196036,0.0196036);
+   grae->SetPoint(18,2.35,0.2544729);
+   grae->SetPointError(18,0.05,0.05,0.01279722,0.01279722);
+   grae->SetPoint(19,2.45,0.1773723);
+   grae->SetPointError(19,0.05,0.05,0.01205391,0.01205391);
+   
+   TH1F *Graph_divide_etaPhot_mc_EEBkg__recoAndID_by_etaPhot_mc_Bkg_EE5 = new TH1F("Graph_divide_etaPhot_mc_EEBkg__recoAndID_by_etaPhot_mc_Bkg_EE5","etaPhot_mc_Bkg_EE_recoAndID",100,-3,3);
+   Graph_divide_etaPhot_mc_EEBkg__recoAndID_by_etaPhot_mc_Bkg_EE5->SetMinimum(0);
+   Graph_divide_etaPhot_mc_EEBkg__recoAndID_by_etaPhot_mc_Bkg_EE5->SetMaximum(1);
+   Graph_divide_etaPhot_mc_EEBkg__recoAndID_by_etaPhot_mc_Bkg_EE5->SetDirectory(0);
+   Graph_divide_etaPhot_mc_EEBkg__recoAndID_by_etaPhot_mc_Bkg_EE5->SetStats(0);
+   grae->SetHistogram(Graph_divide_etaPhot_mc_EEBkg__recoAndID_by_etaPhot_mc_Bkg_EE5);
+   
+   grae->Draw("ap");
+   etaPhot->Modified();
+   etaPhot->cd();
+   etaPhot->SetSelected(etaPhot);
+}

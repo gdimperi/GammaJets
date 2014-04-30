@@ -35,10 +35,13 @@
 
 using namespace RooFit;
 
+string workdir="pull_dataReweight";
+string workdir_input="../";
+
 void fitData_myPull(string ptMin, string ptMax, int numEv, double purity){
   int numFits = 1000;
 
-  TFile* outFile = new TFile(("pullOutFile_pt"+ptMin+"_"+ptMax+".root").c_str(), "RECREATE");
+  TFile* outFile = new TFile((workdir+"pullOutFile_pt"+ptMin+"_"+ptMax+".root").c_str(), "RECREATE");
 
   TTree* tree_toys = new TTree("tree_toys", "tree_toys"); 
 
@@ -164,11 +167,15 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity){
   weight.setBins(1000);
 
   //models from fitted MC
-  TFile* f_ws_sig = new TFile(("workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
-  TFile* f_ws_bg = new TFile(("workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  TFile* f_ws_sig = new TFile((workdir_input+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  //TFile* f_ws_bg = new TFile((workdir_input+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  cout << "workspace bg   :   " << workdir_input<<"workspace_fit_EB_bg_WP095_pt"<<ptMin<<"_"<<ptMax<<"_dataReweight.root" << endl;
+  TFile* f_ws_bg = new TFile((workdir_input+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+"_dataReweight.root").c_str(), "READ");
+
 
   RooWorkspace* w_sig =(RooWorkspace*)f_ws_sig->Get("w_sig");
   RooWorkspace* w_bg =(RooWorkspace*)f_ws_bg->Get("w_bg");
+
 
   //model sig
   RooRealVar pull_CBC_mean("pull_CBC_mean", "pull_CBC_mean", w_sig->var("CBC_mean")->getVal(), -2., 3.) ;	 
@@ -209,11 +216,14 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity){
   realVal_cbalpha_s   = pull_cbalpha_s   .getVal();	 
   realVal_cbn_s       = pull_cbn_s       .getVal();	 
   realVal_frac_s      = pull_frac_s      .getVal();	 
+  
   realVal_gaussmean   = pull_gaussmean   .getVal();	 
   realVal_gausssigma  = pull_gausssigma  .getVal();	 
   realVal_frac_scut   = purity;	  
   realVal_N_scut      = numEv;	   
   realVal_N_sig      = purity*numEv;
+
+
 
   for(int numfit=0; numfit<numFits; numfit++){
 
@@ -223,31 +233,34 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity){
     //pull_CBC_alphaC  .setVal(realVal_CBC_alphaC);
     pull_CBC_alphaCB .setVal(realVal_CBC_alphaCB);
     pull_CBC_n       .setVal(realVal_CBC_n);
-       
-    //pull_CBC_mean.setConstant(kTRUE);
-    //pull_CBC_sigma.setConstant(kTRUE);
+    
+    //all fixed TO CHANGE   
+    pull_CBC_mean.setConstant(kTRUE);
+    pull_CBC_sigma.setConstant(kTRUE);
     pull_CBC_alphaCB.setConstant(kTRUE);
     pull_CBC_n.setConstant(kTRUE);
     
     //model for background
     pull_cbmean     .setVal(realVal_cbmean);
     pull_cbsigma    .setVal(realVal_cbsigma);
-    pull_cbalpha_s  .setVal(realVal_cbalpha_s);
-    pull_cbn_s      .setVal(realVal_cbn_s);
-    pull_frac_s     .setVal(realVal_frac_s);
+    pull_cbalpha_s  .setVal(realVal_cbalpha_s); 
+    pull_cbn_s      .setVal(realVal_cbn_s);	  
+    pull_frac_s     .setVal(realVal_frac_s);    
+   
     pull_gaussmean  .setVal(realVal_gaussmean);
     pull_gausssigma .setVal(realVal_gausssigma); 
       
+    //all fixed TO CHANGE   
     pull_cbmean.setConstant(kTRUE);      
     pull_cbsigma.setConstant(kTRUE);     
-    pull_cbalpha_s.setConstant(kTRUE);   
-    pull_cbn_s.setConstant(kTRUE);       
-    pull_frac_s.setConstant(kTRUE);      
+    pull_cbalpha_s.setConstant(kTRUE);    
+    pull_cbn_s.setConstant(kTRUE);        
+    pull_frac_s.setConstant(kTRUE);       
+    
     pull_gaussmean.setConstant(kTRUE);      
     pull_gausssigma.setConstant(kTRUE);     
     
-  
-    
+
     //adding and extending models                                                                                                                                                                           
     //option 1: adding sig and bg and extending their sum                                                                                                                                                    
     frac_scut.setVal(purity);   

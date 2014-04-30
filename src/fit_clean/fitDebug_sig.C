@@ -30,13 +30,22 @@
 #include "TLegend.h"
 #include "RooWorkspace.h"
 #include "RooFormulaVar.h"
+#include "RooGlobalFunc.h"
 
 using namespace RooFit;
 
+int main()
+{
+  return 0;
+}
+
 void fitDebug_sig(string cut, string filename, string hlt, bool binned){
+
+  string workdir = "";
 
   //loading MC to fit
   TChain mc("finalTree");
+  /*
   mc.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/G_Pt-120to170_8TeV_pythia6_"+hlt+"_hltiso0_mvaWP4.root").c_str());
   //mc.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/G_Pt-1400to1800_8TeV_pythia6_"+hlt+"_hltiso0_mvaWP4.root").c_str());  
   mc.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/G_Pt-170to300_8TeV_pythia6_"+hlt+"_hltiso0_mvaWP4.root").c_str());
@@ -52,11 +61,103 @@ void fitDebug_sig(string cut, string filename, string hlt, bool binned){
   mc.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/QCDEM_Pt_30_80_8TeV_pythia6_"+hlt+"_hltiso0_mvaWP4.root").c_str());
   mc.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/QCDEM_Pt_350_8TeV_pythia6_"+hlt+"_hltiso0_mvaWP4.root").c_str());
   mc.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/QCDEM_Pt_80_170_8TeV_pythia6_"+hlt+"_hltiso0_mvaWP4.root").c_str());
+  */  
+  if(hlt=="hltcut30"){
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-170to300_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-120to170_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-30to50_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-50to80_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-300to470_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-80to120_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");   
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-15to30_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root"); 
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/QCDEM_Pt_80_170_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/QCDEM_Pt_170_250_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/QCDEM_Pt_30_80_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/QCDEM_Pt_350_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/QCDEM_Pt_20_30_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/QCDEM_Pt_250_350_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root"); 
+  }
+  if(hlt=="hltcut50"){
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-170to300_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-120to170_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-30to50_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-50to80_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-300to470_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-80to120_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");   
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-15to30_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/QCDEM_Pt_80_170_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/QCDEM_Pt_170_250_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/QCDEM_Pt_30_80_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/QCDEM_Pt_350_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/QCDEM_Pt_20_30_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/QCDEM_Pt_250_350_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root"); 
+  }
+  if(hlt=="hltcut75"){
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-170to300_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-120to170_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-30to50_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-50to80_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-300to470_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-80to120_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");   
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-15to30_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/QCDEM_Pt_80_170_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/QCDEM_Pt_170_250_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/QCDEM_Pt_30_80_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/QCDEM_Pt_350_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/QCDEM_Pt_20_30_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/QCDEM_Pt_250_350_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root"); 
+  }
+  if(hlt=="hltcut90"){
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-170to300_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-120to170_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-30to50_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-50to80_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-300to470_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-80to120_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");   
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-15to30_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/QCDEM_Pt_80_170_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/QCDEM_Pt_170_250_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/QCDEM_Pt_30_80_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/QCDEM_Pt_350_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/QCDEM_Pt_20_30_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/QCDEM_Pt_250_350_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root"); 
+  }
+  if(hlt=="hltcut135"){
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-170to300_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-120to170_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-30to50_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-50to80_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-300to470_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-80to120_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");   
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-15to30_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/QCDEM_Pt_80_170_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/QCDEM_Pt_170_250_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/QCDEM_Pt_30_80_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/QCDEM_Pt_350_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/QCDEM_Pt_20_30_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/QCDEM_Pt_250_350_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root"); 
+  }
+  if(hlt=="hltcut150"){
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-170to300_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-120to170_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-30to50_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-50to80_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-300to470_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");  
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-80to120_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");   
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-15to30_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");    
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/QCDEM_Pt_80_170_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/QCDEM_Pt_170_250_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/QCDEM_Pt_30_80_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/QCDEM_Pt_350_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/QCDEM_Pt_20_30_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");	
+    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/QCDEM_Pt_250_350_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root"); 
+  }
   
   RooRealVar combinedPfIso03Phot("combinedPfIso03Phot", "combinedPfIso03Phot", -7., 15.);
   RooRealVar etaPhot("etaPhot", "etaPhot", -2.5, 2.5);
   RooRealVar mvaIdPhot("mvaIdPhot", "mvaIdPhot", -1.,1.);
   RooRealVar isMatchedPhot("isMatchedPhot","isMatchedPhot", -1., 2.);
+  RooRealVar isIsolatedGenPhot("isIsolatedGenPhot","isIsolatedGenPhot", -1., 2.);
   RooRealVar ptPhot("ptPhot", "ptPhot", 0., 1000.);
   RooRealVar weight("weight","weight", 0., 100.);
 
@@ -67,6 +168,7 @@ void fitDebug_sig(string cut, string filename, string hlt, bool binned){
   argSet.add(etaPhot);
   argSet.add(mvaIdPhot);
   argSet.add(isMatchedPhot);
+  argSet.add(isIsolatedGenPhot);
   argSet.add(ptPhot);
   argSet.add(weight);
 
@@ -76,21 +178,23 @@ void fitDebug_sig(string cut, string filename, string hlt, bool binned){
   etaPhot.setBins(120);
   mvaIdPhot.setBins(180);
   isMatchedPhot.setBins(3);
+  isIsolatedGenPhot.setBins(3);
   ptPhot.setBins(1200);
   weight.setBins(1000);
 
   //creating complete dataset
   std::cout<<"Reading trees of MC into a complete general dataset"<<std::endl;
-  RooDataSet allSet("allSet", "allSet", argSet, RooFit::WeightVar("weight"), RooFit::Import(mc));
+  RooDataSet allSet("allSet", "allSet", argSet, WeightVar("weight"), RooFit::Import(mc));
   std::cout<<"Complete dataset "<<allSet.GetName()<<" created"<<std::endl;
 
   //reducing complete dataset to interesting ones
   std::cout<<"Reducing complete dataset to smaller interesting ones"<<std::endl;
-  RooDataSet* d_s = (RooDataSet*)allSet.reduce((cut+" && mvaIdPhot>0.711099").c_str());
+  //RooDataSet* d_s = (RooDataSet*)allSet.reduce((cut+" && mvaIdPhot>0.711099").c_str());
+  RooDataSet* d_s = (RooDataSet*)allSet.reduce((cut+" && mvaIdPhot>0.83548").c_str());
   d_s->SetName("d_s");
   std::cout<<"Datset pesato? "<<d_s->isWeighted()<<std::endl;
   d_s->Print();
-  std::cout<<"Reduced dataset "<<d_s->GetName()<<" created with cut "<<cut<<" && mvaIdPhot>0.711099"<<std::endl;
+  std::cout<<"Reduced dataset "<<d_s->GetName()<<" created with cut "<<cut<<" && mvaIdPhot>0.83548"<<std::endl;
   std::cout<<"d_s entries: "<<d_s->sumEntries()<<std::endl;
 
   //binning datasets to obtain roodatahists 
@@ -108,7 +212,7 @@ void fitDebug_sig(string cut, string filename, string hlt, bool binned){
   RooRealVar CBC_alphaCB("CBC_alphaCB", "CBC_alphaCB", -0.7, -4., 0.);
   RooRealVar CBC_n("CBC_n", "CBC_n", 4., 0., 100.);
 
-  //  RooCBmyCrujff CBmyCrujff_s("CBmyCrujff_s", "CBmyCrujff_s", combinedPfIso03Phot, CBC_mean, CBC_sigma, CBC_alphaC, CBC_alphaCB, CBC_n);
+  //RooCBmyCrujff CBmyCrujff_s("CBmyCrujff_s", "CBmyCrujff_s", combinedPfIso03Phot, CBC_mean, CBC_sigma, CBC_alphaC, CBC_alphaCB, CBC_n);
   RooCBShape cb_sig("cb_sig", "cb_sig", combinedPfIso03Phot, CBC_mean, CBC_sigma,CBC_alphaCB,CBC_n);
   
   //fit
@@ -137,8 +241,8 @@ void fitDebug_sig(string cut, string filename, string hlt, bool binned){
   c->SetTitle(frame_s->GetTitle());
   frame_s->Draw("");
   a->Draw();
-  c->SaveAs((filename+"_s.png").c_str());
-  c->SaveAs((filename+"_s.root").c_str());
+  c->SaveAs((workdir+filename+"_s.png").c_str());
+  c->SaveAs((workdir+filename+"_s.root").c_str());
 
   Double_t chi2 = frame_s->chiSquare("pdf_s", "mc_scut", 4);
 
@@ -148,19 +252,19 @@ void fitDebug_sig(string cut, string filename, string hlt, bool binned){
   c->SetTitle(frame_s->GetTitle());
   frame_s->Draw("");
   a->Draw();
-  c->SaveAs((filename+"_s_log.png").c_str());
-  c->SaveAs((filename+"_s_log.root").c_str());
+  c->SaveAs((workdir+filename+"_s_log.png").c_str());
+  c->SaveAs((workdir+filename+"_s_log.root").c_str());
 
   RooWorkspace* w_sig = new RooWorkspace("w_sig", "workspace");
   
-  w_sig->import(dh_s);
+  w_sig->import(*d_s);
   w_sig->import(cb_sig);
 
   w_sig->Print();
 
-  w_sig->writeToFile(("workspace_"+filename+".root").c_str());
+  w_sig->writeToFile((workdir+"workspace_"+filename+".root").c_str());
 
-  TFile* f_fitRes = new TFile(("fitResult_"+filename+".root").c_str(), "RECREATE");
+  TFile* f_fitRes = new TFile((workdir+"fitResult_"+filename+".root").c_str(), "RECREATE");
   result->Write();
   //  f_fitRes->Write();
   f_fitRes->Close();

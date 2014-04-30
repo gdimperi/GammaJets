@@ -1,0 +1,12 @@
+diff --git a/src/tree_reduction/singlegammaApp_giulia.cc b/src/tree_reduction/singlegammaApp_giulia.cc
+index 41c6260..e589463 100644
+--- a/src/tree_reduction/singlegammaApp_giulia.cc
++++ b/src/tree_reduction/singlegammaApp_giulia.cc
+@@ -104,6 +104,7 @@ int main(int argc, char* argv[]) {
+   if (argc>3 && std::string(argv[3]) != "-1") {
+     cout << "SetJsonFile" << endl;
+     tool.SetJsonFile(argv[3]);
++    cout << "JSON : "<< argv[3] << endl;
+   }
+   
+   if (argc>4 && std::string(argv[4]) != "-1") {

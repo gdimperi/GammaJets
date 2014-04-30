@@ -1,0 +1,20 @@
+{
+//=========Macro generated from canvas: etaPhot/etaPhot
+//=========  (Wed Feb  5 21:43:00 2014) by ROOT version5.32/00
+   TCanvas *etaPhot = new TCanvas("etaPhot", "etaPhot",0,0,1000,900);
+   gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
+   etaPhot->SetHighLightColor(2);
+   etaPhot->Range(0,0,1,1);
+   etaPhot->SetFillColor(0);
+   etaPhot->SetBorderMode(0);
+   etaPhot->SetBorderSize(2);
+   etaPhot->SetTickx(1);
+   etaPhot->SetLeftMargin(0.13);
+   etaPhot->SetRightMargin(0.07);
+   etaPhot->SetFrameFillStyle(0);
+   etaPhot->SetFrameBorderMode(0);
+   etaPhot->Modified();
+   etaPhot->cd();
+   etaPhot->SetSelected(etaPhot);
+}

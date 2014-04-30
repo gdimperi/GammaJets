@@ -8,7 +8,10 @@
 
 void plotPull(string ptMin, string ptMax){
 
-  TFile* file_in = new TFile(("pullOutFile_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  //string workdir="allFixed/";
+  string workdir="pull_dataReweight/";
+
+  TFile* file_in = new TFile((workdir+"pullOutFile_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
   TTree* tree = (TTree*)file_in->Get("tree_toys");
 
   vector<string> vars(15);
@@ -47,16 +50,16 @@ void plotPull(string ptMin, string ptMax){
     histos[i] = (TH1F*)((TH1F*)gDirectory->Get("h"))->Clone(histos[i]->GetName());
     histos[i]->Fit("gaus", "LL");
     histos[i]->Draw();
-    c.SaveAs(("pull_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".root").c_str());
-    c.SaveAs(("pull_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".png").c_str());
-    c.SaveAs(("pull_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".pdf").c_str());
+    c.SaveAs((workdir+"pull_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".root").c_str());
+    c.SaveAs((workdir+"pull_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".png").c_str());
+    c.SaveAs((workdir+"pull_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".pdf").c_str());
 
     tree->Draw(("err_"+vars[i]+"/val_"+vars[i]+">>h()").c_str());
     histos_err[i] = (TH1F*)((TH1F*)gDirectory->Get("h"))->Clone(histos_err[i]->GetName());
     histos_err[i]->Draw();
-    c.SaveAs(("err_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".root").c_str());
-    c.SaveAs(("err_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".png").c_str());
-    c.SaveAs(("err_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".pdf").c_str());
+    c.SaveAs((workdir+"err_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".root").c_str());
+    c.SaveAs((workdir+"err_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".png").c_str());
+    c.SaveAs((workdir+"err_"+vars[i]+"_pt"+ptMin+"_"+ptMax+".pdf").c_str());
 
     
   }

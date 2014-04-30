@@ -1,0 +1,160 @@
+{
+//=========Macro generated from canvas: ptPhot/ptPhot
+//=========  (Mon Feb 10 22:41:08 2014) by ROOT version5.32/00
+   TCanvas *ptPhot = new TCanvas("ptPhot", "ptPhot",0,0,1000,900);
+   gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
+   ptPhot->SetHighLightColor(2);
+   ptPhot->Range(0,0,1,1);
+   ptPhot->SetFillColor(0);
+   ptPhot->SetBorderMode(0);
+   ptPhot->SetBorderSize(2);
+   ptPhot->SetTickx(1);
+   ptPhot->SetLeftMargin(0.13);
+   ptPhot->SetRightMargin(0.07);
+   ptPhot->SetFrameFillStyle(0);
+   ptPhot->SetFrameBorderMode(0);
+   
+   TH1F *ptPhot_data_EE = new TH1F("ptPhot_data_EE","ptPhot_data_EE",60,0,300);
+   ptPhot_data_EE->SetBinContent(9,15211);
+   ptPhot_data_EE->SetBinContent(10,8494);
+   ptPhot_data_EE->SetBinContent(11,4918);
+   ptPhot_data_EE->SetBinContent(12,3022);
+   ptPhot_data_EE->SetBinContent(13,1815);
+   ptPhot_data_EE->SetBinError(9,123.3329);
+   ptPhot_data_EE->SetBinError(10,92.1629);
+   ptPhot_data_EE->SetBinError(11,70.12845);
+   ptPhot_data_EE->SetBinError(12,54.97272);
+   ptPhot_data_EE->SetBinError(13,42.60282);
+   ptPhot_data_EE->SetMinimum(0);
+   ptPhot_data_EE->SetMaximum(21295.4);
+   ptPhot_data_EE->SetEntries(33460);
+   ptPhot_data_EE->SetStats(0);
+   ptPhot_data_EE->SetMarkerStyle(20);
+   ptPhot_data_EE->SetMarkerSize(0.7);
+   ptPhot_data_EE->GetXaxis()->SetTitle("#gamma p_{T} (GeV)");
+   ptPhot_data_EE->GetYaxis()->SetTitle("Entries/5.0");
+   ptPhot_data_EE->GetYaxis()->SetTitleOffset(1.5);
+   ptPhot_data_EE->Draw("PE");
+   
+   THStack * = new THStack();
+   ->SetName("");
+   ->SetTitle("");
+   
+   TH1F *ptPhot_mc_Bkg_EE = new TH1F("ptPhot_mc_Bkg_EE","ptPhot_mc_Bkg_EE",60,0,300);
+   ptPhot_mc_Bkg_EE->SetBinContent(9,12298.17);
+   ptPhot_mc_Bkg_EE->SetBinContent(10,6405.229);
+   ptPhot_mc_Bkg_EE->SetBinContent(11,3529.575);
+   ptPhot_mc_Bkg_EE->SetBinContent(12,2032.958);
+   ptPhot_mc_Bkg_EE->SetBinContent(13,1236.187);
+   ptPhot_mc_Bkg_EE->SetBinError(9,72.3227);
+   ptPhot_mc_Bkg_EE->SetBinError(10,52.22601);
+   ptPhot_mc_Bkg_EE->SetBinError(11,38.37678);
+   ptPhot_mc_Bkg_EE->SetBinError(12,28.45894);
+   ptPhot_mc_Bkg_EE->SetBinError(13,21.38088);
+   ptPhot_mc_Bkg_EE->SetEntries(170455);
+   ptPhot_mc_Bkg_EE->SetStats(0);
+
+   Int_t ci;   // for color index setting
+   ci = TColor::GetColor("#ff00ff");
+   ptPhot_mc_Bkg_EE->SetFillColor(ci);
+
+   ci = TColor::GetColor("#ff00ff");
+   ptPhot_mc_Bkg_EE->SetLineColor(ci);
+   ptPhot_mc_Bkg_EE->SetLineWidth(2);
+   ->Add(ptPhot_mc_Bkg_EE,"");
+   
+   TH1F *ptPhot_mc_Signal_EE = new TH1F("ptPhot_mc_Signal_EE","ptPhot_mc_Signal_EE",60,0,300);
+   ptPhot_mc_Signal_EE->SetBinContent(9,1310.451);
+   ptPhot_mc_Signal_EE->SetBinContent(10,712.8649);
+   ptPhot_mc_Signal_EE->SetBinContent(11,399.1086);
+   ptPhot_mc_Signal_EE->SetBinContent(12,228.6775);
+   ptPhot_mc_Signal_EE->SetBinContent(13,148.488);
+   ptPhot_mc_Signal_EE->SetBinError(9,15.70283);
+   ptPhot_mc_Signal_EE->SetBinError(10,11.06309);
+   ptPhot_mc_Signal_EE->SetBinError(11,7.606736);
+   ptPhot_mc_Signal_EE->SetBinError(12,5.181743);
+   ptPhot_mc_Signal_EE->SetBinError(13,4.141065);
+   ptPhot_mc_Signal_EE->SetEntries(167757);
+   ptPhot_mc_Signal_EE->SetStats(0);
+
+   ci = TColor::GetColor("#00ffff");
+   ptPhot_mc_Signal_EE->SetFillColor(ci);
+
+   ci = TColor::GetColor("#00ffff");
+   ptPhot_mc_Signal_EE->SetLineColor(ci);
+   ptPhot_mc_Signal_EE->SetLineWidth(2);
+   ->Add(ptPhot_mc_Signal_EE,"");
+   ->Draw("hsame");
+   
+   TH1F *ptPhot_data_EE = new TH1F("ptPhot_data_EE","ptPhot_data_EE",60,0,300);
+   ptPhot_data_EE->SetBinContent(9,15211);
+   ptPhot_data_EE->SetBinContent(10,8494);
+   ptPhot_data_EE->SetBinContent(11,4918);
+   ptPhot_data_EE->SetBinContent(12,3022);
+   ptPhot_data_EE->SetBinContent(13,1815);
+   ptPhot_data_EE->SetBinError(9,123.3329);
+   ptPhot_data_EE->SetBinError(10,92.1629);
+   ptPhot_data_EE->SetBinError(11,70.12845);
+   ptPhot_data_EE->SetBinError(12,54.97272);
+   ptPhot_data_EE->SetBinError(13,42.60282);
+   ptPhot_data_EE->SetMinimum(0);
+   ptPhot_data_EE->SetMaximum(21295.4);
+   ptPhot_data_EE->SetEntries(33460);
+   ptPhot_data_EE->SetStats(0);
+   ptPhot_data_EE->SetMarkerStyle(20);
+   ptPhot_data_EE->SetMarkerSize(0.7);
+   ptPhot_data_EE->GetXaxis()->SetTitle("#gamma p_{T} (GeV)");
+   ptPhot_data_EE->GetYaxis()->SetTitle("Entries/5.0");
+   ptPhot_data_EE->GetYaxis()->SetTitleOffset(1.5);
+   ptPhot_data_EE->Draw("PESAME");
+   
+   TLegend *leg = new TLegend(3.506354e+151,3.680699e+180,3.322882e+160,1.809515e-319,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(62);
+   leg->SetTextSize(0.038);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("NULL","EE","h");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("ptPhot_data_EE","Data","PL");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry=leg->AddEntry("ptPhot_mc_Bkg_EE","Bkg","F");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry=leg->AddEntry("ptPhot_mc_Signal_EE","Signal","F");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   leg->Draw();
+   TLatex *   tex = new TLatex(0.25,0.94,"CMS Preliminary #sqrt{s}=8 TeV");
+tex->SetNDC();
+   tex->SetTextAlign(12);
+   tex->SetTextSize(0.037);
+   tex->SetLineWidth(2);
+   tex->Draw();
+   ptPhot->Modified();
+   ptPhot->cd();
+   ptPhot->SetSelected(ptPhot);
+}

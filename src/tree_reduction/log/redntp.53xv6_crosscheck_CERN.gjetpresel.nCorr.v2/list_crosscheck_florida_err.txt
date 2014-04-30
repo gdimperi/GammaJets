@@ -1,0 +1,3 @@
+terminate called after throwing an instance of 'json::Reader::ScanException'
+  what():  Unexpected character in stream: r
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/scriptSingleGamma_giulia.sh: line 141: 16825 Aborted                 ${CMSSW_BASE}/src/GammaJets/src/tree_reduction/tmp/singlegammaApp_giulia ${list} ${filename} $5 $6 $7 $8 $9 ${10} ${11} ${12}

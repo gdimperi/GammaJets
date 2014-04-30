@@ -1,0 +1,12 @@
+#configurations for the fit
+#sig mc, bkg data reweighted
+
+#libera un parametro in piu' a ogni step
+
+config0 - allFixed 
+config1 - realVal_CBC_mean 
+config2 - realVal_CBC_sigma
+config3 - realVal_cbmean
+config4 - realVal_gaussmean
+config5 - realVal_cbsigma
+config6 - realVal_gausssigma 

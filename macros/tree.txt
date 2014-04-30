@@ -1,0 +1,192 @@
+******************************************************************************
+*Tree    :finalTree : finalTree                                              *
+*Entries :     6355 : Total =         1172350 bytes  File  Size =     626309 *
+*        :          : Tree compression factor =   1.84                       *
+******************************************************************************
+*Br    0 :sampleIndex : sampleIndex/i                                        *
+*Entries :     6355 : Total  Size=      26001 bytes  File Size  =        226 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 112.85     *
+*............................................................................*
+*Br    1 :run       : run/i                                                  *
+*Entries :     6355 : Total  Size=      25961 bytes  File Size  =       4085 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   6.24     *
+*............................................................................*
+*Br    2 :lumi      : lumi/i                                                 *
+*Entries :     6355 : Total  Size=      25966 bytes  File Size  =      11131 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   2.29     *
+*............................................................................*
+*Br    3 :event     : event/i                                                *
+*Entries :     6355 : Total  Size=      25971 bytes  File Size  =      25192 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.01     *
+*............................................................................*
+*Br    4 :nvtx      : nvtx/i                                                 *
+*Entries :     6355 : Total  Size=      25966 bytes  File Size  =       6347 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   4.02     *
+*............................................................................*
+*Br    5 :weight    : weght/F                                                *
+*Entries :     6355 : Total  Size=      25973 bytes  File Size  =        239 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 106.69     *
+*............................................................................*
+*Br    6 :rho       : rho/F                                                  *
+*Entries :     6355 : Total  Size=      25961 bytes  File Size  =      22568 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.13     *
+*............................................................................*
+*Br    7 :ptPhotGen : ptPhotGen/F                                            *
+*Entries :     6355 : Total  Size=      25991 bytes  File Size  =        242 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 105.38     *
+*............................................................................*
+*Br    8 :etaPhotGen : etaPhotGen/F                                          *
+*Entries :     6355 : Total  Size=      25996 bytes  File Size  =        243 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 104.95     *
+*............................................................................*
+*Br    9 :iso03PhotGen : iso03PhotGen/F                                      *
+*Entries :     6355 : Total  Size=      26006 bytes  File Size  =        245 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 104.10     *
+*............................................................................*
+*Br   10 :iso04PhotGen : iso04PhotGen/F                                      *
+*Entries :     6355 : Total  Size=      26006 bytes  File Size  =        245 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 104.10     *
+*............................................................................*
+*Br   11 :isRecoMatchedPhotGen : isRecoMatchedPhotGen/I                      *
+*Entries :     6355 : Total  Size=      26046 bytes  File Size  =        235 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 108.56     *
+*............................................................................*
+*Br   12 :ptPhot    : ptPhot/F                                               *
+*Entries :     6355 : Total  Size=      25976 bytes  File Size  =      21594 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.18     *
+*............................................................................*
+*Br   13 :isMatchedPhot : isMatchedPhot/I                                    *
+*Entries :     6355 : Total  Size=      26011 bytes  File Size  =        228 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 111.86     *
+*............................................................................*
+*Br   14 :isPreselectedPhot : isPreselectedPhot/I                            *
+*Entries :     6355 : Total  Size=      26031 bytes  File Size  =        248 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 102.86     *
+*............................................................................*
+*Br   15 :isSelectedPhot : isSelectedPhot/I                                  *
+*Entries :     6355 : Total  Size=      26016 bytes  File Size  =        245 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 104.11     *
+*............................................................................*
+*Br   16 :etaPhot   : etaPhot/F                                              *
+*Entries :     6355 : Total  Size=      25981 bytes  File Size  =      23643 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   17 :mvaIdPhot : mvaIdPhot/F                                            *
+*Entries :     6355 : Total  Size=      25991 bytes  File Size  =      22972 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   18 :sEtaEtaPhot : sEtaEtaPhot/F                                        *
+*Entries :     6355 : Total  Size=      26001 bytes  File Size  =      22150 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.15     *
+*............................................................................*
+*Br   19 :combinedPfIso03Phot : combinedPfIso03Phot/F                        *
+*Entries :     6355 : Total  Size=      26041 bytes  File Size  =      23715 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   20 :isIsolatedGenPhot : isIsolatedGenPhot/I                            *
+*Entries :     6355 : Total  Size=      26031 bytes  File Size  =        232 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 109.95     *
+*............................................................................*
+*Br   21 :iso03_gen : iso03_gen/F                                            *
+*Entries :     6355 : Total  Size=      25991 bytes  File Size  =        244 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression= 104.51     *
+*............................................................................*
+*Br   22 :pid_jurECAL03 : pid_jurECAL03/F                                    *
+*Entries :     6355 : Total  Size=      26011 bytes  File Size  =      23022 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.11     *
+*............................................................................*
+*Br   23 :pid_twrHCAL03 : pid_twrHCAL03/F                                    *
+*Entries :     6355 : Total  Size=      26011 bytes  File Size  =      17297 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.47     *
+*............................................................................*
+*Br   24 :pid_hlwTrack03 : pid_hlwTrack03/F                                  *
+*Entries :     6355 : Total  Size=      26016 bytes  File Size  =      16277 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.57     *
+*............................................................................*
+*Br   25 :pid_pfIsoCharged03ForCiC : pid_pfIsoCharged03ForCiC/F              *
+*Entries :     6355 : Total  Size=      26066 bytes  File Size  =      16239 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.57     *
+*............................................................................*
+*Br   26 :pid_pfIsoPhotons03ForCiC : pid_pfIsoPhotons03ForCiC/F              *
+*Entries :     6355 : Total  Size=      26066 bytes  File Size  =      21064 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.21     *
+*............................................................................*
+*Br   27 :pid_pfIsoNeutrals03ForCiC : pid_pfIsoNeutrals03ForCiC/F            *
+*Entries :     6355 : Total  Size=      26071 bytes  File Size  =      10943 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   2.33     *
+*............................................................................*
+*Br   28 :correctedPfIsoCharged03 : correctedPfIsoCharged03/F                *
+*Entries :     6355 : Total  Size=      26061 bytes  File Size  =      23527 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   29 :correctedPfIsoNeutrals03 : correctedPfIsoNeutrals03/F              *
+*Entries :     6355 : Total  Size=      26066 bytes  File Size  =      23458 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.09     *
+*............................................................................*
+*Br   30 :correctedPfIsoPhotons03 : correctedPfIsoPhotons03/F                *
+*Entries :     6355 : Total  Size=      26061 bytes  File Size  =      23722 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   31 :pid_pfIsoFPRCharged03_presel : pid_pfIsoFPRCharged03_presel/F      *
+*Entries :     6355 : Total  Size=      26086 bytes  File Size  =      11747 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   2.17     *
+*............................................................................*
+*Br   32 :pid_pfIsoFPRNeutral03_presel : pid_pfIsoFPRNeutral03_presel/F      *
+*Entries :     6355 : Total  Size=      26086 bytes  File Size  =       8641 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   2.95     *
+*............................................................................*
+*Br   33 :pid_pfIsoFPRPhoton03_presel : pid_pfIsoFPRPhoton03_presel/F        *
+*Entries :     6355 : Total  Size=      26081 bytes  File Size  =      19770 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.29     *
+*............................................................................*
+*Br   34 :correctedPfIsoFPRCharged03 : correctedPfIsoFPRCharged03/F          *
+*Entries :     6355 : Total  Size=      26076 bytes  File Size  =      23502 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.09     *
+*............................................................................*
+*Br   35 :correctedPfIsoFPRNeutrals03 : correctedPfIsoFPRNeutrals03/F        *
+*Entries :     6355 : Total  Size=      26081 bytes  File Size  =      23349 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.09     *
+*............................................................................*
+*Br   36 :correctedPfIsoFPRPhotons03 : correctedPfIsoFPRPhotons03/F          *
+*Entries :     6355 : Total  Size=      26076 bytes  File Size  =      23622 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   37 :pid_pfIsoFPRRandomConeCharged03_presel :                           *
+*         | pid_pfIsoFPRRandomConeCharged03_presel/F                         *
+*Entries :     6355 : Total  Size=      26136 bytes  File Size  =       9947 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   2.57     *
+*............................................................................*
+*Br   38 :pid_pfIsoFPRRandomConeNeutral03_presel :                           *
+*         | pid_pfIsoFPRRandomConeNeutral03_presel/F                         *
+*Entries :     6355 : Total  Size=      26136 bytes  File Size  =       6327 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   4.04     *
+*............................................................................*
+*Br   39 :pid_pfIsoFPRRandomConePhoton03_presel :                            *
+*         | pid_pfIsoFPRRandomConePhoton03_presel/F                          *
+*Entries :     6355 : Total  Size=      26131 bytes  File Size  =      17049 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.50     *
+*............................................................................*
+*Br   40 :correctedPfIsoFPRRandomConeCharged03 :                             *
+*         | correctedPfIsoFPRRandomConeCharged03/F                           *
+*Entries :     6355 : Total  Size=      26126 bytes  File Size  =      23426 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.09     *
+*............................................................................*
+*Br   41 :correctedPfIsoFPRRandomConeNeutrals03 :                            *
+*         | correctedPfIsoFPRRandomConeNeutrals03/F                          *
+*Entries :     6355 : Total  Size=      26131 bytes  File Size  =      23228 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.10     *
+*............................................................................*
+*Br   42 :correctedPfIsoFPRRandomConePhotons03 :                             *
+*         | correctedPfIsoFPRRandomConePhotons03/F                           *
+*Entries :     6355 : Total  Size=      26126 bytes  File Size  =      23249 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.10     *
+*............................................................................*
+*Br   43 :combinedPfIsoFPR03Phot : combinedPfIsoFPR03Phot/F                  *
+*Entries :     6355 : Total  Size=      26056 bytes  File Size  =      23700 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.08     *
+*............................................................................*
+*Br   44 :combinedPfIsoFPRRandomCone03Phot :                                 *
+*         | combinedPfIsoFPRRandomCone03Phot/F                               *
+*Entries :     6355 : Total  Size=      26106 bytes  File Size  =      23409 *
+*Baskets :        1 : Basket Size=      32000 bytes  Compression=   1.09     *
+*............................................................................*

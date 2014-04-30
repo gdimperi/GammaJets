@@ -1,0 +1,168 @@
+{
+//=========Macro generated from canvas: mvaIdPhot/mvaIdPhot
+//=========  (Thu Feb  6 16:01:02 2014) by ROOT version5.32/00
+   TCanvas *mvaIdPhot = new TCanvas("mvaIdPhot", "mvaIdPhot",1,1,1000,876);
+   gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
+   mvaIdPhot->SetHighLightColor(2);
+   mvaIdPhot->Range(-1.325,-1394.296,1.175,12548.67);
+   mvaIdPhot->SetFillColor(0);
+   mvaIdPhot->SetBorderMode(0);
+   mvaIdPhot->SetBorderSize(2);
+   mvaIdPhot->SetTickx(1);
+   mvaIdPhot->SetLeftMargin(0.13);
+   mvaIdPhot->SetRightMargin(0.07);
+   mvaIdPhot->SetFrameFillStyle(0);
+   mvaIdPhot->SetFrameBorderMode(0);
+   
+   TH1F *mvaIdPhot_data_EB = new TH1F("mvaIdPhot_data_EB","mvaIdPhot_data_EB",100,-1,1);
+   mvaIdPhot_data_EB->SetBinContent(92,307);
+   mvaIdPhot_data_EB->SetBinContent(93,1473);
+   mvaIdPhot_data_EB->SetBinContent(94,1753);
+   mvaIdPhot_data_EB->SetBinContent(95,2304);
+   mvaIdPhot_data_EB->SetBinContent(96,571);
+   mvaIdPhot_data_EB->SetBinError(92,17.52142);
+   mvaIdPhot_data_EB->SetBinError(93,38.37968);
+   mvaIdPhot_data_EB->SetBinError(94,41.86884);
+   mvaIdPhot_data_EB->SetBinError(95,48);
+   mvaIdPhot_data_EB->SetBinError(96,23.89561);
+   mvaIdPhot_data_EB->SetMinimum(0);
+   mvaIdPhot_data_EB->SetMaximum(3225.6);
+   mvaIdPhot_data_EB->SetEntries(6408);
+   mvaIdPhot_data_EB->SetStats(0);
+   mvaIdPhot_data_EB->SetMarkerStyle(20);
+   mvaIdPhot_data_EB->SetMarkerSize(0.7);
+   mvaIdPhot_data_EB->GetXaxis()->SetTitle("#gamma MVA output");
+   mvaIdPhot_data_EB->GetYaxis()->SetTitle("Entries/0.02");
+   mvaIdPhot_data_EB->GetYaxis()->SetTitleOffset(1.5);
+   mvaIdPhot_data_EB->Draw("PE");
+   
+   THStack * = new THStack();
+   ->SetName("");
+   ->SetTitle("");
+   
+   TH1F *mvaIdPhot_mc_Bkg_EB = new TH1F("mvaIdPhot_mc_Bkg_EB","mvaIdPhot_mc_Bkg_EB",100,-1,1);
+   mvaIdPhot_mc_Bkg_EB->SetBinContent(90,0.4127825);
+   mvaIdPhot_mc_Bkg_EB->SetBinContent(92,223.3466);
+   mvaIdPhot_mc_Bkg_EB->SetBinContent(93,914.9034);
+   mvaIdPhot_mc_Bkg_EB->SetBinContent(94,1045.783);
+   mvaIdPhot_mc_Bkg_EB->SetBinContent(95,1104.763);
+   mvaIdPhot_mc_Bkg_EB->SetBinContent(96,293.3698);
+   mvaIdPhot_mc_Bkg_EB->SetBinError(90,0.3947618);
+   mvaIdPhot_mc_Bkg_EB->SetBinError(92,9.586688);
+   mvaIdPhot_mc_Bkg_EB->SetBinError(93,19.44458);
+   mvaIdPhot_mc_Bkg_EB->SetBinError(94,20.96213);
+   mvaIdPhot_mc_Bkg_EB->SetBinError(95,21.40919);
+   mvaIdPhot_mc_Bkg_EB->SetBinError(96,11.12598);
+   mvaIdPhot_mc_Bkg_EB->SetEntries(33182);
+   mvaIdPhot_mc_Bkg_EB->SetStats(0);
+
+   Int_t ci;   // for color index setting
+   ci = TColor::GetColor("#ff00ff");
+   mvaIdPhot_mc_Bkg_EB->SetFillColor(ci);
+
+   ci = TColor::GetColor("#ff00ff");
+   mvaIdPhot_mc_Bkg_EB->SetLineColor(ci);
+   mvaIdPhot_mc_Bkg_EB->SetLineWidth(2);
+   ->Add(mvaIdPhot_mc_Bkg_EB,"");
+   
+   TH1F *mvaIdPhot_mc_Signal_EB = new TH1F("mvaIdPhot_mc_Signal_EB","mvaIdPhot_mc_Signal_EB",100,-1,1);
+   mvaIdPhot_mc_Signal_EB->SetBinContent(88,0.03074755);
+   mvaIdPhot_mc_Signal_EB->SetBinContent(90,0.0004251208);
+   mvaIdPhot_mc_Signal_EB->SetBinContent(91,0.01796835);
+   mvaIdPhot_mc_Signal_EB->SetBinContent(92,87.78701);
+   mvaIdPhot_mc_Signal_EB->SetBinContent(93,429.3447);
+   mvaIdPhot_mc_Signal_EB->SetBinContent(94,570.792);
+   mvaIdPhot_mc_Signal_EB->SetBinContent(95,761.7584);
+   mvaIdPhot_mc_Signal_EB->SetBinContent(96,210.1618);
+   mvaIdPhot_mc_Signal_EB->SetBinError(88,0.03074755);
+   mvaIdPhot_mc_Signal_EB->SetBinError(90,0.0004251208);
+   mvaIdPhot_mc_Signal_EB->SetBinError(91,0.0179373);
+   mvaIdPhot_mc_Signal_EB->SetBinError(92,3.594264);
+   mvaIdPhot_mc_Signal_EB->SetBinError(93,8.209505);
+   mvaIdPhot_mc_Signal_EB->SetBinError(94,9.396246);
+   mvaIdPhot_mc_Signal_EB->SetBinError(95,10.66366);
+   mvaIdPhot_mc_Signal_EB->SetBinError(96,5.489254);
+   mvaIdPhot_mc_Signal_EB->SetEntries(98550);
+   mvaIdPhot_mc_Signal_EB->SetStats(0);
+
+   ci = TColor::GetColor("#00ffff");
+   mvaIdPhot_mc_Signal_EB->SetFillColor(ci);
+
+   ci = TColor::GetColor("#00ffff");
+   mvaIdPhot_mc_Signal_EB->SetLineColor(ci);
+   mvaIdPhot_mc_Signal_EB->SetLineWidth(2);
+   ->Add(mvaIdPhot_mc_Signal_EB,"");
+   ->Draw("hsame");
+   
+   TH1F *mvaIdPhot_data_EB = new TH1F("mvaIdPhot_data_EB","mvaIdPhot_data_EB",100,-1,1);
+   mvaIdPhot_data_EB->SetBinContent(92,307);
+   mvaIdPhot_data_EB->SetBinContent(93,1473);
+   mvaIdPhot_data_EB->SetBinContent(94,1753);
+   mvaIdPhot_data_EB->SetBinContent(95,2304);
+   mvaIdPhot_data_EB->SetBinContent(96,571);
+   mvaIdPhot_data_EB->SetBinError(92,17.52142);
+   mvaIdPhot_data_EB->SetBinError(93,38.37968);
+   mvaIdPhot_data_EB->SetBinError(94,41.86884);
+   mvaIdPhot_data_EB->SetBinError(95,48);
+   mvaIdPhot_data_EB->SetBinError(96,23.89561);
+   mvaIdPhot_data_EB->SetMinimum(0);
+   mvaIdPhot_data_EB->SetMaximum(3225.6);
+   mvaIdPhot_data_EB->SetEntries(6408);
+   mvaIdPhot_data_EB->SetStats(0);
+   mvaIdPhot_data_EB->SetMarkerStyle(20);
+   mvaIdPhot_data_EB->SetMarkerSize(0.7);
+   mvaIdPhot_data_EB->GetXaxis()->SetTitle("#gamma MVA output");
+   mvaIdPhot_data_EB->GetYaxis()->SetTitle("Entries/0.02");
+   mvaIdPhot_data_EB->GetYaxis()->SetTitleOffset(1.5);
+   mvaIdPhot_data_EB->Draw("PESAME");
+   
+   TLegend *leg = new TLegend(1.411912e-309,3.237958e-319,2.3427e-310,0,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(62);
+   leg->SetTextSize(0.038);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("NULL","EB","h");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("mvaIdPhot_data_EB","Data","PL");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry=leg->AddEntry("mvaIdPhot_mc_Bkg_EB","Bkg","F");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry=leg->AddEntry("mvaIdPhot_mc_Signal_EB","Signal","F");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   leg->Draw();
+   TLatex *   tex = new TLatex(0.25,0.94,"CMS Preliminary #sqrt{s}=8 TeV");
+tex->SetNDC();
+   tex->SetTextAlign(12);
+   tex->SetTextSize(0.037);
+   tex->SetLineWidth(2);
+   tex->Draw();
+   mvaIdPhot->Modified();
+   mvaIdPhot->cd();
+   mvaIdPhot->SetSelected(mvaIdPhot);
+}

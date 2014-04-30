@@ -1,0 +1,191 @@
+Sender: LSF System <lsfadmin@lxbsj3508>
+Subject: Job 514523426: <list_crosscheck_florida> in cluster batch Done
+
+Job <list_crosscheck_florida> was submitted from host <lxplus411> by user <gdimperi> in cluster <batch>.
+Job was executed on host(s) <lxbsj3508>, in queue <8nh>, as user <gdimperi> in cluster <batch>.
+</afs/cern.ch/user/g/gdimperi> was used as the home directory.
+</afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction> was used as the working directory.
+Started at Fri Mar 21 00:37:50 2014
+Results reported at Fri Mar 21 00:43:01 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/scriptSingleGamma_giulia.sh /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction//redntp_list_crosscheck_florida.root gjetpresel -1 -1 -1 -1 -1 -1 -1 -1 -1 /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/GammaJets/src/reduced_analysis/doMVA/weights_withPt_30_01_14_EB/TMVAClassification_BDTG.weights.xml /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/GammaJets/src/reduced_analysis/doMVA/weights_withPt_30_01_14_EE/TMVAClassification_BDTG.weights.xml
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :     35.77 sec.
+    Max Memory :       331 MB
+    Max Swap   :       706 MB
+
+    Max Processes  :         8
+    Max Threads    :        12
+
+The output (if any) follows:
+
+@(#)CERN job starter $Date: 2010/06/23 14:22:16 $
+Working directory is </pool/lsf/gdimperi/514523426> on <lxbsj3508.cern.ch>
+
+Sourcing specific CMSSW release environment from /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction
+Done
+Stageout protocol is /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction//redntp_list_crosscheck_florida.root
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction
+/pool/lsf/gdimperi/514523426
+Now I'm working in /pool/lsf/gdimperi/514523426
+dir is /pool/lsf/gdimperi/514523426
+dir2 is /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14
+file is /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction//redntp_list_crosscheck_florida.root gjetpresel -1 -1 -1 -1 -1 -1 -1 -1
+file2 is /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/tmp/singlegammaApp_giulia /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list -1 -1 -1 -1 -1 -1 -1 -1
+Reading list : /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list .......
+No xsection found for /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list
+settinx xsection = 1. !
+#events: 1	 xsec: 1 pb	 equiv. lumi: 0.001 fb-1
+DONE with settings starting loop
+Opening file 1 of 1
+root://eoscms.cern.ch//eos/cms/store/group/phys_smp/GammaJets/MC/53xv6/QCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6/output_999_1_WWT.root
+------------------------------
+Events 1000 processed; Run 1 LS 3562
+number of nvertex = 62 and above threshold of 60; skipping
+Events 2000 processed; Run 1 LS 3819
+Events 3000 processed; Run 1 LS 5591
+Events 4000 processed; Run 1 LS 5016
+Events 5000 processed; Run 1 LS 5206
+Events 6000 processed; Run 1 LS 5279
+Events 7000 processed; Run 1 LS 5338
+Events 8000 processed; Run 1 LS 5361
+Events 9000 processed; Run 1 LS 5423
+Events 10000 processed; Run 1 LS 5520
+Events 11000 processed; Run 1 LS 5689
+Events 12000 processed; Run 1 LS 5745
+Events 13000 processed; Run 1 LS 5823
+Events 14000 processed; Run 1 LS 5838
+Events 15000 processed; Run 1 LS 5858
+Events 16000 processed; Run 1 LS 5894
+Events 17000 processed; Run 1 LS 136
+Events 18000 processed; Run 1 LS 47
+Events 19000 processed; Run 1 LS 105
+Events 20000 processed; Run 1 LS 163
+Events 21000 processed; Run 1 LS 150
+Events 22000 processed; Run 1 LS 274
+Events 23000 processed; Run 1 LS 226
+Events 24000 processed; Run 1 LS 236
+Events 25000 processed; Run 1 LS 269
+Events 26000 processed; Run 1 LS 271
+Events 27000 processed; Run 1 LS 383
+Events 28000 processed; Run 1 LS 387
+Events 29000 processed; Run 1 LS 472
+Events 30000 processed; Run 1 LS 506
+
+Job finished at Fri Mar 21 00:39:29 CET 2014 on node 
+ under linux version Scientific Linux CERN SLC release 5.10 (Boron)
+
+CERN statistics: This process used approximately : 0:01:48 KSI2K hours (108 KSI2K seconds)
+                 This process corresponds to     : 0:07:02 HS06  hours (422 HS06  seconds)
+
+
+PS:
+
+Read file </afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/log//afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/list_crosscheck_florida_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lxbsj3516>
+Subject: Job 514527282: <list_crosscheck_florida> in cluster batch Done
+
+Job <list_crosscheck_florida> was submitted from host <lxplus411> by user <gdimperi> in cluster <batch>.
+Job was executed on host(s) <lxbsj3516>, in queue <8nh>, as user <gdimperi> in cluster <batch>.
+</afs/cern.ch/user/g/gdimperi> was used as the home directory.
+</afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction> was used as the working directory.
+Started at Fri Mar 21 00:58:12 2014
+Results reported at Fri Mar 21 00:59:58 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/scriptSingleGamma_giulia.sh /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction//redntp_list_crosscheck_florida.root gjetpresel -1 -1 -1 -1 -1 -1 -1 -1 -1 /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/GammaJets/src/reduced_analysis/doMVA/weights_withPt_30_01_14_EB/TMVAClassification_BDTG.weights.xml /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/GammaJets/src/reduced_analysis/doMVA/weights_withPt_30_01_14_EE/TMVAClassification_BDTG.weights.xml
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :     36.41 sec.
+    Max Memory :       326 MB
+    Max Swap   :       699 MB
+
+    Max Processes  :         6
+    Max Threads    :        10
+
+The output (if any) follows:
+
+@(#)CERN job starter $Date: 2010/06/23 14:22:16 $
+Working directory is </pool/lsf/gdimperi/514527282> on <lxbsj3516.cern.ch>
+
+Sourcing specific CMSSW release environment from /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction
+Done
+Stageout protocol is /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction//redntp_list_crosscheck_florida.root
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction
+/pool/lsf/gdimperi/514527282
+Now I'm working in /pool/lsf/gdimperi/514527282
+dir is /pool/lsf/gdimperi/514527282
+dir2 is /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14
+file is /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction//redntp_list_crosscheck_florida.root gjetpresel -1 -1 -1 -1 -1 -1 -1 -1
+file2 is /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/tmp/singlegammaApp_giulia /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list -1 -1 -1 -1 -1 -1 -1 -1
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/tmp/singlegammaApp_giulia /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list  -1 -1 -1 -1 -1 -1 -1 -1 #gjetpresel -1 -1 -1 -1 -1
+Reading list : /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list .......
+No xsection found for /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/../../data/list.53xv6_crosscheck_CERN//list_crosscheck_florida.list
+settinx xsection = 1. !
+#events: 1	 xsec: 1 pb	 equiv. lumi: 0.001 fb-1
+DONE with settings starting loop
+Opening file 1 of 1
+root://eoscms.cern.ch//eos/cms/store/group/phys_smp/GammaJets/MC/53xv6/QCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6/output_999_1_WWT.root
+------------------------------
+Events 1000 processed; Run 1 LS 3562
+number of nvertex = 62 and above threshold of 60; skipping
+Events 2000 processed; Run 1 LS 3819
+Events 3000 processed; Run 1 LS 5591
+Events 4000 processed; Run 1 LS 5016
+Events 5000 processed; Run 1 LS 5206
+Events 6000 processed; Run 1 LS 5279
+Events 7000 processed; Run 1 LS 5338
+Events 8000 processed; Run 1 LS 5361
+Events 9000 processed; Run 1 LS 5423
+Events 10000 processed; Run 1 LS 5520
+Events 11000 processed; Run 1 LS 5689
+Events 12000 processed; Run 1 LS 5745
+Events 13000 processed; Run 1 LS 5823
+Events 14000 processed; Run 1 LS 5838
+Events 15000 processed; Run 1 LS 5858
+Events 16000 processed; Run 1 LS 5894
+Events 17000 processed; Run 1 LS 136
+Events 18000 processed; Run 1 LS 47
+Events 19000 processed; Run 1 LS 105
+Events 20000 processed; Run 1 LS 163
+Events 21000 processed; Run 1 LS 150
+Events 22000 processed; Run 1 LS 274
+Events 23000 processed; Run 1 LS 226
+Events 24000 processed; Run 1 LS 236
+Events 25000 processed; Run 1 LS 269
+Events 26000 processed; Run 1 LS 271
+Events 27000 processed; Run 1 LS 383
+Events 28000 processed; Run 1 LS 387
+Events 29000 processed; Run 1 LS 472
+Events 30000 processed; Run 1 LS 506
+
+Job finished at Fri Mar 21 00:59:55 CET 2014 on node 
+ under linux version Scientific Linux CERN SLC release 5.10 (Boron)
+
+CERN statistics: This process used approximately : 0:01:50 KSI2K hours (110 KSI2K seconds)
+                 This process corresponds to     : 0:07:10 HS06  hours (430 HS06  seconds)
+
+
+PS:
+
+Read file </afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/log//afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/tree_reduction/list_crosscheck_florida_err.txt> for stderr output of this job.
+

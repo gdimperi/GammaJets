@@ -33,19 +33,29 @@
 #include "TGraphErrors.h"
 #include "vector"
 #include "TLatex.h"
+#include "TLegend.h"
 
 void plotNsig(){
 
-  vector<RooWorkspace*> w (13);
-  vector<string> limits (14);
-  vector<TFile*> f(13);
-  Double_t* nsig = new Double_t[13];
-  Double_t* err_nsig = new Double_t[13];
-  Double_t* pt = new Double_t[13];
-  Double_t* err_pt = new Double_t[13];
-  Double_t* norm_lumi = new Double_t[13];
-  Double_t* scale_fact = new Double_t[13];
+  vector<RooWorkspace*> w (14);
+  vector<string> limits (15);
+  vector<TFile*> f(14);
+  Double_t* nsig = new Double_t[14];
+  Double_t* err_nsig = new Double_t[14];
+  Double_t* pt = new Double_t[14];
+  Double_t* err_pt = new Double_t[14];
+  Double_t* norm_lumi = new Double_t[14];
+  Double_t* scale_fact = new Double_t[14];
 
+  vector<RooWorkspace*> w_2 (12);
+  vector<TFile*> f_2(12);
+  Double_t* nsig_2 = new Double_t[12];
+  Double_t* err_nsig_2 = new Double_t[12];
+
+  string workdir_2 = "fit_data_FPR/";
+  //string workdir_2 = "workspace_vittorio/";
+
+  /* //old triggers
   norm_lumi[0]=2.831017;
   norm_lumi[1]=2.831017;
   norm_lumi[2]=22.020492;
@@ -59,6 +69,22 @@ void plotNsig(){
   norm_lumi[10]=276.515;
   norm_lumi[11]=276.515;
   norm_lumi[12]=276.515;
+  */
+
+  norm_lumi[0]=2.862;
+  norm_lumi[1]=2.862;
+  norm_lumi[2]=22.260;
+  norm_lumi[3]=22.260;
+  norm_lumi[4]=133.52;
+  norm_lumi[5]=133.52;
+  norm_lumi[6]=133.52;
+  norm_lumi[7]=279.472;
+  norm_lumi[9]=279.472;
+  norm_lumi[8]=279.472;
+  norm_lumi[10]=279.472;
+  norm_lumi[11]=279.472;
+  norm_lumi[12]=13771;
+  norm_lumi[13]=19712;
 
   pt[0]=43.5;
   pt[1]=56.;
@@ -71,8 +97,9 @@ void plotNsig(){
   pt[8]=113.5;
   pt[9]=121.5;
   pt[10]=132.5;
-  pt[11]=151.;
-  pt[12]=210.;
+  pt[11]=152.;
+  pt[12]=172.5;
+  pt[13]=590.;
 
   err_pt[0]=3.5;
   err_pt[1]=8.;
@@ -85,8 +112,9 @@ void plotNsig(){
   err_pt[8]=3.5;
   err_pt[9]=4.5;
   err_pt[10]=6.5;
-  err_pt[11]=12.;
-  err_pt[12]=47.;
+  err_pt[11]=13.;
+  err_pt[12]=7.5;
+  err_pt[13]=410.;
   
   limits[0]="40";
   limits[1]="47";
@@ -100,8 +128,9 @@ void plotNsig(){
   limits[9]="117";
   limits[10]="126";
   limits[11]="139";
-  limits[12]="163";
-  limits[13]="1000";
+  limits[12]="165";
+  limits[13]="180";
+  limits[14]="1000";
 
   scale_fact[0]=   0.997614 * 0.989847; //scF_presel * sc_F_sel_okMVA005  
   scale_fact[1]=   0.999025 * 0.993679; //scF_presel * sc_F_sel_okMVA005
@@ -116,22 +145,51 @@ void plotNsig(){
   scale_fact[10]=  1.00401  * 0.993973; //scF_presel * sc_F_sel_okMVA005
   scale_fact[11]=  1.00401  * 0.993973; //scF_presel * sc_F_sel_okMVA005
   scale_fact[12]=  1.00401  * 0.993973; //scF_presel * sc_F_sel_okMVA005
+  scale_fact[13]=  1.00401  * 0.993973; //scF_presel * sc_F_sel_okMVA005
 
   
 
-  for(int i=0; i<w.size(); i++){
+  for(int i=0; i<w.size()-1; i++){
     f[i] = new TFile(("workspace_fit_EB_data_WP095_pt"+limits[i]+"_"+limits[i+1]+".root").c_str(), "READ");
     w[i] =(RooWorkspace*)f[i]->Get("w_data");
-    nsig[i] = (((RooRealVar*)w[i]->var("N_sig_real"))->getVal())/(2.*err_pt[i]*norm_lumi[i]/**scale_fact[i]*/);
-    err_nsig[i] = (((RooRealVar*)w[i]->var("N_sig_real"))->getError())/(2.*err_pt[i]*norm_lumi[i]/**scale_fact[i]*/);
+    //nsig[i] = (((RooRealVar*)w[i]->var("N_sig_real"))->getVal())/(2.*err_pt[i]*norm_lumi[i]*scale_fact[i]);
+    //err_nsig[i] = (((RooRealVar*)w[i]->var("N_sig_real"))->getError())/(2.*err_pt[i]*norm_lumi[i]*scale_fact[i]);
+    nsig[i] = ((RooRealVar*)w[i]->var("N_sig_real"))->getVal();
+    err_nsig[i] = ((RooRealVar*)w[i]->var("N_sig_real"))->getError();
+    f_2[i] = new TFile((workdir_2+"workspace_fit_EB_data_WP095_pt"+limits[i]+"_"+limits[i+1]+".root").c_str(), "READ");    
+    w_2[i] =(RooWorkspace*)f_2[i]->Get("w_data");
+    //nsig_2[i] = (((RooRealVar*)w_2[i]->var("N_sig_real"))->getVal())/(2.*err_pt[i]*norm_lumi[i]*scale_fact[i]);      
+    //err_nsig_2[i] = (((RooRealVar*)w_2[i]->var("N_sig_real"))->getError())/(2.*err_pt[i]*norm_lumi[i]*scale_fact[i]);
+    nsig_2[i] = (((RooRealVar*)w_2[i]->var("N_sig_real"))->getVal());      
+    err_nsig_2[i] = (((RooRealVar*)w_2[i]->var("N_sig_real"))->getError());
   }
 
   TGraphErrors* g = new TGraphErrors(13, pt, nsig, err_pt, err_nsig);
   g->GetXaxis()->SetTitle("p_{T}^{#gamma} [GeV]");
-  g->GetYaxis()->SetTitle("d #sigma/d p_{T}^{#gamma} (ev[pb])/[GeV]");
+  //g->GetYaxis()->SetTitle("d #sigma/d p_{T}^{#gamma} (ev[pb])/[GeV]");
+  g->GetYaxis()->SetTitle("N_{sig}");
+
+  TGraphErrors* g_2 = new TGraphErrors(13, pt, nsig_2, err_pt, err_nsig_2);
+  g_2->GetXaxis()->SetTitle("p_{T}^{#gamma} [GeV]");
+  //g_2->GetYaxis()->SetTitle("d #sigma/d p_{T}^{#gamma} (ev[pb])/[GeV]");
+  g_2->GetYaxis()->SetTitle("N_{sig}");
+
+  g->SetLineColor(kGreen);
+  g->SetMarkerColor(kGreen);
+
+  TLegend* leg = new TLegend(0.6,0.7,0.85,0.85);
+  leg->SetFillColor(0);
+  leg->SetBorderSize(0);
+
+  leg->AddEntry(g, "with isoPF03", "l");
+  leg->AddEntry(g_2, "with isoPF03 FPR", "l");
 
   TCanvas* c = new TCanvas("","", 1);
+ 
+  g->GetXaxis()->SetRangeUser(0.,20000);
   g->Draw("ap");
+  g_2->Draw("psame");
+  leg->Draw();
   TLatex* tex_m = new TLatex();
   tex_m->SetNDC();
   tex_m->SetTextAlign(12);
@@ -140,6 +198,10 @@ void plotNsig(){
   tex_m->DrawLatex(0.25,0.94,"CMS Preliminary 8 TeV");
   c->SaveAs("plotNsig.png");
   c->SaveAs("plotNsig.pdf");
+
+  g->GetXaxis()->SetRangeUser(10.,200000.);
+  g->Draw("ap");
+  g_2->Draw("psame");
 
   c->SetLogy();
   c->SaveAs("plotNsig_log.png");

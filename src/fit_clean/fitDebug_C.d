@@ -1,7 +1,10 @@
 
 # DO NOT DELETE
 
-./fitDebug_C.so: RooPolynomial.h RooAbsPdf.h RooAbsReal.h RooAbsArg.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooPolynomial.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsPdf.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsReal.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsArg.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TNamed.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TObject.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/Rtypes.h
@@ -27,14 +30,20 @@
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TRefArray.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TProcessID.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TObjArray.h
-./fitDebug_C.so: RooPrintable.h RooRefCountList.h RooLinkedList.h
-./fitDebug_C.so: RooLinkedListElem.h RooHashTable.h RooAbsCache.h
-./fitDebug_C.so: RooLinkedListIter.h RooNameReg.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooPrintable.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooRefCountList.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooLinkedList.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooLinkedListElem.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooHashTable.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsCache.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooLinkedListIter.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooNameReg.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TClass.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TDictionary.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/Property.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TObjString.h
-./fitDebug_C.so: RooCmdArg.h RooCurve.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooCmdArg.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooCurve.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TGraph.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TAttLine.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TAttFill.h
@@ -42,23 +51,46 @@
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TVectorFfwd.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TVectorDfwd.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TFitResultPtr.h
-./fitDebug_C.so: RooPlotable.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooPlotable.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixDfwd.h
-./fitDebug_C.so: RooArgSet.h RooAbsCollection.h RooErrorHandler.h
-./fitDebug_C.so: RooArgList.h RooGlobalFunc.h RooNameSet.h
-./fitDebug_C.so: RooObjCacheManager.h RooNormSetCache.h RooAbsCacheElement.h
-./fitDebug_C.so: RooCacheManager.h RooMsgService.h RooRealProxy.h
-./fitDebug_C.so: RooArgProxy.h RooAbsProxy.h RooAbsRealLValue.h RooNumber.h
-./fitDebug_C.so: RooAbsLValue.h RooAbsBinning.h RooListProxy.h RooGaussian.h
-./fitDebug_C.so: RooTrace.h RooExponential.h RooLandau.h RooRealVar.h
-./fitDebug_C.so: RooUniformBinning.h RooSharedPropertiesList.h
-./fitDebug_C.so: RooSharedProperties.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooArgSet.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsCollection.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooErrorHandler.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooArgList.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooGlobalFunc.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooNameSet.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooObjCacheManager.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooNormSetCache.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooSetPair.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsCacheElement.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooCacheManager.h
+./fitDebug_C.so: Riostream.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooMsgService.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooRealProxy.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooArgProxy.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsProxy.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsRealLValue.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooNumber.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsLValue.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsBinning.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooListProxy.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooGaussian.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooExponential.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooLandau.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooRealVar.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooUniformBinning.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooSharedPropertiesList.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooSharedProperties.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TUUID.h
-./fitDebug_C.so: RooRealVarSharedProperties.h RooFFTConvPdf.h
-./fitDebug_C.so: RooAbsCachedPdf.h RooHistPdf.h RooSetProxy.h
-./fitDebug_C.so: RooAICRegistry.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooRealVarSharedProperties.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooFFTConvPdf.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsCachedPdf.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooHistPdf.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooSetProxy.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAICRegistry.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TVirtualFFT.h
-./fitDebug_C.so: RooPlot.h RooList.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooPlot.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooList.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TCanvas.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TPad.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TVirtualPad.h
@@ -70,7 +102,8 @@
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TQObject.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TAttCanvas.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TCanvasImp.h
-./fitDebug_C.so: RooProdPdf.h RooExtendPdf.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooProdPdf.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooExtendPdf.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TFile.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TDirectoryFile.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TDirectory.h
@@ -89,11 +122,48 @@
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TArrayI.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TArrayF.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/Foption.h
-./fitDebug_C.so: RooDataHist.h RooCBShape.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooDataHist.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsData.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooFormulaVar.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooFormula.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TFormula.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TBits.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixDSym.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixTSym.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixTBase.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixFBasefwd.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixDBasefwd.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TError.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixTUtils.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixDSymfwd.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixDUtils.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixDUtilsfwd.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooDirItem.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooCBShape.h
+./fitDebug_C.so: RooCBmyCrujff.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooCategoryProxy.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsCategory.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooCatType.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAbsCategoryLValue.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TChain.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TTree.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TBranch.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TDataType.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TVirtualTreePlayer.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooDataSet.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooAddPdf.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooRealConstant.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooConstVar.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooCategory.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooCategorySharedProperties.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooSimultaneous.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooWorkspace.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooExpensiveObjectCache.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/roofit/5.32.03-cms16/include/RooFitResult.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TMatrixFfwd.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TRootIOCtor.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TPaveLabel.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TPave.h
+./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/TBox.h
 ./fitDebug_C.so: /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/cintdictversion.h /afs/cern.ch/cms/slc5_amd64_gcc462/lcg/root/5.32.00-cms21/include/RVersion.h
 fitDebug_C__ROOTBUILDVERSION= 5.32/00
