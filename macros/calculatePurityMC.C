@@ -14,9 +14,34 @@ using namespace std;
 
 void calculatePurityMC(){
 
+  TChain data("myTrees_withWeight");
+  data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt30.root");
+  data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt50.root");
+  data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt75.root");
+  data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt90.root");
+  data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt135.root");
+  data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt150.root");
+
+
+  TChain mc("myTrees_withWeight");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/gjTrees_withWeights_hlt30.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/gjTrees_withWeights_hlt50.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/gjTrees_withWeights_hlt75.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/gjTrees_withWeights_hlt90.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/gjTrees_withWeights_hlt135.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/gjTrees_withWeights_hlt150.root");
+
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/qcdTrees_withWeights_hlt30.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/qcdTrees_withWeights_hlt50.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/qcdTrees_withWeights_hlt75.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/qcdTrees_withWeights_hlt90.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/qcdTrees_withWeights_hlt135.root");
+  mc.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/qcdTrees_withWeights_hlt150.root");
+
+  /*
   TChain mc("finalTree");
   TChain data("finalTree");
-  
+    
   //mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt*root");
   mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-120to170_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
   mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-15to30_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
@@ -111,19 +136,19 @@ void calculatePurityMC(){
   data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/*2012B*root");
   data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/*2012C*root");
   data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/*2012D*root");
+  */
+
+  int ptmin[43] = {40,47,65,73,90,94,99,105,110,117,126,139,165,168,171,174,177,180,183,186,189,192,195,198,201,204,207,210,215,220,225,230,235,240,245,250,255,260,265,270,290,310,350};
+  int ptmax[43] = {47,65,73,90,94,99,105,110,117,126,139,165,180,183,186,189,192,195,198,201,204,207,210,215,220,225,230,235,240,245,250,255,260,265,270,290,310,350,1000};
 
 
-  int ptmin[14] = {40,47,65,73,90,94,99,105,110,117,126,139,165,180};
-  int ptmax[14] = {47,65,73,90,94,99,105,110,117,126,139,165,180,1000};
+  TH1F* combPfIso03Phot_sig_EB[43];
+  TH1F* combPfIso03Phot_EB[43];
+  TH1F* combPfIso03Phot_data_EB[43];
 
-
-  TH1F* combPfIso03Phot_sig_EB[14];
-  TH1F* combPfIso03Phot_EB[14];
-  TH1F* combPfIso03Phot_data_EB[14];
-
-  TH1F* combPfIso03Phot_sig_EE[14];
-  TH1F* combPfIso03Phot_EE[14];
-  TH1F* combPfIso03Phot_data_EE[14];
+  TH1F* combPfIso03Phot_sig_EE[43];
+  TH1F* combPfIso03Phot_EE[43];
+  TH1F* combPfIso03Phot_data_EE[43];
 
   char name_EB[100];
   char condition_EB[500];
@@ -151,13 +176,13 @@ void calculatePurityMC(){
 
   cout << "debug" << endl;
 
-  for (int i=0;i<14;i++){
+  for (int i=0;i<43;i++){
 
     // ************    EB *************
     sprintf(name_sig_EB,"combPfIso03Phot_sig_EB_pt%d_%d", ptmin[i],ptmax[i]);
-    sprintf(condition_sig_EB,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83548  && isIsolatedGenPhot && TMath::Abs(etaPhot)<1.44442)*weight",ptmin[i],ptmax[i]);
+    sprintf(condition_sig_EB,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83438  && isIsolatedGenPhot && TMath::Abs(etaPhot)<1.44442)*weight",ptmin[i],ptmax[i]);
     sprintf(name_EB,"combPfIso03Phot_EB_pt%d_%d", ptmin[i],ptmax[i]);
-    sprintf(condition_EB,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83548 && TMath::Abs(etaPhot)<1.44442)*weight",ptmin[i],ptmax[i]);
+    sprintf(condition_EB,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83438 && TMath::Abs(etaPhot)<1.44442)*weight",ptmin[i],ptmax[i]);
 
     combPfIso03Phot_EB[i] = new TH1F(name_EB, name_EB, 60, -5., 15.);
     combPfIso03Phot_sig_EB[i] = new TH1F(name_sig_EB, name_sig_EB, 60, -5., 15.);
@@ -171,15 +196,15 @@ void calculatePurityMC(){
     integral_sig = combPfIso03Phot_sig_EB[i]->Integral();
     purity_EB = integral_sig/integral;
 
-    sprintf(condition_EB,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83548 && TMath::Abs(etaPhot)<1.44442)",ptmin[i],ptmax[i]);
+    sprintf(condition_EB,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83438 && TMath::Abs(etaPhot)<1.44442)",ptmin[i],ptmax[i]);
     data.Project(name_data_EB, "combinedPfIso03Phot", condition_EB);
     nev_EB = data.GetEntries(condition_EB);
 
     // ************    EE *************
     sprintf(name_sig_EE,"combPfIso03Phot_sig_EE_pt%d_%d", ptmin[i],ptmax[i]);
-    sprintf(condition_sig_EE,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83548  && isIsolatedGenPhot && TMath::Abs(etaPhot)>1.566)*weight",ptmin[i],ptmax[i]);
+    sprintf(condition_sig_EE,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83438  && isIsolatedGenPhot && TMath::Abs(etaPhot)>1.566)*weight",ptmin[i],ptmax[i]);
     sprintf(name_EE,"combPfIso03Phot_EE_pt%d_%d", ptmin[i],ptmax[i]);
-    sprintf(condition_EE,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83548 && TMath::Abs(etaPhot)>1.566)*weight",ptmin[i],ptmax[i]);
+    sprintf(condition_EE,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83438 && TMath::Abs(etaPhot)>1.566)*weight",ptmin[i],ptmax[i]);
 
     combPfIso03Phot_EE[i] = new TH1F(name_EE, name_EE, 60, -5., 15.);
     combPfIso03Phot_sig_EE[i] = new TH1F(name_sig_EE, name_sig_EE, 60, -5., 15.);
@@ -193,7 +218,7 @@ void calculatePurityMC(){
     integral_sig = combPfIso03Phot_sig_EE[i]->Integral();
     purity_EE = integral_sig/integral;
 
-    sprintf(condition_EE,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83548 && TMath::Abs(etaPhot)>1.566)",ptmin[i],ptmax[i]);
+    sprintf(condition_EE,"(ptPhot>%d && ptPhot<%d && mvaIdPhot>0.83438 && TMath::Abs(etaPhot)>1.566)",ptmin[i],ptmax[i]);
     data.Project(name_data_EE, "combinedPfIso03Phot", condition_EE);
     nev_EE = data.GetEntries(condition_EE);
 
