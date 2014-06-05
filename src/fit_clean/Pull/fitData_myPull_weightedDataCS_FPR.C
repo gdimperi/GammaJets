@@ -38,8 +38,8 @@ using namespace RooFit;
 //string workdir="pull_weightedDataCS_config1/";
 //string workdir_input="../";
 
-void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int config,  string workdir_input, string workdir){
-  int numFits = 1000;
+void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int config,  string workdir_input, string workdir, int isFPR){
+  int numFits = 100;
 
   TFile* outFile = new TFile((workdir+"pullOutFile_pt"+ptMin+"_"+ptMax+".root").c_str(), "RECREATE");
 
@@ -143,6 +143,7 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int co
 
 
   
+  RooRealVar combinedPfIso03Phot("combinedPfIso03Phot", "combinedPfIso03Phot", -7., 15.);
   RooRealVar combinedPfIsoFPR03Phot("combinedPfIsoFPR03Phot", "combinedPfIsoFPR03Phot", -7., 15.);
   RooRealVar etaPhot("etaPhot", "etaPhot", -2.5, 2.5);
   RooRealVar mvaIdPhot("mvaIdPhot", "mvaIdPhot", -1.,1.);
@@ -152,6 +153,7 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int co
 
   RooArgSet argSet("argSet");
 
+  argSet.add(combinedPfIso03Phot);
   argSet.add(combinedPfIsoFPR03Phot);
   argSet.add(etaPhot);
   argSet.add(mvaIdPhot);
@@ -159,6 +161,7 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int co
   argSet.add(ptPhot);
   argSet.add(weight);
 
+  combinedPfIso03Phot.setBins(121);
   combinedPfIsoFPR03Phot.setBins(121);
   etaPhot.setBins(120);
   mvaIdPhot.setBins(180);
@@ -167,9 +170,13 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int co
   weight.setBins(1000);
 
   //models from fitted MC
-  TFile* f_ws_sig = new TFile((workdir_input+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  TFile* f_ws_sig;
+  TFile* f_ws_bg;
+ 
+
+  f_ws_sig = new TFile((workdir_input+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
   cout << "workspace bg   :   " << workdir_input<<"workspace_fit_EB_bg_WP095_pt"<<ptMin<<"_"<<ptMax<<"_dataReweight.root" << endl;
-  TFile* f_ws_bg = new TFile((workdir_input+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+"_dataReweight.root").c_str(), "READ");
+  f_ws_bg = new TFile((workdir_input+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+"_dataReweight.root").c_str(), "READ");
 
 
   RooWorkspace* w_sig =(RooWorkspace*)f_ws_sig->Get("w_sig");
@@ -182,7 +189,9 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int co
   RooRealVar pull_CBC_alphaCB("pull_CBC_alphaCB", "pull_CBC_alphaCB", w_sig->var("CBC_alphaCB")->getVal(), -4., 0.);
   RooRealVar pull_CBC_n("pull_CBC_n", "pull_CBC_n", w_sig->var("CBC_n")->getVal(), 0., 100.);      
 
-  RooCBShape model_sig("model_sig", "model_sig", combinedPfIsoFPR03Phot, pull_CBC_mean, pull_CBC_sigma, pull_CBC_alphaCB, pull_CBC_n);
+  
+  RooCBShape model_sig("model_sig", "model_sig", combinedPfIso03Phot, pull_CBC_mean, pull_CBC_sigma, pull_CBC_alphaCB, pull_CBC_n);
+  RooCBShape model_sig_FPR("model_sig_FPR", "model_sig_FPR", combinedPfIsoFPR03Phot, pull_CBC_mean, pull_CBC_sigma, pull_CBC_alphaCB, pull_CBC_n);
 
   //model bg
   RooRealVar pull_cbmean("pull_cbmean", "pull_cbmean", w_bg->var("cbmean")->getVal(), -1., 4.) ;	  
@@ -190,20 +199,31 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int co
   RooRealVar pull_cbalpha("pull_cbalpha", "pull_cbalpha", w_bg->var("cbalpha")->getVal(), -5, 0.);  	  
   RooRealVar pull_cbn("pull_cbn", "pull_cbn", w_bg->var("cbn")->getVal(), 0., 500.);  	  
 
-  RooCBShape cb_bg("cb_bg", "cb_bg", combinedPfIsoFPR03Phot, pull_cbmean, pull_cbsigma, pull_cbalpha, pull_cbn);
+  //RooCBShape cb_bg;
+  
+  RooCBShape cb_bg("cb_bg", "cb_bg", combinedPfIso03Phot, pull_cbmean, pull_cbsigma, pull_cbalpha, pull_cbn);
+  RooCBShape cb_bg_FPR("cb_bg_FPR", "cb_bg_FPR", combinedPfIsoFPR03Phot, pull_cbmean, pull_cbsigma, pull_cbalpha, pull_cbn);
 
   RooRealVar pull_gaussmean("pull_gaussmean", "pull_gaussmean", w_bg->var("gaussmean")->getVal(), -3., 1.);    
   RooRealVar pull_gausssigma("pull_gausssigma", "pull_gausssigma", w_bg->var("gausssigma")->getVal(), 0., 5.);  
-  RooGaussian gauss_bg("gauss_bg", "gauss_bg", combinedPfIsoFPR03Phot, pull_gaussmean, pull_gausssigma); 
+
+  
+  RooGaussian gauss_bg("gauss_bg", "gauss_bg", combinedPfIso03Phot, pull_gaussmean, pull_gausssigma); 
+  RooGaussian gauss_bg_FPR("gauss_bg_FPR", "gauss_bg_FPR", combinedPfIsoFPR03Phot, pull_gaussmean, pull_gausssigma); 
 
   RooRealVar pull_frac("pull_frac", "pull_frac", w_bg->var("frac")->getVal(), 0., 1.);  	  
+  RooRealVar pull_frac_FPR("pull_frac_FPR", "pull_frac_FPR", w_bg->var("frac")->getVal(), 0., 1.);  	  
 
   RooAddPdf model_bg("model_bg", "model_bg", cb_bg, gauss_bg, pull_frac);
+  RooAddPdf model_bg_FPR("model_bg_FPR", "model_bg_FPR", cb_bg_FPR, gauss_bg_FPR, pull_frac);
 
   RooRealVar frac_scut("frac_scut", "frac_scut", purity, 0., 1.);
   RooRealVar N_scut("N_scut", "expected number of ev for scut", 12000., 0., 100000000.);
-
   RooFormulaVar N_sig("N_sig","N_sig","@0*@1",RooArgList(N_scut,frac_scut));
+
+  //RooRealVar frac_scut_FPR("frac_scut_FPR", "frac_scut_FPR", purity, 0., 1.);
+  //RooRealVar N_scut_FPR("N_scut_FPR", "expected number of ev for scut", 12000., 0., 100000000.);
+  //RooFormulaVar N_sig_FPR("N_sig_FPR","N_sig_FPR","@0*@1",RooArgList(N_scut_FPR,frac_scut_FPR));
 
   realVal_CBC_mean    = pull_CBC_mean    .getVal();
   realVal_CBC_sigma   = pull_CBC_sigma   .getVal();	 
@@ -291,9 +311,21 @@ void fitData_myPull(string ptMin, string ptMax, int numEv, double purity, int co
 	RooAddPdf ext_model_scut("ext_model_scut", "ext_model_scut", RooArgList(model_sig_scut, model_bg_scut), RooArgList(N_sig, N_bg));
     */
     
-    RooDataSet* set =  model_scut.generate(combinedPfIsoFPR03Phot, RooRandom::randomGenerator()->Poisson(numEv));
-    RooDataHist hset("hset", "hset", combinedPfIsoFPR03Phot, *set);
-    RooFitResult* result = ext_model_scut.fitTo(*set, Save(), Range(-5.,15.), Extended(kTRUE), SumW2Error(kFALSE));
+    RooAddPdf model_scut_FPR("model_scut_FPR", "model_scut_FPR", model_sig_FPR, model_bg_FPR, frac_scut);//using fit templates from MC
+    RooExtendPdf ext_model_scut_FPR("ext_model_scut_FPR", "ext_model_scut_FPR", model_scut_FPR, N_scut);
+
+    
+    RooDataSet* set =  model_scut.generate(combinedPfIso03Phot, RooRandom::randomGenerator()->Poisson(numEv));
+    RooDataHist hset("hset", "hset", combinedPfIso03Phot, *set);
+ 
+    RooDataSet* set_FPR =  model_scut_FPR.generate(combinedPfIsoFPR03Phot, RooRandom::randomGenerator()->Poisson(numEv));
+    RooDataHist hset_FPR("hset_FPR", "hset_FPR", combinedPfIsoFPR03Phot, *set_FPR);
+    
+    RooFitResult* result;
+    if(!isFPR)
+      result = ext_model_scut.fitTo(*set, Save(), Range(-5.,15.), Extended(kTRUE), SumW2Error(kFALSE));
+    else if(isFPR)
+      result = ext_model_scut.fitTo(*set_FPR, Save(), Range(-5.,15.), Extended(kTRUE), SumW2Error(kFALSE));
 
     val_CBC_mean    = pull_CBC_mean    .getVal();
     val_CBC_sigma   = pull_CBC_sigma   .getVal();	 

@@ -14,30 +14,23 @@ void plotPull(string ptMin, string ptMax, string workdir){
   TFile* file_in = new TFile((workdir+"pullOutFile_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
   TTree* tree = (TTree*)file_in->Get("tree_toys");
 
-  vector<string> vars(14);
+  vector<string> vars(7);
   
   vars[0]  = "CBC_mean";
   vars[1]  = "CBC_sigma";
   //vars[2]  = "CBC_alphaC";
   vars[2]  = "CBC_alphaCB";
   vars[3]  = "CBC_n";
-  vars[4]  = "cbmean";
-  vars[5]  = "cbsigma";
-  vars[6]  = "cbalpha";
-  vars[7]  = "cbn";
-  vars[8]  = "frac";
-  vars[9] = "gaussmean";
-  vars[10] = "gausssigma";
-  vars[11] = "frac_scut";
-  vars[12] = "N_scut";
-  vars[13] = "N_sig";
+  vars[4] = "frac_scut";
+  vars[5] = "N_scut";
+  vars[6] = "N_sig";
 
-  vector<TH1F*> histos(14);
+  vector<TH1F*> histos(7);
   for(int i=0; i<histos.size(); i++){
     histos[i] = new TH1F(("h_"+vars[i]).c_str(), ("h_"+vars[i]).c_str(), 500, -5., 5.);
   }
 
-  vector<TH1F*> histos_err(14);
+  vector<TH1F*> histos_err(7);
   for(int i=0; i<histos_err.size(); i++){
     histos_err[i] = new TH1F(("h_err_"+vars[i]).c_str(), ("h_err_"+vars[i]).c_str(), 100, 0., 1.);
   }
