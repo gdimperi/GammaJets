@@ -36,43 +36,47 @@
 
 using namespace RooFit;
 
-void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string ptMax){
+void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string ptMax, int config, string inputdir, string inputdir_sig, string outdir, int isFPR){
 
 
-  string workdir = "";
-  string workdir_mc = "../";
+  //string workdir = "fitData_weightedDataCS_FPR_config2/";
+  //string workdir_mc = "../fit_FPR/";
   
   RooRealVar combinedPfIso03Phot("combinedPfIso03Phot", "combinedPfIso03Phot", -7., 15.);
+  RooRealVar combinedPfIsoFPR03Phot("combinedPfIsoFPR03Phot", "combinedPfIsoFPR03Phot", -7., 15.);
   RooRealVar etaPhot("etaPhot", "etaPhot", -2.5, 2.5);
   RooRealVar mvaIdPhot("mvaIdPhot", "mvaIdPhot", -1.,1.);
   RooRealVar isMatchedPhot("isMatchedPhot","isMatchedPhot", -1., 2.);
   RooRealVar ptPhot("ptPhot", "ptPhot", 0., 1000.);
   RooRealVar weight("weight","weight", 0., 100.);
   RooRealVar isoW_EB("isoW_EB","weight", 0., 100.);
+  RooRealVar isoFPRW_EB("isoFPRW_EB","weight", 0., 100.);
 
   RooArgSet argSet("argSet");
 
   argSet.add(combinedPfIso03Phot);
+  argSet.add(combinedPfIsoFPR03Phot);
   argSet.add(etaPhot);
   argSet.add(mvaIdPhot);
   argSet.add(isMatchedPhot);
   argSet.add(ptPhot);
   argSet.add(weight);
   argSet.add(isoW_EB);
-
-  //combinedPfIso03Phot.setBins(121);
+  argSet.add(isoFPRW_EB);
+  
+  //combinedPfIsoFPR03Phot.setBins(121);
   //etaPhot.setBins(120);
   //mvaIdPhot.setBins(180);
   //isMatchedPhot.setBins(3);
   //ptPhot.setBins(1200);
   //weight.setBins(1000);
-
+  
   std::cout<<"set binning"<<std::endl;
-
+  
   //models from fitted MC
-  TFile* f_ws_sig = new TFile((workdir_mc+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+"_dataReweight.root").c_str(), "READ");
-  TFile* f_ws_bg = new TFile((workdir_mc+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+"_dataReweight.root").c_str(), "READ");
-
+  TFile* f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  TFile* f_ws_bg = new TFile((inputdir+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+"_dataReweight.root").c_str(), "READ");
+  
   RooWorkspace* w_sig =(RooWorkspace*)f_ws_sig->Get("w_sig");
   w_sig->Print();
   RooWorkspace* w_bg =(RooWorkspace*)f_ws_bg->Get("w_bg");
@@ -86,44 +90,70 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
   RooRealVar data_CBC_alphaCB("data_CBC_alphaCB", "data_CBC_alphaCB", w_sig->var("CBC_alphaCB")->getVal(), 0., 3.);
   RooRealVar data_CBC_n("data_CBC_n", "data_CBC_n", w_sig->var("CBC_n")->getVal(), 0., 100.);
 
-  RooCBShape model_sig("model_sig", "model_sig", combinedPfIso03Phot, data_CBC_mean, data_CBC_sigma, data_CBC_alphaCB, data_CBC_n);
-  
-  //data_CBC_mean.setConstant(kTRUE);
-  //data_CBC_sigma.setConstant(kTRUE);
-  //data_CBC_alphaC.setConstant(kTRUE);
-  data_CBC_alphaCB.setConstant(kTRUE);
-  data_CBC_n.setConstant(kTRUE);
- 
+  RooCBShape* model_sig;
+  if(isFPR)
+    model_sig = new RooCBShape("model_sig", "model_sig", combinedPfIsoFPR03Phot, data_CBC_mean, data_CBC_sigma, data_CBC_alphaCB, data_CBC_n);
+  else
+    model_sig = new RooCBShape("model_sig", "model_sig", combinedPfIso03Phot, data_CBC_mean, data_CBC_sigma, data_CBC_alphaCB, data_CBC_n); 
+
   //model for background
   //////////////////////////////////////////////////////////////////////////////////////////
   RooRealVar data_cbmean("data_cbmean", "data_cbmean", w_bg->var("cbmean")->getVal(), -1., 4.);
   RooRealVar data_cbsigma("data_cbsigma", "data_cbsigma", w_bg->var("cbsigma")->getVal(), 1., 6.) ;  
-  RooRealVar data_cbalpha_s("data_cbalpha_s", "data_cbalpha_s", w_bg->var("cbalpha_s")->getVal(), -5., 0.);  
-  RooRealVar data_cbn_s("data_cbn_s", "data_cbn_s", w_bg->var("cbn_s")->getVal(), 0., 500.);  
+  RooRealVar data_cbalpha("data_cbalpha", "data_cbalpha", w_bg->var("cbalpha")->getVal(), -5., 0.);  
+  RooRealVar data_cbn("data_cbn", "data_cbn", w_bg->var("cbn")->getVal(), 0., 500.);  
 
-  RooCBShape cb_bg("cb_bg", "cb_bg", combinedPfIso03Phot, data_cbmean, data_cbsigma, data_cbalpha_s, data_cbn_s);
+  RooCBShape* cb_bg;
+  if(isFPR)
+    cb_bg =  new RooCBShape("cb_bg", "cb_bg", combinedPfIsoFPR03Phot, data_cbmean, data_cbsigma, data_cbalpha, data_cbn);
+  else
+    cb_bg =  new RooCBShape("cb_bg", "cb_bg", combinedPfIso03Phot, data_cbmean, data_cbsigma, data_cbalpha, data_cbn);
 
   RooRealVar data_gaussmean("data_gaussmean", "data_gaussmean", w_bg->var("gaussmean")->getVal(), -3., 1.);  
   RooRealVar data_gausssigma("data_gausssigma", "data_gausssigma", w_bg->var("gausssigma")->getVal(), 0., 5.);  
 
-  RooGaussian gauss_bg("gauss_bg", "gauss_bg", combinedPfIso03Phot, data_gaussmean, data_gausssigma);
+  RooGaussian* gauss_bg;
+  if(isFPR)
+    gauss_bg = new RooGaussian("gauss_bg", "gauss_bg", combinedPfIsoFPR03Phot, data_gaussmean, data_gausssigma);
+  else
+    gauss_bg = new RooGaussian("gauss_bg", "gauss_bg", combinedPfIso03Phot, data_gaussmean, data_gausssigma);
 
-  //RooRealVar data_frac_s("data_frac_s", "data_frac_s", w_bg->var("frac_s")->getVal(), 0., 1.);  
+  RooRealVar data_frac("data_frac", "data_frac", w_bg->var("frac")->getVal(), 0., 1.);  
 
-  RooAddPdf model_bg("model_bg", "model_bg", cb_bg, gauss_bg, data_frac_s);
+  RooAddPdf model_bg("model_bg", "model_bg", *cb_bg, *gauss_bg, data_frac);
 
-  data_cbmean.setConstant(kTRUE);      
+
+  if(config==0){
+    data_CBC_mean.setConstant(kTRUE);
+    data_CBC_sigma.setConstant(kTRUE);
+    //data_CBC_alphaC.setConstant(kTRUE);
+    data_cbmean.setConstant(kTRUE);      
+    data_gaussmean.setConstant(kTRUE);      
+  }
+  if(config==1){
+    data_CBC_sigma.setConstant(kTRUE);
+    data_cbmean.setConstant(kTRUE);      
+    data_gaussmean.setConstant(kTRUE);      
+  }
+  if(config==2){
+    data_cbmean.setConstant(kTRUE);      
+    data_gaussmean.setConstant(kTRUE);      
+  }
+  if(config==3){
+    data_gaussmean.setConstant(kTRUE);      
+  }
+  data_CBC_alphaCB.setConstant(kTRUE);
+  data_CBC_n.setConstant(kTRUE);
   data_cbsigma.setConstant(kTRUE);     
-  data_cbalpha_s.setConstant(kTRUE);   
-  data_cbn_s.setConstant(kTRUE);       
-  data_frac_s.setConstant(kTRUE);      
-  data_gaussmean.setConstant(kTRUE);      
+  data_cbalpha.setConstant(kTRUE);   
+  data_cbn.setConstant(kTRUE);       
+  data_frac.setConstant(kTRUE);      
   data_gausssigma.setConstant(kTRUE);     
 
 
   TChain data("myTrees_withWeight");
 
-  data.Add(("/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_"+hlt+".root").c_str());
+  data.Add(("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_"+hlt+".root").c_str());
 
   /*
   TChain data("finalTree");
@@ -146,16 +176,18 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
   std::cout<<"data_rcut entries: "<<data_rcut->sumEntries()<<std::endl;
   std::cout<<"created reduced dataset"<<std::endl;
 
-  TH1F* h_set_scut = (TH1F*)data_scut->createHistogram("h_set_scut", combinedPfIso03Phot, RooFit::Binning(combinedPfIso03Phot.getBinning()));
-  TH1F* h_set_rcut = (TH1F*)data_rcut->createHistogram("h_set_rcut", combinedPfIso03Phot, RooFit::Binning(combinedPfIso03Phot.getBinning()));
+  //TH1F* h_set_scut;
+  //TH1F* h_set_rcut;
 
-  RooDataHist datah_scut("datah_scut", "datah_scut", combinedPfIso03Phot, Import(*h_set_scut));
-  RooDataHist datah_rcut("datah_rcut", "datah_rcut", combinedPfIso03Phot, Import(*h_set_rcut));
+  //h_set_scut = (TH1F*)data_scut->createHistogram("h_set_scut", combinedPfIsoFPR03Phot, RooFit::Binning(combinedPfIsoFPR03Phot.getBinning()));
+  //h_set_rcut = (TH1F*)data_rcut->createHistogram("h_set_rcut", combinedPfIsoFPR03Phot, RooFit::Binning(combinedPfIsoFPR03Phot.getBinning()));
+  //RooDataHist datah_scut("datah_scut", "datah_scut", combinedPfIsoFPR03Phot, Import(*h_set_scut));
+  //RooDataHist datah_rcut("datah_rcut", "datah_rcut", combinedPfIsoFPR03Phot, Import(*h_set_rcut));
 
   //adding and extending models                                                                                                                                                                           
   //option 1: adding sig and bg and extending their sum                                                                                                                                                    
   RooRealVar frac_scut("frac_scut", "frac_scut", 0.5, 0., 1.);                                                                                                                                        
-  RooAddPdf model_scut("model_scut", "model_scut", model_sig, model_bg, frac_scut);//using fit templates from MC
+  RooAddPdf model_scut("model_scut", "model_scut", *model_sig, model_bg, frac_scut);//using fit templates from MC
 
   RooRealVar N_scut("N_scut", "expected number of ev for scut", 20000., 1000., 10000000.);
   RooExtendPdf ext_model_scut("ext_model_scut", "ext_model_scut", model_scut, N_scut);
@@ -176,13 +208,13 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
 
   m.migrad();
   std::cout<<"MIGRAD PARAMETERS"<<std::endl;
-  ext_model_scut.getParameters(combinedPfIso03Phot)->Print("s");
+  ext_model_scut.getParameters(combinedPfIsoFPR03Phot)->Print("s");
 
   m.hesse();
 
   m.minos();
   std::cout<<"MINOS PARAMETERS"<<std::endl;
-  ext_model_scut.getParameters(combinedPfIso03Phot)->Print("s");
+  ext_model_scut.getParameters(combinedPfIsoFPR03Phot)->Print("s");
   
   RooFitResult* result = m.save();
   result->Print();*/
@@ -195,15 +227,19 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
 
   std::cout<<cut<<std::endl;
 
-  RooPlot* frame_s = combinedPfIso03Phot.frame(RooFit::Title("Fit to combinedPfIso03Phot, scut region"));
+  RooPlot* frame_s;
+  if(isFPR)
+    frame_s = combinedPfIsoFPR03Phot.frame(RooFit::Title("Fit to combinedPfIsoFPR03Phot, scut region"));
+  else
+    frame_s = combinedPfIso03Phot.frame(RooFit::Title("Fit to combinedPfIso03Phot, scut region"));
 
   data_scut->plotOn(frame_s, Name("dh_s"));
   ext_model_scut.plotOn(frame_s, Name("pdf_scut"), LineColor(kBlue), Normalization(1.0,RooAbsReal::RelativeExpected));
-  model_sig.plotOn(frame_s, Name("pdf_sig"), LineColor(kCyan), Normalization(frac_scut.getVal()/**N_scut.getVal()*/));
+  model_sig->plotOn(frame_s, Name("pdf_sig"), LineColor(kCyan), Normalization(frac_scut.getVal()/**N_scut.getVal()*/));
   model_bg.plotOn(frame_s, Name("pdf_bg"), LineColor(kMagenta), Normalization((1-frac_scut.getVal())/**N_scut.getVal()*/));
   
   frame_s->SetMinimum(0.00001);
-  frame_s->GetXaxis()->SetTitle("combinedPfIso03Phot [GeV]");
+  frame_s->GetXaxis()->SetTitle("combinedPfIsoFPR03Phot [GeV]");
   //  frame->SetMaximum(30000.);
 
   TLegend* a = new TLegend(0.63,0.68, 0.88, 0.88);
@@ -216,19 +252,28 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
   a->AddEntry(frame_s->findObject("pdf_sig"), "sig component","l");
   a->AddEntry(frame_s->findObject("pdf_bg"), "bkg component","l");
 
-  Double_t chi2 = frame_s->chiSquare("pdf_scut", "dh_s", 7);
-  TPaveLabel *t1 = new TPaveLabel(0.7,0.45,0.93,0.60, Form("#chi^{2}/dof = %.3f", chi2),"brNDC");
+  Double_t chi2 = frame_s->chiSquare("pdf_scut", "dh_s", 5);	
+  Double_t prob = TMath::Prob(chi2, 5);                       
+  TPaveLabel *t1 = new TPaveLabel(0.6,0.40,0.80,0.50, Form("#chi^{2}/dof = %.3f", chi2),"brNDC");
+  TPaveLabel *t2 = new TPaveLabel(0.6,0.50,0.83,0.60, Form("Prob(chi2,dof) = %.3f", prob),"brNDC");
   t1->SetFillColor(0);
   t1->SetLineWidth(0);
+  t1->SetLineColor(0);
+  t1->SetShadowColor(0);
+  t2->SetFillColor(0);
+  t2->SetLineWidth(0);
+  t2->SetLineColor(0);
+  t2->SetShadowColor(0);
 
   TCanvas* c = new TCanvas();
   c->SetTitle(frame_s->GetTitle());
   frame_s->Draw("");
   t1->Draw();
+  t2->Draw();
   a->Draw();
-  c->SaveAs((workdir+filename+"_s.png").c_str());
-  c->SaveAs((workdir+filename+"_s.pdf").c_str());
-  c->SaveAs((workdir+filename+"_s.root").c_str());
+  c->SaveAs((outdir+filename+"_s.png").c_str());
+  c->SaveAs((outdir+filename+"_s.pdf").c_str());
+  c->SaveAs((outdir+filename+"_s.root").c_str());
 
 
   std::cout<<"ChiSquared value, scut: "<<chi2<<std::endl;
@@ -237,11 +282,12 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
   c->SetTitle(frame_s->GetTitle());
   frame_s->Draw("");
   t1->Draw();
-  c->SaveAs((workdir+filename+"_s_log.png").c_str());
-  c->SaveAs((workdir+filename+"_s_log.pdf").c_str());
-  c->SaveAs((workdir+filename+"_s_log.root").c_str());
+  t2->Draw();
+  c->SaveAs((outdir+filename+"_s_log.png").c_str());
+  c->SaveAs((outdir+filename+"_s_log.pdf").c_str());
+  c->SaveAs((outdir+filename+"_s_log.root").c_str());
 
-  TFile* f_fitRes = new TFile((workdir+"fitResult_"+filename+"_fitResult.root").c_str(), "RECREATE");
+  TFile* f_fitRes = new TFile((outdir+"fitResult_"+filename+"_fitResult.root").c_str(), "RECREATE");
   result->Write();
   f_fitRes->Write();
   f_fitRes->Close();
@@ -254,11 +300,12 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
   w_data->import(*data_scut);
   w_data->import(ext_model_scut);
   w_data->import(combinedPfIso03Phot);
+  w_data->import(combinedPfIsoFPR03Phot);
   w_data->import(N_sig_real);
 
   w_data->Print();
 
-  w_data->writeToFile((workdir+"workspace_"+filename+".root").c_str());
+  w_data->writeToFile((outdir+"workspace_"+filename+".root").c_str());
 
 
 }
