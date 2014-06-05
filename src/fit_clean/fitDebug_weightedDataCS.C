@@ -29,6 +29,7 @@
 #include "RooGlobalFunc.h"
 #include "TPaveLabel.h"
 #include "RooProduct.h"
+#include "TMath.h"
 
 using namespace RooFit;
 
@@ -37,12 +38,12 @@ int main()
   return 0;
 }
 
-void fitDebug(string cut, string filename, string hlt, bool binned){
+void fitDebug(string cut, string filename, string hlt, bool binned, string outdir, int isoWeight, int isFPR){
   
-  string workdir = "";
+  //  string outdir = "";
   
   TChain data("myTrees_withWeight");
-  
+  /*  
   if(hlt=="hltcut30")
     data.Add("/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt30.root");
   if(hlt=="hltcut50")
@@ -55,9 +56,25 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
     data.Add("/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt135.root");
   if(hlt=="hltcut150")
     data.Add("/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt150.root");
+  */
+
+
+  if(hlt=="hltcut30")
+    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt30.root");
+  if(hlt=="hltcut50")
+    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt50.root");
+  if(hlt=="hltcut75")
+    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt75.root");
+  if(hlt=="hltcut90")
+    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt90.root");
+  if(hlt=="hltcut135")
+    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt135.root");
+  if(hlt=="hltcut150")
+    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt150.root");
 
 
   RooRealVar combinedPfIso03Phot("combinedPfIso03Phot", "combinedPfIso03Phot", -7., 15.);
+  RooRealVar combinedPfIsoFPR03Phot("combinedPfIsoFPR03Phot", "combinedPfIsoFPR03Phot", -7., 15.);
   RooRealVar etaPhot("etaPhot", "etaPhot", -2.5, 2.5);
   RooRealVar mvaIdPhot("mvaIdPhot", "mvaIdPhot", -1.,1.);
   RooRealVar isMatchedPhot("isMatchedPhot","isMatchedPhot", -1., 2.);
@@ -67,10 +84,11 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
   RooRealVar isoW_EB("isoW_EB","isoW_EB", 0., 100.);
   RooRealVar isoW1_EB("isoW1_EB","isoW1_EB", 0., 100.);
   RooRealVar isoW2_EB("isoW2_EB","isoW2_EB", 0., 100.);
-  RooRealVar isoW_EE("isoW_EE","isoW_EE", 0., 100.);
-  RooRealVar isoW1_EE("isoW1_EE","isoW1_EE", 0., 100.);
-  RooRealVar isoW2_EE("isoW2_EE","isoW2_EE", 0., 100.);
-  
+  RooRealVar isoFPRW_EB("isoFPRW_EB","isoW_EB", 0., 100.);
+  RooRealVar isoFPRW1_EB("isoFPRW1_EB","isoFPRW1_EB", 0., 100.);
+  RooRealVar isoFPRW2_EB("isoFPRW2_EB","isoFPRW2_EB", 0., 100.);
+
+
   RooProduct weight_times_isoWeight("weight_times_isoWeight", "weight_times_isoWeight", RooArgSet(weight,isoW_EB));
 
   
@@ -78,6 +96,7 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
   //creating set of variables for the datasets
   std::cout<<"Creating RooArgSet with variables for fit"<<std::endl;
   argSet.add(combinedPfIso03Phot);
+  argSet.add(combinedPfIsoFPR03Phot);
   argSet.add(etaPhot);
   argSet.add(mvaIdPhot);
   argSet.add(isMatchedPhot);
@@ -85,10 +104,16 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
   argSet.add(ptPhot);
   argSet.add(weight);
   argSet.add(isoW_EB);
+  argSet.add(isoW1_EB);
+  argSet.add(isoW2_EB);
+  argSet.add(isoFPRW_EB);
+  argSet.add(isoFPRW1_EB);
+  argSet.add(isoFPRW2_EB);
+
 
   //binning variables
   //std::cout<<"Binning variables for eventual binned fit"<<std::endl;
-  //combinedPfIso03Phot.setBins(121);
+  //combinedPfIsoFPR03Phot.setBins(121);
   //etaPhot.setBins(120);
   //mvaIdPhot.setBins(180);
   //isIsolatedGenPhot.setBins(3);
@@ -97,18 +122,33 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
 
   //creating complete dataset
   std::cout<<"Reading trees of MC into a complete general dataset"<<std::endl;
-  RooDataSet allSet("allSet", "allSet", argSet, WeightVar("isoW_EB"), RooFit::Import(data));
-  //RooDataSet allSet("allSet", "allSet", argSet, RooFit::Import(data));
+  RooDataSet* allSet;
+  if(isFPR){
+    if(isoWeight==0)
+      allSet = new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW_EB"), RooFit::Import(data));
+    if(isoWeight==1)
+      allSet = new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW1_EB"), RooFit::Import(data));
+    if(isoWeight==2)
+      allSet = new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW2_EB"), RooFit::Import(data));
+  }
+  else{
+    if(isoWeight==0)
+      allSet = new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW_EB"), RooFit::Import(data));
+    if(isoWeight==1)
+      allSet = new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW1_EB"), RooFit::Import(data));
+    if(isoWeight==2)
+      allSet = new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW2_EB"), RooFit::Import(data));
+  }
   //allSet.setWeightVar(weight_times_isoWeight);
 
-  std::cout<<"Complete dataset "<<allSet.GetName()<<" created"<<std::endl<<std::endl;
+  std::cout<<"Complete dataset "<<allSet->GetName()<<" created"<<std::endl<<std::endl;
   std::cout<<"******************** "<<std::endl;
-  std::cout<<" isWeighted =  " <<  allSet.isWeighted() <<std::endl;
+  std::cout<<" isWeighted =  " <<  allSet->isWeighted() <<std::endl;
   std::cout<<"******************** "<<std::endl<<std::endl;
 
   //reducing complete dataset to interesting ones
   
-  RooDataSet* d_r = (RooDataSet*)allSet.reduce((cut+" && mvaIdPhot<0.6 && mvaIdPhot>-0.6").c_str());
+  RooDataSet* d_r = (RooDataSet*)allSet->reduce((cut+" && mvaIdPhot<0.6 && mvaIdPhot>-0.6").c_str());
   d_r->SetName("d_r");
   std::cout<<"Reduced dataset "<<d_r->GetName()<<" created with cut "<<cut<<" && -0.6 < mvaIdPhot < 0.6"<<std::endl;
     std::cout<<"d_r entries: "<<d_r->sumEntries()<<std::endl;
@@ -118,8 +158,11 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
   RooRealVar gaussmean("gaussmean","gaussmean", -1., -10., 20.);
   RooRealVar gausssigma("gausssigma", "gausssigma", 1., 0., 20.);
 
-  RooGaussian my_gauss("my_gauss", "my_gauss", combinedPfIso03Phot, gaussmean, gausssigma);
-
+  RooGaussian* my_gauss;
+  if(isFPR)
+    my_gauss = new RooGaussian("my_gauss", "my_gauss", combinedPfIsoFPR03Phot, gaussmean, gausssigma);
+  else
+    my_gauss = new RooGaussian("my_gauss", "my_gauss", combinedPfIso03Phot, gaussmean, gausssigma);
   
 
   //crystalBall
@@ -129,12 +172,16 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
   RooRealVar cbalpha("cbalpha", "cbaplha", -1., -1000., 0.);
   RooRealVar cbn("cbn","cbn",10., 0., 1000.);
 
-  RooCBShape my_cb("my_cb", "my_cb",  combinedPfIso03Phot, cbmean, cbsigma, cbalpha, cbn);
+  RooCBShape* my_cb;
+  if(isFPR)
+    my_cb = new RooCBShape("my_cb", "my_cb",  combinedPfIsoFPR03Phot, cbmean, cbsigma, cbalpha, cbn);
+  else
+    my_cb = new RooCBShape("my_cb", "my_cb",  combinedPfIso03Phot, cbmean, cbsigma, cbalpha, cbn);
+
   RooRealVar frac("frac", "frac", 0.5, 0., 1.);
 
-
   //adding gauss to cb for both fit regions
-  RooAddPdf my_add("my_add", "my_add", my_cb, my_gauss, frac);
+  RooAddPdf my_add("my_add", "my_add", *my_cb, *my_gauss, frac);
 
 
   //creating simultaneous fit model
@@ -151,8 +198,11 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
   //if(binned)  result =  simPdf.fitTo(srcut_h, Save(), Range(-5.,15.), SumW2Error(kFALSE));
 
   //drawing results
-
-  RooPlot* frame_r = combinedPfIso03Phot.frame(RooFit::Title("Fit to combinedPfIso03Phot, rcut region"));
+  RooPlot* frame_r;
+  if(isFPR)
+   frame_r = combinedPfIsoFPR03Phot.frame(RooFit::Title("Fit to combinedPfIsoFPR03Phot, rcut region"));
+  else  
+    frame_r = combinedPfIso03Phot.frame(RooFit::Title("Fit to combinedPfIso03Phot, rcut region"));
 
   if(!binned) d_r->plotOn(frame_r,  Name("data_rcut"));
   my_add.plotOn(frame_r,Name("pdf_r"),LineColor(kCyan)) ;
@@ -167,16 +217,23 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
 
   c->SetTitle(frame_r->GetTitle());
   frame_r->Draw("");
-  c->SaveAs((workdir+filename+"_r_dataReweight.png").c_str());
-  c->SaveAs((workdir+filename+"_r_dataReweight.root").c_str());
+  c->SaveAs((outdir+filename+"_r_dataReweight.png").c_str());
+  c->SaveAs((outdir+filename+"_r_dataReweight.root").c_str());
 
-  Double_t chi2 = frame_r->chiSquare("pdf_r", "data_rcut", 6);
-
+  //Double_t chi2 = frame_r->chiSquare("pdf_r", "data_rcut", 6);
+  Double_t chi2 = frame_r->chiSquare("pdf_r", "data_rcut", 7);
+  Double_t prob = TMath::Prob(chi2,7);
   
-  TPaveLabel *t1_r = new TPaveLabel(0.7,0.45,0.93,0.60, Form("#chi^{2}_{rcut}/dof = %.3f", chi2),"brNDC");
+  TPaveLabel *t1_r = new TPaveLabel(0.6,0.4,0.83,0.5, Form("#chi^{2}/dof = %.3f", chi2),"brNDC");
   t1_r->SetFillColor(0);
   t1_r->SetLineWidth(0);
-
+  t1_r->SetLineColor(0);
+  t1_r->SetShadowColor(0);
+  TPaveLabel *t2_r = new TPaveLabel(0.6,0.5,0.83,0.60, Form("Prob(#chi^{2},dof) = %.3f", prob),"brNDC");
+  t2_r->SetFillColor(0);
+  t2_r->SetLineWidth(0);
+  t2_r->SetLineColor(0);
+  t2_r->SetShadowColor(0);
 
   std::cout<<"ChiSquared value, rcut: "<<chi2<<std::endl;
 
@@ -184,11 +241,12 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
 
   frame_r->Draw("");
   t1_r->Draw();
+  t2_r->Draw();
   c->SetTitle(frame_r->GetTitle());
-  c->SaveAs((workdir+filename+"_r_dataRewight_log.png").c_str());
-  c->SaveAs((workdir+filename+"_r_dataReweight_log.root").c_str());
+  c->SaveAs((outdir+filename+"_r_dataRewight_log.png").c_str());
+  c->SaveAs((outdir+filename+"_r_dataReweight_log.root").c_str());
 
-  TFile* f_fitRes = new TFile((workdir+"fitResult_"+filename+"_dataReweight.root").c_str(), "RECREATE");
+  TFile* f_fitRes = new TFile((outdir+"fitResult_"+filename+"_dataReweight.root").c_str(), "RECREATE");
   result->Write();
   //  f_fitRes->Write();
   f_fitRes->Close();
@@ -196,10 +254,11 @@ void fitDebug(string cut, string filename, string hlt, bool binned){
 
   w_bg->import(*d_r);
   w_bg->import(my_add);
+  w_bg->import(combinedPfIsoFPR03Phot);
   w_bg->import(combinedPfIso03Phot);
 
   w_bg->Print();
 
-  w_bg->writeToFile((workdir+"workspace_"+filename+"_dataReweight.root").c_str());
+  w_bg->writeToFile((outdir+"workspace_"+filename+"_dataReweight.root").c_str());
 
 }
