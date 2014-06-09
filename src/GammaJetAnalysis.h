@@ -118,9 +118,9 @@ GammaJetAnalysis::GammaJetAnalysis(TTree *tree) : fChain(0) , hltiso(true), isMV
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/xrootdfs/cms/local/crovelli/GammaJets/reduced/redntp.53xv2.cicpfloose.noCorrections.GammaJets_newNtuples_v5/merged/redntp_G_Pt-120to170_TuneZ2star_8TeV_pythia6.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2/redntp_Photon_Run2012A-22Jan2013-v1.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/xrootdfs/cms/local/crovelli/GammaJets/reduced/redntp.53xv2.cicpfloose.noCorrections.GammaJets_newNtuples_v5/merged/redntp_G_Pt-120to170_TuneZ2star_8TeV_pythia6.root");
+         f = new TFile("/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2/redntp_Photon_Run2012A-22Jan2013-v1.root");
       }
       f->GetObject("AnaTree",tree);
 

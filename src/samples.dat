@@ -2,8 +2,11 @@
 
 samples={}
 
-mc_dir="/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2/merged/"
-data_dir="/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2/merged/"
+#mc_dir="/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2/merged/"
+#data_dir="/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2/merged/"
+mc_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2/merged/"
+data_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2/merged/"
+
 
              #  name                     #index        #filename                                     #xsec    #kfac         #directory
 samples["QCDEM_Pt_20_30_8TeV_pythia6"]=[1,"redntp_QCD_Pt_20_30_EMEnriched_TuneZ2star_8TeV_pythia6.root",288600000 * 0.0101 ,1., mc_dir]

@@ -11,13 +11,22 @@ import imp
 import multiprocessing
 from itertools import repeat
 
-#Some global options
-xrootd_server="pccmsrm24.cern.ch"
-output_dir="/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/"
-tmp_dir="/tmp/"+str(os.environ['USER'])
+#Some global options when running at cern
+#xrootd_server="pccmsrm24.cern.ch"
+#output_dir="/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/"
+#tmp_dir="/tmp/"+str(os.environ['USER'])
 
-mc_dir="root://pccmsrm24.cern.ch/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2"
-data_dir="root://pccmsrm24.cern.ch/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2"
+#mc_dir="root://pccmsrm24.cern.ch/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2"
+#data_dir="root://pccmsrm24.cern.ch/cmsrm/pc24/crovelli/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2"
+
+#Some global options when running at Rome
+xrootd_server=""
+output_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_withCone04/"
+tmp_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/tmp/"
+
+mc_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2/merged/"
+data_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/reduced/redntp.53xv6_data_CERN.gjetpresel.noCorr.v2/merged/"
+
 
 cuts={}
 #The cuts will be passed as parameters
@@ -30,7 +39,7 @@ def main(options,args):
     print options
 
     
-    gROOT.ProcessLine(".L GammaJetAnalysis.C++")
+    gROOT.ProcessLine(".L GammaJetAnalysis.C+")
 
     #Reading cuts dat
     filename  = options.cutsDat

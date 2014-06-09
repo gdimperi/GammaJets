@@ -54,3 +54,20 @@ Float_t finalTree_correctedPfIsoFPRRandomConePhotons03;
 
 Float_t finalTree_combinedPfIsoFPR03;
 Float_t finalTree_combinedPfIsoFPRRandomCone03;
+
+//ADDING CONE 04
+
+Float_t finalTree_pid_pfIsoCharged04ForCiC;
+Float_t finalTree_pid_pfIsoPhotons04ForCiC;
+Float_t finalTree_pid_pfIsoNeutrals04ForCiC;
+
+Float_t finalTree_pid_pfIsoFPRCharged04;
+Float_t finalTree_pid_pfIsoFPRNeutral04;
+Float_t finalTree_pid_pfIsoFPRPhoton04;
+
+Float_t finalTree_pid_pfIsoFPRRandomConeCharged04;
+Float_t finalTree_pid_pfIsoFPRRandomConeNeutral04;
+Float_t finalTree_pid_pfIsoFPRRandomConePhoton04;
+
+Float_t finalTree_combinedPfIsoFPR04;
+Float_t finalTree_combinedPfIsoFPRRandomCone04;

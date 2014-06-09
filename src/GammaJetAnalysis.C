@@ -477,6 +477,24 @@ void GammaJetAnalysis::BookFinalTree()
 
   finalTree->Branch("combinedPfIsoFPR03Phot",&finalTree_combinedPfIsoFPR03,"combinedPfIsoFPR03Phot/F");
   finalTree->Branch("combinedPfIsoFPRRandomCone03Phot",&finalTree_combinedPfIsoFPRRandomCone03,"combinedPfIsoFPRRandomCone03Phot/F");
+
+  //adding cone 0.4 for FPR crosscheck
+  finalTree->Branch("pid_pfIsoCharged04ForCiC",&finalTree_pid_pfIsoCharged04ForCiC,"pid_pfIsoCharged04ForCiC/F");
+  finalTree->Branch("pid_pfIsoPhotons04ForCiC",&finalTree_pid_pfIsoPhotons04ForCiC,"pid_pfIsoPhotons04ForCiC/F");
+  finalTree->Branch("pid_pfIsoNeutrals04ForCiC",&finalTree_pid_pfIsoNeutrals04ForCiC,"pid_pfIsoNeutrals04ForCiC/F");
+
+  finalTree->Branch("pid_pfIsoFPRCharged04_presel",&finalTree_pid_pfIsoFPRCharged04,"pid_pfIsoFPRCharged04_presel/F");
+  finalTree->Branch("pid_pfIsoFPRNeutral04_presel",&finalTree_pid_pfIsoFPRNeutral04,"pid_pfIsoFPRNeutral04_presel/F");
+  finalTree->Branch("pid_pfIsoFPRPhoton04_presel",&finalTree_pid_pfIsoFPRPhoton04,"pid_pfIsoFPRPhoton04_presel/F");
+
+  finalTree->Branch("pid_pfIsoFPRRandomConeCharged04_presel",&finalTree_pid_pfIsoFPRRandomConeCharged04,"pid_pfIsoFPRRandomConeCharged04_presel/F");
+  finalTree->Branch("pid_pfIsoFPRRandomConeNeutral04_presel",&finalTree_pid_pfIsoFPRRandomConeNeutral04,"pid_pfIsoFPRRandomConeNeutral04_presel/F");
+  finalTree->Branch("pid_pfIsoFPRRandomConePhoton04_presel",&finalTree_pid_pfIsoFPRRandomConePhoton04,"pid_pfIsoFPRRandomConePhoton04_presel/F");
+
+  finalTree->Branch("combinedPfIsoFPR04Phot",&finalTree_combinedPfIsoFPR04,"combinedPfIsoFPR04Phot/F");
+  finalTree->Branch("combinedPfIsoFPRRandomCone04Phot",&finalTree_combinedPfIsoFPRRandomCone04,"combinedPfIsoFPRRandomCone04Phot/F");
+
+
 }
 
 std::vector<int> GammaJetAnalysis::preselectedPhotons(const std::vector<int>& photons)
@@ -498,7 +516,11 @@ std::vector<int> GammaJetAnalysis::preselectedPhotons(const std::vector<int>& ph
 
       // should be 02, but currently off in the ntuples 
       //if (pid_pfIsoCharged03ForCiC_presel[photons[ipho]]>4.) continue;
-      if (pid_pfIsoCharged03ForCiC_presel[photons[ipho]]>5.) continue;
+      // treshold raised from 4 --> 5 GeV totake into account bigger cone
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      //   REMOVE ISO CHARGED CUT FOR FPR DEBUG
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      //if (pid_pfIsoCharged03ForCiC_presel[photons[ipho]]>5.) continue;
 
       if ( theEAregion<2) {  // EB
 	if ( pid_HoverE_presel[photons[ipho]]>0.075 )   continue;
@@ -692,6 +714,24 @@ void GammaJetAnalysis::FillTreePhot(const int& phot,bool isPresel, bool isSel)
 
       finalTree_combinedPfIsoFPR03=combinedPfIso03(pid_pfIsoFPRCharged03_presel[phot],pid_pfIsoFPRNeutral03_presel[phot],pid_pfIsoFPRPhoton03_presel[phot],phot);        
       finalTree_combinedPfIsoFPRRandomCone03=combinedPfIso03(pid_pfIsoFPRRandomConeCharged03_presel[phot],pid_pfIsoFPRRandomConeNeutral03_presel[phot],pid_pfIsoFPRRandomConePhoton03_presel[phot],phot);        
+
+      //adding cone 0.4
+      finalTree_pid_pfIsoCharged04ForCiC=pid_pfIsoCharged04ForCiC_presel[phot];
+      finalTree_pid_pfIsoPhotons04ForCiC=pid_pfIsoPhotons04ForCiC_presel[phot];
+      finalTree_pid_pfIsoNeutrals04ForCiC=pid_pfIsoNeutrals04ForCiC_presel[phot];
+
+      finalTree_pid_pfIsoFPRCharged04=pid_pfIsoFPRCharged04_presel[phot];
+      finalTree_pid_pfIsoFPRPhoton04 =pid_pfIsoFPRPhoton04_presel[phot] ;
+      finalTree_pid_pfIsoFPRNeutral04=pid_pfIsoFPRNeutral04_presel[phot];
+
+      finalTree_pid_pfIsoFPRRandomConeCharged04=pid_pfIsoFPRRandomConeCharged04_presel[phot];
+      finalTree_pid_pfIsoFPRRandomConePhoton04 =pid_pfIsoFPRRandomConePhoton04_presel[phot] ;
+      finalTree_pid_pfIsoFPRRandomConeNeutral04=pid_pfIsoFPRRandomConeNeutral04_presel[phot];
+      //just summing wo pu correction 
+      finalTree_combinedPfIsoFPR04=pid_pfIsoFPRCharged04_presel[phot] + pid_pfIsoFPRNeutral04_presel[phot] + pid_pfIsoFPRPhoton04_presel[phot],phot;        
+      finalTree_combinedPfIsoFPRRandomCone04=pid_pfIsoFPRRandomConeCharged04_presel[phot] + pid_pfIsoFPRRandomConeNeutral04_presel[phot] + pid_pfIsoFPRRandomConePhoton04_presel[phot],phot;        
+
+
     }
   else
     {
@@ -728,6 +768,18 @@ void GammaJetAnalysis::FillTreePhot(const int& phot,bool isPresel, bool isSel)
       finalTree_correctedPfIsoFPRRandomConePhotons03=-999.;
       finalTree_combinedPfIsoFPR03=-999.;
       finalTree_combinedPfIsoFPRRandomCone03=-999.;
+      //adding 0.4 cone
+      finalTree_pid_pfIsoCharged04ForCiC=-999.;
+      finalTree_pid_pfIsoPhotons04ForCiC=-999.;
+      finalTree_pid_pfIsoNeutrals04ForCiC=-999.;
+      finalTree_pid_pfIsoFPRCharged04=-999.;
+      finalTree_pid_pfIsoFPRPhoton04=-999.;
+      finalTree_pid_pfIsoFPRNeutral04=-999.;
+      finalTree_pid_pfIsoFPRRandomConeCharged04=-999.;
+      finalTree_pid_pfIsoFPRRandomConePhoton04=-999.;
+      finalTree_pid_pfIsoFPRRandomConeNeutral04=-999.;
+      finalTree_combinedPfIsoFPR04=-999.;
+      finalTree_combinedPfIsoFPRRandomCone04=-999.;
     }
   
   return;
