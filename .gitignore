@@ -43,6 +43,11 @@ Thumbs.db
 *.pdf
 *.eps
 
+# temporary files #
 ##################
 \#*
 *~
+
+# rootfiles #
+#################
+*.root
