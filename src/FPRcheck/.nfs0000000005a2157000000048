@@ -1,0 +1,13 @@
+{
+  TChain* mc = new TChain("finalTree"); 
+  mc->Add("/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_withCone04/QCDEM_Pt*");
+  mc->Add("/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_withCone04/G_Pt*");
+  
+  gROOT->ProcessLine(".L IsoFPRchecks.C+");
+  IsoFPRchecks check(mc);
+  string output_name = "outputROC.root";
+  check.CreateROC("combinedPfIso04Phot",100,-1., 15., output_name);
+  //check.CreateROC("combinedPfIsoFPR04Phot",100,-1., 15., output_name);
+  
+
+}
