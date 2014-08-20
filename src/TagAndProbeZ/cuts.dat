@@ -5,5 +5,5 @@ cuts={}
 cuts['tagLevel']='Tight'
 cuts['mcMatch']=0
 cuts['r9Reweight']=1
-cuts['r9WeightsFile']='/afs/cern.ch/user/m/meridian/public/R9Weights.root'
+cuts['r9WeightsFile']='/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/R9Weights/R9Weights.root'
 cuts['DeltaMZ']=30

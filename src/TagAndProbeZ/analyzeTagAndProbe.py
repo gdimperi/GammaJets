@@ -13,9 +13,9 @@ from itertools import repeat
 #./analyzeTagAndProbe.py --samplesDat=samples_paolo.dat --cuts=cuts.dat
 
 #Some global options
-xrootd_server="pccmsrm27.cern.ch"
-output_dir="/cms/local/meridian/GammaJets/TandP"
-tmp_dir="/tmp/"+str(os.environ['USER'])
+#xrootd_server="pccmsrm27.cern.ch"
+output_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/output_analyzer/"
+tmp_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/tmp/"
 
 
 
@@ -99,9 +99,10 @@ def analyzeSample( (sample,mycuts,samples) ):
     for file in glob.glob(tmp_dir+"/"+outfileName+"*.root"):
         dir,filename=os.path.split(file)
         print filename
-        rm_command="xrd "+xrootd_server+" rm "+output_dir+"/"+filename+" > /dev/null"
-        subprocess.call(rm_command,shell=True)
-        copy_command="xrdcp "+tmp_dir+"/"+filename+" root://"+xrootd_server+"//"+output_dir+"/"+filename 
+        #rm_command="xrd "+xrootd_server+" rm "+output_dir+"/"+filename+" > /dev/null"
+        #subprocess.call(rm_command,shell=True)
+        #copy_command="xrdcp "+tmp_dir+"/"+filename+" root://"+xrootd_server+"//"+output_dir+"/"+filename
+        copy_command="mv "+tmp_dir+"/"+filename+" "+output_dir+"/"+filename 
         subprocess.check_call(copy_command,shell=True)
         print "Copied file into "+output_dir+"/"+filename
 
