@@ -66,7 +66,28 @@ void IsoFPRchecks::Loop()
    }
 }
 
+void IsoFPRchecks::ScatterPlotsIso()
+{
+  if (fChain == 0) return;
 
+  Long64_t nentries = fChain->GetEntriesFast();
+
+  Long64_t nbytes = 0, nb = 0;
+  
+  TH2F* h2_isoCh03 = new TH2F("h2_isoCh03", "", 120, -5-, 30., 120, -5-, 30.);
+  TH2F* h2_isoNe03 = new TH2F("h2_isoNe03", "", 120, -5-, 30., 120, -5-, 30.);
+  TH2F* h2_isoPh03 = new TH2F("h2_isoPh03", "", 120, -5-, 30., 120, -5-, 30.);
+
+
+  for (Long64_t jentry=0; jentry<nentries;jentry++) {
+    Long64_t ientry = LoadTree(jentry);
+    if (ientry < 0) break;
+    nb = fChain->GetEntry(jentry);   nbytes += nb;
+    h2_isoCh03->Fill("pid_pfIsoCharged03ForCiC","pid_pfIsoFPRCharged03_presel",weight);
+    h2_isoNe03->Fill("pid_pfIsoNeutrals03ForCiC","pid_pfIsoNeutrals03_presel", weight);
+    h2_isoPh03->Fill("pid_pfIsoPhotons03ForCiC","pid_pfIsoFPRPhotons03_presel",weight)
+  }
+}
 
 void IsoFPRchecks::CreateROC(string var, Int_t npoints, Double_t xmin, Double_t xmax, string name_output)
 {

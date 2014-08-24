@@ -170,6 +170,7 @@ public :
 
    virtual Double_t ReturnValue(string var);
    virtual void     CreateROC(string var, Int_t npoints, Double_t xmin, Double_t xmax, string name_output);
+   virtual void     ScatterPlotsIso();
 };
 
 #endif
