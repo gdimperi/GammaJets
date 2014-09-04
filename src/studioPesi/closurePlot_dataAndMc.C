@@ -166,44 +166,258 @@ void closurePlot_dataAndMc(int hlt){
 
   //################### non FPR #######################
 
-  // only to check the closure: bkg MC in the bkg region
-  mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EB").c_str());   
-  mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EE").c_str());
+  //+++++++++++++++++   HLT 30   +++++++++++++++++++++  
+  if(hlt == 30) {
 
-  // for the real analysis: bkg MC in the sgn region
-  mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
-  mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EB_hlt30").c_str());   
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EE_hlt30").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EB_hlt30").c_str());
+    dataChain.Project("data_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EE_hlt30").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EB_hlt30").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EE_hlt30").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EB_hlt30").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EE_hlt30").c_str());
+  }
 
-  // for the real analysis: data in the bkg region 
-  dataChain.Project("data_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EB").c_str());
-  dataChain.Project("data_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EE").c_str());
-  dataChain.Project("data1_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EB").c_str());
-  dataChain.Project("data1_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EE").c_str());
-  dataChain.Project("data2_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EB").c_str());
-  dataChain.Project("data2_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EE").c_str());
+  //+++++++++++++++++   HLT 30   +++++++++++++++++++++  
+  if(hlt == 50) {
+
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EB_hlt50").c_str());   
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EE_hlt50").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EB_hlt50").c_str());
+    dataChain.Project("data_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EE_hlt50").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EB_hlt50").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EE_hlt50").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EB_hlt50").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EE_hlt50").c_str());
+  }
+
+  //+++++++++++++++++   HLT 75   +++++++++++++++++++++  
+  if(hlt == 75) {
+
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EB_hlt75").c_str());   
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EE_hlt75").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EB_hlt75").c_str());
+    dataChain.Project("data_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EE_hlt75").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EB_hlt75").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EE_hlt75").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EB_hlt75").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EE_hlt75").c_str());
+  }
+
+
+  //+++++++++++++++++   HLT 90   +++++++++++++++++++++  
+  if(hlt == 90) {
+
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EB_hlt90").c_str());   
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EE_hlt90").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EB_hlt90").c_str());
+    dataChain.Project("data_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EE_hlt90").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EB_hlt90").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EE_hlt90").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EB_hlt90").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EE_hlt90").c_str());
+  }
+
+
+  //+++++++++++++++++   HLT 135   +++++++++++++++++++++  
+  if(hlt == 135) {
+
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EB_hlt135").c_str());   
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EE_hlt135").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EB_hlt135").c_str());
+    dataChain.Project("data_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EE_hlt135").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EB_hlt135").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EE_hlt135").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EB_hlt135").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EE_hlt135").c_str());
+  }
+
+  //+++++++++++++++++   HLT 150   +++++++++++++++++++++  
+  if(hlt == 150) {
+
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EB_hlt150").c_str());   
+    mcChain.Project("mc_comb03Phot_isNotMatched_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoW_EE_hlt150").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_comb03Phot_isNotMatched_passMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EB_hlt150").c_str());
+    dataChain.Project("data_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW_EE_hlt150").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EB_hlt150").c_str());
+    dataChain.Project("data1_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW1_EE_hlt150").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EB", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EB_hlt150").c_str());
+    dataChain.Project("data2_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EE_hlt150").c_str());
+  }
+
+
+
 
   //###################  FPR #######################
 
-  // only to check the closure: bkg MC in the bkg region
-  mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EB").c_str());   
-  mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EE").c_str());
+  //+++++++++++++++++   HLT 30   +++++++++++++++++++++  
+  if(hlt == 30) {
 
-  // for the real analysis: bkg MC in the sgn region
-  mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
-  mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EB_hlt30").c_str());   
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EE_hlt30").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EB_hlt30").c_str());
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EE_hlt30").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EB_hlt30").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EE_hlt30").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EB_hlt30").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EE_hlt30").c_str());
+    
+  }
+  //+++++++++++++++++   HLT 50   +++++++++++++++++++++  
+  else if(hlt ==50) {
 
-  // for the real analysis: data in the bkg region 
-  dataChain.Project("data_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EB").c_str());
-  dataChain.Project("data_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EE").c_str());
-  dataChain.Project("data1_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EB").c_str());
-  dataChain.Project("data1_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EE").c_str());
-  dataChain.Project("data2_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EB").c_str());
-  dataChain.Project("data2_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EE").c_str());
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EB_hlt50").c_str());   
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EE_hlt50").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EB_hlt50").c_str());
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EE_hlt50").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EB_hlt50").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EE_hlt50").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EB_hlt50").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EE_hlt50").c_str());
+  }
+  
+  //+++++++++++++++++   HLT 75   +++++++++++++++++++++  
+  else if(hlt == 75){
+    
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EB_hlt75").c_str());   
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EE_hlt75").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EB_hlt75").c_str());
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EE_hlt75").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EB_hlt75").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EE_hlt75").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EB_hlt75").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EE_hlt75").c_str());
+  }
 
-
+  //+++++++++++++++++   HLT 90   +++++++++++++++++++++  
+  else if (hlt == 90) {
+    
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EB_hlt90").c_str());   
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EE_hlt90").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EB_hlt90").c_str());
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EE_hlt90").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EB_hlt90").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EE_hlt90").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EB_hlt90").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EE_hlt90").c_str());
+  }
+  
+  //+++++++++++++++++   HLT 135   +++++++++++++++++++++  
+  else if(hlt == 135) {
+    
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EB_hlt135").c_str());   
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EE_hlt135").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EB_hlt135").c_str());
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EE_hlt135").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EB_hlt135").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EE_hlt135").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EB_hlt135").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EE_hlt135").c_str());
+  }
+  
+  //+++++++++++++++++   HLT 150   +++++++++++++++++++++  
+  else if(hlt == 150) {
+    
+    
+    // only to check the closure: bkg MC in the bkg region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" && (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EB_hlt150").c_str());   
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*weight*isoFPRW_EE_hlt150").c_str());
+    
+    // for the real analysis: bkg MC in the sgn region
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548) )*weight").c_str());
+    mcChain.Project("mc_combFPR03Phot_isNotMatched_passMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (weight>0 && weight<15000) && !isIsolatedGenPhot && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382) )*weight").c_str());
+    
+    // for the real analysis: data in the bkg region 
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EB_hlt150").c_str());
+    dataChain.Project("data_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW_EE_hlt150").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EB_hlt150").c_str());
+    dataChain.Project("data1_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW1_EE_hlt150").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EB_hlt150").c_str());
+    dataChain.Project("data2_combFPR03Phot_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoFPRW2_EE_hlt150").c_str());
+    
+  }
+  
   cout << "done with projecting" << endl;
-
-
+  
+  
   //Normalize to unit
   double integral;
   integral=mc_comb03Phot_isNotMatched_notPassMVA_EB->Integral();
@@ -277,8 +491,10 @@ void closurePlot_dataAndMc(int hlt){
   data2_combFPR03Phot_notPassMVA_EB		->Rebin(3);
   data2_combFPR03Phot_notPassMVA_EE		->Rebin(3);
 
+  cout << "Rebin done" << endl;
 
   //------   giulia debug    ---------
+  /*
   mc_comb03Phot_isNotMatched_notPassMVA_EB	->Smooth();
   mc_comb03Phot_isNotMatched_notPassMVA_EE	->Smooth();
   mc_comb03Phot_isNotMatched_passMVA_EB 	->Smooth();
@@ -302,7 +518,7 @@ void closurePlot_dataAndMc(int hlt){
   data1_combFPR03Phot_notPassMVA_EE		->Smooth();
   data2_combFPR03Phot_notPassMVA_EB		->Smooth();
   data2_combFPR03Phot_notPassMVA_EE		->Smooth();
-
+  */
 
 
   //################## non FPR ####################
@@ -387,7 +603,7 @@ void closurePlot_dataAndMc(int hlt){
   data2_combFPR03Phot_notPassMVA_EE -> SetMarkerColor(kMagenta);
   data2_combFPR03Phot_notPassMVA_EB -> SetLineColor(kMagenta);
   data2_combFPR03Phot_notPassMVA_EE -> SetLineColor(kMagenta);
-
+  
   // titles 
   mc_combFPR03Phot_isNotMatched_passMVA_EB -> GetXaxis()->SetTitle("combined PFiso FPR [GeV]");
   mc_combFPR03Phot_isNotMatched_passMVA_EE -> GetXaxis()->SetTitle("combined PFiso FPR [GeV]");
@@ -398,7 +614,7 @@ void closurePlot_dataAndMc(int hlt){
   mc_combFPR03Phot_isNotMatched_passMVA_EE -> GetYaxis()->SetTitle("arb. units");
   data_combFPR03Phot_notPassMVA_EB -> GetYaxis()->SetTitle("arb. units");
   data_combFPR03Phot_notPassMVA_EE -> GetYaxis()->SetTitle("arb. units");
-
+  
 
   // plots
   TLegend* leg=new TLegend(0.6,0.65,0.85, 0.85);
@@ -844,7 +1060,7 @@ void closurePlot_dataAndMc(int hlt){
   line->Draw("same");
 
   c1->SaveAs((workDirFPR+"dataMC_closure_iso"+hltcut+"_EE_log_2pad.png").c_str());
-  
+
   
   //-----------------------------------------------------------
 

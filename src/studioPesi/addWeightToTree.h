@@ -18,16 +18,92 @@ public :
    Int_t           fCurrent; //!current Tree number in a TChain
 
    // new weight
-   float isoW_EB_t;
-   float isoW_EE_t;
-   float isoW_EB_pt40_65_t;
-   float isoW_EE_pt40_65_t;
-   float isoW_EB_pt65_90_t;
-   float isoW_EE_pt65_90_t;
-   float isoW_EB_pt90_105_t;
-   float isoW_EE_pt90_105_t;
-   float isoW_EB_pt105_t;
-   float isoW_EE_pt105_t;
+   /* float isoW_EB_t; 
+    float isoW_EE_t; 
+    float isoW_EB_pt40_65_t;
+    float isoW_EE_pt40_65_t;
+    float isoW_EB_pt65_90_t;
+    float isoW_EE_pt65_90_t;
+    float isoW_EB_pt90_105_t
+    float isoW_EE_pt90_105_t
+    float isoW_EB_pt105_t; 
+    float isoW_EE_pt105_t;
+   */
+
+   float isoW_EB_hlt30_t;
+   float isoW_EE_hlt30_t;
+   float isoW_EB_hlt50_t;
+   float isoW_EE_hlt50_t;
+   float isoW_EB_hlt75_t;
+   float isoW_EE_hlt75_t;
+   float isoW_EB_hlt90_t;
+   float isoW_EE_hlt90_t;
+   float isoW_EB_hlt135_t;
+   float isoW_EE_hlt135_t;
+   float isoW_EB_hlt150_t;
+   float isoW_EE_hlt150_t;
+   float isoW1_EB_hlt30_t;
+   float isoW1_EE_hlt30_t;
+   float isoW1_EB_hlt50_t;
+   float isoW1_EE_hlt50_t;
+   float isoW1_EB_hlt75_t;
+   float isoW1_EE_hlt75_t;
+   float isoW1_EB_hlt90_t;
+   float isoW1_EE_hlt90_t;
+   float isoW1_EB_hlt135_t;
+   float isoW1_EE_hlt135_t;
+   float isoW1_EB_hlt150_t;
+   float isoW1_EE_hlt150_t;
+   float isoW2_EB_hlt30_t;
+   float isoW2_EE_hlt30_t;
+   float isoW2_EB_hlt50_t;
+   float isoW2_EE_hlt50_t;
+   float isoW2_EB_hlt75_t;
+   float isoW2_EE_hlt75_t;
+   float isoW2_EB_hlt90_t;
+   float isoW2_EE_hlt90_t;
+   float isoW2_EB_hlt135_t;
+   float isoW2_EE_hlt135_t;
+   float isoW2_EB_hlt150_t;
+   float isoW2_EE_hlt150_t;
+
+   float isoFPRW_EB_hlt30_t;
+   float isoFPRW_EE_hlt30_t;
+   float isoFPRW_EB_hlt50_t;
+   float isoFPRW_EE_hlt50_t;
+   float isoFPRW_EB_hlt75_t;
+   float isoFPRW_EE_hlt75_t;
+   float isoFPRW_EB_hlt90_t;
+   float isoFPRW_EE_hlt90_t;
+   float isoFPRW_EB_hlt135_t;
+   float isoFPRW_EE_hlt135_t;
+   float isoFPRW_EB_hlt150_t;
+   float isoFPRW_EE_hlt150_t;
+   float isoFPRW1_EB_hlt30_t;
+   float isoFPRW1_EE_hlt30_t;
+   float isoFPRW1_EB_hlt50_t;
+   float isoFPRW1_EE_hlt50_t;
+   float isoFPRW1_EB_hlt75_t;
+   float isoFPRW1_EE_hlt75_t;
+   float isoFPRW1_EB_hlt90_t;
+   float isoFPRW1_EE_hlt90_t;
+   float isoFPRW1_EB_hlt135_t;
+   float isoFPRW1_EE_hlt135_t;
+   float isoFPRW1_EB_hlt150_t;
+   float isoFPRW1_EE_hlt150_t;
+   float isoFPRW2_EB_hlt30_t;
+   float isoFPRW2_EE_hlt30_t;
+   float isoFPRW2_EB_hlt50_t;
+   float isoFPRW2_EE_hlt50_t;
+   float isoFPRW2_EB_hlt75_t;
+   float isoFPRW2_EE_hlt75_t;
+   float isoFPRW2_EB_hlt90_t;
+   float isoFPRW2_EE_hlt90_t;
+   float isoFPRW2_EB_hlt135_t;
+   float isoFPRW2_EE_hlt135_t;
+   float isoFPRW2_EB_hlt150_t;
+   float isoFPRW2_EE_hlt150_t;
+
 
    // Declaration of leaf types
    UInt_t          sampleIndex;
@@ -129,7 +205,7 @@ public :
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
    virtual void     Init(TTree *tree);
-   virtual void     Loop();
+   virtual void     Loop(TFile* outFile, TFile* fileWeights_hlt30, TFile* fileWeightsFPR_hlt30, TFile* fileWeights_hlt50, TFile* fileWeightsFPR_hlt50, TFile* fileWeights_hlt75, TFile* fileWeightsFPR_hlt75, TFile* fileWeights_hlt90, TFile* fileWeightsFPR_hlt90, TFile* fileWeights_hlt135, TFile* fileWeightsFPR_hlt135, TFile* fileWeights_hlt150, TFile* fileWeightsFPR_hlt150);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
    void createBranches(TTree* treeWithWeights);
@@ -152,7 +228,7 @@ addWeightToTree::addWeightToTree(TTree *tree) : fChain(0)
     // chain->Add("/cmsrm/pc24/crovelli/GammaJets/ridottissime/*2012A*root");
     // chain->Add("/cmsrm/pc24/crovelli/GammaJets/ridottissime/*2012B*root");
     // chain->Add("/cmsrm/pc24/crovelli/GammaJets/ridottissime/*2012C*root");
-    chain->Add("/cmsrm/pc24/crovelli/GammaJets/ridottissime/*2012D*root");
+    chain->Add("/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_isoPF03_5/*2012D*root");
     
     tree = chain;
   }
@@ -261,9 +337,12 @@ void addWeightToTree::createBranches(TTree* treeWithWeights){
   treeWithWeights->Branch("ptPhot",  &ptPhot,  "ptPhot/F");
   treeWithWeights->Branch("mvaIdPhot", &mvaIdPhot, "mvaIdPhot/F");
   treeWithWeights->Branch("isMatchedPhot", &isMatchedPhot, "isMatchedPhot/I");
+  treeWithWeights->Branch("isIsolatedGenPhot", &isIsolatedGenPhot, "isIsolatedPhot/I");
   treeWithWeights->Branch("iso03_gen", &iso03_gen, "iso03_gen/F");
+  treeWithWeights->Branch("combinedPfIso03Phot", &combinedPfIso03Phot, "combinedPfIso03Phot/F");
   treeWithWeights->Branch("combinedPfIsoFPR03Phot", &combinedPfIsoFPR03Phot, "combinedPfIsoFPR03Phot/F");
   treeWithWeights->Branch("weight", &weight, "weight/F");
+  /*  
   treeWithWeights->Branch("isoW_EB", &isoW_EB_t, "isoW_EB/F");
   treeWithWeights->Branch("isoW_EE", &isoW_EE_t, "isoW_EE/F");
   treeWithWeights->Branch("isoW_EB_pt40_65",  &isoW_EB_pt40_65_t,  "isoW_EB_pt40_65/F");
@@ -274,6 +353,84 @@ void addWeightToTree::createBranches(TTree* treeWithWeights){
   treeWithWeights->Branch("isoW_EE_pt90_105", &isoW_EE_pt90_105_t, "isoW_EE_pt90_105/F");
   treeWithWeights->Branch("isoW_EB_pt105",    &isoW_EB_pt105_t,    "isoW_EB_pt105/F");
   treeWithWeights->Branch("isoW_EE_pt105",    &isoW_EE_pt105_t,    "isoW_EE_pt105/F");
+  */
+
+  treeWithWeights->Branch("isoW_EB_hlt30",  &isoW_EB_hlt30_t,  "isoW_EB_hlt30/F");
+  treeWithWeights->Branch("isoW_EE_hlt30",  &isoW_EE_hlt30_t,  "isoW_EE_hlt30/F");
+  treeWithWeights->Branch("isoW_EB_hlt50",  &isoW_EB_hlt50_t,  "isoW_EB_hlt50/F");
+  treeWithWeights->Branch("isoW_EE_hlt50",  &isoW_EE_hlt50_t,  "isoW_EE_hlt50/F");
+  treeWithWeights->Branch("isoW_EB_hlt75", &isoW_EB_hlt75_t, "isoW_EB_hlt75/F");
+  treeWithWeights->Branch("isoW_EE_hlt75", &isoW_EE_hlt75_t, "isoW_EE_hlt75/F");
+  treeWithWeights->Branch("isoW_EB_hlt90",    &isoW_EB_hlt90_t,    "isoW_EB_hlt90/F");
+  treeWithWeights->Branch("isoW_EE_hlt90",    &isoW_EE_hlt90_t,    "isoW_EE_hlt90/F");
+  treeWithWeights->Branch("isoW_EB_hlt135",    &isoW_EB_hlt135_t,    "isoW_EB_hlt135/F");
+  treeWithWeights->Branch("isoW_EE_hlt135",    &isoW_EE_hlt135_t,    "isoW_EE_hlt135/F");
+  treeWithWeights->Branch("isoW_EB_hlt150",    &isoW_EB_hlt150_t,    "isoW_EB_hlt150/F");
+  treeWithWeights->Branch("isoW_EE_hlt150",    &isoW_EE_hlt150_t,    "isoW_EE_hlt150/F");
+  treeWithWeights->Branch("isoW1_EB_hlt30",  &isoW1_EB_hlt30_t,  "isoW1_EB_hlt30/F");
+  treeWithWeights->Branch("isoW1_EE_hlt30",  &isoW1_EE_hlt30_t,  "isoW1_EE_hlt30/F");
+  treeWithWeights->Branch("isoW1_EB_hlt50",  &isoW1_EB_hlt50_t,  "isoW1_EB_hlt50/F");
+  treeWithWeights->Branch("isoW1_EE_hlt50",  &isoW1_EE_hlt50_t,  "isoW1_EE_hlt50/F");
+  treeWithWeights->Branch("isoW1_EB_hlt75", &isoW1_EB_hlt75_t, "isoW1_EB_hlt75/F");
+  treeWithWeights->Branch("isoW1_EE_hlt75", &isoW1_EE_hlt75_t, "isoW1_EE_hlt75/F");
+  treeWithWeights->Branch("isoW1_EB_hlt90",    &isoW1_EB_hlt90_t,    "isoW1_EB_hlt90/F");
+  treeWithWeights->Branch("isoW1_EE_hlt90",    &isoW1_EE_hlt90_t,    "isoW1_EE_hlt90/F");
+  treeWithWeights->Branch("isoW1_EB_hlt135",    &isoW1_EB_hlt135_t,    "isoW1_EB_hlt135/F");
+  treeWithWeights->Branch("isoW1_EE_hlt135",    &isoW1_EE_hlt135_t,    "isoW1_EE_hlt135/F");
+  treeWithWeights->Branch("isoW1_EB_hlt150",    &isoW1_EB_hlt150_t,    "isoW1_EB_hlt150/F");
+  treeWithWeights->Branch("isoW1_EE_hlt150",    &isoW1_EE_hlt150_t,    "isoW1_EE_hlt150/F");
+  treeWithWeights->Branch("isoW2_EB_hlt30",  &isoW2_EB_hlt30_t,  "isoW2_EB_hlt30/F");
+  treeWithWeights->Branch("isoW2_EE_hlt30",  &isoW2_EE_hlt30_t,  "isoW2_EE_hlt30/F");
+  treeWithWeights->Branch("isoW2_EB_hlt50",  &isoW2_EB_hlt50_t,  "isoW2_EB_hlt50/F");
+  treeWithWeights->Branch("isoW2_EE_hlt50",  &isoW2_EE_hlt50_t,  "isoW2_EE_hlt50/F");
+  treeWithWeights->Branch("isoW2_EB_hlt75", &isoW2_EB_hlt75_t, "isoW2_EB_hlt75/F");
+  treeWithWeights->Branch("isoW2_EE_hlt75", &isoW2_EE_hlt75_t, "isoW2_EE_hlt75/F");
+  treeWithWeights->Branch("isoW2_EB_hlt90",    &isoW2_EB_hlt90_t,    "isoW2_EB_hlt90/F");
+  treeWithWeights->Branch("isoW2_EE_hlt90",    &isoW2_EE_hlt90_t,    "isoW2_EE_hlt90/F");
+  treeWithWeights->Branch("isoW2_EB_hlt135",    &isoW2_EB_hlt135_t,    "isoW2_EB_hlt135/F");
+  treeWithWeights->Branch("isoW2_EE_hlt135",    &isoW2_EE_hlt135_t,    "isoW2_EE_hlt135/F");
+  treeWithWeights->Branch("isoW2_EB_hlt150",    &isoW2_EB_hlt150_t,    "isoW2_EB_hlt150/F");
+  treeWithWeights->Branch("isoW2_EE_hlt150",    &isoW2_EE_hlt150_t,    "isoW2_EE_hlt150/F");
+
+
+  treeWithWeights->Branch("isoFPRW_EB_hlt30",  &isoFPRW_EB_hlt30_t,  "isoFPRW_EB_hlt30/F");
+  treeWithWeights->Branch("isoFPRW_EE_hlt30",  &isoFPRW_EE_hlt30_t,  "isoFPRW_EE_hlt30/F");
+  treeWithWeights->Branch("isoFPRW_EB_hlt50",  &isoFPRW_EB_hlt50_t,  "isoFPRW_EB_hlt50/F");
+  treeWithWeights->Branch("isoFPRW_EE_hlt50",  &isoFPRW_EE_hlt50_t,  "isoFPRW_EE_hlt50/F");
+  treeWithWeights->Branch("isoFPRW_EB_hlt75", &isoFPRW_EB_hlt75_t, "isoFPRW_EB_hlt75/F");
+  treeWithWeights->Branch("isoFPRW_EE_hlt75", &isoFPRW_EE_hlt75_t, "isoFPRW_EE_hlt75/F");
+  treeWithWeights->Branch("isoFPRW_EB_hlt90",    &isoFPRW_EB_hlt90_t,    "isoFPRW_EB_hlt90/F");
+  treeWithWeights->Branch("isoFPRW_EE_hlt90",    &isoFPRW_EE_hlt90_t,    "isoFPRW_EE_hlt90/F");
+  treeWithWeights->Branch("isoFPRW_EB_hlt135",    &isoFPRW_EB_hlt135_t,    "isoFPRW_EB_hlt135/F");
+  treeWithWeights->Branch("isoFPRW_EE_hlt135",    &isoFPRW_EE_hlt135_t,    "isoFPRW_EE_hlt135/F");
+  treeWithWeights->Branch("isoFPRW_EB_hlt150",    &isoFPRW_EB_hlt150_t,    "isoFPRW_EB_hlt150/F");
+  treeWithWeights->Branch("isoFPRW_EE_hlt150",    &isoFPRW_EE_hlt150_t,    "isoFPRW_EE_hlt150/F");
+  treeWithWeights->Branch("isoFPRW1_EB_hlt30",  &isoFPRW1_EB_hlt30_t,  "isoFPRW1_EB_hlt30/F");
+  treeWithWeights->Branch("isoFPRW1_EE_hlt30",  &isoFPRW1_EE_hlt30_t,  "isoFPRW1_EE_hlt30/F");
+  treeWithWeights->Branch("isoFPRW1_EB_hlt50",  &isoFPRW1_EB_hlt50_t,  "isoFPRW1_EB_hlt50/F");
+  treeWithWeights->Branch("isoFPRW1_EE_hlt50",  &isoFPRW1_EE_hlt50_t,  "isoFPRW1_EE_hlt50/F");
+  treeWithWeights->Branch("isoFPRW1_EB_hlt75", &isoFPRW1_EB_hlt75_t, "isoFPRW1_EB_hlt75/F");
+  treeWithWeights->Branch("isoFPRW1_EE_hlt75", &isoFPRW1_EE_hlt75_t, "isoFPRW1_EE_hlt75/F");
+  treeWithWeights->Branch("isoFPRW1_EB_hlt90",    &isoFPRW1_EB_hlt90_t,    "isoFPRW1_EB_hlt90/F");
+  treeWithWeights->Branch("isoFPRW1_EE_hlt90",    &isoFPRW1_EE_hlt90_t,    "isoFPRW1_EE_hlt90/F");
+  treeWithWeights->Branch("isoFPRW1_EB_hlt135",    &isoFPRW1_EB_hlt135_t,    "isoFPRW1_EB_hlt135/F");
+  treeWithWeights->Branch("isoFPRW1_EE_hlt135",    &isoFPRW1_EE_hlt135_t,    "isoFPRW1_EE_hlt135/F");
+  treeWithWeights->Branch("isoFPRW1_EB_hlt150",    &isoFPRW1_EB_hlt150_t,    "isoFPRW1_EB_hlt150/F");
+  treeWithWeights->Branch("isoFPRW1_EE_hlt150",    &isoFPRW1_EE_hlt150_t,    "isoFPRW1_EE_hlt150/F");
+  treeWithWeights->Branch("isoFPRW2_EB_hlt30",  &isoFPRW2_EB_hlt30_t,  "isoFPRW2_EB_hlt30/F");
+  treeWithWeights->Branch("isoFPRW2_EE_hlt30",  &isoFPRW2_EE_hlt30_t,  "isoFPRW2_EE_hlt30/F");
+  treeWithWeights->Branch("isoFPRW2_EB_hlt50",  &isoFPRW2_EB_hlt50_t,  "isoFPRW2_EB_hlt50/F");
+  treeWithWeights->Branch("isoFPRW2_EE_hlt50",  &isoFPRW2_EE_hlt50_t,  "isoFPRW2_EE_hlt50/F");
+  treeWithWeights->Branch("isoFPRW2_EB_hlt75", &isoFPRW2_EB_hlt75_t, "isoFPRW2_EB_hlt75/F");
+  treeWithWeights->Branch("isoFPRW2_EE_hlt75", &isoFPRW2_EE_hlt75_t, "isoFPRW2_EE_hlt75/F");
+  treeWithWeights->Branch("isoFPRW2_EB_hlt90",    &isoFPRW2_EB_hlt90_t,    "isoFPRW2_EB_hlt90/F");
+  treeWithWeights->Branch("isoFPRW2_EE_hlt90",    &isoFPRW2_EE_hlt90_t,    "isoFPRW2_EE_hlt90/F");
+  treeWithWeights->Branch("isoFPRW2_EB_hlt135",    &isoFPRW2_EB_hlt135_t,    "isoFPRW2_EB_hlt135/F");
+  treeWithWeights->Branch("isoFPRW2_EE_hlt135",    &isoFPRW2_EE_hlt135_t,    "isoFPRW2_EE_hlt135/F");
+  treeWithWeights->Branch("isoFPRW2_EB_hlt150",    &isoFPRW2_EB_hlt150_t,    "isoFPRW2_EB_hlt150/F");
+  treeWithWeights->Branch("isoFPRW2_EE_hlt150",    &isoFPRW2_EE_hlt150_t,    "isoFPRW2_EE_hlt150/F");
+
+
 }
 
 #endif // #ifdef addWeightToTree_cxx

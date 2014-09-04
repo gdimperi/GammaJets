@@ -28,102 +28,106 @@ void calculate_weights(int hltCut){
   TChain mc("finalTree");
   TChain data("finalTree");
 
+  string inputDir = "/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/";
+  string inputDir = "/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_isoPF03_5/";
+
+
   //hight pt bins exlcluded
   if (hltCut==30) {
-    //mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt*root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-120to170_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-15to30_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-170to300_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-300to470_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-30to50_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-50to80_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/G_Pt-80to120_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/QCDEM*root");
-
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/*2012A*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/*2012B*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/*2012C*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT30/*2012D*root");
-
+    //mc.Add((inputDir+"HLT30/G_Pt*root");
+    mc.Add((inputDir+"HLT30/G_Pt-120to170_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-15to30_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-170to300_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-300to470_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-30to50_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-50to80_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-80to120_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/QCDEM*root").c_str());
+    
+    data.Add((inputDir+"HLT30/*2012A*root").c_str());
+    data.Add((inputDir+"HLT30/*2012B*root").c_str());
+    data.Add((inputDir+"HLT30/*2012C*root").c_str());
+    data.Add((inputDir+"HLT30/*2012D*root").c_str());
+    
   } else if (hltCut==50) {
-    //mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt*root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-120to170_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-15to30_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-170to300_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-300to470_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-30to50_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-50to80_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/G_Pt-80to120_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/QCDEM*root");
+    //mc.Add((inputDir+"HLT50/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-120to170_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-15to30_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-170to300_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-300to470_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-30to50_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-50to80_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-80to120_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/QCDEM*root").c_str());
 
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/*2012A*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/*2012B*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/*2012C*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT50/*2012D*root");
+    data.Add((inputDir+"HLT50/*2012A*root").c_str());
+    data.Add((inputDir+"HLT50/*2012B*root").c_str());
+    data.Add((inputDir+"HLT50/*2012C*root").c_str());
+    data.Add((inputDir+"HLT50/*2012D*root").c_str());
 
   } else if (hltCut==75) {
-    //mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt*root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-120to170_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-15to30_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-170to300_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-300to470_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-30to50_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-50to80_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/G_Pt-80to120_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/QCDEM*root");
+    //mc.Add((inputDir+"HLT75/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-120to170_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-15to30_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-170to300_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-300to470_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-30to50_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-50to80_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-80to120_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/QCDEM*root").c_str());
 
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/*2012A*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/*2012B*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/*2012C*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT75/*2012D*root");
+    data.Add((inputDir+"HLT75/*2012A*root").c_str());
+    data.Add((inputDir+"HLT75/*2012B*root").c_str());
+    data.Add((inputDir+"HLT75/*2012C*root").c_str());
+    data.Add((inputDir+"HLT75/*2012D*root").c_str());
 
   } else if (hltCut==90) {
-    //mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt*root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-120to170_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-15to30_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-170to300_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-300to470_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-30to50_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-50to80_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/G_Pt-80to120_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/QCDEM*root");
+    //mc.Add((inputDir+"HLT90/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-120to170_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-15to30_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-170to300_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-300to470_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-30to50_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-50to80_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-80to120_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/QCDEM*root").c_str());
 
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/*2012A*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/*2012B*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/*2012C*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT90/*2012D*root");
+    data.Add((inputDir+"HLT90/*2012A*root").c_str());
+    data.Add((inputDir+"HLT90/*2012B*root").c_str());
+    data.Add((inputDir+"HLT90/*2012C*root").c_str());
+    data.Add((inputDir+"HLT90/*2012D*root").c_str());
 
   } else if (hltCut==135) {
-    //mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt*root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-120to170_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-15to30_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-170to300_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-300to470_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-30to50_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-50to80_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/G_Pt-80to120_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/QCDEM*root");
+    //mc.Add((inputDir+"HLT135/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-120to170_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-15to30_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-170to300_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-300to470_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-30to50_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-50to80_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-80to120_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/QCDEM*root").c_str());
 
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/*2012A*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/*2012B*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/*2012C*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT135/*2012D*root");
-
+    data.Add((inputDir+"HLT135/*2012A*root").c_str());
+    data.Add((inputDir+"HLT135/*2012B*root").c_str());
+    data.Add((inputDir+"HLT135/*2012C*root").c_str());
+    data.Add((inputDir+"HLT135/*2012D*root").c_str());
+    
   } else if (hltCut==150) {
-    //mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt*root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-120to170_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-15to30_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-170to300_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-300to470_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-30to50_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-50to80_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/G_Pt-80to120_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root");
-    mc.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/QCDEM*root");
-
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/*2012A*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/*2012B*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/*2012C*root");
-    data.Add("/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/HLT150/*2012D*root");
+    //mc.Add((inputDir+"HLT150/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-120to170_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-15to30_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-170to300_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-300to470_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-30to50_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-50to80_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-80to120_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/QCDEM*root").c_str());
+    
+    data.Add((inputDir+"HLT150/*2012A*root").c_str());
+    data.Add((inputDir+"HLT150/*2012B*root").c_str());
+    data.Add((inputDir+"HLT150/*2012C*root").c_str());
+    data.Add((inputDir+"HLT150/*2012D*root").c_str());
 
   } 
 
@@ -263,23 +267,23 @@ void calculate_weights(int hltCut){
   combPfIso03Phot_data_passMVA_EE					->Rebin(3);   
   combPfIso03Phot_data_notPassMVA_EE					->Rebin(3);
 
-  /*
-  //smoothing
-  combPfIso03Phot_matched_passMVA_EB					->Smooth();	  
-  combPfIso03Phot_matched_notPassMVA_EB					->Smooth();	  
-  combPfIso03Phot_matched_passMVA_EE					->Smooth();	  
-  combPfIso03Phot_matched_notPassMVA_EE					->Smooth();	  
   
-  combPfIso03Phot_notMatched_passMVA_EB					->Smooth();	  
-  combPfIso03Phot_notMatched_notPassMVA_EB				->Smooth();
-  combPfIso03Phot_notMatched_passMVA_EE					->Smooth();	  
-  combPfIso03Phot_notMatched_notPassMVA_EE				->Smooth();
+//   //smoothing
+//   combPfIso03Phot_matched_passMVA_EB					->Smooth();	  
+//   combPfIso03Phot_matched_notPassMVA_EB					->Smooth();	  
+//   combPfIso03Phot_matched_passMVA_EE					->Smooth();	  
+//   combPfIso03Phot_matched_notPassMVA_EE					->Smooth();	  
+  
+//   combPfIso03Phot_notMatched_passMVA_EB					->Smooth();	  
+//   combPfIso03Phot_notMatched_notPassMVA_EB				->Smooth();
+//   combPfIso03Phot_notMatched_passMVA_EE					->Smooth();	  
+//   combPfIso03Phot_notMatched_notPassMVA_EE				->Smooth();
 
-  combPfIso03Phot_data_passMVA_EB					->Smooth();   
-  combPfIso03Phot_data_notPassMVA_EB					->Smooth();
-  combPfIso03Phot_data_passMVA_EE					->Smooth();   
-  combPfIso03Phot_data_notPassMVA_EE					->Smooth();
-  */
+//   combPfIso03Phot_data_passMVA_EB					->Smooth();   
+//   combPfIso03Phot_data_notPassMVA_EB					->Smooth();
+//   combPfIso03Phot_data_passMVA_EE					->Smooth();   
+//   combPfIso03Phot_data_notPassMVA_EE					->Smooth();
+  
 
   // saving in the output file
   // combPfIso03Phot_notMatched_passMVA_EB				->Write();
@@ -316,14 +320,14 @@ void calculate_weights(int hltCut){
   TH1F* h_isoWeight2_EE = (TH1F*)h_isoWeight_EE				->Clone("h_isoWeight2_EE");
   h_isoWeight2_EE							->Divide(h_syst_EE);
 
-  /*
+  
   h_isoWeight_EB->Smooth();
   h_isoWeight_EE->Smooth();
   h_isoWeight1_EB->Smooth();
   h_isoWeight1_EE->Smooth();
   h_isoWeight2_EB->Smooth();
   h_isoWeight2_EE->Smooth();
-  */
+  
 
 
   /*
