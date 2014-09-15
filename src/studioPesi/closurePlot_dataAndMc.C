@@ -186,7 +186,7 @@ void closurePlot_dataAndMc(int hlt){
     dataChain.Project("data2_comb03Phot_notPassMVA_EE", "combinedPfIso03Phot", ("("+pt+" &&  (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6) )*isoW2_EE_hlt30").c_str());
   }
 
-  //+++++++++++++++++   HLT 30   +++++++++++++++++++++  
+  //+++++++++++++++++   HLT 50   +++++++++++++++++++++  
   if(hlt == 50) {
 
     // only to check the closure: bkg MC in the bkg region

@@ -11,14 +11,18 @@
 
 void makePlot_isoWeight(){
 
-  string outputDir = "histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/";
+  gStyle->SetOptStat(0);
 
-  TFile* inputFile_hlt30 = new TFile("histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/isoWeights_hlt30.root", "read");
-  TFile* inputFile_hlt50 = new TFile("histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/isoWeights_hlt50.root", "read");
-  TFile* inputFile_hlt75 = new TFile("histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/isoWeights_hlt75.root", "read");
-  TFile* inputFile_hlt90 = new TFile("histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/isoWeights_hlt90.root", "read");
-  TFile* inputFile_hlt135 = new TFile("histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/isoWeights_hlt135.root", "read");
-  TFile* inputFile_hlt150 = new TFile("histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/isoWeights_hlt150.root", "read");
+  string outputDir = "histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
+  string inputdir = "histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
+  
+  TFile* inputFile_hlt30 = new TFile((inputdir+"isoWeights_hlt30.root").c_str(), "read");
+  TFile* inputFile_hlt50 = new TFile((inputdir+"isoWeights_hlt50.root").c_str(), "read");
+  TFile* inputFile_hlt75 = new TFile((inputdir+"isoWeights_hlt75.root").c_str(), "read");
+  TFile* inputFile_hlt90 = new TFile((inputdir+"isoWeights_hlt90.root").c_str(), "read");
+  TFile* inputFile_hlt135 = new TFile((inputdir+"isoWeights_hlt135.root").c_str(), "read");
+  TFile* inputFile_hlt150 = new TFile((inputdir+"isoWeights_hlt150.root").c_str(), "read");
+
 
   TH1F* isoWeight_hlt30_EB = (TH1F*)inputFile_hlt30->Get("h_isoWeight_EB");
   TH1F* isoWeight_hlt30_EE = (TH1F*)inputFile_hlt30->Get("h_isoWeight_EE");
@@ -99,7 +103,27 @@ void makePlot_isoWeight(){
   isoWeight2_hlt150_EE->SetMarkerstyle(4);
   */
 
+  // weights histos
+  isoWeight_hlt30_EB->GetXaxis()->SetTitle("combinedPfIso03");
+  isoWeight_hlt30_EE->GetXaxis()->SetTitle("combinedPfIso03");
+  isoWeight_hlt30_EB->GetYaxis()->SetTitle("weight");
+  isoWeight_hlt30_EE->GetYaxis()->SetTitle("weight");
+		 	      
+  isoWeight_hlt30_EB->SetMarkerSize(0.8);
+  isoWeight_hlt30_EE->SetMarkerSize(0.8);
+  isoWeight_hlt30_EB->SetMarkerSize(0.8);
+  isoWeight_hlt30_EE->SetMarkerSize(0.8);
+		 	      
+  isoWeight_hlt30_EB->SetLineWidth(1);
+  isoWeight_hlt30_EE->SetLineWidth(1);
+  isoWeight_hlt30_EB->SetLineWidth(1);
+  isoWeight_hlt30_EE->SetLineWidth(1);
+		 	      
+  isoWeight_hlt30_EB->GetYaxis()->SetRangeUser(-0.5,5.);
+  isoWeight_hlt30_EE->GetYaxis()->SetRangeUser(-0.5,5.);
+
   
+
   isoWeight_hlt30_EB->SetMarkerColor(kCyan);
   isoWeight_hlt30_EB->SetLineColor(kCyan);
   isoWeight_hlt50_EB->SetMarkerColor(kGreen);

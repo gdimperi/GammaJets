@@ -13,7 +13,6 @@
 #include "TProfile.h"
 #include "TLegend.h"
 #include "TF1.h"
-//livia's macro include
 #include"TPaveText.h"
 #include "TH1F.h"
 #include <vector>
@@ -27,8 +26,8 @@
 
 void makePlot_chiusura() {
 
-  string inputDir = "histo_v6/genIso/";
-  string outputDir = "histo_v6/genIso/";
+  string inputDir = "histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
+  string outputDir = "histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
  
   TFile* inputFile_sig_EB = new TFile((inputDir+"mvaIso_histo_EB_isMatch.root").c_str(), "READ"); 
   TFile* inputFile_sig_EE = new TFile((inputDir+"mvaIso_histo_EE_isMatch.root").c_str(), "READ"); 

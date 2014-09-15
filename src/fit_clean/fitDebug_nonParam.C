@@ -45,6 +45,7 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   //string outdir = "template_nonParam/";
     
   TChain data("myTrees_withWeight");
+  string input_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_isoPF03_5/";
 
   if(hlt=="hltcut30")
     data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt30.root");

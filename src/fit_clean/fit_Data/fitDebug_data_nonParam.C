@@ -38,13 +38,13 @@
 
 using namespace RooFit;
 
-void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string ptMax, int config, string inputdir, string inputdir_sig, string outdir, int isFPR){
-
-
+void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, string hlt, int config, string inputdir, string inputdir_sig, string outdir, int isFPR, int isEB){
+  
+  
   //string outdir = "fitData_weightedDataCS_FPR_config2/";
   //string workdir_mc = "../fit_FPR/";
 
-
+  
   RooRealVar combinedPfIso03Phot("combinedPfIso03Phot", "combinedPfIso03Phot", -7., 15.);
   RooRealVar combinedPfIsoFPR03Phot("combinedPfIsoFPR03Phot", "combinedPfIsoFPR03Phot", -7., 15.);
   RooRealVar etaPhot("etaPhot", "etaPhot", -2.5, 2.5);
@@ -52,12 +52,78 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
   RooRealVar isMatchedPhot("isMatchedPhot","isMatchedPhot", -1., 2.);
   RooRealVar ptPhot("ptPhot", "ptPhot", 0., 1000.);
   RooRealVar weight("weight","weight", 0., 100.);
-  RooRealVar isoW_EB("isoW_EB","isoW_EB", 0., 100.);
-  RooRealVar isoW1_EB("isoW1_EB","isoW1_EB", 0., 100.);
-  RooRealVar isoW2_EB("isoW2_EB","isoW2_EB", 0., 100.);
-  RooRealVar isoFPRW_EB("isoFPRW_EB","isoFPRW_EB", 0., 100.);
-  RooRealVar isoFPRW1_EB("isoFPRW1_EB","isoFPRW1_EB", 0., 100.);
-  RooRealVar isoFPRW2_EB("isoFPRW2_EB","isoFPRW2_EB", 0., 100.);
+  RooRealVar isoW_EB_hlt30("isoW_EB_hlt30","isoW_EB_hlt30",-9999., 100.);
+  RooRealVar isoW1_EB_hlt30("isoW1_EB_hlt30","isoW1_EB_hlt30",-9999., 100.);
+  RooRealVar isoW2_EB_hlt30("isoW2_EB_hlt30","isoW2_EB_hlt30",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt30("isoFPRW_EB_hlt30","isoFPRW_EB_hlt30",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt30("isoFPRW1_EB_hlt30","isoFPRW1_EB_hlt30",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt30("isoFPRW2_EB_hlt30","isoFPRW2_EB_hlt30",-9999., 100.);
+  RooRealVar isoW_EB_hlt50("isoW_EB_hlt50","isoW_EB_hlt50",-9999., 100.);
+  RooRealVar isoW1_EB_hlt50("isoW1_EB_hlt50","isoW1_EB_hlt50",-9999., 100.);
+  RooRealVar isoW2_EB_hlt50("isoW2_EB_hlt50","isoW2_EB_hlt50",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt50("isoFPRW_EB_hlt50","isoFPRW_EB_hlt50",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt50("isoFPRW1_EB_hlt50","isoFPRW1_EB_hlt50",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt50("isoFPRW2_EB_hlt50","isoFPRW2_EB_hlt50",-9999., 100.);
+  RooRealVar isoW_EB_hlt75("isoW_EB_hlt75","isoW_EB_hlt75",-9999., 100.);
+  RooRealVar isoW1_EB_hlt75("isoW1_EB_hlt75","isoW1_EB_hlt75",-9999., 100.);
+  RooRealVar isoW2_EB_hlt75("isoW2_EB_hlt75","isoW2_EB_hlt75",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt75("isoFPRW_EB_hlt75","isoFPRW_EB_hlt75",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt75("isoFPRW1_EB_hlt75","isoFPRW1_EB_hlt75",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt75("isoFPRW2_EB_hlt75","isoFPRW2_EB_hlt75",-9999., 100.);
+  RooRealVar isoW_EB_hlt90("isoW_EB_hlt90","isoW_EB_hlt90",-9999., 100.);
+  RooRealVar isoW1_EB_hlt90("isoW1_EB_hlt90","isoW1_EB_hlt90",-9999., 100.);
+  RooRealVar isoW2_EB_hlt90("isoW2_EB_hlt90","isoW2_EB_hlt90",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt90("isoFPRW_EB_hlt90","isoFPRW_EB_hlt90",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt90("isoFPRW1_EB_hlt90","isoFPRW1_EB_hlt90",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt90("isoFPRW2_EB_hlt90","isoFPRW2_EB_hlt90",-9999., 100.);
+  RooRealVar isoW_EB_hlt135("isoW_EB_hlt135","isoW_EB_hlt135",-9999., 100.);
+  RooRealVar isoW1_EB_hlt135("isoW1_EB_hlt135","isoW1_EB_hlt135",-9999., 100.);
+  RooRealVar isoW2_EB_hlt135("isoW2_EB_hlt135","isoW2_EB_hlt135",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt135("isoFPRW_EB_hlt135","isoFPRW_EB_hlt135",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt135("isoFPRW1_EB_hlt135","isoFPRW1_EB_hlt135",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt135("isoFPRW2_EB_hlt135","isoFPRW2_EB_hlt135",-9999., 100.);
+  RooRealVar isoW_EB_hlt150("isoW_EB_hlt150","isoW_EB_hlt150",-9999., 100.);
+  RooRealVar isoW1_EB_hlt150("isoW1_EB_hlt150","isoW1_EB_hlt150",-9999., 100.);
+  RooRealVar isoW2_EB_hlt150("isoW2_EB_hlt150","isoW2_EB_hlt150",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt150("isoFPRW_EB_hlt150","isoFPRW_EB_hlt150",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt150("isoFPRW1_EB_hlt150","isoFPRW1_EB_hlt150",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt150("isoFPRW2_EB_hlt150","isoFPRW2_EB_hlt150",-9999., 100.);
+  RooRealVar isoW_EE_hlt30("isoW_EE_hlt30","isoW_EE_hlt30",-9999., 100.);
+  RooRealVar isoW1_EE_hlt30("isoW1_EE_hlt30","isoW1_EE_hlt30",-9999., 100.);
+  RooRealVar isoW2_EE_hlt30("isoW2_EE_hlt30","isoW2_EE_hlt30",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt30("isoFPRW_EE_hlt30","isoFPRW_EE_hlt30",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt30("isoFPRW1_EE_hlt30","isoFPRW1_EE_hlt30",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt30("isoFPRW2_EE_hlt30","isoFPRW2_EE_hlt30",-9999., 100.);
+  RooRealVar isoW_EE_hlt50("isoW_EE_hlt50","isoW_EE_hlt50",-9999., 100.);
+  RooRealVar isoW1_EE_hlt50("isoW1_EE_hlt50","isoW1_EE_hlt50",-9999., 100.);
+  RooRealVar isoW2_EE_hlt50("isoW2_EE_hlt50","isoW2_EE_hlt50",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt50("isoFPRW_EE_hlt50","isoFPRW_EE_hlt50",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt50("isoFPRW1_EE_hlt50","isoFPRW1_EE_hlt50",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt50("isoFPRW2_EE_hlt50","isoFPRW2_EE_hlt50",-9999., 100.);
+  RooRealVar isoW_EE_hlt75("isoW_EE_hlt75","isoW_EE_hlt75",-9999., 100.);
+  RooRealVar isoW1_EE_hlt75("isoW1_EE_hlt75","isoW1_EE_hlt75",-9999., 100.);
+  RooRealVar isoW2_EE_hlt75("isoW2_EE_hlt75","isoW2_EE_hlt75",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt75("isoFPRW_EE_hlt75","isoFPRW_EE_hlt75",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt75("isoFPRW1_EE_hlt75","isoFPRW1_EE_hlt75",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt75("isoFPRW2_EE_hlt75","isoFPRW2_EE_hlt75",-9999., 100.);
+  RooRealVar isoW_EE_hlt90("isoW_EE_hlt90","isoW_EE_hlt90",-9999., 100.);
+  RooRealVar isoW1_EE_hlt90("isoW1_EE_hlt90","isoW1_EE_hlt90",-9999., 100.);
+  RooRealVar isoW2_EE_hlt90("isoW2_EE_hlt90","isoW2_EE_hlt90",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt90("isoFPRW_EE_hlt90","isoFPRW_EE_hlt90",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt90("isoFPRW1_EE_hlt90","isoFPRW1_EE_hlt90",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt90("isoFPRW2_EE_hlt90","isoFPRW2_EE_hlt90",-9999., 100.);
+  RooRealVar isoW_EE_hlt135("isoW_EE_hlt135","isoW_EE_hlt135",-9999., 100.);
+  RooRealVar isoW1_EE_hlt135("isoW1_EE_hlt135","isoW1_EE_hlt135",-9999., 100.);
+  RooRealVar isoW2_EE_hlt135("isoW2_EE_hlt135","isoW2_EE_hlt135",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt135("isoFPRW_EE_hlt135","isoFPRW_EE_hlt135",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt135("isoFPRW1_EE_hlt135","isoFPRW1_EE_hlt135",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt135("isoFPRW2_EE_hlt135","isoFPRW2_EE_hlt135",-9999., 100.);
+  RooRealVar isoW_EE_hlt150("isoW_EE_hlt150","isoW_EE_hlt150",-9999., 100.);
+  RooRealVar isoW1_EE_hlt150("isoW1_EE_hlt150","isoW1_EE_hlt150",-9999., 100.);
+  RooRealVar isoW2_EE_hlt150("isoW2_EE_hlt150","isoW2_EE_hlt150",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt150("isoFPRW_EE_hlt150","isoFPRW_EE_hlt150",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt150("isoFPRW1_EE_hlt150","isoFPRW1_EE_hlt150",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt150("isoFPRW2_EE_hlt150","isoFPRW2_EE_hlt150",-9999., 100.);
 
   RooArgSet argSet("argSet");
   //creating set of variables for the datasets
@@ -69,12 +135,79 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
   argSet.add(isMatchedPhot);
   argSet.add(ptPhot);
   argSet.add(weight);
-  argSet.add(isoW_EB);
-  argSet.add(isoW1_EB);
-  argSet.add(isoW2_EB);
-  argSet.add(isoFPRW_EB);
-  argSet.add(isoFPRW1_EB);
-  argSet.add(isoFPRW2_EB);
+  argSet.add(isoW_EB_hlt30);
+  argSet.add(isoW1_EB_hlt30);
+  argSet.add(isoW2_EB_hlt30);
+  argSet.add(isoFPRW_EB_hlt30);
+  argSet.add(isoFPRW1_EB_hlt30);
+  argSet.add(isoFPRW2_EB_hlt30);
+  argSet.add(isoW_EB_hlt50);
+  argSet.add(isoW1_EB_hlt50);
+  argSet.add(isoW2_EB_hlt50);
+  argSet.add(isoFPRW_EB_hlt50);
+  argSet.add(isoFPRW1_EB_hlt50);
+  argSet.add(isoFPRW2_EB_hlt50);
+  argSet.add(isoW_EB_hlt75);
+  argSet.add(isoW1_EB_hlt75);
+  argSet.add(isoW2_EB_hlt75);
+  argSet.add(isoFPRW_EB_hlt75);
+  argSet.add(isoFPRW1_EB_hlt75);
+  argSet.add(isoFPRW2_EB_hlt75);
+  argSet.add(isoW_EB_hlt90);
+  argSet.add(isoW1_EB_hlt90);
+  argSet.add(isoW2_EB_hlt90);
+  argSet.add(isoFPRW_EB_hlt90);
+  argSet.add(isoFPRW1_EB_hlt90);
+  argSet.add(isoFPRW2_EB_hlt90);
+  argSet.add(isoW_EB_hlt135);
+  argSet.add(isoW1_EB_hlt135);
+  argSet.add(isoW2_EB_hlt135);
+  argSet.add(isoFPRW_EB_hlt135);
+  argSet.add(isoFPRW1_EB_hlt135);
+  argSet.add(isoFPRW2_EB_hlt135);
+  argSet.add(isoW_EB_hlt150);
+  argSet.add(isoW1_EB_hlt150);
+  argSet.add(isoW2_EB_hlt150);
+  argSet.add(isoFPRW_EB_hlt150);
+  argSet.add(isoFPRW1_EB_hlt150);
+  argSet.add(isoFPRW2_EB_hlt150);
+  argSet.add(isoW_EE_hlt30);
+  argSet.add(isoW1_EE_hlt30);
+  argSet.add(isoW2_EE_hlt30);
+  argSet.add(isoFPRW_EE_hlt30);
+  argSet.add(isoFPRW1_EE_hlt30);
+  argSet.add(isoFPRW2_EE_hlt30);
+  argSet.add(isoW_EE_hlt50);
+  argSet.add(isoW1_EE_hlt50);
+  argSet.add(isoW2_EE_hlt50);
+  argSet.add(isoFPRW_EE_hlt50);
+  argSet.add(isoFPRW1_EE_hlt50);
+  argSet.add(isoFPRW2_EE_hlt50);
+  argSet.add(isoW_EE_hlt75);
+  argSet.add(isoW1_EE_hlt75);
+  argSet.add(isoW2_EE_hlt75);
+  argSet.add(isoFPRW_EE_hlt75);
+  argSet.add(isoFPRW1_EE_hlt75);
+  argSet.add(isoFPRW2_EE_hlt75);
+  argSet.add(isoW_EE_hlt90);
+  argSet.add(isoW1_EE_hlt90);
+  argSet.add(isoW2_EE_hlt90);
+  argSet.add(isoFPRW_EE_hlt90);
+  argSet.add(isoFPRW1_EE_hlt90);
+  argSet.add(isoFPRW2_EE_hlt90);
+  argSet.add(isoW_EE_hlt135);
+  argSet.add(isoW1_EE_hlt135);
+  argSet.add(isoW2_EE_hlt135);
+  argSet.add(isoFPRW_EE_hlt135);
+  argSet.add(isoFPRW1_EE_hlt135);
+  argSet.add(isoFPRW2_EE_hlt135);
+  argSet.add(isoW_EE_hlt150);
+  argSet.add(isoW1_EE_hlt150);
+  argSet.add(isoW2_EE_hlt150);
+  argSet.add(isoFPRW_EE_hlt150);
+  argSet.add(isoFPRW1_EE_hlt150);
+  argSet.add(isoFPRW2_EE_hlt150);
+
 
   //combinedPfIsoFPR03Phot.setBins(100);
   //etaPhot.setBins(120);
@@ -86,8 +219,17 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
   std::cout<<"set binning"<<std::endl;
 
   //models from fitted MC
-  TFile* f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
-  TFile* f_ws_bg = new TFile((inputdir+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  TFile* f_ws_sig; 
+  TFile* f_ws_bg;
+
+  if(isEB) {
+    f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+    f_ws_bg  = new TFile((inputdir+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  }
+  else{
+    f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EE_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+    f_ws_bg  = new TFile((inputdir+"workspace_fit_EE_bg_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+  }
 
   RooWorkspace* w_sig =(RooWorkspace*)f_ws_sig->Get("w_sig");
   w_sig->Print();
@@ -130,24 +272,29 @@ void fitDebug_Data(string cut, string filename, string hlt, string ptMin, string
 
   //model for background
   //////////////////////////////////////////////////////////////////////////////////////////
-  RooKeysPdf* model_bg = (RooKeysPdf*)w_bg->pdf("kest3");
+  //RooKeysPdf* model_bg = (RooKeysPdf*)w_bg->pdf("kest3");  //smoothing = 1.5
+  RooKeysPdf* model_bg = (RooKeysPdf*)w_bg->pdf("kest1");  //smoothing = 1
   model_bg->SetName("model_bg");
   model_bg->SetTitle("model_bg");
 
 
   TChain data("myTrees_withWeight");
+  string input_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
 
-  data.Add(("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_"+hlt+".root").c_str());
+  if(hlt=="hltcut30")
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt30.root").c_str());
+  if(hlt=="hltcut50")
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt50.root").c_str());
+  if(hlt=="hltcut75")
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt75.root").c_str());
+  if(hlt=="hltcut90")
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt90.root").c_str());
+  if(hlt=="hltcut135")
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt135.root").c_str());
+  if(hlt=="hltcut150")
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt150.root").c_str());
 
-  /*
-  TChain data("finalTree");
-  data.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/Photon-Run2012A-recover-06Aug2012_"+hlt+"_hltiso0_mvaWP4.root").c_str());
-  data.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/Photon_Run2012B-13Jul2012_"+hlt+"_hltiso0_mvaWP4.root").c_str());
-  data.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/Photon_Run2012C-24Aug2012_"+hlt+"_hltiso0_mvaWP4.root").c_str());
-  data.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/Photon_Run2012C-EcalRecover_11Dec2012_"+hlt+"_hltiso0_mvaWP4.root").c_str());
-  data.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/Photon_Run2012C-PromptReco-v2_"+hlt+"_hltiso0_mvaWP4.root").c_str());
-  data.Add(("root://pccmsrm27.cern.ch///cms/local/vtavolar/GammaJets/output_newPreselLooseIso2/Photon_Run2012D-PromptReco-v1_"+hlt+"_hltiso0_mvaWP4.root").c_str());
-  */
+
   RooDataSet allData("allData", "allData", argSet, RooFit::Import(data));
 
   std::cout<<"created complete dataset for data"<<endl;
