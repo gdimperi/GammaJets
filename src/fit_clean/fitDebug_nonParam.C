@@ -40,26 +40,31 @@ int main()
   return 0;
 }
 
-void fitDebug(string cut, string filename, string hlt, bool binned, string outdir, int isoWeight, int isFPR){
+void fitDebug(string cut, string filename, string hlt, bool binned, string outdir, int isoWeight, int isFPR, int isEB){
 
   //string outdir = "template_nonParam/";
     
   TChain data("myTrees_withWeight");
-  string input_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_isoPF03_5/";
+  //string input_dir="/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
+  string input_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
 
   if(hlt=="hltcut30")
-    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt30.root");
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt30.root").c_str());
   if(hlt=="hltcut50")
-    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt50.root");
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt50.root").c_str());
   if(hlt=="hltcut75")
-    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt75.root");
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt75.root").c_str());
   if(hlt=="hltcut90")
-    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt90.root");
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt90.root").c_str());
   if(hlt=="hltcut135")
-    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt135.root");
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt135.root").c_str());
   if(hlt=="hltcut150")
-    data.Add("/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/data2012ABCD_withWeights_hlt150.root");
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt150.root").c_str());
 
+  std::cout<<"Tot entries chain = " << data.GetEntries() <<std::endl;
+
+  // WARNING: weights are allowed to be <0 but they should be used correctly only when positive!
+  //
 
   RooRealVar combinedPfIso03Phot("combinedPfIso03Phot", "combinedPfIso03Phot", -7., 15.);
   RooRealVar combinedPfIsoFPR03Phot("combinedPfIsoFPR03Phot", "combinedPfIsoFPR03Phot", -7., 15.);
@@ -68,12 +73,78 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   RooRealVar isMatchedPhot("isMatchedPhot","isMatchedPhot", -1., 2.);
   RooRealVar ptPhot("ptPhot", "ptPhot", 0., 1000.);
   RooRealVar weight("weight","weight", 0., 100.);
-  RooRealVar isoW_EB("isoW_EB","isoW_EB", 0., 100.);
-  RooRealVar isoW1_EB("isoW1_EB","isoW1_EB", 0., 100.);
-  RooRealVar isoW2_EB("isoW2_EB","isoW2_EB", 0., 100.);
-  RooRealVar isoFPRW_EB("isoFPRW_EB","isoFPRW_EB", 0., 100.);
-  RooRealVar isoFPRW1_EB("isoFPRW1_EB","isoFPRW1_EB", 0., 100.);
-  RooRealVar isoFPRW2_EB("isoFPRW2_EB","isoFPRW2_EB", 0., 100.);
+  RooRealVar isoW_EB_hlt30("isoW_EB_hlt30","isoW_EB_hlt30",-9999., 100.);
+  RooRealVar isoW1_EB_hlt30("isoW1_EB_hlt30","isoW1_EB_hlt30",-9999., 100.);
+  RooRealVar isoW2_EB_hlt30("isoW2_EB_hlt30","isoW2_EB_hlt30",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt30("isoFPRW_EB_hlt30","isoFPRW_EB_hlt30",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt30("isoFPRW1_EB_hlt30","isoFPRW1_EB_hlt30",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt30("isoFPRW2_EB_hlt30","isoFPRW2_EB_hlt30",-9999., 100.);
+  RooRealVar isoW_EB_hlt50("isoW_EB_hlt50","isoW_EB_hlt50",-9999., 100.);
+  RooRealVar isoW1_EB_hlt50("isoW1_EB_hlt50","isoW1_EB_hlt50",-9999., 100.);
+  RooRealVar isoW2_EB_hlt50("isoW2_EB_hlt50","isoW2_EB_hlt50",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt50("isoFPRW_EB_hlt50","isoFPRW_EB_hlt50",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt50("isoFPRW1_EB_hlt50","isoFPRW1_EB_hlt50",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt50("isoFPRW2_EB_hlt50","isoFPRW2_EB_hlt50",-9999., 100.);
+  RooRealVar isoW_EB_hlt75("isoW_EB_hlt75","isoW_EB_hlt75",-9999., 100.);
+  RooRealVar isoW1_EB_hlt75("isoW1_EB_hlt75","isoW1_EB_hlt75",-9999., 100.);
+  RooRealVar isoW2_EB_hlt75("isoW2_EB_hlt75","isoW2_EB_hlt75",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt75("isoFPRW_EB_hlt75","isoFPRW_EB_hlt75",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt75("isoFPRW1_EB_hlt75","isoFPRW1_EB_hlt75",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt75("isoFPRW2_EB_hlt75","isoFPRW2_EB_hlt75",-9999., 100.);
+  RooRealVar isoW_EB_hlt90("isoW_EB_hlt90","isoW_EB_hlt90",-9999., 100.);
+  RooRealVar isoW1_EB_hlt90("isoW1_EB_hlt90","isoW1_EB_hlt90",-9999., 100.);
+  RooRealVar isoW2_EB_hlt90("isoW2_EB_hlt90","isoW2_EB_hlt90",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt90("isoFPRW_EB_hlt90","isoFPRW_EB_hlt90",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt90("isoFPRW1_EB_hlt90","isoFPRW1_EB_hlt90",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt90("isoFPRW2_EB_hlt90","isoFPRW2_EB_hlt90",-9999., 100.);
+  RooRealVar isoW_EB_hlt135("isoW_EB_hlt135","isoW_EB_hlt135",-9999., 100.);
+  RooRealVar isoW1_EB_hlt135("isoW1_EB_hlt135","isoW1_EB_hlt135",-9999., 100.);
+  RooRealVar isoW2_EB_hlt135("isoW2_EB_hlt135","isoW2_EB_hlt135",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt135("isoFPRW_EB_hlt135","isoFPRW_EB_hlt135",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt135("isoFPRW1_EB_hlt135","isoFPRW1_EB_hlt135",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt135("isoFPRW2_EB_hlt135","isoFPRW2_EB_hlt135",-9999., 100.);
+  RooRealVar isoW_EB_hlt150("isoW_EB_hlt150","isoW_EB_hlt150",-9999., 100.);
+  RooRealVar isoW1_EB_hlt150("isoW1_EB_hlt150","isoW1_EB_hlt150",-9999., 100.);
+  RooRealVar isoW2_EB_hlt150("isoW2_EB_hlt150","isoW2_EB_hlt150",-9999., 100.);
+  RooRealVar isoFPRW_EB_hlt150("isoFPRW_EB_hlt150","isoFPRW_EB_hlt150",-9999., 100.);
+  RooRealVar isoFPRW1_EB_hlt150("isoFPRW1_EB_hlt150","isoFPRW1_EB_hlt150",-9999., 100.);
+  RooRealVar isoFPRW2_EB_hlt150("isoFPRW2_EB_hlt150","isoFPRW2_EB_hlt150",-9999., 100.);
+  RooRealVar isoW_EE_hlt30("isoW_EE_hlt30","isoW_EE_hlt30",-9999., 100.);
+  RooRealVar isoW1_EE_hlt30("isoW1_EE_hlt30","isoW1_EE_hlt30",-9999., 100.);
+  RooRealVar isoW2_EE_hlt30("isoW2_EE_hlt30","isoW2_EE_hlt30",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt30("isoFPRW_EE_hlt30","isoFPRW_EE_hlt30",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt30("isoFPRW1_EE_hlt30","isoFPRW1_EE_hlt30",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt30("isoFPRW2_EE_hlt30","isoFPRW2_EE_hlt30",-9999., 100.);
+  RooRealVar isoW_EE_hlt50("isoW_EE_hlt50","isoW_EE_hlt50",-9999., 100.);
+  RooRealVar isoW1_EE_hlt50("isoW1_EE_hlt50","isoW1_EE_hlt50",-9999., 100.);
+  RooRealVar isoW2_EE_hlt50("isoW2_EE_hlt50","isoW2_EE_hlt50",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt50("isoFPRW_EE_hlt50","isoFPRW_EE_hlt50",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt50("isoFPRW1_EE_hlt50","isoFPRW1_EE_hlt50",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt50("isoFPRW2_EE_hlt50","isoFPRW2_EE_hlt50",-9999., 100.);
+  RooRealVar isoW_EE_hlt75("isoW_EE_hlt75","isoW_EE_hlt75",-9999., 100.);
+  RooRealVar isoW1_EE_hlt75("isoW1_EE_hlt75","isoW1_EE_hlt75",-9999., 100.);
+  RooRealVar isoW2_EE_hlt75("isoW2_EE_hlt75","isoW2_EE_hlt75",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt75("isoFPRW_EE_hlt75","isoFPRW_EE_hlt75",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt75("isoFPRW1_EE_hlt75","isoFPRW1_EE_hlt75",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt75("isoFPRW2_EE_hlt75","isoFPRW2_EE_hlt75",-9999., 100.);
+  RooRealVar isoW_EE_hlt90("isoW_EE_hlt90","isoW_EE_hlt90",-9999., 100.);
+  RooRealVar isoW1_EE_hlt90("isoW1_EE_hlt90","isoW1_EE_hlt90",-9999., 100.);
+  RooRealVar isoW2_EE_hlt90("isoW2_EE_hlt90","isoW2_EE_hlt90",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt90("isoFPRW_EE_hlt90","isoFPRW_EE_hlt90",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt90("isoFPRW1_EE_hlt90","isoFPRW1_EE_hlt90",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt90("isoFPRW2_EE_hlt90","isoFPRW2_EE_hlt90",-9999., 100.);
+  RooRealVar isoW_EE_hlt135("isoW_EE_hlt135","isoW_EE_hlt135",-9999., 100.);
+  RooRealVar isoW1_EE_hlt135("isoW1_EE_hlt135","isoW1_EE_hlt135",-9999., 100.);
+  RooRealVar isoW2_EE_hlt135("isoW2_EE_hlt135","isoW2_EE_hlt135",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt135("isoFPRW_EE_hlt135","isoFPRW_EE_hlt135",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt135("isoFPRW1_EE_hlt135","isoFPRW1_EE_hlt135",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt135("isoFPRW2_EE_hlt135","isoFPRW2_EE_hlt135",-9999., 100.);
+  RooRealVar isoW_EE_hlt150("isoW_EE_hlt150","isoW_EE_hlt150",-9999., 100.);
+  RooRealVar isoW1_EE_hlt150("isoW1_EE_hlt150","isoW1_EE_hlt150",-9999., 100.);
+  RooRealVar isoW2_EE_hlt150("isoW2_EE_hlt150","isoW2_EE_hlt150",-9999., 100.);
+  RooRealVar isoFPRW_EE_hlt150("isoFPRW_EE_hlt150","isoFPRW_EE_hlt150",-9999., 100.);
+  RooRealVar isoFPRW1_EE_hlt150("isoFPRW1_EE_hlt150","isoFPRW1_EE_hlt150",-9999., 100.);
+  RooRealVar isoFPRW2_EE_hlt150("isoFPRW2_EE_hlt150","isoFPRW2_EE_hlt150",-9999., 100.);
 
   RooArgSet argSet("argSet");
   //creating set of variables for the datasets
@@ -85,12 +156,78 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   argSet.add(isMatchedPhot);
   argSet.add(ptPhot);
   argSet.add(weight);
-  argSet.add(isoW_EB);
-  argSet.add(isoW1_EB);
-  argSet.add(isoW2_EB);
-  argSet.add(isoFPRW_EB);
-  argSet.add(isoFPRW1_EB);
-  argSet.add(isoFPRW2_EB);
+  argSet.add(isoW_EB_hlt30);
+  argSet.add(isoW1_EB_hlt30);
+  argSet.add(isoW2_EB_hlt30);
+  argSet.add(isoFPRW_EB_hlt30);
+  argSet.add(isoFPRW1_EB_hlt30);
+  argSet.add(isoFPRW2_EB_hlt30);
+  argSet.add(isoW_EB_hlt50);
+  argSet.add(isoW1_EB_hlt50);
+  argSet.add(isoW2_EB_hlt50);
+  argSet.add(isoFPRW_EB_hlt50);
+  argSet.add(isoFPRW1_EB_hlt50);
+  argSet.add(isoFPRW2_EB_hlt50);
+  argSet.add(isoW_EB_hlt75);
+  argSet.add(isoW1_EB_hlt75);
+  argSet.add(isoW2_EB_hlt75);
+  argSet.add(isoFPRW_EB_hlt75);
+  argSet.add(isoFPRW1_EB_hlt75);
+  argSet.add(isoFPRW2_EB_hlt75);
+  argSet.add(isoW_EB_hlt90);
+  argSet.add(isoW1_EB_hlt90);
+  argSet.add(isoW2_EB_hlt90);
+  argSet.add(isoFPRW_EB_hlt90);
+  argSet.add(isoFPRW1_EB_hlt90);
+  argSet.add(isoFPRW2_EB_hlt90);
+  argSet.add(isoW_EB_hlt135);
+  argSet.add(isoW1_EB_hlt135);
+  argSet.add(isoW2_EB_hlt135);
+  argSet.add(isoFPRW_EB_hlt135);
+  argSet.add(isoFPRW1_EB_hlt135);
+  argSet.add(isoFPRW2_EB_hlt135);
+  argSet.add(isoW_EB_hlt150);
+  argSet.add(isoW1_EB_hlt150);
+  argSet.add(isoW2_EB_hlt150);
+  argSet.add(isoFPRW_EB_hlt150);
+  argSet.add(isoFPRW1_EB_hlt150);
+  argSet.add(isoFPRW2_EB_hlt150);
+  argSet.add(isoW_EE_hlt30);
+  argSet.add(isoW1_EE_hlt30);
+  argSet.add(isoW2_EE_hlt30);
+  argSet.add(isoFPRW_EE_hlt30);
+  argSet.add(isoFPRW1_EE_hlt30);
+  argSet.add(isoFPRW2_EE_hlt30);
+  argSet.add(isoW_EE_hlt50);
+  argSet.add(isoW1_EE_hlt50);
+  argSet.add(isoW2_EE_hlt50);
+  argSet.add(isoFPRW_EE_hlt50);
+  argSet.add(isoFPRW1_EE_hlt50);
+  argSet.add(isoFPRW2_EE_hlt50);
+  argSet.add(isoW_EE_hlt75);
+  argSet.add(isoW1_EE_hlt75);
+  argSet.add(isoW2_EE_hlt75);
+  argSet.add(isoFPRW_EE_hlt75);
+  argSet.add(isoFPRW1_EE_hlt75);
+  argSet.add(isoFPRW2_EE_hlt75);
+  argSet.add(isoW_EE_hlt90);
+  argSet.add(isoW1_EE_hlt90);
+  argSet.add(isoW2_EE_hlt90);
+  argSet.add(isoFPRW_EE_hlt90);
+  argSet.add(isoFPRW1_EE_hlt90);
+  argSet.add(isoFPRW2_EE_hlt90);
+  argSet.add(isoW_EE_hlt135);
+  argSet.add(isoW1_EE_hlt135);
+  argSet.add(isoW2_EE_hlt135);
+  argSet.add(isoFPRW_EE_hlt135);
+  argSet.add(isoFPRW1_EE_hlt135);
+  argSet.add(isoFPRW2_EE_hlt135);
+  argSet.add(isoW_EE_hlt150);
+  argSet.add(isoW1_EE_hlt150);
+  argSet.add(isoW2_EE_hlt150);
+  argSet.add(isoFPRW_EE_hlt150);
+  argSet.add(isoFPRW1_EE_hlt150);
+  argSet.add(isoFPRW2_EE_hlt150);
 
 
   //binning variables
@@ -106,28 +243,90 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   //creating complete dataset
   std::cout<<"Reading trees of data into a complete general dataset"<<std::endl;
   RooDataSet* allSet;
+
+  char weightvar[100];
+  char weightvar1[100];
+  char weightvar2[100];
+
+  int hltcut;
+  if(hlt=="hltcut30") hltcut = 30;
+  if(hlt=="hltcut50") hltcut = 50;
+  if(hlt=="hltcut75") hltcut = 75;
+  if(hlt=="hltcut90") hltcut = 90;
+  if(hlt=="hltcut135") hltcut = 135;
+  if(hlt=="hltcut150") hltcut = 150;
+
+  
+
+//   if(isFPR){
+//     if(isEB) {
+//       sprintf(weightvar, "isoFPRW_EB_hlt%d", hltcut);  
+//       sprintf(weightvar1, "isoFPRW1_EB_hlt%d", hltcut);  
+//       sprintf(weightvar2, "isoFPRW2_EB_hlt%d", hltcut);  
+//     }
+//     else {
+//       sprintf(weightvar, "isoFPRW_EE_hlt%d", hltcut);  
+//       sprintf(weightvar1, "isoFPRW1_EE_hlt%d", hltcut);  
+//       sprintf(weightvar2, "isoFPRW2_EE_hlt%d", hltcut);  
+//     }
+//   }
+//   else{
+//     if(isEB) {
+//       sprintf(weightvar, "isoW_EB_hlt%d", hltcut);  
+//       sprintf(weightvar1, "isoW1_EB_hlt%d", hltcut);  
+//       sprintf(weightvar2, "isoW2_EB_hlt%d", hltcut);  
+//     }
+//     else {
+//       sprintf(weightvar, "isoW_EE_hlt%d", hltcut);  
+//       sprintf(weightvar1, "isoW1_EE_hlt%d", hltcut);  
+//       sprintf(weightvar2, "isoW2_EE_hlt%d", hltcut);  
+//     }
+//   }
+  
+//reweight using only w_hlt30
+  if(isEB){
+    sprintf(weightvar, "isoW_EB_hlt30");  
+    sprintf(weightvar1, "isoW1_EB_hlt30");  
+    sprintf(weightvar2, "isoW2_EB_hlt30");  
+  }
+  else{
+    sprintf(weightvar, "isoW_EE_hlt30");  
+    sprintf(weightvar1, "isoW1_EE_hlt30");  
+    sprintf(weightvar2, "isoW2_EE_hlt30");  
+  }
+
+  cout << "weight var = " << weightvar << "   " << weightvar1 << "   " << weightvar2 << endl; 
+
+
+  //allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW_EB_hlt30"), RooFit::Import(data) );
+  //allSet= new RooDataSet("allSet", "allSet", argSet,  RooFit::Import(data));
   if(isoWeight==0) {
-    if(isFPR)
-      allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW_EB"), RooFit::Import(data));
-    else
-      allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW_EB"), RooFit::Import(data));
+    allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar(weightvar), RooFit::Import(data));
+    //if(isFPR)
+    //  allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW_EB"), RooFit::Import(data));
+    //else
+    //  allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW_EB"), RooFit::Import(data));
   }
   if(isoWeight==1){
-    if(isFPR)
-      allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW1_EB"), RooFit::Import(data));
-    else
-      allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW1_EB"), RooFit::Import(data));
+    allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar(weightvar1), RooFit::Import(data));
+    //if(isFPR)
+    //  allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW1_EB"), RooFit::Import(data));
+    //else
+    //  allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW1_EB"), RooFit::Import(data));
   }
   if(isoWeight==2){
-    if(isFPR)
-      allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW2_EB"), RooFit::Import(data));
-   else
-      allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW2_EB"), RooFit::Import(data));
+    allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar(weightvar2), RooFit::Import(data));
+    //if(isFPR)
+    //  allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoFPRW2_EB"), RooFit::Import(data));
+    //else
+    //  allSet= new RooDataSet("allSet", "allSet", argSet, WeightVar("isoW2_EB"), RooFit::Import(data));
   }
 
   std::cout<<"Complete dataset "<<allSet->GetName()<<" created"<<std::endl<<std::endl;
   std::cout<<"******************** "<<std::endl;
   std::cout<<" isWeighted =  " <<  allSet->isWeighted() <<std::endl;
+  std::cout<<" weight var =  " << weightvar << std::endl;
+  std::cout<<"allSet entries: "<<allSet->sumEntries()<<std::endl;
   std::cout<<"******************** "<<std::endl<<std::endl;
 
 
@@ -191,9 +390,9 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   // Plot kernel estimation pdfs with and without mirroring over data
   RooPlot* frame;
   if(isFPR)  
-    frame = combinedPfIsoFPR03Phot.frame(Title("Adaptive kernel estimation pdf with and w/o mirroring"),Bins(100)) ;
+    frame = combinedPfIsoFPR03Phot.frame(Title("Adaptive kernel estimation pdf with and w/o mirroring"),Bins(20)) ;
   else
-    frame = combinedPfIso03Phot.frame(Title("Adaptive kernel estimation pdf with and w/o mirroring"),Bins(100)) ;
+    frame = combinedPfIso03Phot.frame(Title("Adaptive kernel estimation pdf with and w/o mirroring"),Bins(20)) ;
 
   d_bkg->plotOn(frame) ;
   kest1->plotOn(frame) ;    
@@ -203,9 +402,9 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   // Plot kernel estimation pdfs with regular and increased bandwidth
   RooPlot* frame2;
   if(isFPR)  
-    frame2 = combinedPfIsoFPR03Phot.frame(Title("Adaptive kernel estimation pdf with regular, increased bandwidth"), Bins(100)) ;
+    frame2 = combinedPfIsoFPR03Phot.frame(Title("Adaptive kernel estimation pdf with regular, increased bandwidth"), Bins(20)) ;
   else
-    frame2 = combinedPfIso03Phot.frame(Title("Adaptive kernel estimation pdf with regular, increased bandwidth"), Bins(100)) ;
+    frame2 = combinedPfIso03Phot.frame(Title("Adaptive kernel estimation pdf with regular, increased bandwidth"), Bins(20)) ;
 
   d_bkg->plotOn(frame2) ;
   kest1->plotOn(frame2, LineColor(kBlue)) ;    
@@ -234,11 +433,11 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
 
   if(!binned) srcut.plotOn(frame_r, Cut("sample==sample::rcut"), Name("mc_rcut"));
   //if(binned)  srcut_h.plotOn(frame_r, Cut("sample==sample::rcut"), Name("mc_rcut"));
-  
+
   simPdf.plotOn(frame_r,Name("pdf_r"),LineColor(kCyan),Slice(sample,"rcut"),ProjWData(sample,srcut)) ;
   simPdf.plotOn(frame_r, RooFit::LineColor(kMagenta), Slice(sample,"rcut"), Components("my_cb_r"),ProjWData(sample,srcut));
   simPdf.plotOn(frame_r, RooFit::LineColor(kMagenta), Slice(sample,"rcut"), Components("my_gauss_r"),ProjWData(sample,srcut));
-  
+
   frame_s->SetMinimum(0.00001);
   frame_r->SetMinimum(0.00001);
   //  frame->SetMaximum(30000.);
@@ -291,5 +490,7 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   w_bg->Print();
 
   w_bg->writeToFile((outdir+"workspace_"+filename+".root").c_str());
+
+
   
 }
