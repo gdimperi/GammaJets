@@ -373,10 +373,9 @@ void calculate_weights(int hltCut, int isFPR){
   h_isoWeight2_EB->Write();
   h_isoWeight2_EE->Write();
   
- 
-
   
   TCanvas* c1 = new TCanvas("c1", "", 1);
+  TCanvas* c2 = new TCanvas("c2", "", 1);
   c1->cd();
   
   // some basic checks
@@ -392,7 +391,16 @@ void calculate_weights(int hltCut, int isFPR){
   leg2->Draw();
   c1->SaveAs((outputDir+"fotoniDiFondo_cheNONPassanoMVA_chePassanoMVA_"+s_hltcut+"_EB.png").c_str());
   c1->Clear();
-  
+
+  combPfIso03Phot_notMatched_notPassMVA_EE->SetLineColor(6);
+  combPfIso03Phot_notMatched_passMVA_EE->SetLineColor(3);
+  combPfIso03Phot_notMatched_passMVA_EE->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_notPassMVA_EE->DrawNormalized("histsame");
+  leg2->Draw();
+  c1->SaveAs((outputDir+"fotoniDiFondo_cheNONPassanoMVA_chePassanoMVA_"+s_hltcut+"_EE.png").c_str());
+  c1->Clear();
+
+
   combPfIso03Phot_notMatched_passMVA_EB->SetLineColor(4);
   combPfIso03Phot_matched_passMVA_EB->SetLineColor(2);
   TLegend* leg3=new TLegend(0.5,0.6,0.85, 0.8);
@@ -406,6 +414,14 @@ void calculate_weights(int hltCut, int isFPR){
   c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_chePassanoMVA_"+s_hltcut+"_EB.png").c_str());
   c1->Clear();
   
+  combPfIso03Phot_notMatched_passMVA_EE->SetLineColor(4);
+  combPfIso03Phot_matched_passMVA_EE->SetLineColor(2);
+  combPfIso03Phot_matched_passMVA_EE->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_passMVA_EE->DrawNormalized("histsame");
+  leg3->Draw();
+  c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_chePassanoMVA_"+s_hltcut+"_EE.png").c_str());
+  c1->Clear();
+
   combPfIso03Phot_notMatched_notPassMVA_EB->SetLineColor(4);
   combPfIso03Phot_matched_notPassMVA_EB->SetLineColor(2);
   TLegend* leg4=new TLegend(0.5,0.6,0.85, 0.8);
@@ -418,8 +434,30 @@ void calculate_weights(int hltCut, int isFPR){
   leg4->Draw();
   c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_cheNonPassanoMVA_"+s_hltcut+"_EB.png").c_str());
   c1->Clear();
+
+  combPfIso03Phot_notMatched_notPassMVA_EE->SetLineColor(4);
+  combPfIso03Phot_matched_notPassMVA_EE->SetLineColor(2);
+  combPfIso03Phot_matched_notPassMVA_EE->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_notPassMVA_EE->DrawNormalized("histsame");
+  leg4->Draw();
+  c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_cheNonPassanoMVA_"+s_hltcut+"_EE.png").c_str());
+  c1->Clear();
+
   
   c1->Close();
+
+  c2->cd();
+  
+  // some basic checks
+  combPfIso03Phot_notMatched_notPassMVA_EB->SetLineColor(6);
+  combPfIso03Phot_notMatched_passMVA_EB->SetLineColor(3);
+  combPfIso03Phot_notMatched_passMVA_EB->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_notPassMVA_EB->DrawNormalized("histsame");
+  leg2->Draw();
+  c2->SetLogy();
+  c2->SaveAs((outputDir+"fotoniDiFondo_cheNONPassanoMVA_chePassanoMVA_"+s_hltcut+"_EB_log.png").c_str());
+  c2->Write();
+  c2->Close();
 
   outputFile->Close();
 

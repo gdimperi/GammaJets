@@ -23,8 +23,10 @@ using namespace std;
 
 void closurePlot_dataAndMc(int hlt){
 
-  string workDir = "histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
-  string workDirFPR = "histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/";
+  string inputDir = "histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
+
+  string workDir = "histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin_perHLT/";
+  string workDirFPR = "histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin_perHLT/";
 
   // mc 
   TChain mcChain("myTrees_withWeight");
@@ -36,34 +38,34 @@ void closurePlot_dataAndMc(int hlt){
   //dataChain.Add("outputWithWeight__data2012__HLT135.root");     
 
   if(hlt==30){
-    mcChain.Add((workDir+"gjTrees_withWeights_hlt30.root").c_str());
-    mcChain.Add((workDir+"qcdTrees_withWeights_hlt30.root").c_str());
-    dataChain.Add((workDir+"data2012ABCD_withWeights_hlt30.root").c_str());
+    mcChain.Add((inputDir+"gjTrees_withWeights_hlt30.root").c_str());
+    mcChain.Add((inputDir+"qcdTrees_withWeights_hlt30.root").c_str());
+    dataChain.Add((inputDir+"data2012ABCD_withWeights_hlt30.root").c_str());
   }
   if(hlt==50){
-    mcChain.Add((workDir+"gjTrees_withWeights_hlt50.root").c_str());
-    mcChain.Add((workDir+"qcdTrees_withWeights_hlt50.root").c_str());
-    dataChain.Add((workDir+"data2012ABCD_withWeights_hlt50.root").c_str());
+    mcChain.Add((inputDir+"gjTrees_withWeights_hlt50.root").c_str());
+    mcChain.Add((inputDir+"qcdTrees_withWeights_hlt50.root").c_str());
+    dataChain.Add((inputDir+"data2012ABCD_withWeights_hlt50.root").c_str());
   }
   if(hlt==75){
-    mcChain.Add((workDir+"gjTrees_withWeights_hlt75.root").c_str());
-    mcChain.Add((workDir+"qcdTrees_withWeights_hlt75.root").c_str());
-    dataChain.Add((workDir+"data2012ABCD_withWeights_hlt75.root").c_str());
+    mcChain.Add((inputDir+"gjTrees_withWeights_hlt75.root").c_str());
+    mcChain.Add((inputDir+"qcdTrees_withWeights_hlt75.root").c_str());
+    dataChain.Add((inputDir+"data2012ABCD_withWeights_hlt75.root").c_str());
   }
   if(hlt==90){
-    mcChain.Add((workDir+"gjTrees_withWeights_hlt90.root").c_str());
-    mcChain.Add((workDir+"qcdTrees_withWeights_hlt90.root").c_str());
-    dataChain.Add((workDir+"data2012ABCD_withWeights_hlt90.root").c_str());
+    mcChain.Add((inputDir+"gjTrees_withWeights_hlt90.root").c_str());
+    mcChain.Add((inputDir+"qcdTrees_withWeights_hlt90.root").c_str());
+    dataChain.Add((inputDir+"data2012ABCD_withWeights_hlt90.root").c_str());
   }
   if(hlt==135){
-    mcChain.Add((workDir+"gjTrees_withWeights_hlt135.root").c_str());
-    mcChain.Add((workDir+"qcdTrees_withWeights_hlt135.root").c_str());
-    dataChain.Add((workDir+"data2012ABCD_withWeights_hlt135.root").c_str());
+    mcChain.Add((inputDir+"gjTrees_withWeights_hlt135.root").c_str());
+    mcChain.Add((inputDir+"qcdTrees_withWeights_hlt135.root").c_str());
+    dataChain.Add((inputDir+"data2012ABCD_withWeights_hlt135.root").c_str());
   }
   if(hlt==150){
-    mcChain.Add((workDir+"gjTrees_withWeights_hlt150.root").c_str());
-    mcChain.Add((workDir+"qcdTrees_withWeights_hlt150.root").c_str());
-    dataChain.Add((workDir+"data2012ABCD_withWeights_hlt150.root").c_str());
+    mcChain.Add((inputDir+"gjTrees_withWeights_hlt150.root").c_str());
+    mcChain.Add((inputDir+"qcdTrees_withWeights_hlt150.root").c_str());
+    dataChain.Add((inputDir+"data2012ABCD_withWeights_hlt150.root").c_str());
   }
 
 
