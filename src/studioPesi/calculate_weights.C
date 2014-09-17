@@ -8,508 +8,457 @@
 
 #include "iostream"
 
-void calculate_weights(){
+void calculate_weights(int hltCut, int isFPR){
 
   gStyle->SetOptStat(0);
 
   // input: v6
   TChain mc("finalTree");
-  mc.Add("/cmsrm/pc24/crovelli/GammaJets/ridottissime/G_Pt*root");
-  mc.Add("/cmsrm/pc24/crovelli/GammaJets/ridottissime/QCDEM*root");
+  TChain data("finalTree");
+
+  //string inputDir = "/cmsrm/pc24/gdimperi/GammaJets/ridottissime_isoPF03_5/";
+  string inputDir = "/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_isoPF03_5/";
+  string s_hltcut;
+
+  //hight pt bins exlcluded
+  if (hltCut==30) {
+    //mc.Add((inputDir+"HLT30/G_Pt*root");
+    s_hltcut="hlt30";
+    mc.Add((inputDir+"HLT30/G_Pt-120to170_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-15to30_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-170to300_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-300to470_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-30to50_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-50to80_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/G_Pt-80to120_8TeV_pythia6_hltcut30_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT30/QCDEM*root").c_str());
+    
+    data.Add((inputDir+"HLT30/*2012A*root").c_str());
+    data.Add((inputDir+"HLT30/*2012B*root").c_str());
+    data.Add((inputDir+"HLT30/*2012C*root").c_str());
+    data.Add((inputDir+"HLT30/*2012D*root").c_str());
+    
+  } else if (hltCut==50) {
+    s_hltcut="hlt50"; 
+   //mc.Add((inputDir+"HLT50/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-120to170_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-15to30_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-170to300_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-300to470_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-30to50_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-50to80_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/G_Pt-80to120_8TeV_pythia6_hltcut50_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT50/QCDEM*root").c_str());
+
+    data.Add((inputDir+"HLT50/*2012A*root").c_str());
+    data.Add((inputDir+"HLT50/*2012B*root").c_str());
+    data.Add((inputDir+"HLT50/*2012C*root").c_str());
+    data.Add((inputDir+"HLT50/*2012D*root").c_str());
+
+  } else if (hltCut==75) {
+    s_hltcut="hlt75";
+    //mc.Add((inputDir+"HLT75/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-120to170_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-15to30_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-170to300_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-300to470_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-30to50_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-50to80_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/G_Pt-80to120_8TeV_pythia6_hltcut75_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT75/QCDEM*root").c_str());
+
+    data.Add((inputDir+"HLT75/*2012A*root").c_str());
+    data.Add((inputDir+"HLT75/*2012B*root").c_str());
+    data.Add((inputDir+"HLT75/*2012C*root").c_str());
+    data.Add((inputDir+"HLT75/*2012D*root").c_str());
+
+  } else if (hltCut==90) {
+    s_hltcut="hlt90";
+    //mc.Add((inputDir+"HLT90/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-120to170_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-15to30_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-170to300_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-300to470_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-30to50_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-50to80_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/G_Pt-80to120_8TeV_pythia6_hltcut90_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT90/QCDEM*root").c_str());
+
+    data.Add((inputDir+"HLT90/*2012A*root").c_str());
+    data.Add((inputDir+"HLT90/*2012B*root").c_str());
+    data.Add((inputDir+"HLT90/*2012C*root").c_str());
+    data.Add((inputDir+"HLT90/*2012D*root").c_str());
+
+  } else if (hltCut==135) {
+    s_hltcut="hlt135";
+    //mc.Add((inputDir+"HLT135/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-120to170_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-15to30_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-170to300_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-300to470_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-30to50_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-50to80_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/G_Pt-80to120_8TeV_pythia6_hltcut135_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT135/QCDEM*root").c_str());
+
+    data.Add((inputDir+"HLT135/*2012A*root").c_str());
+    data.Add((inputDir+"HLT135/*2012B*root").c_str());
+    data.Add((inputDir+"HLT135/*2012C*root").c_str());
+    data.Add((inputDir+"HLT135/*2012D*root").c_str());
+    
+  } else if (hltCut==150) {
+    s_hltcut="hlt150";
+    //mc.Add((inputDir+"HLT150/G_Pt*root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-120to170_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-15to30_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-170to300_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-300to470_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-30to50_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-50to80_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/G_Pt-80to120_8TeV_pythia6_hltcut150_hltiso0_mvaWP4.root").c_str());
+    mc.Add((inputDir+"HLT150/QCDEM*root").c_str());
+    
+    data.Add((inputDir+"HLT150/*2012A*root").c_str());
+    data.Add((inputDir+"HLT150/*2012B*root").c_str());
+    data.Add((inputDir+"HLT150/*2012C*root").c_str());
+    data.Add((inputDir+"HLT150/*2012D*root").c_str());
+
+  } 
 
   // output
-  std::string outputDir = "histo_v6/genIso/isoWeight/";
-  TFile* outputFile = new TFile((outputDir+"isoWeights.root").c_str(), "RECREATE");
-  outputFile->cd();
-
-  // histos
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EB    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EB"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EB = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EB", "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EE    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EE"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EE = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EE", "", 60, -5., 15.);
-
-  TH1F* combPfIsoFPR03Phot_matched_passMVA_EB    = new TH1F("combPfIsoFPR03Phot_matched_passMVA_EB"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_matched_notPassMVA_EB = new TH1F("combPfIsoFPR03Phot_matched_notPassMVA_EB", "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_matched_passMVA_EE    = new TH1F("combPfIsoFPR03Phot_matched_passMVA_EE"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_matched_notPassMVA_EE = new TH1F("combPfIsoFPR03Phot_matched_notPassMVA_EE", "", 60, -5., 15.);
-
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EB_pt40_65    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EB_pt40_65"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt40_65 = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt40_65", "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EE_pt40_65    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EE_pt40_65"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt40_65 = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt40_65", "", 60, -5., 15.);
-									   
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EB_pt65_90    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EB_pt65_90"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt65_90 = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt65_90", "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EE_pt65_90    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EE_pt65_90"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt65_90 = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt65_90", "", 60, -5., 15.);
-									   
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EB_pt90_105    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EB_pt90_105"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt90_105 = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt90_105", "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EE_pt90_105    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EE_pt90_105"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt90_105 = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt90_105", "", 60, -5., 15.);
-									   
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EB_pt105    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EB_pt105"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt105 = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt105", "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_passMVA_EE_pt105    = new TH1F("combPfIsoFPR03Phot_notMatched_passMVA_EE_pt105"   , "", 60, -5., 15.);
-  TH1F* combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt105 = new TH1F("combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt105", "", 60, -5., 15.);
-
-  // errors
-  combPfIsoFPR03Phot_notMatched_passMVA_EB    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE -> Sumw2();
-
-  combPfIsoFPR03Phot_matched_passMVA_EB    -> Sumw2();
-  combPfIsoFPR03Phot_matched_notPassMVA_EB -> Sumw2();
-  combPfIsoFPR03Phot_matched_passMVA_EE    -> Sumw2();
-  combPfIsoFPR03Phot_matched_notPassMVA_EE -> Sumw2();
-
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt40_65    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt40_65 -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt40_65    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt40_65 -> Sumw2();
+  std::string outputDir;
+  if (isFPR) outputDir = "histo_v6/genIso4/isoWeight/tightPresel2/weightsFPR_rebin/";
+  else outputDir = "histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
+  TFile* outputFile = new TFile((outputDir+"isoWeights_"+s_hltcut+".root").c_str(), "RECREATE");
   
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt65_90    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt65_90 -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt65_90    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt65_90 -> Sumw2();
-  
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt90_105    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt90_105 -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt90_105    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt90_105 -> Sumw2();
-  
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt105    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt105 -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt105    -> Sumw2();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt105 -> Sumw2();
 
   // WP95
   std::string passMVA_EB, notPassMVA_EB, passMVA_EE, notPassMVA_EE;
-  passMVA_EB    = "(weight>0 && weight<15000) && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.766479)";
-  notPassMVA_EB = "(weight>0 && weight<15000) && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-1. && mvaIdPhot<0.766479)";
-  passMVA_EE    = "(weight>0 && weight<15000) && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.601807)";
-  notPassMVA_EE = "(weight>0 && weight<15000) && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-1. && mvaIdPhot<0.601807)";
+  passMVA_EB    = "(weight>0 && weight<15000) && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot<1. && mvaIdPhot>0.83548)";
+  notPassMVA_EB = "(weight>0 && weight<15000) && (TMath::Abs(etaPhot)<1.4442) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6)";
+  passMVA_EE    = "(weight>0 && weight<15000) && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot<1. && mvaIdPhot>0.87382)";
+  notPassMVA_EE = "(weight>0 && weight<15000) && (TMath::Abs(etaPhot)>1.479 && TMath::Abs(etaPhot)<2.5) && (mvaIdPhot>-0.6 && mvaIdPhot<0.6)";
+    
+    //ptCut
+  string ptCut;
+  if(hltCut==30) ptCut = "(ptPhot>40. && ptPhot<65.)";
+  if(hltCut==50) ptCut = "(ptPhot>65. && ptPhot<90.)";
+  if(hltCut==75) ptCut = "(ptPhot>90. && ptPhot<105.)";
+  if(hltCut==90) ptCut = "(ptPhot>105. && ptPhot<165.)";
+  if(hltCut==135) ptCut = "(ptPhot>165. && ptPhot<180.)";
+  if(hltCut==150) ptCut = "(ptPhot>180. && ptPhot<200000.)";
 
-  // inclusive
-  cout << "now projecting inclusive" << endl;
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EB",    "combinedPfIsoFPR03Phot", ("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EB+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EB+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EE",    "combinedPfIsoFPR03Phot", ("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EE+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EE+")*weight").c_str());
+  TH1F* h_isoWeight_EB;
+  TH1F* h_isoWeight_EE;
 
-  cout << "now projecting inclusive signal gammas" << endl;
-  mc.Project("combPfIsoFPR03Phot_matched_passMVA_EB",    "combinedPfIsoFPR03Phot", ("((isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EB+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_matched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("((isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EB+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_matched_passMVA_EE",    "combinedPfIsoFPR03Phot", ("((isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EE+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_matched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("((isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EE+")*weight").c_str());
-	   
-  // pt40_65
-  cout << "now projecting 40-65" << endl;
-  std::string pt = "(ptPhot>40. && ptPhot<65.)"; 
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EB_pt40_65",   "combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EB+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt40_65","combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EB+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EE_pt40_65",   "combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EE+" && " +pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt40_65","combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EE+" && "+pt+")*weight").c_str());
-	  
-  //pt65_90
-  cout << "now projecting 65-90" << endl;
-  pt = "(ptPhot>65. && ptPhot<90.)"; 
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EB_pt65_90",   "combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EB+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt65_90","combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EB+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EE_pt65_90",   "combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EE+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt65_90","combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EE+" && "+pt+")*weight").c_str());
-	  
-  //pt90_105
-  cout << "now projecting 90-105" << endl;
-  pt = "(ptPhot>90. && ptPhot<105.)"; 
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EB_pt90_105",   "combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EB+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt90_105","combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EB+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EE_pt90_105",   "combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EE+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt90_105","combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EE+" && "+pt+")*weight").c_str());
+  //w1 and w2 (for systematics) 
+  TH1F* h_syst_EB;
+  TH1F* h_syst_EE;
+  TH1F* h_isoWeight1_EB;
+  TH1F* h_isoWeight1_EE;
+  TH1F* h_isoWeight2_EB;
+  TH1F* h_isoWeight2_EE;
 
-  //pt105
-  cout << "now projecting 105" << endl;
-  pt = "(ptPhot>105.)"; 
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EB_pt105",   "combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EB+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt105","combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EB+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_passMVA_EE_pt105",   "combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+passMVA_EE+" && "+pt+")*weight").c_str());
-  mc.Project("combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt105","combinedPfIsoFPR03Phot",("(!(isMatchedPhot && iso03_gen<1.7175) && "+notPassMVA_EE+" && "+pt+")*weight").c_str());
+  // histos
+  TH1F* combPfIso03Phot_notMatched_passMVA_EB    = new TH1F("combPfIso03Phot_notMatched_passMVA_EB"   , "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_notMatched_notPassMVA_EB = new TH1F("combPfIso03Phot_notMatched_notPassMVA_EB", "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_notMatched_passMVA_EE    = new TH1F("combPfIso03Phot_notMatched_passMVA_EE"   , "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_notMatched_notPassMVA_EE = new TH1F("combPfIso03Phot_notMatched_notPassMVA_EE", "", 60, -5., 15.);
+  
+  TH1F* combPfIso03Phot_matched_passMVA_EB    = new TH1F("combPfIso03Phot_matched_passMVA_EB"   , "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_matched_notPassMVA_EB = new TH1F("combPfIso03Phot_matched_notPassMVA_EB", "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_matched_passMVA_EE    = new TH1F("combPfIso03Phot_matched_passMVA_EE"   , "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_matched_notPassMVA_EE = new TH1F("combPfIso03Phot_matched_notPassMVA_EE", "", 60, -5., 15.);
+  
+  TH1F* combPfIso03Phot_data_passMVA_EB    = new TH1F("combPfIso03Phot_data_passMVA_EB"   , "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_data_notPassMVA_EB = new TH1F("combPfIso03Phot_data_notPassMVA_EB", "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_data_passMVA_EE    = new TH1F("combPfIso03Phot_data_passMVA_EE"   , "", 60, -5., 15.);
+  TH1F* combPfIso03Phot_data_notPassMVA_EE = new TH1F("combPfIso03Phot_data_notPassMVA_EE", "", 60, -5., 15.);
+  
+  // errors
+  combPfIso03Phot_notMatched_passMVA_EB    -> Sumw2();
+  combPfIso03Phot_notMatched_notPassMVA_EB -> Sumw2();
+  combPfIso03Phot_notMatched_passMVA_EE    -> Sumw2();
+  combPfIso03Phot_notMatched_notPassMVA_EE -> Sumw2();
+  
+  combPfIso03Phot_matched_passMVA_EB    -> Sumw2();
+  combPfIso03Phot_matched_notPassMVA_EB -> Sumw2();
+  combPfIso03Phot_matched_passMVA_EE    -> Sumw2();
+  combPfIso03Phot_matched_notPassMVA_EE -> Sumw2();
+  
+  combPfIso03Phot_data_passMVA_EB    -> Sumw2();
+  combPfIso03Phot_data_notPassMVA_EB -> Sumw2();
+  combPfIso03Phot_data_passMVA_EE    -> Sumw2();
+  combPfIso03Phot_data_notPassMVA_EE -> Sumw2();
+  
+  outputFile->cd();
+  if (!isFPR){
 
-  cout << "done with the projections" << endl;
+    //################################################
+    //#                                              #   
+    //#               non FPR                        #
+    //#                                              #
+    //################################################    
+    
+    cout << "now projecting fake photons for" << s_hltcut << endl;
+    mc.Project("combPfIso03Phot_notMatched_passMVA_EB",    "combinedPfIso03Phot", ("("+ptCut+" && !isIsolatedGenPhot && "+passMVA_EB+")*weight").c_str());
+    mc.Project("combPfIso03Phot_notMatched_notPassMVA_EB", "combinedPfIso03Phot", ("("+ptCut+" && !isIsolatedGenPhot && "+notPassMVA_EB+")*weight").c_str());
+    mc.Project("combPfIso03Phot_notMatched_passMVA_EE",    "combinedPfIso03Phot", ("("+ptCut+" && !isIsolatedGenPhot && "+passMVA_EE+")*weight").c_str());
+    mc.Project("combPfIso03Phot_notMatched_notPassMVA_EE", "combinedPfIso03Phot", ("("+ptCut+" && !isIsolatedGenPhot && "+notPassMVA_EE+")*weight").c_str());
+    
+    cout << "now projecting inclusive signal gammas for " << s_hltcut << endl;
+    mc.Project("combPfIso03Phot_matched_passMVA_EB",    "combinedPfIso03Phot", ("("+ptCut+" && isIsolatedGenPhot && "+passMVA_EB+")*weight").c_str());
+    mc.Project("combPfIso03Phot_matched_notPassMVA_EB", "combinedPfIso03Phot", ("("+ptCut+" && isIsolatedGenPhot && "+notPassMVA_EB+")*weight").c_str());
+    mc.Project("combPfIso03Phot_matched_passMVA_EE",    "combinedPfIso03Phot", ("("+ptCut+" && isIsolatedGenPhot && "+passMVA_EE+")*weight").c_str());
+    mc.Project("combPfIso03Phot_matched_notPassMVA_EE", "combinedPfIso03Phot", ("("+ptCut+" && isIsolatedGenPhot && "+notPassMVA_EE+")*weight").c_str());
+    
+    cout << "now projecting data for " << s_hltcut << endl;
+    data.Project("combPfIso03Phot_data_passMVA_EB",    "combinedPfIso03Phot", ("("+ptCut+"  && "+passMVA_EB+")*weight").c_str());
+    data.Project("combPfIso03Phot_data_notPassMVA_EB", "combinedPfIso03Phot", ("("+ptCut+"  && "+notPassMVA_EB+")*weight").c_str());
+    data.Project("combPfIso03Phot_data_passMVA_EE",    "combinedPfIso03Phot", ("("+ptCut+"  && "+passMVA_EE+")*weight").c_str());
+    data.Project("combPfIso03Phot_data_notPassMVA_EE", "combinedPfIso03Phot", ("("+ptCut+"  && "+notPassMVA_EE+")*weight").c_str());
+    
+    cout << "done with the projections" << endl;
+  }
+  else{
+    
+    //################################################
+    //#                                              #   
+    //#                    FPR                       #
+    //#                                              #
+    //################################################    
+        
+    cout << "now projecting fake photons for " << s_hltcut << endl;
+    mc.Project("combPfIso03Phot_notMatched_passMVA_EB",    "combinedPfIsoFPR03Phot", ("("+ptCut+" && !isIsolatedGenPhot && "+passMVA_EB+")*weight").c_str());
+    mc.Project("combPfIso03Phot_notMatched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+ptCut+" && !isIsolatedGenPhot && "+notPassMVA_EB+")*weight").c_str());
+    mc.Project("combPfIso03Phot_notMatched_passMVA_EE",    "combinedPfIsoFPR03Phot", ("("+ptCut+" && !isIsolatedGenPhot && "+passMVA_EE+")*weight").c_str());
+    mc.Project("combPfIso03Phot_notMatched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+ptCut+" && !isIsolatedGenPhot && "+notPassMVA_EE+")*weight").c_str());
+    
+    cout << "now projecting inclusive signal gammas for " << s_hltcut << endl;
+    mc.Project("combPfIso03Phot_matched_passMVA_EB",    "combinedPfIsoFPR03Phot", ("("+ptCut+" && isIsolatedGenPhot && "+passMVA_EB+")*weight").c_str());
+    mc.Project("combPfIso03Phot_matched_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+ptCut+" && isIsolatedGenPhot && "+notPassMVA_EB+")*weight").c_str());
+    mc.Project("combPfIso03Phot_matched_passMVA_EE",    "combinedPfIsoFPR03Phot", ("("+ptCut+" && isIsolatedGenPhot && "+passMVA_EE+")*weight").c_str());
+    mc.Project("combPfIso03Phot_matched_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+ptCut+" && isIsolatedGenPhot && "+notPassMVA_EE+")*weight").c_str());
+    
+    cout << "now projecting data for " << s_hltcut << endl;
+    data.Project("combPfIso03Phot_data_passMVA_EB",    "combinedPfIsoFPR03Phot", ("("+ptCut+"  && "+passMVA_EB+")*weight").c_str());
+    data.Project("combPfIso03Phot_data_notPassMVA_EB", "combinedPfIsoFPR03Phot", ("("+ptCut+"  && "+notPassMVA_EB+")*weight").c_str());
+    data.Project("combPfIso03Phot_data_passMVA_EE",    "combinedPfIsoFPR03Phot", ("("+ptCut+"  && "+passMVA_EE+")*weight").c_str());
+    data.Project("combPfIso03Phot_data_notPassMVA_EE", "combinedPfIsoFPR03Phot", ("("+ptCut+"  && "+notPassMVA_EE+")*weight").c_str());
+    
+    cout << "done with the projections" << endl;
 
+
+  }
+
+    
   // normalize histos
   float integral;
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EB	->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EB		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EB->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EE	->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EE->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE		->Scale(1./integral);
-
-  integral = combPfIsoFPR03Phot_matched_passMVA_EB    ->Integral();
-  combPfIsoFPR03Phot_matched_passMVA_EB		      ->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_matched_notPassMVA_EB ->Integral();
-  combPfIsoFPR03Phot_matched_notPassMVA_EB	      ->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_matched_passMVA_EE    ->Integral();
-  combPfIsoFPR03Phot_matched_passMVA_EE		      ->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_matched_notPassMVA_EE ->Integral();
-  combPfIsoFPR03Phot_matched_notPassMVA_EE	      ->Scale(1./integral);
-
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EB_pt40_65	->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt40_65		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt40_65->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt40_65		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EE_pt40_65	->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt40_65		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt40_65->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt40_65		->Scale(1./integral);
-
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EB_pt65_90	->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt65_90		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt65_90->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt65_90		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EE_pt65_90	->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt65_90		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt65_90->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt65_90		->Scale(1./integral);
-
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EB_pt90_105	 ->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt90_105		 ->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt90_105->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt90_105		 ->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EE_pt90_105	 ->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt90_105		 ->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt90_105->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt90_105		 ->Scale(1./integral);
-
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EB_pt105	->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt105		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt105	->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt105		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_passMVA_EE_pt105	->Integral();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt105		->Scale(1./integral);
-  integral = combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt105	->Integral();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt105		->Scale(1./integral);
-
+  
+  integral = combPfIso03Phot_notMatched_passMVA_EB			->Integral();
+  combPfIso03Phot_notMatched_passMVA_EB					->Scale(1./integral);
+  integral = combPfIso03Phot_notMatched_notPassMVA_EB			->Integral();
+  combPfIso03Phot_notMatched_notPassMVA_EB				->Scale(1./integral);
+  integral = combPfIso03Phot_notMatched_passMVA_EE			->Integral();
+  combPfIso03Phot_notMatched_passMVA_EE					->Scale(1./integral);
+  integral = combPfIso03Phot_notMatched_notPassMVA_EE			->Integral();
+  combPfIso03Phot_notMatched_notPassMVA_EE				->Scale(1./integral);
+  
+  integral = combPfIso03Phot_matched_passMVA_EB    			->Integral();
+  combPfIso03Phot_matched_passMVA_EB		      			->Scale(1./integral);
+  integral = combPfIso03Phot_matched_notPassMVA_EB 			->Integral();
+  combPfIso03Phot_matched_notPassMVA_EB	      				->Scale(1./integral);
+  integral = combPfIso03Phot_matched_passMVA_EE    			->Integral();
+  combPfIso03Phot_matched_passMVA_EE		      			->Scale(1./integral);
+  integral = combPfIso03Phot_matched_notPassMVA_EE 			->Integral();
+  combPfIso03Phot_matched_notPassMVA_EE	      				->Scale(1./integral);
+  
+  integral = combPfIso03Phot_data_passMVA_EB    			->Integral();
+  combPfIso03Phot_data_passMVA_EB		      			->Scale(1./integral);
+  integral = combPfIso03Phot_data_notPassMVA_EB 			->Integral();
+  combPfIso03Phot_data_notPassMVA_EB	      				->Scale(1./integral);
+  integral = combPfIso03Phot_data_passMVA_EE    			->Integral();
+  combPfIso03Phot_data_passMVA_EE		      			->Scale(1./integral);
+  integral = combPfIso03Phot_data_notPassMVA_EE 			->Integral();
+  combPfIso03Phot_data_notPassMVA_EE	      				->Scale(1./integral);
+  
+  //rebin
+  combPfIso03Phot_matched_passMVA_EB					->Rebin(3);	  
+  combPfIso03Phot_matched_notPassMVA_EB					->Rebin(3);	  
+  combPfIso03Phot_matched_passMVA_EE					->Rebin(3);	  
+  combPfIso03Phot_matched_notPassMVA_EE					->Rebin(3);	  
+  
+  combPfIso03Phot_notMatched_passMVA_EB					->Rebin(3);	  
+  combPfIso03Phot_notMatched_notPassMVA_EB				->Rebin(3);
+  combPfIso03Phot_notMatched_passMVA_EE					->Rebin(3);	  
+  combPfIso03Phot_notMatched_notPassMVA_EE				->Rebin(3);
+  
+  combPfIso03Phot_data_passMVA_EB					->Rebin(3);   
+  combPfIso03Phot_data_notPassMVA_EB					->Rebin(3);
+  combPfIso03Phot_data_passMVA_EE					->Rebin(3);   
+  combPfIso03Phot_data_notPassMVA_EE					->Rebin(3);
+  
+  
+  //   //smoothing
+  //   combPfIso03Phot_matched_passMVA_EB					->Smooth();	  
+  //   combPfIso03Phot_matched_notPassMVA_EB					->Smooth();	  
+  //   combPfIso03Phot_matched_passMVA_EE					->Smooth();	  
+  //   combPfIso03Phot_matched_notPassMVA_EE					->Smooth();	  
+  
+  //   combPfIso03Phot_notMatched_passMVA_EB					->Smooth();	  
+  //   combPfIso03Phot_notMatched_notPassMVA_EB				->Smooth();
+  //   combPfIso03Phot_notMatched_passMVA_EE					->Smooth();	  
+  //   combPfIso03Phot_notMatched_notPassMVA_EE				->Smooth();
+  
+  //   combPfIso03Phot_data_passMVA_EB					->Smooth();   
+  //   combPfIso03Phot_data_notPassMVA_EB					->Smooth();
+  //   combPfIso03Phot_data_passMVA_EE					->Smooth();   
+  //   combPfIso03Phot_data_notPassMVA_EE					->Smooth();
+  
+  
   // saving in the output file
-  combPfIsoFPR03Phot_notMatched_passMVA_EB	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB	->Write();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE	->Write();
+  combPfIso03Phot_notMatched_passMVA_EB	->Write();
+  combPfIso03Phot_notMatched_notPassMVA_EB	->Write();
+  combPfIso03Phot_notMatched_passMVA_EE	->Write();
+  combPfIso03Phot_notMatched_notPassMVA_EE	->Write();
+  
+  combPfIso03Phot_matched_passMVA_EB    ->Write();
+  combPfIso03Phot_matched_notPassMVA_EB ->Write();
+  combPfIso03Phot_matched_passMVA_EE	   ->Write();
+  combPfIso03Phot_matched_notPassMVA_EE ->Write();
 
-  combPfIsoFPR03Phot_matched_passMVA_EB    ->Write();
-  combPfIsoFPR03Phot_matched_notPassMVA_EB ->Write();
-  combPfIsoFPR03Phot_matched_passMVA_EE	   ->Write();
-  combPfIsoFPR03Phot_matched_notPassMVA_EE ->Write();
-
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt40_65	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt40_65	->Write();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt40_65	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt40_65	->Write();
-
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt65_90	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt65_90	->Write();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt65_90	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt65_90	->Write();
-
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt90_105	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt90_105	->Write();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt90_105	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt90_105	->Write();
-
-  combPfIsoFPR03Phot_notMatched_passMVA_EB_pt105	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt105	->Write();
-  combPfIsoFPR03Phot_notMatched_passMVA_EE_pt105	->Write();
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt105	->Write();
+  combPfIso03Phot_data_passMVA_EB    ->Write();
+  combPfIso03Phot_data_notPassMVA_EB ->Write();
+  combPfIso03Phot_data_passMVA_EE	   ->Write();
+  combPfIso03Phot_data_notPassMVA_EE ->Write();  
 
   cout << "done with first step. Moving to the weights" << endl;
-
+  
   // now computing the weights
-  TH1F* h_isoWeight_EB = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EB->Clone("h_isoWeight_EB");
-  h_isoWeight_EB->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EB);
-  TH1F* h_isoWeight_EE = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EE->Clone("h_isoWeight_EE");
-  h_isoWeight_EE->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EE);
-
-  TH1F* h_isoWeight_EB_pt40_65 = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EB_pt40_65->Clone("h_isoWeight_EB_pt40_65");
-  h_isoWeight_EB_pt40_65->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt40_65);
-  TH1F* h_isoWeight_EE_pt40_65 = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EE_pt40_65->Clone("h_isoWeight_EE_pt40_65");
-  h_isoWeight_EE_pt40_65->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt40_65);
-
-  TH1F* h_isoWeight_EB_pt65_90 = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EB_pt65_90->Clone("h_isoWeight_EB_pt65_90");
-  h_isoWeight_EB_pt65_90->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt65_90);
-  TH1F* h_isoWeight_EE_pt65_90 = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EE_pt65_90->Clone("h_isoWeight_EE_pt65_90");
-  h_isoWeight_EE_pt65_90->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt65_90);
-
-  TH1F* h_isoWeight_EB_pt90_105 = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EB_pt90_105->Clone("h_isoWeight_EB_pt90_105");
-  h_isoWeight_EB_pt90_105->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt90_105);
-  TH1F* h_isoWeight_EE_pt90_105 = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EE_pt90_105->Clone("h_isoWeight_EE_pt90_105");
-  h_isoWeight_EE_pt90_105->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt90_105);
-
-  TH1F* h_isoWeight_EB_pt105 = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EB_pt105->Clone("h_isoWeight_EB_pt105");
-  h_isoWeight_EB_pt105->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EB_pt105);
-  TH1F* h_isoWeight_EE_pt105 = (TH1F*)combPfIsoFPR03Phot_notMatched_passMVA_EE_pt105->Clone("h_isoWeight_EE_pt105");
-  h_isoWeight_EE_pt105->Divide(combPfIsoFPR03Phot_notMatched_notPassMVA_EE_pt105);
-
-  // weights histos
-  h_isoWeight_EB->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EE->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EB->GetYaxis()->SetTitle("weight");
-  h_isoWeight_EE->GetYaxis()->SetTitle("weight");
-
-  h_isoWeight_EB->SetMarkerSize(0.8);
-  h_isoWeight_EE->SetMarkerSize(0.8);
-  h_isoWeight_EB->SetMarkerSize(0.8);
-  h_isoWeight_EE->SetMarkerSize(0.8);
-
-  h_isoWeight_EB->SetLineWidth(1);
-  h_isoWeight_EE->SetLineWidth(1);
-  h_isoWeight_EB->SetLineWidth(1);
-  h_isoWeight_EE->SetLineWidth(1);
-
-  h_isoWeight_EB->GetYaxis()->SetRangeUser(-0.5,5.);
-  h_isoWeight_EE->GetYaxis()->SetRangeUser(-0.5,5.);
   
-  //pt40_65
-  h_isoWeight_EB_pt40_65->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EE_pt40_65->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EB_pt40_65->GetYaxis()->SetTitle("weight");
-  h_isoWeight_EE_pt40_65->GetYaxis()->SetTitle("weight");
-
-  h_isoWeight_EB_pt40_65->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt40_65->SetMarkerSize(0.8);
-  h_isoWeight_EB_pt40_65->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt40_65->SetMarkerSize(0.8);
-
-  h_isoWeight_EB_pt40_65->SetLineWidth(1);
-  h_isoWeight_EE_pt40_65->SetLineWidth(1);
-  h_isoWeight_EB_pt40_65->SetLineWidth(1);
-  h_isoWeight_EE_pt40_65->SetLineWidth(1);
-
-  h_isoWeight_EB_pt40_65->GetYaxis()->SetRangeUser(-0.5,5.);
-  h_isoWeight_EE_pt40_65->GetYaxis()->SetRangeUser(-0.5,5.);
-
-  //pt65_90
-  h_isoWeight_EB_pt65_90->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EE_pt65_90->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EB_pt65_90->GetYaxis()->SetTitle("weight");
-  h_isoWeight_EE_pt65_90->GetYaxis()->SetTitle("weight");
-
-  h_isoWeight_EB_pt65_90->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt65_90->SetMarkerSize(0.8);
-  h_isoWeight_EB_pt65_90->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt65_90->SetMarkerSize(0.8);
-
-  h_isoWeight_EB_pt65_90->SetLineWidth(1);
-  h_isoWeight_EE_pt65_90->SetLineWidth(1);
-  h_isoWeight_EB_pt65_90->SetLineWidth(1);
-  h_isoWeight_EE_pt65_90->SetLineWidth(1);
-
-  h_isoWeight_EB_pt65_90->GetYaxis()->SetRangeUser(-0.5,5.);
-  h_isoWeight_EE_pt65_90->GetYaxis()->SetRangeUser(-0.5,5.);
-
-  //pt90_105
-  h_isoWeight_EB_pt90_105->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EE_pt90_105->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EB_pt90_105->GetYaxis()->SetTitle("weight");
-  h_isoWeight_EE_pt90_105->GetYaxis()->SetTitle("weight");
-
-  h_isoWeight_EB_pt90_105->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt90_105->SetMarkerSize(0.8);
-  h_isoWeight_EB_pt90_105->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt90_105->SetMarkerSize(0.8);
-
-  h_isoWeight_EB_pt90_105->SetLineWidth(1);
-  h_isoWeight_EE_pt90_105->SetLineWidth(1);
-  h_isoWeight_EB_pt90_105->SetLineWidth(1);
-  h_isoWeight_EE_pt90_105->SetLineWidth(1);
-
-  h_isoWeight_EB_pt90_105->GetYaxis()->SetRangeUser(-0.5,5.);
-  h_isoWeight_EE_pt90_105->GetYaxis()->SetRangeUser(-0.5,5.);
-
-  //pt105
-  h_isoWeight_EB_pt105->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EE_pt105->GetXaxis()->SetTitle("combinedPfIsoFPR03");
-  h_isoWeight_EB_pt105->GetYaxis()->SetTitle("weight");
-  h_isoWeight_EE_pt105->GetYaxis()->SetTitle("weight");
-
-  h_isoWeight_EB_pt105->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt105->SetMarkerSize(0.8);
-  h_isoWeight_EB_pt105->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt105->SetMarkerSize(0.8);
-
-  h_isoWeight_EB_pt105->SetLineWidth(1);
-  h_isoWeight_EE_pt105->SetLineWidth(1);
-  h_isoWeight_EB_pt105->SetLineWidth(1);
-  h_isoWeight_EE_pt105->SetLineWidth(1);
-
-  h_isoWeight_EB_pt105->GetYaxis()->SetRangeUser(-0.5,5.);
-  h_isoWeight_EE_pt105->GetYaxis()->SetRangeUser(-0.5,5.);
-
-
-  // plots
-  TLegend* leg=new TLegend(0.5,0.6,0.85, 0.8);
-  leg->SetBorderSize(0);
-  leg->SetFillColor(0);
-  leg->AddEntry(h_isoWeight_EB_pt40_65, "40 < p_{T}(#gamma) < 65 GeV", "p");
-  leg->AddEntry(h_isoWeight_EB_pt65_90, "65 < p_{T}(#gamma) < 90 GeV", "p");
-  leg->AddEntry(h_isoWeight_EB_pt90_105,"90 < p_{T}(#gamma) < 105 GeV", "p");
-  leg->AddEntry(h_isoWeight_EB_pt105,   "p_{T}(#gamma) > 105 GeV", "p");
-
-  TCanvas* c1 = new TCanvas("c1", "", 1);
-  c1->cd();
-  h_isoWeight_EB->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EB.png").c_str());
-  c1->Clear();
+  h_isoWeight_EB = (TH1F*)combPfIso03Phot_notMatched_passMVA_EB	->Clone("h_isoWeight_EB");
+  h_isoWeight_EB							->Divide(combPfIso03Phot_notMatched_notPassMVA_EB);
+  h_isoWeight_EE = (TH1F*)combPfIso03Phot_notMatched_passMVA_EE	->Clone("h_isoWeight_EE");
+  h_isoWeight_EE							->Divide(combPfIso03Phot_notMatched_notPassMVA_EE);
   
-  h_isoWeight_EE->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EE.png").c_str());
-  c1->Clear();  
-
+  //w1 and w2 (for systematics) 
+  h_syst_EB = (TH1F*)combPfIso03Phot_notMatched_notPassMVA_EB    	->Clone("h_syst_EB");
+  h_syst_EB								->Divide(combPfIso03Phot_data_notPassMVA_EB);
+  h_syst_EE = (TH1F*)combPfIso03Phot_notMatched_notPassMVA_EE    	->Clone("h_syst_EE");
+  h_syst_EE								->Divide(combPfIso03Phot_data_notPassMVA_EE);
+  
+  h_isoWeight1_EB = (TH1F*)h_isoWeight_EB				->Clone("h_isoWeight1_EB");
+  h_isoWeight1_EB							->Multiply(h_syst_EB);
+  h_isoWeight1_EE = (TH1F*)h_isoWeight_EE				->Clone("h_isoWeight1_EE");
+  h_isoWeight1_EE							->Multiply(h_syst_EE);
+  
+  h_isoWeight2_EB = (TH1F*)h_isoWeight_EB				->Clone("h_isoWeight2_EB");
+  h_isoWeight2_EB							->Divide(h_syst_EB);
+  h_isoWeight2_EE = (TH1F*)h_isoWeight_EE				->Clone("h_isoWeight2_EE");
+  h_isoWeight2_EE							->Divide(h_syst_EE);
+  
+  
+  h_isoWeight_EB->Smooth();
+  h_isoWeight_EE->Smooth();
+  h_isoWeight1_EB->Smooth();
+  h_isoWeight1_EE->Smooth();
+  h_isoWeight2_EB->Smooth();
+  h_isoWeight2_EE->Smooth();
+  
+  
   h_isoWeight_EB->Write();
   h_isoWeight_EE->Write();
-
-  //pt40_65
-  h_isoWeight_EB_pt40_65->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EB_pt40_65.png").c_str());
-  c1->Clear();
+  h_isoWeight1_EB->Write();
+  h_isoWeight1_EE->Write();
+  h_isoWeight2_EB->Write();
+  h_isoWeight2_EE->Write();
   
-  h_isoWeight_EE_pt40_65->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EE_pt40_65.png").c_str());
-  c1->Clear();
   
-  h_isoWeight_EB_pt40_65->Write();
-  h_isoWeight_EE_pt40_65->Write();
- 
-  //pt65_90
-  h_isoWeight_EB_pt65_90->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EB_pt65_90.png").c_str());
-  c1->Clear();
+  TCanvas* c1 = new TCanvas("c1", "", 1);
+  TCanvas* c2 = new TCanvas("c2", "", 1);
+  c1->cd();
   
-  h_isoWeight_EE_pt65_90->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EE_pt65_90.png").c_str());
-  c1->Clear();
-  
-  h_isoWeight_EB_pt65_90->Write();
-  h_isoWeight_EE_pt65_90->Write();
-
-
-  //pt90_105
-  h_isoWeight_EB_pt90_105->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EB_pt90_105.png").c_str());
-  c1->Clear();
-  
-  h_isoWeight_EE_pt90_105->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EE_pt90_105.png").c_str());
-  c1->Clear();
-  
-  h_isoWeight_EB_pt90_105->Write();
-  h_isoWeight_EE_pt90_105->Write();
-
-
-  //pt105
-  h_isoWeight_EB_pt105->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EB_pt105.png").c_str());
-  c1->Clear();
-  
-  h_isoWeight_EE_pt105->Draw("PE1");
-  c1->SaveAs((outputDir+"isoWeights_EE_pt105.png").c_str());
-  c1->Clear();
-  
-  h_isoWeight_EB_pt105->Write();
-  h_isoWeight_EE_pt105->Write();
-
-  // superimposed, EB
-  h_isoWeight_EB_pt40_65  ->SetMarkerSize(0.8);
-  h_isoWeight_EB_pt65_90  ->SetMarkerSize(0.8);
-  h_isoWeight_EB_pt90_105 ->SetMarkerSize(0.8);
-  h_isoWeight_EB_pt105    ->SetMarkerSize(0.8);
-
-  h_isoWeight_EB_pt40_65  ->SetMarkerColor(kBlue);
-  h_isoWeight_EB_pt65_90  ->SetMarkerColor(kCyan);
-  h_isoWeight_EB_pt90_105 ->SetMarkerColor(kGreen);
-  h_isoWeight_EB_pt105    ->SetMarkerColor(kViolet);
-
-  h_isoWeight_EB_pt40_65  ->SetMarkerStyle(20);
-  h_isoWeight_EB_pt65_90  ->SetMarkerStyle(22);
-  h_isoWeight_EB_pt90_105 ->SetMarkerStyle(23);
-  h_isoWeight_EB_pt105    ->SetMarkerStyle(23);
-
-  h_isoWeight_EB_pt40_65  ->Draw("PE1");
-  h_isoWeight_EB_pt65_90  ->Draw("PE1SAME");
-  h_isoWeight_EB_pt90_105 ->Draw("PE1SAME");
-  h_isoWeight_EB_pt105    ->Draw("PE1SAME");
-  leg->Draw();
-  c1->SaveAs((outputDir+"isoWeights_EB_all.png").c_str());
-  c1->Clear();
-
-  // superimposed, EE
-  h_isoWeight_EE_pt40_65  ->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt65_90  ->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt90_105 ->SetMarkerSize(0.8);
-  h_isoWeight_EE_pt105    ->SetMarkerSize(0.8);
-
-  h_isoWeight_EE_pt40_65  ->SetMarkerColor(kBlue);
-  h_isoWeight_EE_pt65_90  ->SetMarkerColor(kCyan);
-  h_isoWeight_EE_pt90_105 ->SetMarkerColor(kGreen);
-  h_isoWeight_EE_pt105    ->SetMarkerColor(kViolet);
-
-  h_isoWeight_EE_pt40_65  ->SetMarkerStyle(20);
-  h_isoWeight_EE_pt65_90  ->SetMarkerStyle(22);
-  h_isoWeight_EE_pt90_105 ->SetMarkerStyle(23);
-  h_isoWeight_EE_pt105    ->SetMarkerStyle(23);
-
-  h_isoWeight_EE_pt40_65  ->Draw("PE1");
-  h_isoWeight_EE_pt65_90  ->Draw("PE1SAME");
-  h_isoWeight_EE_pt90_105 ->Draw("PE1SAME");
-  h_isoWeight_EE_pt105    ->Draw("PE1SAME");
-  leg->Draw();
-  c1->SaveAs((outputDir+"isoWeights_EE_all.png").c_str());
-
-
   // some basic checks
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB->SetLineColor(6);
-  combPfIsoFPR03Phot_notMatched_passMVA_EB->SetLineColor(3);
+  combPfIso03Phot_notMatched_notPassMVA_EB->SetLineColor(6);
+  combPfIso03Phot_notMatched_passMVA_EB->SetLineColor(3);
   TLegend* leg2=new TLegend(0.5,0.6,0.85, 0.8);
   leg2->SetBorderSize(0);
   leg2->SetFillColor(0);
-  leg2->AddEntry(combPfIsoFPR03Phot_notMatched_notPassMVA_EB, "not matched, Bregion", "l");
-  leg2->AddEntry(combPfIsoFPR03Phot_notMatched_passMVA_EB, "not matched, Sregion", "l");
-  combPfIsoFPR03Phot_notMatched_passMVA_EB->DrawNormalized("hist");
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB->DrawNormalized("histsame");
+  leg2->AddEntry(combPfIso03Phot_notMatched_notPassMVA_EB, "not matched, Bregion", "l");
+  leg2->AddEntry(combPfIso03Phot_notMatched_passMVA_EB, "not matched, Sregion", "l");
+  combPfIso03Phot_notMatched_passMVA_EB->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_notPassMVA_EB->DrawNormalized("histsame");
   leg2->Draw();
-  c1->SaveAs((outputDir+"fotoniDiFondo_cheNONPassanoMVA_chePassanoMVA.png").c_str());
+  c1->SaveAs((outputDir+"fotoniDiFondo_cheNONPassanoMVA_chePassanoMVA_"+s_hltcut+"_EB.png").c_str());
   c1->Clear();
 
-  combPfIsoFPR03Phot_notMatched_passMVA_EB->SetLineColor(4);
-  combPfIsoFPR03Phot_matched_passMVA_EB->SetLineColor(2);
+  combPfIso03Phot_notMatched_notPassMVA_EE->SetLineColor(6);
+  combPfIso03Phot_notMatched_passMVA_EE->SetLineColor(3);
+  combPfIso03Phot_notMatched_passMVA_EE->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_notPassMVA_EE->DrawNormalized("histsame");
+  leg2->Draw();
+  c1->SaveAs((outputDir+"fotoniDiFondo_cheNONPassanoMVA_chePassanoMVA_"+s_hltcut+"_EE.png").c_str());
+  c1->Clear();
+
+
+  combPfIso03Phot_notMatched_passMVA_EB->SetLineColor(4);
+  combPfIso03Phot_matched_passMVA_EB->SetLineColor(2);
   TLegend* leg3=new TLegend(0.5,0.6,0.85, 0.8);
   leg3->SetBorderSize(0);
   leg3->SetFillColor(0);
-  leg3->AddEntry(combPfIsoFPR03Phot_notMatched_passMVA_EB, "not matched, Sregion", "l");
-  leg3->AddEntry(combPfIsoFPR03Phot_matched_passMVA_EB, "matched, Sregion", "l");
-  combPfIsoFPR03Phot_matched_passMVA_EB->DrawNormalized("hist");
-  combPfIsoFPR03Phot_notMatched_passMVA_EB->DrawNormalized("histsame");
+  leg3->AddEntry(combPfIso03Phot_notMatched_passMVA_EB, "not matched, Sregion", "l");
+  leg3->AddEntry(combPfIso03Phot_matched_passMVA_EB, "matched, Sregion", "l");
+  combPfIso03Phot_matched_passMVA_EB->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_passMVA_EB->DrawNormalized("histsame");
   leg3->Draw();
-  c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_chePassanoMVA.png").c_str());
+  c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_chePassanoMVA_"+s_hltcut+"_EB.png").c_str());
+  c1->Clear();
+  
+  combPfIso03Phot_notMatched_passMVA_EE->SetLineColor(4);
+  combPfIso03Phot_matched_passMVA_EE->SetLineColor(2);
+  combPfIso03Phot_matched_passMVA_EE->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_passMVA_EE->DrawNormalized("histsame");
+  leg3->Draw();
+  c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_chePassanoMVA_"+s_hltcut+"_EE.png").c_str());
   c1->Clear();
 
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB->SetLineColor(4);
-  combPfIsoFPR03Phot_matched_notPassMVA_EB->SetLineColor(2);
+  combPfIso03Phot_notMatched_notPassMVA_EB->SetLineColor(4);
+  combPfIso03Phot_matched_notPassMVA_EB->SetLineColor(2);
   TLegend* leg4=new TLegend(0.5,0.6,0.85, 0.8);
   leg4->SetBorderSize(0);
   leg4->SetFillColor(0);
-  leg4->AddEntry(combPfIsoFPR03Phot_notMatched_notPassMVA_EB, "not matched, Bregion", "l");
-  leg4->AddEntry(combPfIsoFPR03Phot_matched_notPassMVA_EB, "matched, Bregion", "l");
-  combPfIsoFPR03Phot_matched_notPassMVA_EB->DrawNormalized("hist");
-  combPfIsoFPR03Phot_notMatched_notPassMVA_EB->DrawNormalized("histsame");
+  leg4->AddEntry(combPfIso03Phot_notMatched_notPassMVA_EB, "not matched, Bregion", "l");
+  leg4->AddEntry(combPfIso03Phot_matched_notPassMVA_EB, "matched, Bregion", "l");
+  combPfIso03Phot_matched_notPassMVA_EB->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_notPassMVA_EB->DrawNormalized("histsame");
   leg4->Draw();
-  c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_cheNonPassanoMVA.png").c_str());
+  c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_cheNonPassanoMVA_"+s_hltcut+"_EB.png").c_str());
   c1->Clear();
 
-  c1->Close();
+  combPfIso03Phot_notMatched_notPassMVA_EE->SetLineColor(4);
+  combPfIso03Phot_matched_notPassMVA_EE->SetLineColor(2);
+  combPfIso03Phot_matched_notPassMVA_EE->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_notPassMVA_EE->DrawNormalized("histsame");
+  leg4->Draw();
+  c1->SaveAs((outputDir+"fotoniDiSegnale_fotoniDiFondo_cheNonPassanoMVA_"+s_hltcut+"_EE.png").c_str());
+  c1->Clear();
+
   
+  c1->Close();
+
+  c2->cd();
+  
+  // some basic checks
+  combPfIso03Phot_notMatched_notPassMVA_EB->SetLineColor(6);
+  combPfIso03Phot_notMatched_passMVA_EB->SetLineColor(3);
+  combPfIso03Phot_notMatched_passMVA_EB->DrawNormalized("hist");
+  combPfIso03Phot_notMatched_notPassMVA_EB->DrawNormalized("histsame");
+  leg2->Draw();
+  c2->SetLogy();
+  c2->SaveAs((outputDir+"fotoniDiFondo_cheNONPassanoMVA_chePassanoMVA_"+s_hltcut+"_EB_log.png").c_str());
+  c2->Write();
+  c2->Close();
+
   outputFile->Close();
+
 }
