@@ -1,0 +1,29 @@
+
+Welcome to my rootlogon.C
+reading PhysicsTools/Utilities/macros/setTDRStyle.C
+and some personal modifications.
+
+loaded
+Message: (file "fitDebug_C.so", line -1) dlopen error: /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/./fitDebug_C.so: undefined symbol: _ZN6RooFit9WeightVarEPKcb
+
+
+Info in <TUnixSystem::ACLiC>: creating shared library /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/./fitDebug_C.so
+In file included from /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/fitDebug_C_ACLiC_dict.h:34:0,
+                 from /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/fitDebug_C_ACLiC_dict.cxx:17:
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/./fitDebug.C:32:6: warning: unused parameter 'hlt' [-Wunused-parameter]
+In file included from /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/fitDebug_C_ACLiC_dict.h:34:0,
+                 from /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/fitDebug_C_ACLiC_dict.cxx:17:
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/./fitDebug.C: In function 'void fitDebug(std::string, std::string, std::string, bool)':
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/./fitDebug.C:352:17: warning: 'result' may be used uninitialized in this function [-Wuninitialized]
+Message: (file "fitDebug_C.so", line -1) dlopen error: /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/./fitDebug_C.so: undefined symbol: _ZN6RooFit9WeightVarEPKcb
+In file included from /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/fitDebug_C_ACLiC_dict.h:34:0,
+                 from /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/fitDebug_C_ACLiC_dict.cxx:17:
+/afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/./fitDebug.C:32:6: warning: unused parameter 'hlt' [-Wunused-parameter]
+/afs/cern.ch/cms/slc5_amd64_gcc462/external/gcc/4.6.2/bin/../lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../x86_64-unknown-linux-gnu/bin/ld: /usr/lib/../lib64/crt1.o:(.text+0x20): error: undefined reference to 'main'
+/afs/cern.ch/cms/slc5_amd64_gcc462/external/gcc/4.6.2/bin/../lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../x86_64-unknown-linux-gnu/bin/ld: /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/fitDebug_C_ACLiC_dict.o: in function fitDebug(std::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool):fitDebug_C_ACLiC_dict.cxx(.text+0x1136): error: undefined reference to 'RooFit::WeightVar(char const*, bool)'
+/afs/cern.ch/cms/slc5_amd64_gcc462/external/gcc/4.6.2/bin/../lib/gcc/x86_64-unknown-linux-gnu/4.6.2/../../../../x86_64-unknown-linux-gnu/bin/ld: /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/fitDebug_C_ACLiC_dict.o: in function fitDebug(std::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool):fitDebug_C_ACLiC_dict.cxx(.text+0x165f): error: undefined reference to 'RooFit::WeightVar(char const*, bool)'
+collect2: ld returned 1 exit status
+Traceback (most recent call last):
+  File "fit.py", line 35, in <module>
+    gROOT.ProcessLine(".L fitDebug.C++")
+RuntimeError: (file "fitDebug_C.so", line -1) Failed to load Dynamic link library /afs/cern.ch/work/g/gdimperi/GammaJet/giulia_repo/CMSSW_5_3_14/src/GammaJets/src/fit_clean/./fitDebug_C.so
