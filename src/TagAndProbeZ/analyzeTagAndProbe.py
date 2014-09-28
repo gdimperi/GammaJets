@@ -88,6 +88,10 @@ def analyzeSample( (sample,mycuts,samples) ):
     analyzer.mcMatch=mycuts['mcMatch']
     analyzer.r9Reweight=mycuts['r9Reweight']
     analyzer.r9WeightsFile=mycuts['r9WeightsFile']
+    analyzer.etaReweight=mycuts['etaReweight']
+    analyzer.etaWeightsFile=mycuts['etaWeightsFile']
+    analyzer.etaReweight=mycuts['nvtxReweight']
+    analyzer.nvtxWeightsFile=mycuts['nvtxWeightsFile']
     analyzer.DeltaMZ=mycuts['DeltaMZ']
     outfileName=str(sample)
     

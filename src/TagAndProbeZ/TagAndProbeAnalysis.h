@@ -29,13 +29,19 @@ public :
    //Options 
    Int_t           mcMatch;
    Int_t           r9Reweight;
+   Int_t           etaReweight;
+   Int_t           nvtxReweight;
    TString         tagTightnessLevel;
    Float_t         DeltaMZ;
    TString         outFileNamePrefix;
    TString         r9WeightsFile;
+   TString         etaWeightsFile;
+   TString         nvtxWeightsFile;
    
    TH1F*           r9weights_EB;
    TH1F*           r9weights_EE;
+   TH1F*           h_etaWeight;
+   TH1F*           h_nvtxWeight;
 
    // Declaration of leaf types
    Int_t           run;
@@ -365,13 +371,18 @@ public :
    bool     isHLT_150();
 
    void     readR9Weights();
+   void     readEtaWeights();
+   void     read_nvtxWeights();
+   Float_t  combinedPfIso03(float isoCharged03, float isoNeutral03, float isoPhoton03, const int& pho);
+   Float_t  combinedPfIso03(const int& pho);
+   Int_t    effectiveAreaRegion(float theEta) ;
 
 };
 
 #endif
 
 #ifdef TagAndProbeAnalysis_cxx
-TagAndProbeAnalysis::TagAndProbeAnalysis(TTree *tree) : fChain(0), mcMatch(0), tagTightnessLevel("Tight"), DeltaMZ(30), outFileNamePrefix("tandp_ntuple"), r9Reweight(0), r9WeightsFile("R9Weights.root")
+TagAndProbeAnalysis::TagAndProbeAnalysis(TTree *tree) : fChain(0), mcMatch(0), tagTightnessLevel("Tight"), DeltaMZ(30), outFileNamePrefix("tandp_ntuple"), r9Reweight(0), r9WeightsFile("R9Weights.root"), etaWeightsFile("etaWeights.root"), nvtxWeightsFile("nvtxWeights.root")
 {
   // if parameter tree is not specified (or zero), connect the file
   // used to generate this class and read the Tree.
@@ -379,7 +390,7 @@ TagAndProbeAnalysis::TagAndProbeAnalysis(TTree *tree) : fChain(0), mcMatch(0), t
     
     TChain * chain = new TChain("AnaTree","");
     // chain->Add("/t3/users/meridian/GammaJets/TandP/reduced/redntp.53xv6_DY_CERN.tandp2012.noCorr.v1/redntp_*.root/AnaTree");
-    chain->Add("/t3/users/meridian/GammaJets/TandP/reduced/redntp.53xv6_data_DY_CERN.tandp2012.noCorr.v1/redntp_*.root/AnaTree");
+    chain->Add("/t3/users/rovelch/GammaJets/reduced/redntp.53xv6_DY_CERN.tandp2012.v3/redntp_*.root/AnaTree");
 
     tree = chain;
   }
