@@ -426,6 +426,7 @@ void GammaJetAnalysis::BookFinalTree()
   finalTree->Branch("lumi",&finalTree_lumi,"lumi/i");
   finalTree->Branch("event",&finalTree_event,"event/i");
   finalTree->Branch("nvtx",&finalTree_nvtx,"nvtx/i");
+  finalTree->Branch("npu",&finalTree_npu,"npu/i");
   finalTree->Branch("weight",&finalTree_weight,"weght/F");
   finalTree->Branch("rho",&finalTree_rho,"rho/F");
 
@@ -442,8 +443,9 @@ void GammaJetAnalysis::BookFinalTree()
   finalTree->Branch("etaPhot",&finalTree_etaPhot,"etaPhot/F");
   finalTree->Branch("mvaIdPhot",&finalTree_mvaIdPhot,"mvaIdPhot/F");
   finalTree->Branch("sEtaEtaPhot",&finalTree_setaetaPhot,"sEtaEtaPhot/F");
-  finalTree->Branch("combinedPfIso03Phot",&finalTree_combinedPfIso03Phot,"combinedPfIso03Phot/F");
+  finalTree->Branch("r9Phot",&finalTree_r9Phot,"r9Phot/F");
 
+  finalTree->Branch("combinedPfIso03Phot",&finalTree_combinedPfIso03Phot,"combinedPfIso03Phot/F");
   finalTree->Branch("isIsolatedGenPhot",&finalTree_isIsolatedGenPhot,"isIsolatedGenPhot/I");
   finalTree->Branch("iso03_gen", &finalTree_iso03_gen, "iso03_gen/F");
 
@@ -517,10 +519,8 @@ std::vector<int> GammaJetAnalysis::preselectedPhotons(const std::vector<int>& ph
       // should be 02, but currently off in the ntuples 
       //if (pid_pfIsoCharged03ForCiC_presel[photons[ipho]]>4.) continue;
       // treshold raised from 4 --> 5 GeV totake into account bigger cone
-      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-      //   REMOVE ISO CHARGED CUT FOR FPR DEBUG
-      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-      //if (pid_pfIsoCharged03ForCiC_presel[photons[ipho]]>5.) continue;
+      
+      if (pid_pfIsoCharged03ForCiC_presel[photons[ipho]]>5.) continue;
 
       if ( theEAregion<2) {  // EB
 	if ( pid_HoverE_presel[photons[ipho]]>0.075 )   continue;
@@ -663,6 +663,7 @@ void GammaJetAnalysis::FillTreeEvent(float weight)
   finalTree_lumi=lumi;  
   finalTree_event=event;
   finalTree_nvtx=nvtx;
+  finalTree_npu=npu;
   finalTree_weight=weight;
   finalTree_rho=rhoAllJets;
   return;
@@ -677,6 +678,7 @@ void GammaJetAnalysis::FillTreePhot(const int& phot,bool isPresel, bool isSel)
       finalTree_isMatchedPhot=isMatchedPhot[phot];    
       finalTree_mvaIdPhot=PhotonIDMVA(phot);          
       finalTree_setaetaPhot=sEtaEtaPhot_presel[phot];
+      finalTree_r9Phot=r9Phot_presel[phot];
       finalTree_combinedPfIso03Phot=combinedPfIso03(phot);   
       finalTree_isPreselectedPhot=isPresel;
       finalTree_isSelectedPhot=isSel;
@@ -740,6 +742,7 @@ void GammaJetAnalysis::FillTreePhot(const int& phot,bool isPresel, bool isSel)
       finalTree_isMatchedPhot=-999;
       finalTree_mvaIdPhot=-999;
       finalTree_setaetaPhot=-999;
+      finalTree_r9Phot=-999;
       finalTree_combinedPfIso03Phot=-999;
       finalTree_isPreselectedPhot=-999;
       finalTree_isSelectedPhot=-999;

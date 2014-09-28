@@ -21,7 +21,7 @@ from itertools import repeat
 
 #Some global options when running at Rome
 xrootd_server=""
-output_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_withCone04/"
+output_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/ridottissime/ridottissime_isoPF03_5/"
 tmp_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/tmp/"
 
 mc_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/reduced/redntp.53xv6_CERN.gjetpresel.noCorr.v2/merged/"
