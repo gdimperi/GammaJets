@@ -16,6 +16,7 @@ void TagAndProbeAnalysis::Loop()
   readR9Weights();
   readEtaWeights();
   read_nvtxWeights();
+  read_rhoWeights();
 
 //   //puweight files
 //   TFile* pileupWeights_allHLT = new TFile("/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/scripts/puFiles/PileupWeights_allHLT.root", "read");
@@ -63,6 +64,7 @@ void TagAndProbeAnalysis::Loop()
   float r9weight_EE;
   float etaWeight;
   float nvtxWeight;
+  float rhoWeight30, rhoWeight50, rhoWeight75, rhoWeight90, rhoWeight135, rhoWeight150;
   float puW;
   float puW30, puW50, puW75, puW90, puW135, puW150;  
   int okLooseElePtEta,  okLooseEleID;
@@ -115,6 +117,12 @@ void TagAndProbeAnalysis::Loop()
     myTree[ii] -> Branch("r9WeightEE",  &r9weight_EE,  "r9WeightEE/F");
     myTree[ii] -> Branch("etaWeight",  &etaWeight,  "etaWeight/F");
     myTree[ii] -> Branch("nvtxWeight",  &nvtxWeight,  "nvtxWeight/F");
+    myTree[ii] -> Branch("rhoWeight30",  &rhoWeight30,  "rhoWeight30/F");
+    myTree[ii] -> Branch("rhoWeight50",  &rhoWeight50,  "rhoWeight50/F");
+    myTree[ii] -> Branch("rhoWeight75",  &rhoWeight75,  "rhoWeight75/F");
+    myTree[ii] -> Branch("rhoWeight90",  &rhoWeight90,  "rhoWeight90/F");
+    myTree[ii] -> Branch("rhoWeight135",  &rhoWeight135,  "rhoWeight135/F");
+    myTree[ii] -> Branch("rhoWeight150",  &rhoWeight150,  "rhoWeight150/F");
     myTree[ii] -> Branch("puW30", &puW30, "puW30/F");
     myTree[ii] -> Branch("puW50", &puW50, "puW50/F");
     myTree[ii] -> Branch("puW75", &puW75, "puW75/F");
@@ -306,14 +314,40 @@ void TagAndProbeAnalysis::Loop()
 	//cout << "debug: filled eta weights variables" << endl;	
 
 	//cout << "debug : bool nvtxReweight = " << etaReweight << endl;
-	if(nvtxReweight) {
-	  nvtxWeight=h_nvtxWeight->GetBinContent(h_nvtxWeight->FindBin(nvtx));
-	  //cout << "debug : nvtxweight = " << nvtxWeight << endl; 
-	}
-	else nvtxWeight=1.;
-	
+//      if(nvtxReweight) {
+// 	  nvtxWeight=h_nvtxWeight->GetBinContent(h_nvtxWeight->FindBin(nvtx));
+// 	  //cout << "debug : nvtxweight = " << nvtxWeight << endl; 
+// 	}
+//	else nvtxWeight=1.;
 	//cout << "debug: filled nvtx weights variables" << endl;	
 
+
+	if(isMC && rhoReweight) {
+	  rhoWeight30=h_rhoWeight_mc_hlt30->GetBinContent(h_rhoWeight_mc_hlt30->FindBin(rho));
+	  rhoWeight50=h_rhoWeight_mc_hlt50->GetBinContent(h_rhoWeight_mc_hlt50->FindBin(rho));
+	  rhoWeight75=h_rhoWeight_mc_hlt75->GetBinContent(h_rhoWeight_mc_hlt75->FindBin(rho));
+	  rhoWeight90=h_rhoWeight_mc_hlt90->GetBinContent(h_rhoWeight_mc_hlt90->FindBin(rho));
+	  rhoWeight135=h_rhoWeight_mc_hlt135->GetBinContent(h_rhoWeight_mc_hlt135->FindBin(rho));
+	  rhoWeight150=h_rhoWeight_mc_hlt150->GetBinContent(h_rhoWeight_mc_hlt150->FindBin(rho));
+	}
+	else if(!isMC && rhoReweight){
+	  rhoWeight30=h_rhoWeight_data_hlt30->GetBinContent(h_rhoWeight_data_hlt30->FindBin(rho));
+	  rhoWeight50=h_rhoWeight_data_hlt50->GetBinContent(h_rhoWeight_data_hlt50->FindBin(rho));
+	  rhoWeight75=h_rhoWeight_data_hlt75->GetBinContent(h_rhoWeight_data_hlt75->FindBin(rho));
+	  rhoWeight90=h_rhoWeight_data_hlt90->GetBinContent(h_rhoWeight_data_hlt90->FindBin(rho));
+	  rhoWeight135=h_rhoWeight_data_hlt135->GetBinContent(h_rhoWeight_data_hlt135->FindBin(rho));
+	  rhoWeight150=h_rhoWeight_data_hlt150->GetBinContent(h_rhoWeight_data_hlt150->FindBin(rho));
+	}
+	else {
+	  rhoWeight30=1.;
+	  rhoWeight50=1.;
+	  rhoWeight75=1.;
+	  rhoWeight90=1.;
+	  rhoWeight135=1.;
+	  rhoWeight150=1.;
+	}
+
+	
 	okLooseElePtEta  = 1;
 	okLooseEleID     = isProbeLoosePhot[iPho];
 	okMediumElePtEta = 1;
@@ -343,12 +377,12 @@ void TagAndProbeAnalysis::Loop()
 	// check HLT and pT range
 	if (!isMC) {
 	  myTree[0]->Fill();
-	  if ( isHLT_30()  && ptPhot[iPho]>=40 && ptPhot[iPho]<65 )       myTree[1]->Fill();
-	  if ( isHLT_50()  && ptPhot[iPho]>=65 && ptPhot[iPho]<90 )       myTree[2]->Fill();
-	  if ( isHLT_75()  && ptPhot[iPho]>=90 && ptPhot[iPho]<105 )      myTree[3]->Fill();
-	  if ( isHLT_90()  && ptPhot[iPho]>=105 && ptPhot[iPho]<165 )     myTree[4]->Fill();
-	  if ( isHLT_135() && ptPhot[iPho]>=165 && ptPhot[iPho]<180 )     myTree[5]->Fill();
-	  if ( isHLT_150() && ptPhot[iPho]>=180 && ptPhot[iPho]<200000 )  myTree[6]->Fill();
+	  if ( /*isHLT_30()  &&*/ ptPhot[iPho]>=40 && ptPhot[iPho]<65 )       myTree[1]->Fill();
+	  if ( /*isHLT_50()  &&*/ ptPhot[iPho]>=65 && ptPhot[iPho]<90 )       myTree[2]->Fill();
+	  if ( /*isHLT_75()  &&*/ ptPhot[iPho]>=90 && ptPhot[iPho]<105 )      myTree[3]->Fill();
+	  if ( /*isHLT_90()  &&*/ ptPhot[iPho]>=105 && ptPhot[iPho]<165 )     myTree[4]->Fill();
+	  if ( /*isHLT_135() &&*/ ptPhot[iPho]>=165 && ptPhot[iPho]<180 )     myTree[5]->Fill();
+	  if ( /*isHLT_150() &&*/ ptPhot[iPho]>=180 && ptPhot[iPho]<200000 )  myTree[6]->Fill();
 	}
 
 	if (isMC) {
@@ -531,12 +565,75 @@ void TagAndProbeAnalysis::read_nvtxWeights()
   h_nvtxWeight=(TH1F*)f->Get("weights");
   h_nvtxWeight->SetName("h_nvtxWeight");
 
-  //Just do a smoothing of the weights
-  //etaWeight->Smooth();
+  
   //don't apply smoothing because eta has cuts and smoothing changes significantly weights next to the cuts 
 
 }
 
+void TagAndProbeAnalysis::read_rhoWeights()
+{
+
+  cout << "debug: read weights" << endl;
+  if (!rhoReweight)
+    return;
+  
+  TFile *f=TFile::Open(rhoWeightsFile);
+
+  h_rhoWeight_mc_hlt30=(TH1F*)f->Get("weights_mc_hlt30");
+  h_rhoWeight_mc_hlt30->SetName("h_rhoWeight_mc_hlt30");
+  h_rhoWeight_mc_hlt50=(TH1F*)f->Get("weights_mc_hlt50");
+  h_rhoWeight_mc_hlt50->SetName("h_rhoWeight_mc_hlt50");
+  h_rhoWeight_mc_hlt75=(TH1F*)f->Get("weights_mc_hlt75");
+  h_rhoWeight_mc_hlt75->SetName("h_rhoWeight_mc_hlt75");
+  h_rhoWeight_mc_hlt90=(TH1F*)f->Get("weights_mc_hlt90");
+  h_rhoWeight_mc_hlt90->SetName("h_rhoWeight_mc_hlt90");
+  h_rhoWeight_mc_hlt135=(TH1F*)f->Get("weights_mc_hlt135");
+  h_rhoWeight_mc_hlt135->SetName("h_rhoWeight_mc_hlt135");
+  h_rhoWeight_mc_hlt150=(TH1F*)f->Get("weights_mc_hlt150");
+  h_rhoWeight_mc_hlt150->SetName("h_rhoWeight_mc_hlt150");
+
+  h_rhoWeight_data_hlt30=(TH1F*)f->Get("weights_data_hlt30");
+  h_rhoWeight_data_hlt30->SetName("h_rhoWeight_data_hlt30");
+  h_rhoWeight_data_hlt50=(TH1F*)f->Get("weights_data_hlt50");
+  h_rhoWeight_data_hlt50->SetName("h_rhoWeight_data_hlt50");
+  h_rhoWeight_data_hlt75=(TH1F*)f->Get("weights_data_hlt75");
+  h_rhoWeight_data_hlt75->SetName("h_rhoWeight_data_hlt75");
+  h_rhoWeight_data_hlt90=(TH1F*)f->Get("weights_data_hlt90");
+  h_rhoWeight_data_hlt90->SetName("h_rhoWeight_data_hlt90");
+  h_rhoWeight_data_hlt135=(TH1F*)f->Get("weights_data_hlt135");
+  h_rhoWeight_data_hlt135->SetName("h_rhoWeight_data_hlt135");
+  h_rhoWeight_data_hlt150=(TH1F*)f->Get("weights_data_hlt150");
+  h_rhoWeight_data_hlt150->SetName("h_rhoWeight_data_hlt150");
+
+  //Just do a smoothing of the weights
+  h_rhoWeight_mc_hlt30->Rebin(8);
+  h_rhoWeight_mc_hlt50->Rebin(8);
+  h_rhoWeight_mc_hlt75->Rebin(8);
+  h_rhoWeight_mc_hlt90->Rebin(8);
+  h_rhoWeight_mc_hlt135->Rebin(8);
+  h_rhoWeight_mc_hlt150->Rebin(8);
+  h_rhoWeight_data_hlt30->Rebin(8);
+  h_rhoWeight_data_hlt50->Rebin(8);
+  h_rhoWeight_data_hlt75->Rebin(8);
+  h_rhoWeight_data_hlt90->Rebin(8);
+  h_rhoWeight_data_hlt135->Rebin(8);
+  h_rhoWeight_data_hlt150->Rebin(8);
+
+
+  h_rhoWeight_mc_hlt30->Smooth(4);
+  h_rhoWeight_mc_hlt50->Smooth(4);
+  h_rhoWeight_mc_hlt75->Smooth(4);
+  h_rhoWeight_mc_hlt90->Smooth(4);
+  h_rhoWeight_mc_hlt135->Smooth(4);
+  h_rhoWeight_mc_hlt150->Smooth(4);
+  h_rhoWeight_data_hlt30->Smooth(4);
+  h_rhoWeight_data_hlt50->Smooth(4);
+  h_rhoWeight_data_hlt75->Smooth(4);
+  h_rhoWeight_data_hlt90->Smooth(4);
+  h_rhoWeight_data_hlt135->Smooth(4);
+  h_rhoWeight_data_hlt150->Smooth(4);
+
+}
 
 
 

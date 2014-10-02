@@ -31,17 +31,31 @@ public :
    Int_t           r9Reweight;
    Int_t           etaReweight;
    Int_t           nvtxReweight;
+   Int_t           rhoReweight;
    TString         tagTightnessLevel;
    Float_t         DeltaMZ;
    TString         outFileNamePrefix;
    TString         r9WeightsFile;
    TString         etaWeightsFile;
    TString         nvtxWeightsFile;
+   TString         rhoWeightsFile;
    
    TH1F*           r9weights_EB;
    TH1F*           r9weights_EE;
    TH1F*           h_etaWeight;
    TH1F*           h_nvtxWeight;
+   TH1F*           h_rhoWeight_mc_hlt30;
+   TH1F*           h_rhoWeight_mc_hlt50;
+   TH1F*           h_rhoWeight_mc_hlt75;
+   TH1F*           h_rhoWeight_mc_hlt90;
+   TH1F*           h_rhoWeight_mc_hlt135;
+   TH1F*           h_rhoWeight_mc_hlt150;
+   TH1F*           h_rhoWeight_data_hlt30;
+   TH1F*           h_rhoWeight_data_hlt50;
+   TH1F*           h_rhoWeight_data_hlt75;
+   TH1F*           h_rhoWeight_data_hlt90;
+   TH1F*           h_rhoWeight_data_hlt135;
+   TH1F*           h_rhoWeight_data_hlt150;
 
    // Declaration of leaf types
    Int_t           run;
@@ -373,6 +387,7 @@ public :
    void     readR9Weights();
    void     readEtaWeights();
    void     read_nvtxWeights();
+   void     read_rhoWeights();
    Float_t  combinedPfIso03(float isoCharged03, float isoNeutral03, float isoPhoton03, const int& pho);
    Float_t  combinedPfIso03(const int& pho);
    Int_t    effectiveAreaRegion(float theEta) ;
@@ -382,7 +397,8 @@ public :
 #endif
 
 #ifdef TagAndProbeAnalysis_cxx
-TagAndProbeAnalysis::TagAndProbeAnalysis(TTree *tree) : fChain(0), mcMatch(0), tagTightnessLevel("Tight"), DeltaMZ(30), outFileNamePrefix("tandp_ntuple"), r9Reweight(0), r9WeightsFile("R9Weights.root"), etaWeightsFile("etaWeights.root"), nvtxWeightsFile("nvtxWeights.root")
+TagAndProbeAnalysis::TagAndProbeAnalysis(TTree *tree) : fChain(0), mcMatch(0), tagTightnessLevel("Tight"), DeltaMZ(30), outFileNamePrefix("tandp_ntuple"), r9Reweight(0), r9WeightsFile("R9Weights.root"), etaWeightsFile("etaWeights.root"), nvtxWeightsFile("nvtxWeights.root"), rhoWeightsFile("rhoWeights.rootx")
+
 {
   // if parameter tree is not specified (or zero), connect the file
   // used to generate this class and read the Tree.
