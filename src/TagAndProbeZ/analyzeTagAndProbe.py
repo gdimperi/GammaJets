@@ -14,7 +14,7 @@ from itertools import repeat
 
 #Some global options
 #xrootd_server="pccmsrm27.cern.ch"
-output_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/output_analyzer/"
+#output_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/output_analyzer_reduced/"
 tmp_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/tmp/"
 
 
@@ -90,16 +90,20 @@ def analyzeSample( (sample,mycuts,samples) ):
     analyzer.r9WeightsFile=mycuts['r9WeightsFile']
     analyzer.etaReweight=mycuts['etaReweight']
     analyzer.etaWeightsFile=mycuts['etaWeightsFile']
+    analyzer.ptReweight=mycuts['ptReweight']
+    analyzer.ptWeightsFile=mycuts['ptWeightsFile']
     analyzer.nvtxReweight=mycuts['nvtxReweight']
     analyzer.nvtxWeightsFile=mycuts['nvtxWeightsFile']
     analyzer.rhoReweight=mycuts['rhoReweight']
     analyzer.rhoWeightsFile=mycuts['rhoWeightsFile']
+    analyzer.isoReweight=mycuts['isoReweight']
+    analyzer.isoWeightsFile=mycuts['isoWeightsFile']
     analyzer.DeltaMZ=mycuts['DeltaMZ']
     outfileName=str(sample)
     
     analyzer.outFileNamePrefix=tmp_dir+"/"+outfileName
     #to be linked to the hlt cut in the future
-    analyzer.Loop()
+    analyzer.Loop(options.red_factor)
     
     #Copying file towards final destination
     for file in glob.glob(tmp_dir+"/"+outfileName+"*.root"):
@@ -108,13 +112,18 @@ def analyzeSample( (sample,mycuts,samples) ):
         #rm_command="xrd "+xrootd_server+" rm "+output_dir+"/"+filename+" > /dev/null"
         #subprocess.call(rm_command,shell=True)
         #copy_command="xrdcp "+tmp_dir+"/"+filename+" root://"+xrootd_server+"//"+output_dir+"/"+filename
-        copy_command="mv "+tmp_dir+"/"+filename+" "+output_dir+"/"+filename 
+        copy_command="mv "+tmp_dir+"/"+filename+" "+options.outdir+"/"+filename 
         subprocess.check_call(copy_command,shell=True)
-        print "Copied file into "+output_dir+"/"+filename
+        print "Copied file into "+options.outdir+"/"+filename
 
 
 if __name__ == "__main__":
     parser = OptionParser(option_list=[
+        make_option("--outdir",
+                    action="store", type="string", dest="outdir",
+                    default="samples.dat",
+                    help="", metavar=""
+                    ),
         make_option("--samplesDat",
                     action="store", type="string", dest="samplesDat",
                     default="samples.dat",
@@ -125,11 +134,17 @@ if __name__ == "__main__":
                     default="cuts.dat",
                     help="", metavar=""
                     ),
+        make_option("--red_factor",
+                    action="store", type="int", dest="red_factor",
+                    default=-1,
+                    help="", metavar=""
+                    ),
         make_option("--numberOfCPU",
                     action="store", type="int", dest="numberOfCPU",
                     default=-1,
                     help="", metavar=""
                     ),
+        
         ])
     
     (options, args) = parser.parse_args()

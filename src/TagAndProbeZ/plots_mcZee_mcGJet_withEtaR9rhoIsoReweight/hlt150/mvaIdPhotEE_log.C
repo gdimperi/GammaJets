@@ -1,0 +1,266 @@
+{
+//=========Macro generated from canvas: mvaIdPhot/mvaIdPhot
+//=========  (Sun Nov 30 15:46:45 2014) by ROOT version5.32/00
+   TCanvas *mvaIdPhot = new TCanvas("mvaIdPhot", "mvaIdPhot",1,1,1000,876);
+   gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
+   mvaIdPhot->SetHighLightColor(2);
+   mvaIdPhot->Range(-0.1625,-0.04167153,1.0875,0.3750437);
+   mvaIdPhot->SetFillColor(0);
+   mvaIdPhot->SetBorderMode(0);
+   mvaIdPhot->SetBorderSize(2);
+   mvaIdPhot->SetTickx(1);
+   mvaIdPhot->SetLeftMargin(0.13);
+   mvaIdPhot->SetRightMargin(0.07);
+   mvaIdPhot->SetFrameFillStyle(0);
+   mvaIdPhot->SetFrameBorderMode(0);
+  
+// ------------>Primitives in pad: pad1
+   TPad *pad1 = new TPad("pad1", "pad1",0,0.3,1,1);
+   pad1->Draw();
+   pad1->cd();
+   pad1->Range(0,0,1,1);
+   pad1->SetFillColor(0);
+   pad1->SetBorderMode(0);
+   pad1->SetBorderSize(2);
+   pad1->SetLogy();
+   pad1->SetFrameBorderMode(0);
+   
+   TH1F *mvaIdPhot_mc_Z_EE__16 = new TH1F("mvaIdPhot_mc_Z_EE__16","mvaIdPhot_mc_Z_EE",60,0,1);
+   mvaIdPhot_mc_Z_EE__16->SetBinContent(53,0.03458231);
+   mvaIdPhot_mc_Z_EE__16->SetBinContent(54,0.07532795);
+   mvaIdPhot_mc_Z_EE__16->SetBinContent(55,0.09946098);
+   mvaIdPhot_mc_Z_EE__16->SetBinContent(56,0.1358762);
+   mvaIdPhot_mc_Z_EE__16->SetBinContent(57,0.2296913);
+   mvaIdPhot_mc_Z_EE__16->SetBinContent(58,0.3115241);
+   mvaIdPhot_mc_Z_EE__16->SetBinContent(59,0.1097607);
+   mvaIdPhot_mc_Z_EE__16->SetBinContent(60,0.003776422);
+   mvaIdPhot_mc_Z_EE__16->SetBinError(53,0.001579881);
+   mvaIdPhot_mc_Z_EE__16->SetBinError(54,0.002534007);
+   mvaIdPhot_mc_Z_EE__16->SetBinError(55,0.003062616);
+   mvaIdPhot_mc_Z_EE__16->SetBinError(56,0.003973528);
+   mvaIdPhot_mc_Z_EE__16->SetBinError(57,0.006325097);
+   mvaIdPhot_mc_Z_EE__16->SetBinError(58,0.009941905);
+   mvaIdPhot_mc_Z_EE__16->SetBinError(59,0.006477292);
+   mvaIdPhot_mc_Z_EE__16->SetBinError(60,0.001402387);
+   mvaIdPhot_mc_Z_EE__16->SetMinimum(1.597174e-06);
+   mvaIdPhot_mc_Z_EE__16->SetMaximum(1.744535);
+   mvaIdPhot_mc_Z_EE__16->SetEntries(14844);
+   mvaIdPhot_mc_Z_EE__16->SetDirectory(0);
+   mvaIdPhot_mc_Z_EE__16->SetStats(0);
+
+   Int_t ci;   // for color index setting
+   ci = TColor::GetColor("#ff0099");
+   mvaIdPhot_mc_Z_EE__16->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff0099");
+   mvaIdPhot_mc_Z_EE__16->SetMarkerColor(ci);
+   mvaIdPhot_mc_Z_EE__16->SetMarkerStyle(20);
+   mvaIdPhot_mc_Z_EE__16->SetMarkerSize(0.7);
+   mvaIdPhot_mc_Z_EE__16->GetXaxis()->SetTitle("#gamma MVA output");
+   mvaIdPhot_mc_Z_EE__16->GetYaxis()->SetTitle("Entries/0.0166666666667");
+   mvaIdPhot_mc_Z_EE__16->GetYaxis()->SetTitleOffset(0.9);
+   mvaIdPhot_mc_Z_EE__16->Draw("PE");
+   
+   TH1F *mvaIdPhot_mc_Signal_EE__17 = new TH1F("mvaIdPhot_mc_Signal_EE__17","mvaIdPhot_mc_Signal_EE",60,0,1);
+   mvaIdPhot_mc_Signal_EE__17->SetBinContent(53,0.008548189);
+   mvaIdPhot_mc_Signal_EE__17->SetBinContent(54,0.02537078);
+   mvaIdPhot_mc_Signal_EE__17->SetBinContent(55,0.0461411);
+   mvaIdPhot_mc_Signal_EE__17->SetBinContent(56,0.09104571);
+   mvaIdPhot_mc_Signal_EE__17->SetBinContent(57,0.1822296);
+   mvaIdPhot_mc_Signal_EE__17->SetBinContent(58,0.3325462);
+   mvaIdPhot_mc_Signal_EE__17->SetBinContent(59,0.3030317);
+   mvaIdPhot_mc_Signal_EE__17->SetBinContent(60,0.01108671);
+   mvaIdPhot_mc_Signal_EE__17->SetBinError(53,0.0007415819);
+   mvaIdPhot_mc_Signal_EE__17->SetBinError(54,0.001211042);
+   mvaIdPhot_mc_Signal_EE__17->SetBinError(55,0.0004975956);
+   mvaIdPhot_mc_Signal_EE__17->SetBinError(56,0.001164588);
+   mvaIdPhot_mc_Signal_EE__17->SetBinError(57,0.002153517);
+   mvaIdPhot_mc_Signal_EE__17->SetBinError(58,0.002512741);
+   mvaIdPhot_mc_Signal_EE__17->SetBinError(59,0.002244078);
+   mvaIdPhot_mc_Signal_EE__17->SetBinError(60,0.000523438);
+   mvaIdPhot_mc_Signal_EE__17->SetEntries(640592);
+   mvaIdPhot_mc_Signal_EE__17->SetDirectory(0);
+   mvaIdPhot_mc_Signal_EE__17->SetStats(0);
+
+   ci = TColor::GetColor("#99ff99");
+   mvaIdPhot_mc_Signal_EE__17->SetFillColor(ci);
+
+   ci = TColor::GetColor("#99ff99");
+   mvaIdPhot_mc_Signal_EE__17->SetLineColor(ci);
+   mvaIdPhot_mc_Signal_EE__17->SetLineWidth(2);
+   mvaIdPhot_mc_Signal_EE__17->Draw("HSAME");
+   
+   TH1F *mvaIdPhot_mc_Z_EE__18 = new TH1F("mvaIdPhot_mc_Z_EE__18","mvaIdPhot_mc_Z_EE",60,0,1);
+   mvaIdPhot_mc_Z_EE__18->SetBinContent(53,0.03458231);
+   mvaIdPhot_mc_Z_EE__18->SetBinContent(54,0.07532795);
+   mvaIdPhot_mc_Z_EE__18->SetBinContent(55,0.09946098);
+   mvaIdPhot_mc_Z_EE__18->SetBinContent(56,0.1358762);
+   mvaIdPhot_mc_Z_EE__18->SetBinContent(57,0.2296913);
+   mvaIdPhot_mc_Z_EE__18->SetBinContent(58,0.3115241);
+   mvaIdPhot_mc_Z_EE__18->SetBinContent(59,0.1097607);
+   mvaIdPhot_mc_Z_EE__18->SetBinContent(60,0.003776422);
+   mvaIdPhot_mc_Z_EE__18->SetBinError(53,0.001579881);
+   mvaIdPhot_mc_Z_EE__18->SetBinError(54,0.002534007);
+   mvaIdPhot_mc_Z_EE__18->SetBinError(55,0.003062616);
+   mvaIdPhot_mc_Z_EE__18->SetBinError(56,0.003973528);
+   mvaIdPhot_mc_Z_EE__18->SetBinError(57,0.006325097);
+   mvaIdPhot_mc_Z_EE__18->SetBinError(58,0.009941905);
+   mvaIdPhot_mc_Z_EE__18->SetBinError(59,0.006477292);
+   mvaIdPhot_mc_Z_EE__18->SetBinError(60,0.001402387);
+   mvaIdPhot_mc_Z_EE__18->SetMinimum(1.597174e-06);
+   mvaIdPhot_mc_Z_EE__18->SetMaximum(1.744535);
+   mvaIdPhot_mc_Z_EE__18->SetEntries(14844);
+   mvaIdPhot_mc_Z_EE__18->SetDirectory(0);
+   mvaIdPhot_mc_Z_EE__18->SetStats(0);
+
+   ci = TColor::GetColor("#ff0099");
+   mvaIdPhot_mc_Z_EE__18->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff0099");
+   mvaIdPhot_mc_Z_EE__18->SetMarkerColor(ci);
+   mvaIdPhot_mc_Z_EE__18->SetMarkerStyle(20);
+   mvaIdPhot_mc_Z_EE__18->SetMarkerSize(0.7);
+   mvaIdPhot_mc_Z_EE__18->GetXaxis()->SetTitle("#gamma MVA output");
+   mvaIdPhot_mc_Z_EE__18->GetYaxis()->SetTitle("Entries/0.0166666666667");
+   mvaIdPhot_mc_Z_EE__18->GetYaxis()->SetTitleOffset(0.9);
+   mvaIdPhot_mc_Z_EE__18->Draw("PESAME");
+   
+   TLegend *leg = new TLegend(0,0,0,4.792437e-322,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(62);
+   leg->SetTextSize(0.038);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("NULL","EE","h");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("mvaIdPhot_mc_Z_EE","MC Z #rightarrow ee","PL");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry=leg->AddEntry("mvaIdPhot_mc_Signal_EE","signal #gamma + jet","F");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   leg->Draw();
+   TLatex *   tex = new TLatex(0.25,0.94,"CMS Preliminary #sqrt{s}=8 TeV");
+tex->SetNDC();
+   tex->SetTextAlign(12);
+   tex->SetTextSize(0.037);
+   tex->SetLineWidth(2);
+   tex->Draw();
+   pad1->Modified();
+   mvaIdPhot->cd();
+  
+// ------------>Primitives in pad: pad2
+   pad2 = new TPad("pad2", "pad2",0,0,1,0.3);
+   pad2->Draw();
+   pad2->cd();
+   pad2->Range(0,0,1,1);
+   pad2->SetFillColor(0);
+   pad2->SetBorderMode(0);
+   pad2->SetBorderSize(2);
+   pad2->SetGridy();
+   pad2->SetBottomMargin(0.2);
+   pad2->SetFrameBorderMode(0);
+   
+   TH1F *ratio = new TH1F("ratio","mvaIdPhot_mc_Z_EE",60,0,1);
+   ratio->SetBinContent(53,4.045571);
+   ratio->SetBinContent(54,2.969083);
+   ratio->SetBinContent(55,2.155583);
+   ratio->SetBinContent(56,1.492396);
+   ratio->SetBinContent(57,1.26045);
+   ratio->SetBinContent(58,0.9367844);
+   ratio->SetBinContent(59,0.3622088);
+   ratio->SetBinContent(60,0.3406259);
+   ratio->SetBinError(53,0.3966556);
+   ratio->SetBinError(54,0.1733837);
+   ratio->SetBinError(55,0.07032803);
+   ratio->SetBinError(56,0.04763553);
+   ratio->SetBinError(57,0.03777068);
+   ratio->SetBinError(58,0.03072284);
+   ratio->SetBinError(59,0.02154261);
+   ratio->SetBinError(60,0.1275108);
+   ratio->SetMinimum(0.2);
+   ratio->SetMaximum(3);
+   ratio->SetEntries(860.7461);
+   ratio->SetStats(0);
+
+   ci = TColor::GetColor("#ff0099");
+   ratio->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff0099");
+   ratio->SetMarkerColor(ci);
+   ratio->SetMarkerStyle(20);
+   ratio->SetMarkerSize(0.7);
+   ratio->GetXaxis()->SetTitle("#gamma MVA output");
+   ratio->GetXaxis()->SetLabelSize(0.07);
+   ratio->GetXaxis()->SetTitleSize(0.08);
+   ratio->GetYaxis()->SetTitle("MC(e)/MC(#gamma)");
+   ratio->GetYaxis()->SetLabelSize(0.07);
+   ratio->GetYaxis()->SetTitleSize(0.08);
+   ratio->GetYaxis()->SetTitleOffset(0.35);
+   ratio->Draw("PE");
+   TLine *line = new TLine(0,1,1,1);
+   line->SetLineColor(4);
+   line->SetLineWidth(2);
+   line->Draw();
+   
+   TH1F *ratio = new TH1F("ratio","mvaIdPhot_mc_Z_EE",60,0,1);
+   ratio->SetBinContent(53,4.045571);
+   ratio->SetBinContent(54,2.969083);
+   ratio->SetBinContent(55,2.155583);
+   ratio->SetBinContent(56,1.492396);
+   ratio->SetBinContent(57,1.26045);
+   ratio->SetBinContent(58,0.9367844);
+   ratio->SetBinContent(59,0.3622088);
+   ratio->SetBinContent(60,0.3406259);
+   ratio->SetBinError(53,0.3966556);
+   ratio->SetBinError(54,0.1733837);
+   ratio->SetBinError(55,0.07032803);
+   ratio->SetBinError(56,0.04763553);
+   ratio->SetBinError(57,0.03777068);
+   ratio->SetBinError(58,0.03072284);
+   ratio->SetBinError(59,0.02154261);
+   ratio->SetBinError(60,0.1275108);
+   ratio->SetMinimum(0.2);
+   ratio->SetMaximum(3);
+   ratio->SetEntries(860.7461);
+   ratio->SetStats(0);
+
+   ci = TColor::GetColor("#ff0099");
+   ratio->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff0099");
+   ratio->SetMarkerColor(ci);
+   ratio->SetMarkerStyle(20);
+   ratio->SetMarkerSize(0.7);
+   ratio->GetXaxis()->SetTitle("#gamma MVA output");
+   ratio->GetXaxis()->SetLabelSize(0.07);
+   ratio->GetXaxis()->SetTitleSize(0.08);
+   ratio->GetYaxis()->SetTitle("MC(e)/MC(#gamma)");
+   ratio->GetYaxis()->SetLabelSize(0.07);
+   ratio->GetYaxis()->SetTitleSize(0.08);
+   ratio->GetYaxis()->SetTitleOffset(0.35);
+   ratio->Draw("PESAME");
+   pad2->Modified();
+   mvaIdPhot->cd();
+   mvaIdPhot->Modified();
+   mvaIdPhot->cd();
+   mvaIdPhot->SetSelected(mvaIdPhot);
+}

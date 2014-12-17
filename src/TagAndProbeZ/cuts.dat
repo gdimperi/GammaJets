@@ -3,13 +3,19 @@
 cuts={}
 
 cuts['tagLevel']='Tight'
-cuts['mcMatch']=0
+cuts['mcMatch']=1
 cuts['r9Reweight']=1
 cuts['r9WeightsFile']='/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/R9Weights/R9Weights.root'
 cuts['etaReweight']=1
 cuts['etaWeightsFile']='/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/etaWeights/etaWeights.root'
+cuts['ptReweight']=1
+cuts['ptWeightsFile']='/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/ptWeights_40_65/ptWeights_40_65.root'
 cuts['nvtxReweight']=1
 cuts['nvtxWeightsFile']='/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/nvtxWeights/nvtxWeights.root'
 cuts['rhoReweight']=1
 cuts['rhoWeightsFile']='/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/rhoWeights/rhoWeights.root'
+cuts['isoReweight']=1
+cuts['isoWeightsFile']='/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/TagAndProbeZ/studioPesiZ/weights_FPR/weights_hightPt.root'
+
+
 cuts['DeltaMZ']=30

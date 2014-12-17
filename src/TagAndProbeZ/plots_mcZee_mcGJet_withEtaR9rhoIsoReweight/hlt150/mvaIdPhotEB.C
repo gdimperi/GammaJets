@@ -1,0 +1,166 @@
+{
+//=========Macro generated from canvas: mvaIdPhot/mvaIdPhot
+//=========  (Sun Nov 30 15:46:48 2014) by ROOT version5.32/00
+   TCanvas *mvaIdPhot = new TCanvas("mvaIdPhot", "mvaIdPhot",1,1,1000,876);
+   gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
+   mvaIdPhot->SetHighLightColor(2);
+   mvaIdPhot->Range(-0.1625,-0.04167153,1.0875,0.3750437);
+   mvaIdPhot->SetFillColor(0);
+   mvaIdPhot->SetBorderMode(0);
+   mvaIdPhot->SetBorderSize(2);
+   mvaIdPhot->SetTickx(1);
+   mvaIdPhot->SetLeftMargin(0.13);
+   mvaIdPhot->SetRightMargin(0.07);
+   mvaIdPhot->SetFrameFillStyle(0);
+   mvaIdPhot->SetFrameBorderMode(0);
+   
+   TH1F *mvaIdPhot_mc_Z_EB__19 = new TH1F("mvaIdPhot_mc_Z_EB__19","mvaIdPhot_mc_Z_EB",60,0,1);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(51,0.03659298);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(52,0.05496698);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(53,0.07336958);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(54,0.09639002);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(55,0.1334784);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(56,0.201733);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(57,0.2694775);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(58,0.1282117);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(59,0.005451443);
+   mvaIdPhot_mc_Z_EB__19->SetBinContent(60,0.000328424);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(51,0.0008798843);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(52,0.001154607);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(53,0.001375234);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(54,0.001607106);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(55,0.001942073);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(56,0.002749652);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(57,0.003719817);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(58,0.002742089);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(59,0.0005471858);
+   mvaIdPhot_mc_Z_EB__19->SetBinError(60,0.0001101635);
+   mvaIdPhot_mc_Z_EB__19->SetEntries(53105);
+   mvaIdPhot_mc_Z_EB__19->SetDirectory(0);
+   mvaIdPhot_mc_Z_EB__19->SetStats(0);
+
+   Int_t ci;   // for color index setting
+   ci = TColor::GetColor("#ff0099");
+   mvaIdPhot_mc_Z_EB__19->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff0099");
+   mvaIdPhot_mc_Z_EB__19->SetMarkerColor(ci);
+   mvaIdPhot_mc_Z_EB__19->SetMarkerStyle(20);
+   mvaIdPhot_mc_Z_EB__19->SetMarkerSize(0.7);
+   mvaIdPhot_mc_Z_EB__19->Draw("PE");
+   
+   TH1F *mvaIdPhot_mc_Signal_EB__20 = new TH1F("mvaIdPhot_mc_Signal_EB__20","mvaIdPhot_mc_Signal_EB",60,0,1);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(51,0.01073344);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(52,0.01956452);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(53,0.03090192);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(54,0.04824175);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(55,0.0839976);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(56,0.1686032);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(57,0.3808501);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(58,0.2482081);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(59,0.008763882);
+   mvaIdPhot_mc_Signal_EB__20->SetBinContent(60,0.000135486);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(51,0.0001458942);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(52,0.0004777319);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(53,0.00043369);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(54,0.000455781);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(55,0.0009280003);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(56,0.0008870906);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(57,0.001503877);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(58,0.001282104);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(59,0.0001258442);
+   mvaIdPhot_mc_Signal_EB__20->SetBinError(60,1.119338e-05);
+   mvaIdPhot_mc_Signal_EB__20->SetEntries(2212552);
+   mvaIdPhot_mc_Signal_EB__20->SetDirectory(0);
+   mvaIdPhot_mc_Signal_EB__20->SetStats(0);
+
+   ci = TColor::GetColor("#99ff99");
+   mvaIdPhot_mc_Signal_EB__20->SetFillColor(ci);
+
+   ci = TColor::GetColor("#99ff99");
+   mvaIdPhot_mc_Signal_EB__20->SetLineColor(ci);
+   mvaIdPhot_mc_Signal_EB__20->SetLineWidth(2);
+   mvaIdPhot_mc_Signal_EB__20->Draw("HSAME");
+   
+   TH1F *mvaIdPhot_mc_Z_EB__21 = new TH1F("mvaIdPhot_mc_Z_EB__21","mvaIdPhot_mc_Z_EB",60,0,1);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(51,0.03659298);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(52,0.05496698);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(53,0.07336958);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(54,0.09639002);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(55,0.1334784);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(56,0.201733);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(57,0.2694775);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(58,0.1282117);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(59,0.005451443);
+   mvaIdPhot_mc_Z_EB__21->SetBinContent(60,0.000328424);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(51,0.0008798843);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(52,0.001154607);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(53,0.001375234);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(54,0.001607106);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(55,0.001942073);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(56,0.002749652);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(57,0.003719817);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(58,0.002742089);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(59,0.0005471858);
+   mvaIdPhot_mc_Z_EB__21->SetBinError(60,0.0001101635);
+   mvaIdPhot_mc_Z_EB__21->SetMinimum(0);
+   mvaIdPhot_mc_Z_EB__21->SetMaximum(0.3772685);
+   mvaIdPhot_mc_Z_EB__21->SetEntries(53105);
+   mvaIdPhot_mc_Z_EB__21->SetDirectory(0);
+   mvaIdPhot_mc_Z_EB__21->SetStats(0);
+
+   ci = TColor::GetColor("#ff0099");
+   mvaIdPhot_mc_Z_EB__21->SetLineColor(ci);
+
+   ci = TColor::GetColor("#ff0099");
+   mvaIdPhot_mc_Z_EB__21->SetMarkerColor(ci);
+   mvaIdPhot_mc_Z_EB__21->SetMarkerStyle(20);
+   mvaIdPhot_mc_Z_EB__21->SetMarkerSize(0.7);
+   mvaIdPhot_mc_Z_EB__21->GetXaxis()->SetTitle("#gamma MVA output");
+   mvaIdPhot_mc_Z_EB__21->GetYaxis()->SetTitle("Entries/0.0166666666667");
+   mvaIdPhot_mc_Z_EB__21->GetYaxis()->SetTitleOffset(1.5);
+   mvaIdPhot_mc_Z_EB__21->Draw("PESAME");
+   
+   TLegend *leg = new TLegend(0,1.031852e-315,1.031896e-315,0,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(62);
+   leg->SetTextSize(0.038);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("NULL","EB","h");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("mvaIdPhot_mc_Z_EB","MC Z #rightarrow ee","PL");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry=leg->AddEntry("mvaIdPhot_mc_Signal_EB","signal #gamma + jet","F");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   leg->Draw();
+   TLatex *   tex = new TLatex(0.25,0.94,"CMS Preliminary #sqrt{s}=8 TeV");
+tex->SetNDC();
+   tex->SetTextAlign(12);
+   tex->SetTextSize(0.037);
+   tex->SetLineWidth(2);
+   tex->Draw();
+   mvaIdPhot->Modified();
+   mvaIdPhot->cd();
+   mvaIdPhot->SetSelected(mvaIdPhot);
+}

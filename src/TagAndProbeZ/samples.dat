@@ -8,6 +8,7 @@ data_dir="/t3/users/rovelch/GammaJets/reduced/redntp.53xv6_data_DY_CERN.tandp201
 
              #  name                #index                          #fileList                                                                #xsec          #kfac    #directory
 samples["DYJetsToLL_M-50_madgraph"]=[1,"list/DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball_Summer12_DR53X-PU_S10_START53_V7A-v1_tandp2012.v3.list",288600000 * 0.0101 ,1., mc_dir]
+#samples["DYJetsToLL_M-50_madgraph"]=[1,"list/DYJetsToLL_M-50_only5files.list",288600000 * 0.0101 ,1., mc_dir]
 
 #data sampleIndex=0 for data
 samples["DoubleElectron_Run2012A"]=  [0,"list/DoubleElectron_Run2012A_tandp2012.v3.list" , 1, 1 ,data_dir]

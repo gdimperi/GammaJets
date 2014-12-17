@@ -1,0 +1,54 @@
+
+Welcome to my rootlogon.C
+reading PhysicsTools/Utilities/macros/setTDRStyle.C
+and some personal modifications.
+
+loaded
+
+Processing write_content_rootfile.C...
+(class TFile*)0xf3c13b0
+TFile**		R9Weights/R9Weights.root	
+ TFile*		R9Weights/R9Weights.root	
+  KEY: TH1F	R9EtaWeightAllAll;1	R9EtaWeightAllAll
+  KEY: TH1F	R9EtaWeightAllBad;1	R9EtaWeightAllBad
+  KEY: TH1F	R9EtaWeightAllGold;1	R9EtaWeightAllGold
+  KEY: TH1F	R9EtaWeightEBAll;1	R9EtaWeightEBAll
+  KEY: TH1F	R9EtaWeightEBBad;1	R9EtaWeightEBBad
+  KEY: TH1F	R9EtaWeightEBGold;1	R9EtaWeightEBGold
+  KEY: TH1F	R9EtaWeightEBhighEtaAll;1	R9EtaWeightEBhighEtaAll
+  KEY: TH1F	R9EtaWeightEBhighEtaBad;1	R9EtaWeightEBhighEtaBad
+  KEY: TH1F	R9EtaWeightEBhighEtaGold;1	R9EtaWeightEBhighEtaGold
+  KEY: TH1F	R9EtaWeightEBlowEtaAll;1	R9EtaWeightEBlowEtaAll
+  KEY: TH1F	R9EtaWeightEBlowEtaBad;1	R9EtaWeightEBlowEtaBad
+  KEY: TH1F	R9EtaWeightEBlowEtaGold;1	R9EtaWeightEBlowEtaGold
+  KEY: TH1F	R9EtaWeightEEAll;1	R9EtaWeightEEAll
+  KEY: TH1F	R9EtaWeightEEBad;1	R9EtaWeightEEBad
+  KEY: TH1F	R9EtaWeightEEGold;1	R9EtaWeightEEGold
+  KEY: TH1F	R9EtaWeightEEhighEtaAll;1	R9EtaWeightEEhighEtaAll
+  KEY: TH1F	R9EtaWeightEEhighEtaBad;1	R9EtaWeightEEhighEtaBad
+  KEY: TH1F	R9EtaWeightEEhighEtaGold;1	R9EtaWeightEEhighEtaGold
+  KEY: TH1F	R9EtaWeightEElowEtaAll;1	R9EtaWeightEElowEtaAll
+  KEY: TH1F	R9EtaWeightEElowEtaBad;1	R9EtaWeightEElowEtaBad
+  KEY: TH1F	R9EtaWeightEElowEtaGold;1	R9EtaWeightEElowEtaGold
+  KEY: TH1F	R9WeightAllAll;1	R9WeightAllAll
+  KEY: TH1F	R9WeightAllBad;1	R9WeightAllBad
+  KEY: TH1F	R9WeightAllGold;1	R9WeightAllGold
+  KEY: TH1F	R9WeightEBAll;1	R9WeightEBAll
+  KEY: TH1F	R9WeightEBBad;1	R9WeightEBBad
+  KEY: TH1F	R9WeightEBGold;1	R9WeightEBGold
+  KEY: TH1F	R9WeightEBhighEtaAll;1	R9WeightEBhighEtaAll
+  KEY: TH1F	R9WeightEBhighEtaBad;1	R9WeightEBhighEtaBad
+  KEY: TH1F	R9WeightEBhighEtaGold;1	R9WeightEBhighEtaGold
+  KEY: TH1F	R9WeightEBlowEtaAll;1	R9WeightEBlowEtaAll
+  KEY: TH1F	R9WeightEBlowEtaBad;1	R9WeightEBlowEtaBad
+  KEY: TH1F	R9WeightEBlowEtaGold;1	R9WeightEBlowEtaGold
+  KEY: TH1F	R9WeightEEAll;1	R9WeightEEAll
+  KEY: TH1F	R9WeightEEBad;1	R9WeightEEBad
+  KEY: TH1F	R9WeightEEGold;1	R9WeightEEGold
+  KEY: TH1F	R9WeightEEhighEtaAll;1	R9WeightEEhighEtaAll
+  KEY: TH1F	R9WeightEEhighEtaBad;1	R9WeightEEhighEtaBad
+  KEY: TH1F	R9WeightEEhighEtaGold;1	R9WeightEEhighEtaGold
+  KEY: TH1F	R9WeightEElowEtaAll;1	R9WeightEElowEtaAll
+  KEY: TH1F	R9WeightEElowEtaBad;1	R9WeightEElowEtaBad
+  KEY: TH1F	R9WeightEElowEtaGold;1	R9WeightEElowEtaGold
+  KEY: TH1F	R9PtWeightAllAll;1	R9PtWeightAllAll

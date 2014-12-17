@@ -4,12 +4,26 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <TLorentzVector.h>
 
 using namespace std;
 
-void TagAndProbeAnalysis::Loop()
+//////////////////////////////////////////////////////////////////////////////////////////
+// ______ _   _ _____    _          _                          _       _     _         _ 
+// | ___ \ | | |  __ \  (_)        (_)                        (_)     | |   | |       | |
+// | |_/ / | | | |  \/   _ _ __     _ ___  ___   __      _____ _  __ _| |__ | |_ ___  | |
+// | ___ \ | | | | __   | | '_ \   | / __|/ _ \  \ \ /\ / / _ \ |/ _` | '_ \| __/ __| | |
+// | |_/ / |_| | |_\ \  | | | | |  | \__ \ (_) |  \ V  V /  __/ | (_| | | | | |_\__ \ |_|
+// \____/ \___/ \____/  |_|_| |_|  |_|___/\___/    \_/\_/ \___|_|\__, |_| |_|\__|___/ (_)
+//                                                                __/ |                  
+//                                                               |___/                   
+///////////////////////////////////////////////////////////////////////////////////////////
+
+//calculation of iso weights is wrong! removed branch in tree, code to be cleaned!
+
+void TagAndProbeAnalysis::Loop( int red_factor )
 {
   if (fChain == 0) return;
 
@@ -17,6 +31,9 @@ void TagAndProbeAnalysis::Loop()
   readEtaWeights();
   read_nvtxWeights();
   read_rhoWeights();
+  read_ptWeights();
+  cout << "now read iso weight file" << endl;
+  read_isoWeights_dataZ_40_65_to_mcPhot();
 
 //   //puweight files
 //   TFile* pileupWeights_allHLT = new TFile("/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/scripts/puFiles/PileupWeights_allHLT.root", "read");
@@ -60,11 +77,24 @@ void TagAndProbeAnalysis::Loop()
   float probe_eta, probe_abseta, probe_phi, probe_pt, probe_r9;
   int numvtx;
   float rho;
-  float r9weight_EB;
-  float r9weight_EE;
+  float r9weight_EB_hlt30;
+  float r9weight_EB_hlt50;
+  float r9weight_EB_hlt75;
+  float r9weight_EB_hlt90;
+  float r9weight_EB_hlt135;
+  float r9weight_EB_hlt150;
+  float r9weight_EE_hlt30;
+  float r9weight_EE_hlt50;
+  float r9weight_EE_hlt75;
+  float r9weight_EE_hlt90;
+  float r9weight_EE_hlt135;
+  float r9weight_EE_hlt150;
   float etaWeight;
   float nvtxWeight;
   float rhoWeight30, rhoWeight50, rhoWeight75, rhoWeight90, rhoWeight135, rhoWeight150;
+  float ptWeight;
+  //float isoWeight_EB, isoWeight_EE;
+  float isoWeight_dataZ_mcPhot;
   float puW;
   float puW30, puW50, puW75, puW90, puW135, puW150;  
   int okLooseElePtEta,  okLooseEleID;
@@ -81,7 +111,48 @@ void TagAndProbeAnalysis::Loop()
   float probe_fprCharged03,   probe_fprNeutral03,   probe_fprPhoton03;
   float probe_fprRCCharged03, probe_fprRCNeutral03, probe_fprRCPhoton03;
   float probe_combinedPfIso03, probe_combinedPfIsoFPR03;
+  float combinedPfIso03Phot, combinedPfIsoFPR03Phot;
   int npu_;
+
+
+  float bin_low_edge_EB[61] = {40,47,65,73,90,94,99,105,110,117,126,139,155,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,215,220,225,230,235,240,245,250,255,260,265,270,290,310,340,380,480};
+  float bin_high_edge_EB[61] ={47,65,73,90,94,99,105,110,117,126,139,155,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,215,220,225,230,235,240,245,250,255,260,265,270,290,310,340,380,480,1000};
+  float bin_low_edge_EE[18]={40,65,90,105,126,165,168,172,176,180,186,192,198,206,215,225,240,270 };
+  float bin_high_edge_EE[18]={65,90,105,126,165,168,172,176,180,186,192,198,206,215,225,240,270,1000 };
+
+  float isoW_EB[61];
+  float isoW_EE[18];
+  string name_h_isoW_EB[61];
+  string name_h_isoW_EE[18];
+  string name_branch_isoW_EB[61];
+  string name_branch_isoW_EE[18];
+
+  std::ostringstream stringtmp;
+  for(int i=0; i<61; i++){
+    stringtmp << "h_isoW_EB_bin_"<< bin_low_edge_EB[i] << "_" << bin_high_edge_EB[i] ; 
+    name_h_isoW_EB[i] = stringtmp.str();
+    stringtmp.str("");
+    stringtmp.clear();
+  }
+  for(int i=0; i<18; i++){
+    stringtmp << "h_isoW_EE_bin_"<< bin_low_edge_EE[i] << "_" << bin_high_edge_EE[i] ; 
+    name_h_isoW_EE[i] = stringtmp.str();
+    stringtmp.str("");
+    stringtmp.clear();
+  }
+
+  for(int i=0; i<61; i++){
+    stringtmp << "isoW_EB_bin_"<< bin_low_edge_EB[i] << "_" << bin_high_edge_EB[i] ; 
+    name_branch_isoW_EB[i] = stringtmp.str();
+    stringtmp.str("");
+    stringtmp.clear();
+  }
+  for(int i=0; i<18; i++){
+    stringtmp << "isoW_EE_bin_"<< bin_low_edge_EE[i] << "_" << bin_high_edge_EE[i] ; 
+    name_branch_isoW_EE[i] = stringtmp.str();
+    stringtmp.str("");
+    stringtmp.clear();
+  }
 
   for (int ii=0; ii<5; ii++) {
     myTree[ii] -> Branch("mass",&mass,"mass/F");
@@ -109,12 +180,24 @@ void TagAndProbeAnalysis::Loop()
     myTree[ii] -> Branch("probe_fprRCCharged03",&probe_fprRCCharged03,"probe_fprRCCharged03/F"); 
     myTree[ii] -> Branch("probe_fprRCNeutral03",&probe_fprRCNeutral03,"probe_fprRCNeutral03/F"); 
     myTree[ii] -> Branch("probe_fprRCPhoton03", &probe_fprRCPhoton03, "probe_fprRCPhoton03/F"); 
+    myTree[ii] -> Branch("combinedPfIso03Phot",&combinedPfIso03Phot,"combinedPfIso03Phot/F");
+    myTree[ii] -> Branch("combinedPfIsoFPR03Phot",&combinedPfIsoFPR03Phot,"combinedPfIsoFPR03Phot/F");
     myTree[ii] -> Branch("numvtx",&numvtx,"numvtx/I");
     myTree[ii] -> Branch("rho",&rho,"rho/F");
     myTree[ii] -> Branch("npu",&npu_,"npu/I");
     myTree[ii] -> Branch("puW",  &puW,  "puW/F");
-    myTree[ii] -> Branch("r9WeightEB",  &r9weight_EB,  "r9WeightEB/F");
-    myTree[ii] -> Branch("r9WeightEE",  &r9weight_EE,  "r9WeightEE/F");
+    myTree[ii] -> Branch("r9WeightEB_hlt30",  &r9weight_EB_hlt30,  "r9WeightEB_hlt30/F");
+    myTree[ii] -> Branch("r9WeightEB_hlt50",  &r9weight_EB_hlt50,  "r9WeightEB_hlt50/F");
+    myTree[ii] -> Branch("r9WeightEB_hlt75",  &r9weight_EB_hlt75,  "r9WeightEB_hlt75/F");
+    myTree[ii] -> Branch("r9WeightEB_hlt90",  &r9weight_EB_hlt90,  "r9WeightEB_hlt90/F");
+    myTree[ii] -> Branch("r9WeightEB_hlt135",  &r9weight_EB_hlt135,  "r9WeightEB_hlt135/F");
+    myTree[ii] -> Branch("r9WeightEB_hlt150",  &r9weight_EB_hlt150,  "r9WeightEB_hlt150/F");
+    myTree[ii] -> Branch("r9WeightEE_hlt30",  &r9weight_EE_hlt30,  "r9WeightEE_hlt30/F");
+    myTree[ii] -> Branch("r9WeightEE_hlt50",  &r9weight_EE_hlt50,  "r9WeightEE_hlt50/F");
+    myTree[ii] -> Branch("r9WeightEE_hlt75",  &r9weight_EE_hlt75,  "r9WeightEE_hlt75/F");
+    myTree[ii] -> Branch("r9WeightEE_hlt90",  &r9weight_EE_hlt90,  "r9WeightEE_hlt90/F");
+    myTree[ii] -> Branch("r9WeightEE_hlt135",  &r9weight_EE_hlt135,  "r9WeightEE_hlt135/F");
+    myTree[ii] -> Branch("r9WeightEE_hlt150",  &r9weight_EE_hlt150,  "r9WeightEE_hlt150/F");
     myTree[ii] -> Branch("etaWeight",  &etaWeight,  "etaWeight/F");
     myTree[ii] -> Branch("nvtxWeight",  &nvtxWeight,  "nvtxWeight/F");
     myTree[ii] -> Branch("rhoWeight30",  &rhoWeight30,  "rhoWeight30/F");
@@ -129,6 +212,14 @@ void TagAndProbeAnalysis::Loop()
     myTree[ii] -> Branch("puW90", &puW90, "puW90/F");
     myTree[ii] -> Branch("puW135",&puW135,"puW135/F");
     myTree[ii] -> Branch("puW150",&puW150,"puW150/F");
+    myTree[ii] -> Branch("ptWeight_40_65",&ptWeight,"ptWeight_40_65/F");
+    //myTree[ii] -> Branch("isoWeight_dataZ_mcPhot",&isoWeight_dataZ_mcPhot,"isoWeight_dataZ_mcPhot/F");
+    for(int jj=0; jj<61; jj++){
+      myTree[ii] -> Branch((name_branch_isoW_EB[jj]).c_str(),&isoW_EB[jj],(name_branch_isoW_EB[jj]+"/F").c_str());
+    }
+    for(int jj=0; jj<18; jj++){
+      myTree[ii] -> Branch((name_branch_isoW_EE[jj]).c_str(),&isoW_EE[jj],(name_branch_isoW_EE[jj]+"/F").c_str());
+    }
     myTree[ii] -> Branch("okLooseElePtEta",&okLooseElePtEta,"okLooseElePtEta/I");
     myTree[ii] -> Branch("okLooseEleID",&okLooseEleID,"okLooseEleID/I");
     myTree[ii] -> Branch("okMediumElePtEta",&okMediumElePtEta,"okMediumElePtEta/I");
@@ -146,9 +237,16 @@ void TagAndProbeAnalysis::Loop()
   Long64_t nbytes = 0, nb = 0;
 
   cout << "Going to loop over " << nentries << " events" << endl;
+  cout << "red_factor " << red_factor << " events" << endl;
   cout << endl;
-  for (Long64_t jentry=0; jentry<nentries;jentry++) {
+
+  int n_electron_passed = 0;
+
+  for (Long64_t jentry=0; jentry<nentries; jentry++) {
     Long64_t ientry = LoadTree(jentry);
+
+    //reduce statistics
+    if(red_factor>0 && jentry%red_factor!=0 ) continue;
 
     if (ientry < 0) break;
     nb = fChain->GetEntry(jentry);   nbytes += nb;
@@ -218,9 +316,10 @@ void TagAndProbeAnalysis::Loop()
 	TLorentzVector theTaP = theEle + thePho;
 	float theMass = theTaP.M();
       
-	//giulia -- debug
+
 	if (fabs(theMass-91.181)>DeltaMZ)
 	  continue;
+
 
 	// filling the tree
 	mass = theMass;
@@ -244,11 +343,14 @@ void TagAndProbeAnalysis::Loop()
 	probe_neutral03   = pid_pfIsoNeutrals03ForCiC[iPho]; 
 	probe_photon03    = pid_pfIsoPhotons03ForCiC[iPho]; 
 	probe_combinedPfIso03  = combinedPfIso03(iPho);
+	combinedPfIso03Phot  = combinedPfIso03(iPho);
+
 
 	probe_fprCharged03   = pid_pfIsoFPRCharged03[iPho]; 
 	probe_fprNeutral03   = pid_pfIsoFPRNeutral03[iPho]; 
 	probe_fprPhoton03    = pid_pfIsoFPRPhoton03[iPho]; 
 	probe_combinedPfIsoFPR03  = combinedPfIso03(pid_pfIsoFPRCharged03[iPho],pid_pfIsoFPRNeutral03[iPho],pid_pfIsoFPRPhoton03[iPho],iPho);
+	combinedPfIsoFPR03Phot  = combinedPfIso03(pid_pfIsoFPRCharged03[iPho],pid_pfIsoFPRNeutral03[iPho],pid_pfIsoFPRPhoton03[iPho],iPho);
 
 	probe_fprRCCharged03 = pid_pfIsoFPRRandomConeCharged03[iPho]; 
 	probe_fprRCNeutral03 = pid_pfIsoFPRRandomConeNeutral03[iPho]; 
@@ -292,28 +394,66 @@ void TagAndProbeAnalysis::Loop()
 	//cout << "debug: filled puW variables" << endl;	
 	if (r9Reweight)
 	  {
-	    r9weight_EB=r9weights_EB->GetBinContent(r9weights_EB->FindBin(r9Phot[iPho]));
-	    r9weight_EE=r9weights_EE->GetBinContent(r9weights_EE->FindBin(r9Phot[iPho]));
+	    if(TMath::Abs(probe_eta)<1.){
+	      r9weight_EB_hlt30 =h_R9Weight_lowEB_hlt30 ->GetBinContent((Int_t)h_R9Weight_lowEB_hlt30 ->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt50 =h_R9Weight_lowEB_hlt50 ->GetBinContent((Int_t)h_R9Weight_lowEB_hlt50 ->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt75 =h_R9Weight_lowEB_hlt75 ->GetBinContent((Int_t)h_R9Weight_lowEB_hlt75 ->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt90 =h_R9Weight_lowEB_hlt90 ->GetBinContent((Int_t)h_R9Weight_lowEB_hlt90 ->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt135=h_R9Weight_lowEB_hlt135->GetBinContent((Int_t)h_R9Weight_lowEB_hlt135->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt150=h_R9Weight_lowEB_hlt150->GetBinContent((Int_t)h_R9Weight_lowEB_hlt150->FindBin(r9Phot[iPho]));
+	    }	    
+	    if(TMath::Abs(probe_eta)>1. && TMath::Abs(probe_eta)<1.4442){
+	      r9weight_EB_hlt30 =h_R9Weight_highEB_hlt30 ->GetBinContent((Int_t)h_R9Weight_highEB_hlt30 ->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt50 =h_R9Weight_highEB_hlt50 ->GetBinContent((Int_t)h_R9Weight_highEB_hlt50 ->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt75 =h_R9Weight_highEB_hlt75 ->GetBinContent((Int_t)h_R9Weight_highEB_hlt75 ->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt90 =h_R9Weight_highEB_hlt90 ->GetBinContent((Int_t)h_R9Weight_highEB_hlt90 ->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt135=h_R9Weight_highEB_hlt135->GetBinContent((Int_t)h_R9Weight_highEB_hlt135->FindBin(r9Phot[iPho]));
+	      r9weight_EB_hlt150=h_R9Weight_highEB_hlt150->GetBinContent((Int_t)h_R9Weight_highEB_hlt150->FindBin(r9Phot[iPho]));
+	    }
+	    if(TMath::Abs(probe_eta)>1.566 && TMath::Abs(probe_eta)<2.){
+	      r9weight_EE_hlt30 =h_R9Weight_lowEE_hlt30 ->GetBinContent((Int_t)h_R9Weight_lowEE_hlt30 ->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt50 =h_R9Weight_lowEE_hlt50 ->GetBinContent((Int_t)h_R9Weight_lowEE_hlt50 ->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt75 =h_R9Weight_lowEE_hlt75 ->GetBinContent((Int_t)h_R9Weight_lowEE_hlt75 ->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt90 =h_R9Weight_lowEE_hlt90 ->GetBinContent((Int_t)h_R9Weight_lowEE_hlt90 ->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt135=h_R9Weight_lowEE_hlt135->GetBinContent((Int_t)h_R9Weight_lowEE_hlt135->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt150=h_R9Weight_lowEE_hlt150->GetBinContent((Int_t)h_R9Weight_lowEE_hlt150->FindBin(r9Phot[iPho]));
+	    }
+	    if(TMath::Abs(probe_eta)>2. && TMath::Abs(probe_eta)<2.5){
+	      r9weight_EE_hlt30 =h_R9Weight_highEE_hlt30 ->GetBinContent((Int_t)h_R9Weight_highEE_hlt30 ->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt50 =h_R9Weight_highEE_hlt50 ->GetBinContent((Int_t)h_R9Weight_highEE_hlt50 ->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt75 =h_R9Weight_highEE_hlt75 ->GetBinContent((Int_t)h_R9Weight_highEE_hlt75 ->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt90 =h_R9Weight_highEE_hlt90 ->GetBinContent((Int_t)h_R9Weight_highEE_hlt90 ->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt135=h_R9Weight_highEE_hlt135->GetBinContent((Int_t)h_R9Weight_highEE_hlt135->FindBin(r9Phot[iPho]));
+	      r9weight_EE_hlt150=h_R9Weight_highEE_hlt150->GetBinContent((Int_t)h_R9Weight_highEE_hlt150->FindBin(r9Phot[iPho]));
+	    }
 	  }
+	//r9weight_EB=r9weights_EB->GetBinContent((Int_t)r9weights_EB->FindBin(r9Phot[iPho]));
+	//r9weight_EE=r9weights_EE->GetBinContent((Int_t)r9weights_EE->FindBin(r9Phot[iPho]));
+      
 	else
 	  {
-	    r9weight_EB=1.;
-	    r9weight_EE=1.;
+
+	    r9weight_EB_hlt30 =1.;
+	    r9weight_EB_hlt50 =1.;
+	    r9weight_EB_hlt75 =1.;
+	    r9weight_EB_hlt90 =1.;
+	    r9weight_EB_hlt135=1.;
+	    r9weight_EB_hlt150=1.;
+	    
+	    
+	    r9weight_EE_hlt30 =1.;
+	    r9weight_EE_hlt50 =1.;
+	    r9weight_EE_hlt75 = 1.;
+	    r9weight_EE_hlt90 =1.;
+	    r9weight_EE_hlt135=1.;
+	    r9weight_EE_hlt150=1.;
+	    // r9weight_EB=1.;
+	    //    r9weight_EE=1.;
 	  }
 
-	//cout << "debug: filled r9 weights variables" << endl;	
 
-	//cout << "debug : bool etaReweight = " << etaReweight << endl;
-	if(etaReweight) {
 
-	  etaWeight=h_etaWeight->GetBinContent(h_etaWeight->FindBin(etascPhot[iPho]));
-	  
-	}
-	else etaWeight=1.;
 
-	//cout << "debug: filled eta weights variables" << endl;	
-
-	//cout << "debug : bool nvtxReweight = " << etaReweight << endl;
 //      if(nvtxReweight) {
 // 	  nvtxWeight=h_nvtxWeight->GetBinContent(h_nvtxWeight->FindBin(nvtx));
 // 	  //cout << "debug : nvtxweight = " << nvtxWeight << endl; 
@@ -323,20 +463,20 @@ void TagAndProbeAnalysis::Loop()
 
 
 	if(isMC && rhoReweight) {
-	  rhoWeight30=h_rhoWeight_mc_hlt30->GetBinContent(h_rhoWeight_mc_hlt30->FindBin(rho));
-	  rhoWeight50=h_rhoWeight_mc_hlt50->GetBinContent(h_rhoWeight_mc_hlt50->FindBin(rho));
-	  rhoWeight75=h_rhoWeight_mc_hlt75->GetBinContent(h_rhoWeight_mc_hlt75->FindBin(rho));
-	  rhoWeight90=h_rhoWeight_mc_hlt90->GetBinContent(h_rhoWeight_mc_hlt90->FindBin(rho));
-	  rhoWeight135=h_rhoWeight_mc_hlt135->GetBinContent(h_rhoWeight_mc_hlt135->FindBin(rho));
-	  rhoWeight150=h_rhoWeight_mc_hlt150->GetBinContent(h_rhoWeight_mc_hlt150->FindBin(rho));
+	  rhoWeight30=h_rhoWeight_mc_hlt30->GetBinContent((Int_t)h_rhoWeight_mc_hlt30->FindBin(rho));
+	  rhoWeight50=h_rhoWeight_mc_hlt50->GetBinContent((Int_t)h_rhoWeight_mc_hlt50->FindBin(rho));
+	  rhoWeight75=h_rhoWeight_mc_hlt75->GetBinContent((Int_t)h_rhoWeight_mc_hlt75->FindBin(rho));
+	  rhoWeight90=h_rhoWeight_mc_hlt90->GetBinContent((Int_t)h_rhoWeight_mc_hlt90->FindBin(rho));
+	  rhoWeight135=h_rhoWeight_mc_hlt135->GetBinContent((Int_t)h_rhoWeight_mc_hlt135->FindBin(rho));
+	  rhoWeight150=h_rhoWeight_mc_hlt150->GetBinContent((Int_t)h_rhoWeight_mc_hlt150->FindBin(rho));
 	}
 	else if(!isMC && rhoReweight){
-	  rhoWeight30=h_rhoWeight_data_hlt30->GetBinContent(h_rhoWeight_data_hlt30->FindBin(rho));
-	  rhoWeight50=h_rhoWeight_data_hlt50->GetBinContent(h_rhoWeight_data_hlt50->FindBin(rho));
-	  rhoWeight75=h_rhoWeight_data_hlt75->GetBinContent(h_rhoWeight_data_hlt75->FindBin(rho));
-	  rhoWeight90=h_rhoWeight_data_hlt90->GetBinContent(h_rhoWeight_data_hlt90->FindBin(rho));
-	  rhoWeight135=h_rhoWeight_data_hlt135->GetBinContent(h_rhoWeight_data_hlt135->FindBin(rho));
-	  rhoWeight150=h_rhoWeight_data_hlt150->GetBinContent(h_rhoWeight_data_hlt150->FindBin(rho));
+	  rhoWeight30=h_rhoWeight_data_hlt30->GetBinContent((Int_t)h_rhoWeight_data_hlt30->FindBin(rho));
+	  rhoWeight50=h_rhoWeight_data_hlt50->GetBinContent((Int_t)h_rhoWeight_data_hlt50->FindBin(rho));
+	  rhoWeight75=h_rhoWeight_data_hlt75->GetBinContent((Int_t)h_rhoWeight_data_hlt75->FindBin(rho));
+	  rhoWeight90=h_rhoWeight_data_hlt90->GetBinContent((Int_t)h_rhoWeight_data_hlt90->FindBin(rho));
+	  rhoWeight135=h_rhoWeight_data_hlt135->GetBinContent((Int_t)h_rhoWeight_data_hlt135->FindBin(rho));
+	  rhoWeight150=h_rhoWeight_data_hlt150->GetBinContent((Int_t)h_rhoWeight_data_hlt150->FindBin(rho));
 	}
 	else {
 	  rhoWeight30=1.;
@@ -347,7 +487,65 @@ void TagAndProbeAnalysis::Loop()
 	  rhoWeight150=1.;
 	}
 
-	
+	//cout << "debug : bool etaReweight = " << etaReweight << endl;
+	if(etaReweight) {
+	  etaWeight=h_etaWeight->GetBinContent((Int_t)h_etaWeight->FindBin(etascPhot[iPho]));
+	}
+	else etaWeight=1.;
+
+	if(ptReweight){
+	  ptWeight=h_ptWeight->GetBinContent((Int_t)h_ptWeight->FindBin(ptPhot[iPho]));
+	}
+
+
+	if(isoReweight  ){
+
+	  for(int jj=0; jj<61; jj++){
+	    isoW_EB[jj] = h_isoWeight_EB[jj]->GetBinContent((Int_t)h_isoWeight_EB[jj]->FindBin(probe_combinedPfIsoFPR03));
+	  }
+	  for(int jj=0; jj<18; jj++){
+	    isoW_EE[jj] = h_isoWeight_EE[jj]->GetBinContent((Int_t)h_isoWeight_EE[jj]->FindBin(probe_combinedPfIsoFPR03));
+	  }
+	  //not working
+// 	  if( fabs(probe_eta)<1.4442 ) {
+//  	    for(int i=0; i<61; i++){
+//  	      if( probe_pt>bin_low_edge_EB[i] && probe_pt<bin_high_edge_EB[i] ) {
+
+// 		isoWeight_dataZ_mcPhot= h_isoWeight_EB[i]->GetBinContent((Int_t)h_isoWeight_EB[i]->FindBin(probe_combinedPfIsoFPR03));
+// 		break;
+// 	      }
+//  	    }
+//  	  }
+//  	  else if ( fabs(probe_eta)>1.556 && fabs(probe_eta)<2.5){
+//  	    for (int i =0; i<18; i++){
+//  	      if( probe_pt>bin_low_edge_EE[i] && probe_pt<bin_high_edge_EE[i] ) {
+
+// 		isoWeight_dataZ_mcPhot= h_isoWeight_EE[i]->GetBinContent((Int_t)h_isoWeight_EE[i]->FindBin(probe_combinedPfIsoFPR03));
+// 		break;
+// 	      }
+//  	    }
+//  	  }
+// 	  else {
+// 	    cout << "filling isoWeight_dataZ_mcPhot with 1 " << endl;
+// 	    isoWeight_dataZ_mcPhot= 1.;
+// 	  }
+
+	}
+	else{
+	  for(int jj=0; jj<61; jj++){
+	    isoW_EB[jj] = 1.;
+	  }
+	  for(int jj=0; jj<18; jj++){
+	    isoW_EE[jj] = 1;
+	  }
+
+	}
+
+	  // isoWeight_dataZ_mcPhot= 1.;
+	//isoWeight_dataZ_mcPhot= 1.;
+	//cout << "iso weight  " << isoWeight_dataZ_mcPhot << endl;
+
+
 	okLooseElePtEta  = 1;
 	okLooseEleID     = isProbeLoosePhot[iPho];
 	okMediumElePtEta = 1;
@@ -371,8 +569,6 @@ void TagAndProbeAnalysis::Loop()
 	  if ( mvaIDPhot[iPho]>0.90492 ) okMVA_01  = 1;
 	  if ( mvaIDPhot[iPho]>0.92864 ) okMVA_02  = 1;
 	}
-
-	//cout << "debug: filled all tree leaves" << endl;	
 	
 	// check HLT and pT range
 	if (!isMC) {
@@ -394,6 +590,7 @@ void TagAndProbeAnalysis::Loop()
 	  if ( ptPhot[iPho]>=165 && ptPhot[iPho]<180 )    myTree[5]->Fill();
 	  if ( ptPhot[iPho]>=180 && ptPhot[iPho]<200000 ) myTree[6]->Fill();
 	}
+
       
       } // loop over photons
       //cout << "debug: done loop over photons" << endl;	
@@ -402,12 +599,14 @@ void TagAndProbeAnalysis::Loop()
     //cout << "debug: done loop over electrons" << endl;	
   }
   
-  //cout << "debug: done loop over entries" << endl;	
-
+  cout << "debug: done loop over entries" << endl;	
+  
   for (int ii=0; ii<7; ii++) {
     outFile[ii]->cd("myTaPDir");
     myTree[ii]->Write();
+    cout << "tree written" << endl;
     outFile[ii]->Close();
+    cout << "file closed" << endl;
   }
 }
 
@@ -525,16 +724,71 @@ void TagAndProbeAnalysis::readR9Weights()
     return;
   
   TFile *f=TFile::Open(r9WeightsFile);
-
-  r9weights_EB=(TH1F*)f->Get("R9WeightEBAll");
-  r9weights_EE=(TH1F*)f->Get("R9WeightEEAll");
+  //to read Shervin's file
+  //r9weights_EB=(TH1F*)f->Get("R9WeightEBAll");
+  //r9weights_EE=(TH1F*)f->Get("R9WeightEEAll");
 
   //Just do a smoothing of the weights
-  r9weights_EB->Rebin(2);
-  r9weights_EE->Rebin(2);
+  //r9weights_EB->Rebin(2);
+  //r9weights_EE->Rebin(2);
 
-  r9weights_EB->Smooth(4);
-  r9weights_EE->Smooth(4);
+  //r9weights_EB->Smooth(4);
+  //r9weights_EE->Smooth(4);
+
+  //to read new file
+  h_R9Weight_lowEB_hlt30 =(TH1F*)f->Get("weights_lowEB_hlt30");
+  h_R9Weight_lowEB_hlt30 ->SetName("h_R9Weight_lowEB_hlt30");
+  h_R9Weight_lowEB_hlt50 =(TH1F*)f->Get("weights_lowEB_hlt50");
+  h_R9Weight_lowEB_hlt50 ->SetName("h_R9Weight_lowEB_hlt50");
+  h_R9Weight_lowEB_hlt75 =(TH1F*)f->Get("weights_lowEB_hlt75");
+  h_R9Weight_lowEB_hlt75 ->SetName("h_R9Weight_lowEB_hlt75");
+  h_R9Weight_lowEB_hlt90 =(TH1F*)f->Get("weights_lowEB_hlt90");
+  h_R9Weight_lowEB_hlt90 ->SetName("h_R9Weight_lowEB_hlt90");
+  h_R9Weight_lowEB_hlt135=(TH1F*)f->Get("weights_lowEB_hlt135");
+  h_R9Weight_lowEB_hlt135->SetName("h_R9Weight_lowEB_hlt135");
+  h_R9Weight_lowEB_hlt150=(TH1F*)f->Get("weights_lowEB_hlt150");
+  h_R9Weight_lowEB_hlt150->SetName("h_R9Weight_lowEB_hlt150");
+
+  h_R9Weight_highEB_hlt30 =(TH1F*)f->Get("weights_highEB_hlt30");
+  h_R9Weight_highEB_hlt30 ->SetName("h_R9Weight_highEB_hlt30");
+  h_R9Weight_highEB_hlt50 =(TH1F*)f->Get("weights_highEB_hlt50");
+  h_R9Weight_highEB_hlt50 ->SetName("h_R9Weight_highEB_hlt50");
+  h_R9Weight_highEB_hlt75 =(TH1F*)f->Get("weights_highEB_hlt75");
+  h_R9Weight_highEB_hlt75 ->SetName("h_R9Weight_highEB_hlt75");
+  h_R9Weight_highEB_hlt90 =(TH1F*)f->Get("weights_highEB_hlt90");
+  h_R9Weight_highEB_hlt90 ->SetName("h_R9Weight_highEB_hlt90");
+  h_R9Weight_highEB_hlt135=(TH1F*)f->Get("weights_highEB_hlt135");
+  h_R9Weight_highEB_hlt135->SetName("h_R9Weight_highEB_hlt135");
+  h_R9Weight_highEB_hlt150=(TH1F*)f->Get("weights_highEB_hlt150");
+  h_R9Weight_highEB_hlt150->SetName("h_R9Weight_highEB_hlt150");
+
+
+  h_R9Weight_lowEE_hlt30 =(TH1F*)f->Get("weights_lowEE_hlt30");
+  h_R9Weight_lowEE_hlt30 ->SetName("h_R9Weight_lowEE_hlt30");
+  h_R9Weight_lowEE_hlt50 =(TH1F*)f->Get("weights_lowEE_hlt50");
+  h_R9Weight_lowEE_hlt50 ->SetName("h_R9Weight_lowEE_hlt50");
+  h_R9Weight_lowEE_hlt75 =(TH1F*)f->Get("weights_lowEE_hlt75");
+  h_R9Weight_lowEE_hlt75 ->SetName("h_R9Weight_lowEE_hlt75");
+  h_R9Weight_lowEE_hlt90 =(TH1F*)f->Get("weights_lowEE_hlt90");
+  h_R9Weight_lowEE_hlt90 ->SetName("h_R9Weight_lowEE_hlt90");
+  h_R9Weight_lowEE_hlt135=(TH1F*)f->Get("weights_lowEE_hlt135");
+  h_R9Weight_lowEE_hlt135->SetName("h_R9Weight_lowEE_hlt135");
+  h_R9Weight_lowEE_hlt150=(TH1F*)f->Get("weights_lowEE_hlt150");
+  h_R9Weight_lowEE_hlt150->SetName("h_R9Weight_lowEE_hlt150");
+
+  h_R9Weight_highEE_hlt30 =(TH1F*)f->Get("weights_highEE_hlt30");
+  h_R9Weight_highEE_hlt30 ->SetName("h_R9Weight_highEE_hlt30");
+  h_R9Weight_highEE_hlt50 =(TH1F*)f->Get("weights_highEE_hlt50");
+  h_R9Weight_highEE_hlt50 ->SetName("h_R9Weight_highEE_hlt50");
+  h_R9Weight_highEE_hlt75 =(TH1F*)f->Get("weights_highEE_hlt75");
+  h_R9Weight_highEE_hlt75 ->SetName("h_R9Weight_highEE_hlt75");
+  h_R9Weight_highEE_hlt90 =(TH1F*)f->Get("weights_highEE_hlt90");
+  h_R9Weight_highEE_hlt90 ->SetName("h_R9Weight_highEE_hlt90");
+  h_R9Weight_highEE_hlt135=(TH1F*)f->Get("weights_highEE_hlt135");
+  h_R9Weight_highEE_hlt135->SetName("h_R9Weight_highEE_hlt135");
+  h_R9Weight_highEE_hlt150=(TH1F*)f->Get("weights_highEE_hlt150");
+  h_R9Weight_highEE_hlt150->SetName("h_R9Weight_highEE_hlt150");
+
 }
 
 void TagAndProbeAnalysis::readEtaWeights()
@@ -554,6 +808,21 @@ void TagAndProbeAnalysis::readEtaWeights()
 }
 
 
+void TagAndProbeAnalysis::read_ptWeights()
+{
+  if (!ptReweight)
+    return;
+  
+  TFile *f=TFile::Open(ptWeightsFile);
+
+  h_ptWeight=(TH1F*)f->Get("weights");
+  h_ptWeight->SetName("h_ptWeight");
+  //Just do a smoothing of the weights
+  h_ptWeight->Smooth();
+
+
+}
+
 
 void TagAndProbeAnalysis::read_nvtxWeights()
 {
@@ -564,9 +833,6 @@ void TagAndProbeAnalysis::read_nvtxWeights()
 
   h_nvtxWeight=(TH1F*)f->Get("weights");
   h_nvtxWeight->SetName("h_nvtxWeight");
-
-  
-  //don't apply smoothing because eta has cuts and smoothing changes significantly weights next to the cuts 
 
 }
 
@@ -606,32 +872,61 @@ void TagAndProbeAnalysis::read_rhoWeights()
   h_rhoWeight_data_hlt150->SetName("h_rhoWeight_data_hlt150");
 
   //Just do a smoothing of the weights
-  h_rhoWeight_mc_hlt30->Rebin(8);
-  h_rhoWeight_mc_hlt50->Rebin(8);
-  h_rhoWeight_mc_hlt75->Rebin(8);
-  h_rhoWeight_mc_hlt90->Rebin(8);
-  h_rhoWeight_mc_hlt135->Rebin(8);
-  h_rhoWeight_mc_hlt150->Rebin(8);
-  h_rhoWeight_data_hlt30->Rebin(8);
-  h_rhoWeight_data_hlt50->Rebin(8);
-  h_rhoWeight_data_hlt75->Rebin(8);
-  h_rhoWeight_data_hlt90->Rebin(8);
-  h_rhoWeight_data_hlt135->Rebin(8);
-  h_rhoWeight_data_hlt150->Rebin(8);
+ 
+  h_rhoWeight_mc_hlt30->Smooth();
+  h_rhoWeight_mc_hlt50->Smooth();
+  h_rhoWeight_mc_hlt75->Smooth();
+  h_rhoWeight_mc_hlt90->Smooth();
+  h_rhoWeight_mc_hlt135->Smooth();
+  h_rhoWeight_mc_hlt150->Smooth();
+  h_rhoWeight_data_hlt30->Smooth();
+  h_rhoWeight_data_hlt50->Smooth();
+  h_rhoWeight_data_hlt75->Smooth();
+  h_rhoWeight_data_hlt90->Smooth();
+  h_rhoWeight_data_hlt135->Smooth();
+  h_rhoWeight_data_hlt150->Smooth();
+
+}
 
 
-  h_rhoWeight_mc_hlt30->Smooth(4);
-  h_rhoWeight_mc_hlt50->Smooth(4);
-  h_rhoWeight_mc_hlt75->Smooth(4);
-  h_rhoWeight_mc_hlt90->Smooth(4);
-  h_rhoWeight_mc_hlt135->Smooth(4);
-  h_rhoWeight_mc_hlt150->Smooth(4);
-  h_rhoWeight_data_hlt30->Smooth(4);
-  h_rhoWeight_data_hlt50->Smooth(4);
-  h_rhoWeight_data_hlt75->Smooth(4);
-  h_rhoWeight_data_hlt90->Smooth(4);
-  h_rhoWeight_data_hlt135->Smooth(4);
-  h_rhoWeight_data_hlt150->Smooth(4);
+void TagAndProbeAnalysis::read_isoWeights_dataZ_40_65_to_mcPhot()
+{
+
+  std::ostringstream stringtmp;
+  cout << "debug: read weights" << endl;
+  if (!isoReweight)
+    return;
+
+  float bin_low_edge_EB[61] = {40,47,65,73,90,94,99,105,110,117,126,139,155,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,215,220,225,230,235,240,245,250,255,260,265,270,290,310,340,380,480};
+  float bin_high_edge_EB[61] ={47,65,73,90,94,99,105,110,117,126,139,155,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,215,220,225,230,235,240,245,250,255,260,265,270,290,310,340,380,480,1000};
+  float bin_low_edge_EE[18]={40,65,90,105,126,165,168,172,176,180,186,192,198,206,215,225,240,270 };
+  float bin_high_edge_EE[18]={65,90,105,126,165,168,172,176,180,186,192,198,206,215,225,240,270,1000 };
+
+
+  TFile *f=TFile::Open(isoWeightsFile);
+  cout << "open " << isoWeightsFile << endl;
+
+
+  for (int i=0; i<61; i++){
+    stringtmp << "h_isoW_EB_bin_"<< bin_low_edge_EB[i] << "_" << bin_high_edge_EB[i] ; 
+    cout << stringtmp.str()  << endl;
+    h_isoWeight_EB[i]=(TH1F*)f->Get((stringtmp.str()).c_str());
+    if(h_isoWeight_EB[i]==0) cout << "WARNING: failed to get histogram " << endl;
+    stringtmp.str("");
+    stringtmp.clear();
+    h_isoWeight_EB[i]->Smooth();
+  }
+
+  for (int i=0; i<18; i++){
+    stringtmp << "h_isoW_EE_bin_"<< bin_low_edge_EE[i] << "_" << bin_high_edge_EE[i] ; 
+    cout << stringtmp.str()  << endl;
+    h_isoWeight_EE[i]=(TH1F*)f->Get((stringtmp.str()).c_str());
+    if(h_isoWeight_EE[i]==0) cout << "WARNING: failed to get histogram " << endl;
+    stringtmp.str("");
+    stringtmp.clear();
+    h_isoWeight_EE[i]->Smooth();
+  }
+
 
 }
 

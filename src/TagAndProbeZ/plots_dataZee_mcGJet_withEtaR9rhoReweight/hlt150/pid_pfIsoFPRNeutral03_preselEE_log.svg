@@ -1,0 +1,2258 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="567" height="496" viewBox="0 0 567 496" xmlns="http://www.w3.org/2000/svg">
+<title>
+../src/TagAndProbeZ/plots_dataZee_mcGJet_withEtaR9rhoReweight/hlt150//pid_pfIsoFPRNeutral03_preselEE_log.svg
+</title>
+<desc>
+Creator: ROOT Version 5.32/00
+CreationDate: Tue Dec  2 08:48:26 2014</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="567" height="496" fill="white"/>
+<rect x="0" y="0" width="567" height="347" fill="white"/>
+<rect x="57" y="34" width="453" height="278" fill="white"/>
+<rect x="57" y="34" width="453" height="278" fill="none" stroke="black"/>
+<rect x="57" y="34" width="453" height="278" fill="white"/>
+<rect x="57" y="34" width="453" height="278" fill="none" stroke="black"/>
+<path d="M57,63h 2" fill="none" stroke="#ff0099"/>
+<path d="M62,63h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 60" cy=" 63" r=" 1.5"/>
+</g>
+<path d="M68,224v -8" fill="none" stroke="#ff0099"/>
+<path d="M68,214v -5" fill="none" stroke="#ff0099"/>
+<path d="M64,215h 3" fill="none" stroke="#ff0099"/>
+<path d="M69,215h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 68" cy=" 215" r=" 1.5"/>
+</g>
+<path d="M76,181v -1" fill="none" stroke="#ff0099"/>
+<path d="M76,177v -1" fill="none" stroke="#ff0099"/>
+<path d="M72,179h 2" fill="none" stroke="#ff0099"/>
+<path d="M77,179h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 76" cy=" 179" r=" 1.5"/>
+</g>
+<path d="M83,166" fill="none" stroke="#ff0099"/>
+<path d="M83,163" fill="none" stroke="#ff0099"/>
+<path d="M79,165h 3" fill="none" stroke="#ff0099"/>
+<path d="M84,165h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 83" cy=" 165" r=" 1.5"/>
+</g>
+<path d="M87,148h 3" fill="none" stroke="#ff0099"/>
+<path d="M92,148h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 91" cy=" 148" r=" 1.5"/>
+</g>
+<path d="M94,135h 3" fill="none" stroke="#ff0099"/>
+<path d="M99,135h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 98" cy=" 135" r=" 1.5"/>
+</g>
+<path d="M102,131h 3" fill="none" stroke="#ff0099"/>
+<path d="M107,131h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 106" cy=" 131" r=" 1.5"/>
+</g>
+<path d="M110,119h 2" fill="none" stroke="#ff0099"/>
+<path d="M115,119h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 113" cy=" 119" r=" 1.5"/>
+</g>
+<path d="M117,118h 3" fill="none" stroke="#ff0099"/>
+<path d="M122,118h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 121" cy=" 118" r=" 1.5"/>
+</g>
+<path d="M125,121h 2" fill="none" stroke="#ff0099"/>
+<path d="M130,121h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 129" cy=" 121" r=" 1.5"/>
+</g>
+<path d="M132,137h 3" fill="none" stroke="#ff0099"/>
+<path d="M137,137h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 136" cy=" 137" r=" 1.5"/>
+</g>
+<path d="M144,144" fill="none" stroke="#ff0099"/>
+<path d="M140,143h 2" fill="none" stroke="#ff0099"/>
+<path d="M145,143h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 144" cy=" 143" r=" 1.5"/>
+</g>
+<path d="M151,146" fill="none" stroke="#ff0099"/>
+<path d="M151,144v -1" fill="none" stroke="#ff0099"/>
+<path d="M147,145h 3" fill="none" stroke="#ff0099"/>
+<path d="M152,145h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 151" cy=" 145" r=" 1.5"/>
+</g>
+<path d="M159,150" fill="none" stroke="#ff0099"/>
+<path d="M159,147" fill="none" stroke="#ff0099"/>
+<path d="M155,149h 3" fill="none" stroke="#ff0099"/>
+<path d="M160,149h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 159" cy=" 149" r=" 1.5"/>
+</g>
+<path d="M166,150" fill="none" stroke="#ff0099"/>
+<path d="M166,148" fill="none" stroke="#ff0099"/>
+<path d="M163,149h 2" fill="none" stroke="#ff0099"/>
+<path d="M167,149h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 166" cy=" 149" r=" 1.5"/>
+</g>
+<path d="M174,149" fill="none" stroke="#ff0099"/>
+<path d="M174,147" fill="none" stroke="#ff0099"/>
+<path d="M170,148h 3" fill="none" stroke="#ff0099"/>
+<path d="M175,148h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 174" cy=" 148" r=" 1.5"/>
+</g>
+<path d="M181,152v -1" fill="none" stroke="#ff0099"/>
+<path d="M181,149" fill="none" stroke="#ff0099"/>
+<path d="M178,150h 2" fill="none" stroke="#ff0099"/>
+<path d="M183,150h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 181" cy=" 150" r=" 1.5"/>
+</g>
+<path d="M189,151" fill="none" stroke="#ff0099"/>
+<path d="M189,148" fill="none" stroke="#ff0099"/>
+<path d="M185,149h 3" fill="none" stroke="#ff0099"/>
+<path d="M190,149h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 189" cy=" 149" r=" 1.5"/>
+</g>
+<path d="M197,153" fill="none" stroke="#ff0099"/>
+<path d="M197,150" fill="none" stroke="#ff0099"/>
+<path d="M193,152h 2" fill="none" stroke="#ff0099"/>
+<path d="M198,152h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 197" cy=" 152" r=" 1.5"/>
+</g>
+<path d="M204,159" fill="none" stroke="#ff0099"/>
+<path d="M204,157v -1" fill="none" stroke="#ff0099"/>
+<path d="M200,158h 3" fill="none" stroke="#ff0099"/>
+<path d="M205,158h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 204" cy=" 158" r=" 1.5"/>
+</g>
+<path d="M212,160v -1" fill="none" stroke="#ff0099"/>
+<path d="M212,157v -1" fill="none" stroke="#ff0099"/>
+<path d="M208,158h 3" fill="none" stroke="#ff0099"/>
+<path d="M213,158h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 212" cy=" 158" r=" 1.5"/>
+</g>
+<path d="M219,161v -1" fill="none" stroke="#ff0099"/>
+<path d="M219,158v -1" fill="none" stroke="#ff0099"/>
+<path d="M215,159h 3" fill="none" stroke="#ff0099"/>
+<path d="M220,159h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 219" cy=" 159" r=" 1.5"/>
+</g>
+<path d="M227,164v -1" fill="none" stroke="#ff0099"/>
+<path d="M227,161v -1" fill="none" stroke="#ff0099"/>
+<path d="M223,162h 3" fill="none" stroke="#ff0099"/>
+<path d="M228,162h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 227" cy=" 162" r=" 1.5"/>
+</g>
+<path d="M234,166v -1" fill="none" stroke="#ff0099"/>
+<path d="M234,163v -1" fill="none" stroke="#ff0099"/>
+<path d="M231,164h 2" fill="none" stroke="#ff0099"/>
+<path d="M235,164h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 234" cy=" 164" r=" 1.5"/>
+</g>
+<path d="M242,169v -1" fill="none" stroke="#ff0099"/>
+<path d="M242,165v -1" fill="none" stroke="#ff0099"/>
+<path d="M238,166h 3" fill="none" stroke="#ff0099"/>
+<path d="M243,166h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 242" cy=" 166" r=" 1.5"/>
+</g>
+<path d="M249,172v -1" fill="none" stroke="#ff0099"/>
+<path d="M249,169" fill="none" stroke="#ff0099"/>
+<path d="M246,170h 2" fill="none" stroke="#ff0099"/>
+<path d="M251,170h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 249" cy=" 170" r=" 1.5"/>
+</g>
+<path d="M257,167v -1" fill="none" stroke="#ff0099"/>
+<path d="M257,163v -1" fill="none" stroke="#ff0099"/>
+<path d="M253,164h 3" fill="none" stroke="#ff0099"/>
+<path d="M258,164h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 257" cy=" 164" r=" 1.5"/>
+</g>
+<path d="M265,171v -2" fill="none" stroke="#ff0099"/>
+<path d="M265,167v -1" fill="none" stroke="#ff0099"/>
+<path d="M261,168h 2" fill="none" stroke="#ff0099"/>
+<path d="M266,168h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 265" cy=" 168" r=" 1.5"/>
+</g>
+<path d="M272,174v -1" fill="none" stroke="#ff0099"/>
+<path d="M272,171v -2" fill="none" stroke="#ff0099"/>
+<path d="M268,172h 3" fill="none" stroke="#ff0099"/>
+<path d="M273,172h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 272" cy=" 172" r=" 1.5"/>
+</g>
+<path d="M280,173v -3" fill="none" stroke="#ff0099"/>
+<path d="M280,168v -3" fill="none" stroke="#ff0099"/>
+<path d="M276,169h 3" fill="none" stroke="#ff0099"/>
+<path d="M281,169h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 280" cy=" 169" r=" 1.5"/>
+</g>
+<path d="M287,177v -3" fill="none" stroke="#ff0099"/>
+<path d="M287,172v -2" fill="none" stroke="#ff0099"/>
+<path d="M283,173h 3" fill="none" stroke="#ff0099"/>
+<path d="M288,173h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 287" cy=" 173" r=" 1.5"/>
+</g>
+<path d="M295,176v -3" fill="none" stroke="#ff0099"/>
+<path d="M295,170v -2" fill="none" stroke="#ff0099"/>
+<path d="M291,171h 3" fill="none" stroke="#ff0099"/>
+<path d="M296,171h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 295" cy=" 171" r=" 1.5"/>
+</g>
+<path d="M302,179v -3" fill="none" stroke="#ff0099"/>
+<path d="M302,174v -2" fill="none" stroke="#ff0099"/>
+<path d="M299,175h 2" fill="none" stroke="#ff0099"/>
+<path d="M304,175h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 302" cy=" 175" r=" 1.5"/>
+</g>
+<path d="M310,183v -2" fill="none" stroke="#ff0099"/>
+<path d="M310,179v -1" fill="none" stroke="#ff0099"/>
+<path d="M306,180h 3" fill="none" stroke="#ff0099"/>
+<path d="M311,180h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 310" cy=" 180" r=" 1.5"/>
+</g>
+<path d="M317,181v -4" fill="none" stroke="#ff0099"/>
+<path d="M317,175v -2" fill="none" stroke="#ff0099"/>
+<path d="M314,176h 2" fill="none" stroke="#ff0099"/>
+<path d="M319,176h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 317" cy=" 176" r=" 1.5"/>
+</g>
+<path d="M325,185v -3" fill="none" stroke="#ff0099"/>
+<path d="M325,180v -2" fill="none" stroke="#ff0099"/>
+<path d="M321,181h 3" fill="none" stroke="#ff0099"/>
+<path d="M326,181h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 325" cy=" 181" r=" 1.5"/>
+</g>
+<path d="M333,187v -4" fill="none" stroke="#ff0099"/>
+<path d="M333,180v -3" fill="none" stroke="#ff0099"/>
+<path d="M329,181h 2" fill="none" stroke="#ff0099"/>
+<path d="M334,181h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 333" cy=" 181" r=" 1.5"/>
+</g>
+<path d="M340,188v -2" fill="none" stroke="#ff0099"/>
+<path d="M340,184v -2" fill="none" stroke="#ff0099"/>
+<path d="M336,185h 3" fill="none" stroke="#ff0099"/>
+<path d="M341,185h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 340" cy=" 185" r=" 1.5"/>
+</g>
+<path d="M348,194v -3" fill="none" stroke="#ff0099"/>
+<path d="M348,189v -2" fill="none" stroke="#ff0099"/>
+<path d="M344,190h 3" fill="none" stroke="#ff0099"/>
+<path d="M349,190h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 348" cy=" 190" r=" 1.5"/>
+</g>
+<path d="M355,196v -2" fill="none" stroke="#ff0099"/>
+<path d="M355,191v -2" fill="none" stroke="#ff0099"/>
+<path d="M351,193h 3" fill="none" stroke="#ff0099"/>
+<path d="M356,193h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 355" cy=" 193" r=" 1.5"/>
+</g>
+<path d="M363,194v -4" fill="none" stroke="#ff0099"/>
+<path d="M363,188v -2" fill="none" stroke="#ff0099"/>
+<path d="M359,189h 3" fill="none" stroke="#ff0099"/>
+<path d="M364,189h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 363" cy=" 189" r=" 1.5"/>
+</g>
+<path d="M370,198v -4" fill="none" stroke="#ff0099"/>
+<path d="M370,192v -3" fill="none" stroke="#ff0099"/>
+<path d="M367,193h 2" fill="none" stroke="#ff0099"/>
+<path d="M372,193h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 370" cy=" 193" r=" 1.5"/>
+</g>
+<path d="M378,200v -3" fill="none" stroke="#ff0099"/>
+<path d="M378,194v -2" fill="none" stroke="#ff0099"/>
+<path d="M374,196h 3" fill="none" stroke="#ff0099"/>
+<path d="M379,196h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 378" cy=" 196" r=" 1.5"/>
+</g>
+<path d="M386,199v -4" fill="none" stroke="#ff0099"/>
+<path d="M386,193v -3" fill="none" stroke="#ff0099"/>
+<path d="M382,194h 2" fill="none" stroke="#ff0099"/>
+<path d="M387,194h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 386" cy=" 194" r=" 1.5"/>
+</g>
+<path d="M393,200v -3" fill="none" stroke="#ff0099"/>
+<path d="M393,194v -2" fill="none" stroke="#ff0099"/>
+<path d="M389,196h 3" fill="none" stroke="#ff0099"/>
+<path d="M394,196h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 393" cy=" 196" r=" 1.5"/>
+</g>
+<path d="M401,201v -4" fill="none" stroke="#ff0099"/>
+<path d="M401,195v -3" fill="none" stroke="#ff0099"/>
+<path d="M397,196h 2" fill="none" stroke="#ff0099"/>
+<path d="M402,196h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 401" cy=" 196" r=" 1.5"/>
+</g>
+<path d="M408,206v -3" fill="none" stroke="#ff0099"/>
+<path d="M408,200v -2" fill="none" stroke="#ff0099"/>
+<path d="M404,202h 3" fill="none" stroke="#ff0099"/>
+<path d="M409,202h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 408" cy=" 202" r=" 1.5"/>
+</g>
+<path d="M416,217v -3" fill="none" stroke="#ff0099"/>
+<path d="M416,211v -2" fill="none" stroke="#ff0099"/>
+<path d="M412,213h 3" fill="none" stroke="#ff0099"/>
+<path d="M417,213h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 416" cy=" 213" r=" 1.5"/>
+</g>
+<path d="M423,212v -4" fill="none" stroke="#ff0099"/>
+<path d="M423,206v -3" fill="none" stroke="#ff0099"/>
+<path d="M420,207h 2" fill="none" stroke="#ff0099"/>
+<path d="M424,207h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 423" cy=" 207" r=" 1.5"/>
+</g>
+<path d="M431,208v -4" fill="none" stroke="#ff0099"/>
+<path d="M431,201v -3" fill="none" stroke="#ff0099"/>
+<path d="M427,202h 3" fill="none" stroke="#ff0099"/>
+<path d="M432,202h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 431" cy=" 202" r=" 1.5"/>
+</g>
+<path d="M438,214v -2" fill="none" stroke="#ff0099"/>
+<path d="M438,210v -2" fill="none" stroke="#ff0099"/>
+<path d="M435,211h 2" fill="none" stroke="#ff0099"/>
+<path d="M440,211h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 438" cy=" 211" r=" 1.5"/>
+</g>
+<path d="M446,216v -4" fill="none" stroke="#ff0099"/>
+<path d="M446,209v -3" fill="none" stroke="#ff0099"/>
+<path d="M442,210h 3" fill="none" stroke="#ff0099"/>
+<path d="M447,210h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 446" cy=" 210" r=" 1.5"/>
+</g>
+<path d="M454,214v -8" fill="none" stroke="#ff0099"/>
+<path d="M454,204v -4" fill="none" stroke="#ff0099"/>
+<path d="M450,205h 2" fill="none" stroke="#ff0099"/>
+<path d="M455,205h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 454" cy=" 205" r=" 1.5"/>
+</g>
+<path d="M461,221v -5" fill="none" stroke="#ff0099"/>
+<path d="M461,213v -3" fill="none" stroke="#ff0099"/>
+<path d="M457,214h 3" fill="none" stroke="#ff0099"/>
+<path d="M462,214h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 461" cy=" 214" r=" 1.5"/>
+</g>
+<path d="M469,229v -8" fill="none" stroke="#ff0099"/>
+<path d="M469,218v -5" fill="none" stroke="#ff0099"/>
+<path d="M465,220h 3" fill="none" stroke="#ff0099"/>
+<path d="M470,220h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 469" cy=" 220" r=" 1.5"/>
+</g>
+<path d="M476,230v -5" fill="none" stroke="#ff0099"/>
+<path d="M476,223v -3" fill="none" stroke="#ff0099"/>
+<path d="M472,224h 3" fill="none" stroke="#ff0099"/>
+<path d="M477,224h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 476" cy=" 224" r=" 1.5"/>
+</g>
+<path d="M484,215v -17" fill="none" stroke="#ff0099"/>
+<path d="M484,196v -8" fill="none" stroke="#ff0099"/>
+<path d="M480,197h 3" fill="none" stroke="#ff0099"/>
+<path d="M485,197h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 484" cy=" 197" r=" 1.5"/>
+</g>
+<path d="M491,243v -4" fill="none" stroke="#ff0099"/>
+<path d="M491,236v -3" fill="none" stroke="#ff0099"/>
+<path d="M488,238h 2" fill="none" stroke="#ff0099"/>
+<path d="M492,238h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 491" cy=" 238" r=" 1.5"/>
+</g>
+<path d="M499,229v -31" fill="none" stroke="#ff0099"/>
+<path d="M499,196v -9" fill="none" stroke="#ff0099"/>
+<path d="M495,197h 3" fill="none" stroke="#ff0099"/>
+<path d="M500,197h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 499" cy=" 197" r=" 1.5"/>
+</g>
+<path d="M506,231v -7" fill="none" stroke="#ff0099"/>
+<path d="M506,222v -5" fill="none" stroke="#ff0099"/>
+<path d="M503,223h 2" fill="none" stroke="#ff0099"/>
+<path d="M508,223h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 506" cy=" 223" r=" 1.5"/>
+</g>
+<path d="M57,312h 453" fill="none" stroke="black"/>
+<text x="437" y="338" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+R=0.3 (GeV)
+</text>
+<text x="429" y="338" fill="black" font-size="13" font-family="Times">
+&#0916;
+</text>
+<text x="345" y="338" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+PfIso Neutral 
+</text>
+<path d="M57,304v 8" fill="none" stroke="black"/>
+<path d="M72,308v 4" fill="none" stroke="black"/>
+<path d="M87,308v 4" fill="none" stroke="black"/>
+<path d="M102,308v 4" fill="none" stroke="black"/>
+<path d="M117,308v 4" fill="none" stroke="black"/>
+<path d="M132,304v 8" fill="none" stroke="black"/>
+<path d="M147,308v 4" fill="none" stroke="black"/>
+<path d="M163,308v 4" fill="none" stroke="black"/>
+<path d="M178,308v 4" fill="none" stroke="black"/>
+<path d="M193,308v 4" fill="none" stroke="black"/>
+<path d="M208,304v 8" fill="none" stroke="black"/>
+<path d="M223,308v 4" fill="none" stroke="black"/>
+<path d="M238,308v 4" fill="none" stroke="black"/>
+<path d="M253,308v 4" fill="none" stroke="black"/>
+<path d="M268,308v 4" fill="none" stroke="black"/>
+<path d="M283,304v 8" fill="none" stroke="black"/>
+<path d="M299,308v 4" fill="none" stroke="black"/>
+<path d="M314,308v 4" fill="none" stroke="black"/>
+<path d="M329,308v 4" fill="none" stroke="black"/>
+<path d="M344,308v 4" fill="none" stroke="black"/>
+<path d="M359,304v 8" fill="none" stroke="black"/>
+<path d="M374,308v 4" fill="none" stroke="black"/>
+<path d="M389,308v 4" fill="none" stroke="black"/>
+<path d="M404,308v 4" fill="none" stroke="black"/>
+<path d="M420,308v 4" fill="none" stroke="black"/>
+<path d="M435,304v 8" fill="none" stroke="black"/>
+<path d="M450,308v 4" fill="none" stroke="black"/>
+<path d="M465,308v 4" fill="none" stroke="black"/>
+<path d="M480,308v 4" fill="none" stroke="black"/>
+<path d="M495,308v 4" fill="none" stroke="black"/>
+<path d="M510,304v 8" fill="none" stroke="black"/>
+<text x="53" y="325" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+0
+</text>
+<text x="129" y="325" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+1
+</text>
+<text x="204" y="325" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+2
+</text>
+<text x="280" y="325" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+3
+</text>
+<text x="355" y="325" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+4
+</text>
+<text x="430" y="325" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+5
+</text>
+<text x="507" y="325" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+6
+</text>
+<path d="M57,312v -278" fill="none" stroke="black"/>
+<g transform="rotate(-90,28,99)">
+<text x="28" y="99" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+Entries/0.1
+</text>
+</g>
+<path d="M63,312h -6" fill="none" stroke="black"/>
+<path d="M63,307h -6" fill="none" stroke="black"/>
+<path d="M63,303h -6" fill="none" stroke="black"/>
+<path d="M63,300h -6" fill="none" stroke="black"/>
+<path d="M63,297h -6" fill="none" stroke="black"/>
+<path d="M63,295h -6" fill="none" stroke="black"/>
+<path d="M63,293h -6" fill="none" stroke="black"/>
+<path d="M70,291h -13" fill="none" stroke="black"/>
+<text x="44" y="291" fill="black" font-size="9" font-family="Helvetica" font-weight="bold">
+-6
+</text>
+<text x="30" y="297" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+10
+</text>
+<path d="M63,280h -6" fill="none" stroke="black"/>
+<path d="M63,273h -6" fill="none" stroke="black"/>
+<path d="M63,268h -6" fill="none" stroke="black"/>
+<path d="M63,264h -6" fill="none" stroke="black"/>
+<path d="M63,261h -6" fill="none" stroke="black"/>
+<path d="M63,259h -6" fill="none" stroke="black"/>
+<path d="M63,256h -6" fill="none" stroke="black"/>
+<path d="M63,254h -6" fill="none" stroke="black"/>
+<path d="M70,253h -13" fill="none" stroke="black"/>
+<text x="44" y="252" fill="black" font-size="9" font-family="Helvetica" font-weight="bold">
+-5
+</text>
+<text x="30" y="259" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+10
+</text>
+<path d="M63,241h -6" fill="none" stroke="black"/>
+<path d="M63,234h -6" fill="none" stroke="black"/>
+<path d="M63,229h -6" fill="none" stroke="black"/>
+<path d="M63,226h -6" fill="none" stroke="black"/>
+<path d="M63,223h -6" fill="none" stroke="black"/>
+<path d="M63,220h -6" fill="none" stroke="black"/>
+<path d="M63,218h -6" fill="none" stroke="black"/>
+<path d="M63,216h -6" fill="none" stroke="black"/>
+<path d="M70,214h -13" fill="none" stroke="black"/>
+<text x="44" y="214" fill="black" font-size="9" font-family="Helvetica" font-weight="bold">
+-4
+</text>
+<text x="30" y="220" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+10
+</text>
+<path d="M63,202h -6" fill="none" stroke="black"/>
+<path d="M63,196h -6" fill="none" stroke="black"/>
+<path d="M63,191h -6" fill="none" stroke="black"/>
+<path d="M63,187h -6" fill="none" stroke="black"/>
+<path d="M63,184h -6" fill="none" stroke="black"/>
+<path d="M63,181h -6" fill="none" stroke="black"/>
+<path d="M63,179h -6" fill="none" stroke="black"/>
+<path d="M63,177h -6" fill="none" stroke="black"/>
+<path d="M70,175h -13" fill="none" stroke="black"/>
+<text x="44" y="174" fill="black" font-size="9" font-family="Helvetica" font-weight="bold">
+-3
+</text>
+<text x="30" y="181" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+10
+</text>
+<path d="M63,164h -6" fill="none" stroke="black"/>
+<path d="M63,157h -6" fill="none" stroke="black"/>
+<path d="M63,152h -6" fill="none" stroke="black"/>
+<path d="M63,148h -6" fill="none" stroke="black"/>
+<path d="M63,145h -6" fill="none" stroke="black"/>
+<path d="M63,143h -6" fill="none" stroke="black"/>
+<path d="M63,141h -6" fill="none" stroke="black"/>
+<path d="M63,139h -6" fill="none" stroke="black"/>
+<path d="M70,137h -13" fill="none" stroke="black"/>
+<text x="44" y="136" fill="black" font-size="9" font-family="Helvetica" font-weight="bold">
+-2
+</text>
+<text x="30" y="143" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+10
+</text>
+<path d="M63,125h -6" fill="none" stroke="black"/>
+<path d="M63,118h -6" fill="none" stroke="black"/>
+<path d="M63,114h -6" fill="none" stroke="black"/>
+<path d="M63,110h -6" fill="none" stroke="black"/>
+<path d="M63,107h -6" fill="none" stroke="black"/>
+<path d="M63,104h -6" fill="none" stroke="black"/>
+<path d="M63,102h -6" fill="none" stroke="black"/>
+<path d="M63,100h -6" fill="none" stroke="black"/>
+<path d="M70,98h -13" fill="none" stroke="black"/>
+<text x="46" y="98" fill="black" font-size="9" font-family="Helvetica" font-weight="bold">
+-1
+</text>
+<text x="31" y="104" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+10
+</text>
+<path d="M63,86h -6" fill="none" stroke="black"/>
+<path d="M63,80h -6" fill="none" stroke="black"/>
+<path d="M63,75h -6" fill="none" stroke="black"/>
+<path d="M63,71h -6" fill="none" stroke="black"/>
+<path d="M63,68h -6" fill="none" stroke="black"/>
+<path d="M63,65h -6" fill="none" stroke="black"/>
+<path d="M63,63h -6" fill="none" stroke="black"/>
+<path d="M63,61h -6" fill="none" stroke="black"/>
+<path d="M70,59h -13" fill="none" stroke="black"/>
+<text x="52" y="65" text-anchor="end" fill="black" font-size="13" font-family="Helvetica" font-weight="bold">
+1
+</text>
+<path d="M63,48h -6" fill="none" stroke="black"/>
+<path d="M63,41h -6" fill="none" stroke="black"/>
+<path d="M63,36h -6" fill="none" stroke="black"/>
+<path d="M60,65" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M60,65" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="59" y1="65" x2="60" y2="65"/>
+</g>
+<path d="M68,216v -3" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M68,213v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="67" y1="213" x2="68" y2="213"/>
+</g>
+<path d="M76,167v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M76,166v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="75" y1="166" x2="76" y2="166"/>
+</g>
+<path d="M83,156v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M83,155" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="82" y1="155" x2="83" y2="155"/>
+</g>
+<path d="M91,144" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M91,144v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="90" y1="144" x2="91" y2="144"/>
+</g>
+<path d="M98,134" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M98,134" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="97" y1="134" x2="98" y2="134"/>
+</g>
+<path d="M106,130v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M106,129" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="105" y1="129" x2="106" y2="129"/>
+</g>
+<path d="M113,119v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M113,118" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="112" y1="118" x2="113" y2="118"/>
+</g>
+<path d="M121,119" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M121,119" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="120" y1="119" x2="121" y2="119"/>
+</g>
+<path d="M129,121" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M129,121v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="128" y1="121" x2="129" y2="121"/>
+</g>
+<path d="M136,133v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M136,132v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="135" y1="132" x2="136" y2="132"/>
+</g>
+<path d="M144,138" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M144,138v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="143" y1="138" x2="144" y2="138"/>
+</g>
+<path d="M151,140" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M151,140v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="150" y1="140" x2="151" y2="140"/>
+</g>
+<path d="M159,142v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M159,140v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="158" y1="140" x2="159" y2="140"/>
+</g>
+<path d="M166,143v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M166,142" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="165" y1="142" x2="166" y2="142"/>
+</g>
+<path d="M174,142v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M174,141v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="173" y1="141" x2="174" y2="141"/>
+</g>
+<path d="M181,143v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M181,142" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="180" y1="142" x2="181" y2="142"/>
+</g>
+<path d="M189,144" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M189,144v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="188" y1="144" x2="189" y2="144"/>
+</g>
+<path d="M197,145v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M197,144" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="196" y1="144" x2="197" y2="144"/>
+</g>
+<path d="M204,147" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M204,147v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="203" y1="147" x2="204" y2="147"/>
+</g>
+<path d="M212,149" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M212,149v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="211" y1="149" x2="212" y2="149"/>
+</g>
+<path d="M219,152v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M219,151" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="218" y1="151" x2="219" y2="151"/>
+</g>
+<path d="M227,153v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M227,152" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="226" y1="152" x2="227" y2="152"/>
+</g>
+<path d="M234,154v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M234,152v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="233" y1="152" x2="234" y2="152"/>
+</g>
+<path d="M242,155" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M242,155v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="241" y1="155" x2="242" y2="155"/>
+</g>
+<path d="M249,157v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M249,156v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="248" y1="156" x2="249" y2="156"/>
+</g>
+<path d="M257,158v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M257,157" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="256" y1="157" x2="257" y2="157"/>
+</g>
+<path d="M265,159" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M265,159v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="264" y1="159" x2="265" y2="159"/>
+</g>
+<path d="M272,161v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M272,160" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="271" y1="160" x2="272" y2="160"/>
+</g>
+<path d="M280,164v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M280,163v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="279" y1="163" x2="280" y2="163"/>
+</g>
+<path d="M287,163" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M287,163v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="286" y1="163" x2="287" y2="163"/>
+</g>
+<path d="M295,164v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M295,163v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="294" y1="163" x2="295" y2="163"/>
+</g>
+<path d="M302,166v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M302,165v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="301" y1="165" x2="302" y2="165"/>
+</g>
+<path d="M310,168v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M310,167" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="309" y1="167" x2="310" y2="167"/>
+</g>
+<path d="M317,169v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M317,168v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="316" y1="168" x2="317" y2="168"/>
+</g>
+<path d="M325,170v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M325,168v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="324" y1="168" x2="325" y2="168"/>
+</g>
+<path d="M333,173v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M333,172v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="332" y1="172" x2="333" y2="172"/>
+</g>
+<path d="M340,173v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M340,172v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="339" y1="172" x2="340" y2="172"/>
+</g>
+<path d="M348,174v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M348,173v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="347" y1="173" x2="348" y2="173"/>
+</g>
+<path d="M355,177v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M355,175v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="354" y1="175" x2="355" y2="175"/>
+</g>
+<path d="M363,177v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M363,175v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="362" y1="175" x2="363" y2="175"/>
+</g>
+<path d="M370,179v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M370,178v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="369" y1="178" x2="370" y2="178"/>
+</g>
+<path d="M378,179v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M378,178v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="377" y1="178" x2="378" y2="178"/>
+</g>
+<path d="M386,181v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M386,180v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="385" y1="180" x2="386" y2="180"/>
+</g>
+<path d="M393,183v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M393,182v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="392" y1="182" x2="393" y2="182"/>
+</g>
+<path d="M401,182v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M401,180v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="400" y1="180" x2="401" y2="180"/>
+</g>
+<path d="M408,184v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M408,182v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="407" y1="182" x2="408" y2="182"/>
+</g>
+<path d="M416,186v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M416,185v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="415" y1="185" x2="416" y2="185"/>
+</g>
+<path d="M423,188v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M423,186v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="422" y1="186" x2="423" y2="186"/>
+</g>
+<path d="M431,190v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M431,189v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="430" y1="189" x2="431" y2="189"/>
+</g>
+<path d="M438,191v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M438,190v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="437" y1="190" x2="438" y2="190"/>
+</g>
+<path d="M446,191v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M446,189v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="445" y1="189" x2="446" y2="189"/>
+</g>
+<path d="M454,196v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M454,194v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="453" y1="194" x2="454" y2="194"/>
+</g>
+<path d="M461,192v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M461,190v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="460" y1="190" x2="461" y2="190"/>
+</g>
+<path d="M469,196v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M469,195v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="468" y1="195" x2="469" y2="195"/>
+</g>
+<path d="M476,198v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M476,196v -1" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="475" y1="196" x2="476" y2="196"/>
+</g>
+<path d="M484,197v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M484,195v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="483" y1="195" x2="484" y2="195"/>
+</g>
+<path d="M491,203v -3" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M491,200v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="490" y1="200" x2="491" y2="200"/>
+</g>
+<path d="M499,200v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M499,198v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="498" y1="198" x2="499" y2="198"/>
+</g>
+<path d="M506,198v -3" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M506,195v -2" fill="none" stroke="#99ff99" stroke-width="2"/>
+<g stroke="black" stroke-width="2" fill="none">
+<line x1="505" y1="195" x2="506" y2="195"/>
+</g>
+<path d="M57,312v -247h 7v 148h 8v -47h 7v -11h 8v -11h 7v -10h 8v -5h 8v -11h 7v 1h 8v 2h 7v 11h 8v 6h 7v 2h 16v 2h 7v -1h 8v 1h 7v 2h 15v 3h 8v 2h 7v 2h 8v 1h 15v 3h 8v 1h 7v 1h 8v 2h 7v 1h 8v 3h 23v 2h 7v 2h 8v 1h 15v 4h 15v 1h 7v 2h 16v 3h 15v 2h
+ 7v 2h 8v -2h 7v 2h 8v 3h 8v 1h 7v 3h 8v 1h 7v -1h 8v 5h 7v -4h 8v 5h 7v 1h 8v -1h 8v 5h 7v -2h 8v -3h 7v 117z" fill="#99ff99"/>
+<path d="M57,65h 7v 148h 8v -47h 7v -11h 8v -11h 7v -10h 8v -5h 8v -11h 7v 1h 8v 2h 7v 11h 8v 6h 7v 2h 16v 2h 7v -1h 8v 1h 7v 2h 15v 3h 8v 2h 7v 2h 8v 1h 15v 3h 8v 1h 7v 1h 8v 2h 7v 1h 8v 3h 23v 2h 7v 2h 8v 1h 15v 4h 15v 1h 7v 2h 16v 3h 15v 2h 7v 2h
+ 8v -2h 7v 2h 8v 3h 8v 1h 7v 3h 8v 1h 7v -1h 8v 5h 7v -4h 8v 5h 7v 1h 8v -1h 8v 5h 7v -2h 8v -3h 7" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M57,63h 2" fill="none" stroke="#ff0099"/>
+<path d="M62,63h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 60" cy=" 63" r=" 1.5"/>
+</g>
+<path d="M68,224v -8" fill="none" stroke="#ff0099"/>
+<path d="M68,214v -5" fill="none" stroke="#ff0099"/>
+<path d="M64,215h 3" fill="none" stroke="#ff0099"/>
+<path d="M69,215h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 68" cy=" 215" r=" 1.5"/>
+</g>
+<path d="M76,181v -1" fill="none" stroke="#ff0099"/>
+<path d="M76,177v -1" fill="none" stroke="#ff0099"/>
+<path d="M72,179h 2" fill="none" stroke="#ff0099"/>
+<path d="M77,179h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 76" cy=" 179" r=" 1.5"/>
+</g>
+<path d="M83,166" fill="none" stroke="#ff0099"/>
+<path d="M83,163" fill="none" stroke="#ff0099"/>
+<path d="M79,165h 3" fill="none" stroke="#ff0099"/>
+<path d="M84,165h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 83" cy=" 165" r=" 1.5"/>
+</g>
+<path d="M87,148h 3" fill="none" stroke="#ff0099"/>
+<path d="M92,148h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 91" cy=" 148" r=" 1.5"/>
+</g>
+<path d="M94,135h 3" fill="none" stroke="#ff0099"/>
+<path d="M99,135h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 98" cy=" 135" r=" 1.5"/>
+</g>
+<path d="M102,131h 3" fill="none" stroke="#ff0099"/>
+<path d="M107,131h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 106" cy=" 131" r=" 1.5"/>
+</g>
+<path d="M110,119h 2" fill="none" stroke="#ff0099"/>
+<path d="M115,119h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 113" cy=" 119" r=" 1.5"/>
+</g>
+<path d="M117,118h 3" fill="none" stroke="#ff0099"/>
+<path d="M122,118h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 121" cy=" 118" r=" 1.5"/>
+</g>
+<path d="M125,121h 2" fill="none" stroke="#ff0099"/>
+<path d="M130,121h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 129" cy=" 121" r=" 1.5"/>
+</g>
+<path d="M132,137h 3" fill="none" stroke="#ff0099"/>
+<path d="M137,137h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 136" cy=" 137" r=" 1.5"/>
+</g>
+<path d="M144,144" fill="none" stroke="#ff0099"/>
+<path d="M140,143h 2" fill="none" stroke="#ff0099"/>
+<path d="M145,143h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 144" cy=" 143" r=" 1.5"/>
+</g>
+<path d="M151,146" fill="none" stroke="#ff0099"/>
+<path d="M151,144v -1" fill="none" stroke="#ff0099"/>
+<path d="M147,145h 3" fill="none" stroke="#ff0099"/>
+<path d="M152,145h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 151" cy=" 145" r=" 1.5"/>
+</g>
+<path d="M159,150" fill="none" stroke="#ff0099"/>
+<path d="M159,147" fill="none" stroke="#ff0099"/>
+<path d="M155,149h 3" fill="none" stroke="#ff0099"/>
+<path d="M160,149h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 159" cy=" 149" r=" 1.5"/>
+</g>
+<path d="M166,150" fill="none" stroke="#ff0099"/>
+<path d="M166,148" fill="none" stroke="#ff0099"/>
+<path d="M163,149h 2" fill="none" stroke="#ff0099"/>
+<path d="M167,149h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 166" cy=" 149" r=" 1.5"/>
+</g>
+<path d="M174,149" fill="none" stroke="#ff0099"/>
+<path d="M174,147" fill="none" stroke="#ff0099"/>
+<path d="M170,148h 3" fill="none" stroke="#ff0099"/>
+<path d="M175,148h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 174" cy=" 148" r=" 1.5"/>
+</g>
+<path d="M181,152v -1" fill="none" stroke="#ff0099"/>
+<path d="M181,149" fill="none" stroke="#ff0099"/>
+<path d="M178,150h 2" fill="none" stroke="#ff0099"/>
+<path d="M183,150h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 181" cy=" 150" r=" 1.5"/>
+</g>
+<path d="M189,151" fill="none" stroke="#ff0099"/>
+<path d="M189,148" fill="none" stroke="#ff0099"/>
+<path d="M185,149h 3" fill="none" stroke="#ff0099"/>
+<path d="M190,149h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 189" cy=" 149" r=" 1.5"/>
+</g>
+<path d="M197,153" fill="none" stroke="#ff0099"/>
+<path d="M197,150" fill="none" stroke="#ff0099"/>
+<path d="M193,152h 2" fill="none" stroke="#ff0099"/>
+<path d="M198,152h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 197" cy=" 152" r=" 1.5"/>
+</g>
+<path d="M204,159" fill="none" stroke="#ff0099"/>
+<path d="M204,157v -1" fill="none" stroke="#ff0099"/>
+<path d="M200,158h 3" fill="none" stroke="#ff0099"/>
+<path d="M205,158h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 204" cy=" 158" r=" 1.5"/>
+</g>
+<path d="M212,160v -1" fill="none" stroke="#ff0099"/>
+<path d="M212,157v -1" fill="none" stroke="#ff0099"/>
+<path d="M208,158h 3" fill="none" stroke="#ff0099"/>
+<path d="M213,158h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 212" cy=" 158" r=" 1.5"/>
+</g>
+<path d="M219,161v -1" fill="none" stroke="#ff0099"/>
+<path d="M219,158v -1" fill="none" stroke="#ff0099"/>
+<path d="M215,159h 3" fill="none" stroke="#ff0099"/>
+<path d="M220,159h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 219" cy=" 159" r=" 1.5"/>
+</g>
+<path d="M227,164v -1" fill="none" stroke="#ff0099"/>
+<path d="M227,161v -1" fill="none" stroke="#ff0099"/>
+<path d="M223,162h 3" fill="none" stroke="#ff0099"/>
+<path d="M228,162h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 227" cy=" 162" r=" 1.5"/>
+</g>
+<path d="M234,166v -1" fill="none" stroke="#ff0099"/>
+<path d="M234,163v -1" fill="none" stroke="#ff0099"/>
+<path d="M231,164h 2" fill="none" stroke="#ff0099"/>
+<path d="M235,164h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 234" cy=" 164" r=" 1.5"/>
+</g>
+<path d="M242,169v -1" fill="none" stroke="#ff0099"/>
+<path d="M242,165v -1" fill="none" stroke="#ff0099"/>
+<path d="M238,166h 3" fill="none" stroke="#ff0099"/>
+<path d="M243,166h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 242" cy=" 166" r=" 1.5"/>
+</g>
+<path d="M249,172v -1" fill="none" stroke="#ff0099"/>
+<path d="M249,169" fill="none" stroke="#ff0099"/>
+<path d="M246,170h 2" fill="none" stroke="#ff0099"/>
+<path d="M251,170h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 249" cy=" 170" r=" 1.5"/>
+</g>
+<path d="M257,167v -1" fill="none" stroke="#ff0099"/>
+<path d="M257,163v -1" fill="none" stroke="#ff0099"/>
+<path d="M253,164h 3" fill="none" stroke="#ff0099"/>
+<path d="M258,164h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 257" cy=" 164" r=" 1.5"/>
+</g>
+<path d="M265,171v -2" fill="none" stroke="#ff0099"/>
+<path d="M265,167v -1" fill="none" stroke="#ff0099"/>
+<path d="M261,168h 2" fill="none" stroke="#ff0099"/>
+<path d="M266,168h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 265" cy=" 168" r=" 1.5"/>
+</g>
+<path d="M272,174v -1" fill="none" stroke="#ff0099"/>
+<path d="M272,171v -2" fill="none" stroke="#ff0099"/>
+<path d="M268,172h 3" fill="none" stroke="#ff0099"/>
+<path d="M273,172h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 272" cy=" 172" r=" 1.5"/>
+</g>
+<path d="M280,173v -3" fill="none" stroke="#ff0099"/>
+<path d="M280,168v -3" fill="none" stroke="#ff0099"/>
+<path d="M276,169h 3" fill="none" stroke="#ff0099"/>
+<path d="M281,169h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 280" cy=" 169" r=" 1.5"/>
+</g>
+<path d="M287,177v -3" fill="none" stroke="#ff0099"/>
+<path d="M287,172v -2" fill="none" stroke="#ff0099"/>
+<path d="M283,173h 3" fill="none" stroke="#ff0099"/>
+<path d="M288,173h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 287" cy=" 173" r=" 1.5"/>
+</g>
+<path d="M295,176v -3" fill="none" stroke="#ff0099"/>
+<path d="M295,170v -2" fill="none" stroke="#ff0099"/>
+<path d="M291,171h 3" fill="none" stroke="#ff0099"/>
+<path d="M296,171h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 295" cy=" 171" r=" 1.5"/>
+</g>
+<path d="M302,179v -3" fill="none" stroke="#ff0099"/>
+<path d="M302,174v -2" fill="none" stroke="#ff0099"/>
+<path d="M299,175h 2" fill="none" stroke="#ff0099"/>
+<path d="M304,175h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 302" cy=" 175" r=" 1.5"/>
+</g>
+<path d="M310,183v -2" fill="none" stroke="#ff0099"/>
+<path d="M310,179v -1" fill="none" stroke="#ff0099"/>
+<path d="M306,180h 3" fill="none" stroke="#ff0099"/>
+<path d="M311,180h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 310" cy=" 180" r=" 1.5"/>
+</g>
+<path d="M317,181v -4" fill="none" stroke="#ff0099"/>
+<path d="M317,175v -2" fill="none" stroke="#ff0099"/>
+<path d="M314,176h 2" fill="none" stroke="#ff0099"/>
+<path d="M319,176h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 317" cy=" 176" r=" 1.5"/>
+</g>
+<path d="M325,185v -3" fill="none" stroke="#ff0099"/>
+<path d="M325,180v -2" fill="none" stroke="#ff0099"/>
+<path d="M321,181h 3" fill="none" stroke="#ff0099"/>
+<path d="M326,181h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 325" cy=" 181" r=" 1.5"/>
+</g>
+<path d="M333,187v -4" fill="none" stroke="#ff0099"/>
+<path d="M333,180v -3" fill="none" stroke="#ff0099"/>
+<path d="M329,181h 2" fill="none" stroke="#ff0099"/>
+<path d="M334,181h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 333" cy=" 181" r=" 1.5"/>
+</g>
+<path d="M340,188v -2" fill="none" stroke="#ff0099"/>
+<path d="M340,184v -2" fill="none" stroke="#ff0099"/>
+<path d="M336,185h 3" fill="none" stroke="#ff0099"/>
+<path d="M341,185h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 340" cy=" 185" r=" 1.5"/>
+</g>
+<path d="M348,194v -3" fill="none" stroke="#ff0099"/>
+<path d="M348,189v -2" fill="none" stroke="#ff0099"/>
+<path d="M344,190h 3" fill="none" stroke="#ff0099"/>
+<path d="M349,190h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 348" cy=" 190" r=" 1.5"/>
+</g>
+<path d="M355,196v -2" fill="none" stroke="#ff0099"/>
+<path d="M355,191v -2" fill="none" stroke="#ff0099"/>
+<path d="M351,193h 3" fill="none" stroke="#ff0099"/>
+<path d="M356,193h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 355" cy=" 193" r=" 1.5"/>
+</g>
+<path d="M363,194v -4" fill="none" stroke="#ff0099"/>
+<path d="M363,188v -2" fill="none" stroke="#ff0099"/>
+<path d="M359,189h 3" fill="none" stroke="#ff0099"/>
+<path d="M364,189h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 363" cy=" 189" r=" 1.5"/>
+</g>
+<path d="M370,198v -4" fill="none" stroke="#ff0099"/>
+<path d="M370,192v -3" fill="none" stroke="#ff0099"/>
+<path d="M367,193h 2" fill="none" stroke="#ff0099"/>
+<path d="M372,193h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 370" cy=" 193" r=" 1.5"/>
+</g>
+<path d="M378,200v -3" fill="none" stroke="#ff0099"/>
+<path d="M378,194v -2" fill="none" stroke="#ff0099"/>
+<path d="M374,196h 3" fill="none" stroke="#ff0099"/>
+<path d="M379,196h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 378" cy=" 196" r=" 1.5"/>
+</g>
+<path d="M386,199v -4" fill="none" stroke="#ff0099"/>
+<path d="M386,193v -3" fill="none" stroke="#ff0099"/>
+<path d="M382,194h 2" fill="none" stroke="#ff0099"/>
+<path d="M387,194h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 386" cy=" 194" r=" 1.5"/>
+</g>
+<path d="M393,200v -3" fill="none" stroke="#ff0099"/>
+<path d="M393,194v -2" fill="none" stroke="#ff0099"/>
+<path d="M389,196h 3" fill="none" stroke="#ff0099"/>
+<path d="M394,196h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 393" cy=" 196" r=" 1.5"/>
+</g>
+<path d="M401,201v -4" fill="none" stroke="#ff0099"/>
+<path d="M401,195v -3" fill="none" stroke="#ff0099"/>
+<path d="M397,196h 2" fill="none" stroke="#ff0099"/>
+<path d="M402,196h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 401" cy=" 196" r=" 1.5"/>
+</g>
+<path d="M408,206v -3" fill="none" stroke="#ff0099"/>
+<path d="M408,200v -2" fill="none" stroke="#ff0099"/>
+<path d="M404,202h 3" fill="none" stroke="#ff0099"/>
+<path d="M409,202h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 408" cy=" 202" r=" 1.5"/>
+</g>
+<path d="M416,217v -3" fill="none" stroke="#ff0099"/>
+<path d="M416,211v -2" fill="none" stroke="#ff0099"/>
+<path d="M412,213h 3" fill="none" stroke="#ff0099"/>
+<path d="M417,213h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 416" cy=" 213" r=" 1.5"/>
+</g>
+<path d="M423,212v -4" fill="none" stroke="#ff0099"/>
+<path d="M423,206v -3" fill="none" stroke="#ff0099"/>
+<path d="M420,207h 2" fill="none" stroke="#ff0099"/>
+<path d="M424,207h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 423" cy=" 207" r=" 1.5"/>
+</g>
+<path d="M431,208v -4" fill="none" stroke="#ff0099"/>
+<path d="M431,201v -3" fill="none" stroke="#ff0099"/>
+<path d="M427,202h 3" fill="none" stroke="#ff0099"/>
+<path d="M432,202h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 431" cy=" 202" r=" 1.5"/>
+</g>
+<path d="M438,214v -2" fill="none" stroke="#ff0099"/>
+<path d="M438,210v -2" fill="none" stroke="#ff0099"/>
+<path d="M435,211h 2" fill="none" stroke="#ff0099"/>
+<path d="M440,211h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 438" cy=" 211" r=" 1.5"/>
+</g>
+<path d="M446,216v -4" fill="none" stroke="#ff0099"/>
+<path d="M446,209v -3" fill="none" stroke="#ff0099"/>
+<path d="M442,210h 3" fill="none" stroke="#ff0099"/>
+<path d="M447,210h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 446" cy=" 210" r=" 1.5"/>
+</g>
+<path d="M454,214v -8" fill="none" stroke="#ff0099"/>
+<path d="M454,204v -4" fill="none" stroke="#ff0099"/>
+<path d="M450,205h 2" fill="none" stroke="#ff0099"/>
+<path d="M455,205h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 454" cy=" 205" r=" 1.5"/>
+</g>
+<path d="M461,221v -5" fill="none" stroke="#ff0099"/>
+<path d="M461,213v -3" fill="none" stroke="#ff0099"/>
+<path d="M457,214h 3" fill="none" stroke="#ff0099"/>
+<path d="M462,214h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 461" cy=" 214" r=" 1.5"/>
+</g>
+<path d="M469,229v -8" fill="none" stroke="#ff0099"/>
+<path d="M469,218v -5" fill="none" stroke="#ff0099"/>
+<path d="M465,220h 3" fill="none" stroke="#ff0099"/>
+<path d="M470,220h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 469" cy=" 220" r=" 1.5"/>
+</g>
+<path d="M476,230v -5" fill="none" stroke="#ff0099"/>
+<path d="M476,223v -3" fill="none" stroke="#ff0099"/>
+<path d="M472,224h 3" fill="none" stroke="#ff0099"/>
+<path d="M477,224h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 476" cy=" 224" r=" 1.5"/>
+</g>
+<path d="M484,215v -17" fill="none" stroke="#ff0099"/>
+<path d="M484,196v -8" fill="none" stroke="#ff0099"/>
+<path d="M480,197h 3" fill="none" stroke="#ff0099"/>
+<path d="M485,197h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 484" cy=" 197" r=" 1.5"/>
+</g>
+<path d="M491,243v -4" fill="none" stroke="#ff0099"/>
+<path d="M491,236v -3" fill="none" stroke="#ff0099"/>
+<path d="M488,238h 2" fill="none" stroke="#ff0099"/>
+<path d="M492,238h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 491" cy=" 238" r=" 1.5"/>
+</g>
+<path d="M499,229v -31" fill="none" stroke="#ff0099"/>
+<path d="M499,196v -9" fill="none" stroke="#ff0099"/>
+<path d="M495,197h 3" fill="none" stroke="#ff0099"/>
+<path d="M500,197h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 499" cy=" 197" r=" 1.5"/>
+</g>
+<path d="M506,231v -7" fill="none" stroke="#ff0099"/>
+<path d="M506,222v -5" fill="none" stroke="#ff0099"/>
+<path d="M503,223h 2" fill="none" stroke="#ff0099"/>
+<path d="M508,223h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 506" cy=" 223" r=" 1.5"/>
+</g>
+<rect x="357" y="41" width="142" height="70" fill="white"/>
+<text x="360" y="58" fill="black" font-size="12" font-family="Helvetica" font-weight="bold">
+EE
+</text>
+<text x="439" y="81" fill="black" font-size="12" font-family="Helvetica" font-weight="bold">
+ ee
+</text>
+<text x="426" y="81" fill="black" font-size="12" font-family="Times">
+&#8594;
+</text>
+<text x="392" y="81" fill="black" font-size="12" font-family="Helvetica" font-weight="bold">
+MC Z 
+</text>
+<path d="M362,76h 25" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 375" cy=" 76" r=" 1.5"/>
+</g>
+<text x="438" y="102" fill="black" font-size="12" font-family="Helvetica" font-weight="bold">
+ + jet
+</text>
+<text x="431" y="102" fill="black" font-size="12" font-family="Times">
+&#0947;
+</text>
+<text x="392" y="102" fill="black" font-size="12" font-family="Helvetica" font-weight="bold">
+signal 
+</text>
+<path d="M362,107h 25v -16h -25z" fill="#99ff99"/>
+<path d="M362,91h 25" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M362,107h 25" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M387,107v -16" fill="none" stroke="#99ff99" stroke-width="2"/>
+<path d="M362,107v -16" fill="none" stroke="#99ff99" stroke-width="2"/>
+<text x="252" y="24" fill="black" font-size="12" font-family="Helvetica" font-weight="bold">
+=8 TeV
+</text>
+<text x="246" y="24" fill="black" font-size="12" font-family="Helvetica" font-weight="bold">
+s
+</text>
+<path d="M242,17l 1, 8" fill="none" stroke="black" stroke-width="2"/>
+<path d="M243,25l 2, -11" fill="none" stroke="black"/>
+<path d="M245,14h 7" fill="none" stroke="black"/>
+<text x="142" y="24" fill="black" font-size="12" font-family="Helvetica" font-weight="bold">
+CMS Preliminary 
+</text>
+<rect x="0" y="347" width="567" height="149" fill="white"/>
+<rect x="57" y="362" width="453" height="104" fill="white"/>
+<rect x="57" y="362" width="453" height="104" fill="none" stroke="black"/>
+<rect x="57" y="362" width="453" height="104" fill="white"/>
+<rect x="57" y="362" width="453" height="104" fill="none" stroke="black"/>
+<path d="M57,466h 453" fill="none" stroke="black"/>
+<path d="M57,466v -104" fill="none" stroke="black"/>
+<path d="M510,455h -453" fill="none" stroke="black" stroke-dasharray=" 1, 2"/>
+<path d="M510,436h -453" fill="none" stroke="black" stroke-dasharray=" 1, 2"/>
+<path d="M510,418h -453" fill="none" stroke="black" stroke-dasharray=" 1, 2"/>
+<path d="M510,399h -453" fill="none" stroke="black" stroke-dasharray=" 1, 2"/>
+<path d="M510,381h -453" fill="none" stroke="black" stroke-dasharray=" 1, 2"/>
+<path d="M510,362h -453" fill="none" stroke="black" stroke-dasharray=" 1, 2"/>
+<path d="M510,455h -453" fill="none" stroke="black" stroke-dasharray=" 1, 2"/>
+<path d="M57,433h 2" fill="none" stroke="#ff0099"/>
+<path d="M62,433h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 60" cy=" 433" r=" 1.5"/>
+</g>
+<path d="M68,455v -14" fill="none" stroke="#ff0099"/>
+<path d="M68,439v -14" fill="none" stroke="#ff0099"/>
+<path d="M64,440h 3" fill="none" stroke="#ff0099"/>
+<path d="M69,440h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 68" cy=" 440" r=" 1.5"/>
+</g>
+<path d="M76,459v -2" fill="none" stroke="#ff0099"/>
+<path d="M76,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M72,456h 2" fill="none" stroke="#ff0099"/>
+<path d="M77,456h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 76" cy=" 456" r=" 1.5"/>
+</g>
+<path d="M83,454" fill="none" stroke="#ff0099"/>
+<path d="M83,451" fill="none" stroke="#ff0099"/>
+<path d="M79,452h 3" fill="none" stroke="#ff0099"/>
+<path d="M84,452h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 83" cy=" 452" r=" 1.5"/>
+</g>
+<path d="M91,447" fill="none" stroke="#ff0099"/>
+<path d="M91,444" fill="none" stroke="#ff0099"/>
+<path d="M87,446h 3" fill="none" stroke="#ff0099"/>
+<path d="M92,446h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 91" cy=" 446" r=" 1.5"/>
+</g>
+<path d="M98,441v -1" fill="none" stroke="#ff0099"/>
+<path d="M98,438v -1" fill="none" stroke="#ff0099"/>
+<path d="M94,439h 3" fill="none" stroke="#ff0099"/>
+<path d="M99,439h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 98" cy=" 439" r=" 1.5"/>
+</g>
+<path d="M106,441v -1" fill="none" stroke="#ff0099"/>
+<path d="M106,438" fill="none" stroke="#ff0099"/>
+<path d="M102,439h 3" fill="none" stroke="#ff0099"/>
+<path d="M107,439h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 106" cy=" 439" r=" 1.5"/>
+</g>
+<path d="M113,439" fill="none" stroke="#ff0099"/>
+<path d="M113,436" fill="none" stroke="#ff0099"/>
+<path d="M110,437h 2" fill="none" stroke="#ff0099"/>
+<path d="M115,437h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 113" cy=" 437" r=" 1.5"/>
+</g>
+<path d="M121,435" fill="none" stroke="#ff0099"/>
+<path d="M121,432" fill="none" stroke="#ff0099"/>
+<path d="M117,433h 3" fill="none" stroke="#ff0099"/>
+<path d="M122,433h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 121" cy=" 433" r=" 1.5"/>
+</g>
+<path d="M129,439" fill="none" stroke="#ff0099"/>
+<path d="M129,436" fill="none" stroke="#ff0099"/>
+<path d="M125,438h 2" fill="none" stroke="#ff0099"/>
+<path d="M130,438h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 129" cy=" 438" r=" 1.5"/>
+</g>
+<path d="M136,449v -2" fill="none" stroke="#ff0099"/>
+<path d="M136,445v -1" fill="none" stroke="#ff0099"/>
+<path d="M132,446h 3" fill="none" stroke="#ff0099"/>
+<path d="M137,446h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 136" cy=" 446" r=" 1.5"/>
+</g>
+<path d="M144,448v -1" fill="none" stroke="#ff0099"/>
+<path d="M144,445v -1" fill="none" stroke="#ff0099"/>
+<path d="M140,446h 2" fill="none" stroke="#ff0099"/>
+<path d="M145,446h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 144" cy=" 446" r=" 1.5"/>
+</g>
+<path d="M151,448v -1" fill="none" stroke="#ff0099"/>
+<path d="M151,445v -1" fill="none" stroke="#ff0099"/>
+<path d="M147,446h 3" fill="none" stroke="#ff0099"/>
+<path d="M152,446h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 151" cy=" 446" r=" 1.5"/>
+</g>
+<path d="M159,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M159,451v -2" fill="none" stroke="#ff0099"/>
+<path d="M155,452h 3" fill="none" stroke="#ff0099"/>
+<path d="M160,452h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 159" cy=" 452" r=" 1.5"/>
+</g>
+<path d="M166,451v -1" fill="none" stroke="#ff0099"/>
+<path d="M166,447" fill="none" stroke="#ff0099"/>
+<path d="M163,449h 2" fill="none" stroke="#ff0099"/>
+<path d="M167,449h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 166" cy=" 449" r=" 1.5"/>
+</g>
+<path d="M174,453v -2" fill="none" stroke="#ff0099"/>
+<path d="M174,448v -2" fill="none" stroke="#ff0099"/>
+<path d="M170,449h 3" fill="none" stroke="#ff0099"/>
+<path d="M175,449h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 174" cy=" 449" r=" 1.5"/>
+</g>
+<path d="M181,453v -1" fill="none" stroke="#ff0099"/>
+<path d="M181,449v -1" fill="none" stroke="#ff0099"/>
+<path d="M178,451h 2" fill="none" stroke="#ff0099"/>
+<path d="M183,451h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 181" cy=" 451" r=" 1.5"/>
+</g>
+<path d="M189,450v -1" fill="none" stroke="#ff0099"/>
+<path d="M189,446v -1" fill="none" stroke="#ff0099"/>
+<path d="M185,447h 3" fill="none" stroke="#ff0099"/>
+<path d="M190,447h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 189" cy=" 447" r=" 1.5"/>
+</g>
+<path d="M197,452v -1" fill="none" stroke="#ff0099"/>
+<path d="M197,448v -1" fill="none" stroke="#ff0099"/>
+<path d="M193,449h 2" fill="none" stroke="#ff0099"/>
+<path d="M198,449h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 197" cy=" 449" r=" 1.5"/>
+</g>
+<path d="M204,456v -1" fill="none" stroke="#ff0099"/>
+<path d="M204,453v -1" fill="none" stroke="#ff0099"/>
+<path d="M200,454h 3" fill="none" stroke="#ff0099"/>
+<path d="M205,454h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 204" cy=" 454" r=" 1.5"/>
+</g>
+<path d="M212,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M212,451v -1" fill="none" stroke="#ff0099"/>
+<path d="M208,452h 3" fill="none" stroke="#ff0099"/>
+<path d="M213,452h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 212" cy=" 452" r=" 1.5"/>
+</g>
+<path d="M219,453v -2" fill="none" stroke="#ff0099"/>
+<path d="M219,449v -2" fill="none" stroke="#ff0099"/>
+<path d="M215,450h 3" fill="none" stroke="#ff0099"/>
+<path d="M220,450h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 219" cy=" 450" r=" 1.5"/>
+</g>
+<path d="M227,455v -1" fill="none" stroke="#ff0099"/>
+<path d="M227,452v -1" fill="none" stroke="#ff0099"/>
+<path d="M223,453h 3" fill="none" stroke="#ff0099"/>
+<path d="M228,453h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 227" cy=" 453" r=" 1.5"/>
+</g>
+<path d="M234,458v -2" fill="none" stroke="#ff0099"/>
+<path d="M234,454v -2" fill="none" stroke="#ff0099"/>
+<path d="M231,455h 2" fill="none" stroke="#ff0099"/>
+<path d="M235,455h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 234" cy=" 455" r=" 1.5"/>
+</g>
+<path d="M242,457v -1" fill="none" stroke="#ff0099"/>
+<path d="M242,454v -1" fill="none" stroke="#ff0099"/>
+<path d="M238,455h 3" fill="none" stroke="#ff0099"/>
+<path d="M243,455h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 242" cy=" 455" r=" 1.5"/>
+</g>
+<path d="M249,459" fill="none" stroke="#ff0099"/>
+<path d="M249,456" fill="none" stroke="#ff0099"/>
+<path d="M246,458h 2" fill="none" stroke="#ff0099"/>
+<path d="M251,458h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 249" cy=" 458" r=" 1.5"/>
+</g>
+<path d="M257,453v -2" fill="none" stroke="#ff0099"/>
+<path d="M257,448v -2" fill="none" stroke="#ff0099"/>
+<path d="M253,449h 3" fill="none" stroke="#ff0099"/>
+<path d="M258,449h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 257" cy=" 449" r=" 1.5"/>
+</g>
+<path d="M265,456v -2" fill="none" stroke="#ff0099"/>
+<path d="M265,451v -2" fill="none" stroke="#ff0099"/>
+<path d="M261,452h 2" fill="none" stroke="#ff0099"/>
+<path d="M266,452h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 265" cy=" 452" r=" 1.5"/>
+</g>
+<path d="M272,458v -2" fill="none" stroke="#ff0099"/>
+<path d="M272,454v -2" fill="none" stroke="#ff0099"/>
+<path d="M268,455h 3" fill="none" stroke="#ff0099"/>
+<path d="M273,455h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 272" cy=" 455" r=" 1.5"/>
+</g>
+<path d="M280,454v -5" fill="none" stroke="#ff0099"/>
+<path d="M280,446v -5" fill="none" stroke="#ff0099"/>
+<path d="M276,447h 3" fill="none" stroke="#ff0099"/>
+<path d="M281,447h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 280" cy=" 447" r=" 1.5"/>
+</g>
+<path d="M287,458v -3" fill="none" stroke="#ff0099"/>
+<path d="M287,452v -3" fill="none" stroke="#ff0099"/>
+<path d="M283,453h 3" fill="none" stroke="#ff0099"/>
+<path d="M288,453h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 287" cy=" 453" r=" 1.5"/>
+</g>
+<path d="M295,456v -4" fill="none" stroke="#ff0099"/>
+<path d="M295,450v -4" fill="none" stroke="#ff0099"/>
+<path d="M291,451h 3" fill="none" stroke="#ff0099"/>
+<path d="M296,451h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 295" cy=" 451" r=" 1.5"/>
+</g>
+<path d="M302,458v -4" fill="none" stroke="#ff0099"/>
+<path d="M302,452v -4" fill="none" stroke="#ff0099"/>
+<path d="M299,453h 2" fill="none" stroke="#ff0099"/>
+<path d="M304,453h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 302" cy=" 453" r=" 1.5"/>
+</g>
+<path d="M310,459v -2" fill="none" stroke="#ff0099"/>
+<path d="M310,455v -1" fill="none" stroke="#ff0099"/>
+<path d="M306,456h 3" fill="none" stroke="#ff0099"/>
+<path d="M311,456h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 310" cy=" 456" r=" 1.5"/>
+</g>
+<path d="M317,456v -4" fill="none" stroke="#ff0099"/>
+<path d="M317,450v -4" fill="none" stroke="#ff0099"/>
+<path d="M314,451h 2" fill="none" stroke="#ff0099"/>
+<path d="M319,451h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 317" cy=" 451" r=" 1.5"/>
+</g>
+<path d="M325,460v -3" fill="none" stroke="#ff0099"/>
+<path d="M325,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M321,456h 3" fill="none" stroke="#ff0099"/>
+<path d="M326,456h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 325" cy=" 456" r=" 1.5"/>
+</g>
+<path d="M333,459v -5" fill="none" stroke="#ff0099"/>
+<path d="M333,452v -5" fill="none" stroke="#ff0099"/>
+<path d="M329,453h 2" fill="none" stroke="#ff0099"/>
+<path d="M334,453h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 333" cy=" 453" r=" 1.5"/>
+</g>
+<path d="M340,460v -3" fill="none" stroke="#ff0099"/>
+<path d="M340,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M336,456h 3" fill="none" stroke="#ff0099"/>
+<path d="M341,456h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 340" cy=" 456" r=" 1.5"/>
+</g>
+<path d="M348,463v -2" fill="none" stroke="#ff0099"/>
+<path d="M348,459v -2" fill="none" stroke="#ff0099"/>
+<path d="M344,460h 3" fill="none" stroke="#ff0099"/>
+<path d="M349,460h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 348" cy=" 460" r=" 1.5"/>
+</g>
+<path d="M355,463v -2" fill="none" stroke="#ff0099"/>
+<path d="M355,459v -2" fill="none" stroke="#ff0099"/>
+<path d="M351,460h 3" fill="none" stroke="#ff0099"/>
+<path d="M356,460h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 355" cy=" 460" r=" 1.5"/>
+</g>
+<path d="M363,461v -3" fill="none" stroke="#ff0099"/>
+<path d="M363,456v -3" fill="none" stroke="#ff0099"/>
+<path d="M359,457h 3" fill="none" stroke="#ff0099"/>
+<path d="M364,457h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 363" cy=" 457" r=" 1.5"/>
+</g>
+<path d="M370,462v -2" fill="none" stroke="#ff0099"/>
+<path d="M370,458v -3" fill="none" stroke="#ff0099"/>
+<path d="M367,459h 2" fill="none" stroke="#ff0099"/>
+<path d="M372,459h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 370" cy=" 459" r=" 1.5"/>
+</g>
+<path d="M378,464v -2" fill="none" stroke="#ff0099"/>
+<path d="M378,460v -2" fill="none" stroke="#ff0099"/>
+<path d="M374,461h 3" fill="none" stroke="#ff0099"/>
+<path d="M379,461h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 378" cy=" 461" r=" 1.5"/>
+</g>
+<path d="M386,462v -3" fill="none" stroke="#ff0099"/>
+<path d="M386,457v -4" fill="none" stroke="#ff0099"/>
+<path d="M382,458h 2" fill="none" stroke="#ff0099"/>
+<path d="M387,458h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 386" cy=" 458" r=" 1.5"/>
+</g>
+<path d="M393,461v -3" fill="none" stroke="#ff0099"/>
+<path d="M393,456v -3" fill="none" stroke="#ff0099"/>
+<path d="M389,457h 3" fill="none" stroke="#ff0099"/>
+<path d="M394,457h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 393" cy=" 457" r=" 1.5"/>
+</g>
+<path d="M401,463v -3" fill="none" stroke="#ff0099"/>
+<path d="M401,458v -3" fill="none" stroke="#ff0099"/>
+<path d="M397,459h 2" fill="none" stroke="#ff0099"/>
+<path d="M402,459h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 401" cy=" 459" r=" 1.5"/>
+</g>
+<path d="M408,465v -2" fill="none" stroke="#ff0099"/>
+<path d="M408,461v -2" fill="none" stroke="#ff0099"/>
+<path d="M404,462h 3" fill="none" stroke="#ff0099"/>
+<path d="M409,462h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 408" cy=" 462" r=" 1.5"/>
+</g>
+<path d="M423,466v -2" fill="none" stroke="#ff0099"/>
+<path d="M423,462v -2" fill="none" stroke="#ff0099"/>
+<path d="M420,463h 2" fill="none" stroke="#ff0099"/>
+<path d="M424,463h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 423" cy=" 463" r=" 1.5"/>
+</g>
+<path d="M431,462v -3" fill="none" stroke="#ff0099"/>
+<path d="M431,456v -3" fill="none" stroke="#ff0099"/>
+<path d="M427,457h 3" fill="none" stroke="#ff0099"/>
+<path d="M432,457h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 431" cy=" 457" r=" 1.5"/>
+</g>
+<path d="M438,465v -1" fill="none" stroke="#ff0099"/>
+<path d="M438,462v -1" fill="none" stroke="#ff0099"/>
+<path d="M435,463h 2" fill="none" stroke="#ff0099"/>
+<path d="M440,463h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 438" cy=" 463" r=" 1.5"/>
+</g>
+<path d="M446,466v -2" fill="none" stroke="#ff0099"/>
+<path d="M446,462v -2" fill="none" stroke="#ff0099"/>
+<path d="M442,463h 3" fill="none" stroke="#ff0099"/>
+<path d="M447,463h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 446" cy=" 463" r=" 1.5"/>
+</g>
+<path d="M454,462v -6" fill="none" stroke="#ff0099"/>
+<path d="M454,453v -7" fill="none" stroke="#ff0099"/>
+<path d="M450,454h 2" fill="none" stroke="#ff0099"/>
+<path d="M455,454h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 454" cy=" 454" r=" 1.5"/>
+</g>
+<path d="M461,464v -2" fill="none" stroke="#ff0099"/>
+<path d="M457,465h 3" fill="none" stroke="#ff0099"/>
+<path d="M462,465h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 461" cy=" 465" r=" 1.5"/>
+</g>
+<path d="M469,464v -3" fill="none" stroke="#ff0099"/>
+<path d="M465,465h 3" fill="none" stroke="#ff0099"/>
+<path d="M470,465h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 469" cy=" 465" r=" 1.5"/>
+</g>
+<path d="M484,463v -22" fill="none" stroke="#ff0099"/>
+<path d="M484,439v -21" fill="none" stroke="#ff0099"/>
+<path d="M480,440h 3" fill="none" stroke="#ff0099"/>
+<path d="M485,440h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 484" cy=" 440" r=" 1.5"/>
+</g>
+<path d="M499,466v -30" fill="none" stroke="#ff0099"/>
+<path d="M499,434v -32" fill="none" stroke="#ff0099"/>
+<path d="M495,435h 3" fill="none" stroke="#ff0099"/>
+<path d="M500,435h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 499" cy=" 435" r=" 1.5"/>
+</g>
+<path d="M57,466h 453" fill="none" stroke="black"/>
+<text x="449" y="489" fill="black" font-size="11" font-family="Helvetica" font-weight="bold">
+R=0.3 (GeV)
+</text>
+<text x="442" y="489" fill="black" font-size="11" font-family="Times">
+&#0916;
+</text>
+<text x="373" y="489" fill="black" font-size="11" font-family="Helvetica" font-weight="bold">
+PfIso Neutral 
+</text>
+<path d="M57,463v 3" fill="none" stroke="black"/>
+<path d="M72,464v 2" fill="none" stroke="black"/>
+<path d="M87,464v 2" fill="none" stroke="black"/>
+<path d="M102,464v 2" fill="none" stroke="black"/>
+<path d="M117,464v 2" fill="none" stroke="black"/>
+<path d="M132,463v 3" fill="none" stroke="black"/>
+<path d="M147,464v 2" fill="none" stroke="black"/>
+<path d="M163,464v 2" fill="none" stroke="black"/>
+<path d="M178,464v 2" fill="none" stroke="black"/>
+<path d="M193,464v 2" fill="none" stroke="black"/>
+<path d="M208,463v 3" fill="none" stroke="black"/>
+<path d="M223,464v 2" fill="none" stroke="black"/>
+<path d="M238,464v 2" fill="none" stroke="black"/>
+<path d="M253,464v 2" fill="none" stroke="black"/>
+<path d="M268,464v 2" fill="none" stroke="black"/>
+<path d="M283,463v 3" fill="none" stroke="black"/>
+<path d="M299,464v 2" fill="none" stroke="black"/>
+<path d="M314,464v 2" fill="none" stroke="black"/>
+<path d="M329,464v 2" fill="none" stroke="black"/>
+<path d="M344,464v 2" fill="none" stroke="black"/>
+<path d="M359,463v 3" fill="none" stroke="black"/>
+<path d="M374,464v 2" fill="none" stroke="black"/>
+<path d="M389,464v 2" fill="none" stroke="black"/>
+<path d="M404,464v 2" fill="none" stroke="black"/>
+<path d="M420,464v 2" fill="none" stroke="black"/>
+<path d="M435,463v 3" fill="none" stroke="black"/>
+<path d="M450,464v 2" fill="none" stroke="black"/>
+<path d="M465,464v 2" fill="none" stroke="black"/>
+<path d="M480,464v 2" fill="none" stroke="black"/>
+<path d="M495,464v 2" fill="none" stroke="black"/>
+<path d="M510,463v 3" fill="none" stroke="black"/>
+<text x="54" y="475" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+0
+</text>
+<text x="130" y="475" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+1
+</text>
+<text x="205" y="475" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+2
+</text>
+<text x="281" y="475" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+3
+</text>
+<text x="356" y="475" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+4
+</text>
+<text x="431" y="475" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+5
+</text>
+<text x="507" y="475" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+6
+</text>
+<path d="M57,466v -104" fill="none" stroke="black"/>
+<g transform="rotate(-90,34,365)">
+<text x="34" y="365" fill="black" font-size="11" font-family="Helvetica" font-weight="bold">
+)
+</text>
+</g>
+<g transform="rotate(-90,34,371)">
+<text x="34" y="371" fill="black" font-size="11" font-family="Times">
+&#0947;
+</text>
+</g>
+<g transform="rotate(-90,34,424)">
+<text x="34" y="424" fill="black" font-size="11" font-family="Helvetica" font-weight="bold">
+MC(e)/MC(
+</text>
+</g>
+<path d="M69,455h -12" fill="none" stroke="black"/>
+<path d="M63,451h -6" fill="none" stroke="black"/>
+<path d="M63,448h -6" fill="none" stroke="black"/>
+<path d="M63,444h -6" fill="none" stroke="black"/>
+<path d="M63,440h -6" fill="none" stroke="black"/>
+<path d="M69,436h -12" fill="none" stroke="black"/>
+<path d="M63,433h -6" fill="none" stroke="black"/>
+<path d="M63,429h -6" fill="none" stroke="black"/>
+<path d="M63,425h -6" fill="none" stroke="black"/>
+<path d="M63,422h -6" fill="none" stroke="black"/>
+<path d="M69,418h -12" fill="none" stroke="black"/>
+<path d="M63,414h -6" fill="none" stroke="black"/>
+<path d="M63,410h -6" fill="none" stroke="black"/>
+<path d="M63,407h -6" fill="none" stroke="black"/>
+<path d="M63,403h -6" fill="none" stroke="black"/>
+<path d="M69,399h -12" fill="none" stroke="black"/>
+<path d="M63,395h -6" fill="none" stroke="black"/>
+<path d="M63,392h -6" fill="none" stroke="black"/>
+<path d="M63,388h -6" fill="none" stroke="black"/>
+<path d="M63,384h -6" fill="none" stroke="black"/>
+<path d="M69,381h -12" fill="none" stroke="black"/>
+<path d="M63,377h -6" fill="none" stroke="black"/>
+<path d="M63,373h -6" fill="none" stroke="black"/>
+<path d="M63,369h -6" fill="none" stroke="black"/>
+<path d="M63,366h -6" fill="none" stroke="black"/>
+<path d="M69,362h -12" fill="none" stroke="black"/>
+<path d="M69,455h -12" fill="none" stroke="black"/>
+<path d="M63,459h -6" fill="none" stroke="black"/>
+<path d="M63,462h -6" fill="none" stroke="black"/>
+<path d="M63,466h -6" fill="none" stroke="black"/>
+<text x="40" y="459" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+0.5
+</text>
+<text x="50" y="440" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+1
+</text>
+<text x="40" y="421" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+1.5
+</text>
+<text x="48" y="403" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+2
+</text>
+<text x="40" y="384" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+2.5
+</text>
+<text x="48" y="366" fill="black" font-size="10" font-family="Helvetica" font-weight="bold">
+3
+</text>
+<path d="M57,436h 453" fill="none" stroke="#0000ff" stroke-width="2"/>
+<path d="M57,433h 2" fill="none" stroke="#ff0099"/>
+<path d="M62,433h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 60" cy=" 433" r=" 1.5"/>
+</g>
+<path d="M68,455v -14" fill="none" stroke="#ff0099"/>
+<path d="M68,439v -14" fill="none" stroke="#ff0099"/>
+<path d="M64,440h 3" fill="none" stroke="#ff0099"/>
+<path d="M69,440h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 68" cy=" 440" r=" 1.5"/>
+</g>
+<path d="M76,459v -2" fill="none" stroke="#ff0099"/>
+<path d="M76,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M72,456h 2" fill="none" stroke="#ff0099"/>
+<path d="M77,456h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 76" cy=" 456" r=" 1.5"/>
+</g>
+<path d="M83,454" fill="none" stroke="#ff0099"/>
+<path d="M83,451" fill="none" stroke="#ff0099"/>
+<path d="M79,452h 3" fill="none" stroke="#ff0099"/>
+<path d="M84,452h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 83" cy=" 452" r=" 1.5"/>
+</g>
+<path d="M91,447" fill="none" stroke="#ff0099"/>
+<path d="M91,444" fill="none" stroke="#ff0099"/>
+<path d="M87,446h 3" fill="none" stroke="#ff0099"/>
+<path d="M92,446h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 91" cy=" 446" r=" 1.5"/>
+</g>
+<path d="M98,441v -1" fill="none" stroke="#ff0099"/>
+<path d="M98,438v -1" fill="none" stroke="#ff0099"/>
+<path d="M94,439h 3" fill="none" stroke="#ff0099"/>
+<path d="M99,439h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 98" cy=" 439" r=" 1.5"/>
+</g>
+<path d="M106,441v -1" fill="none" stroke="#ff0099"/>
+<path d="M106,438" fill="none" stroke="#ff0099"/>
+<path d="M102,439h 3" fill="none" stroke="#ff0099"/>
+<path d="M107,439h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 106" cy=" 439" r=" 1.5"/>
+</g>
+<path d="M113,439" fill="none" stroke="#ff0099"/>
+<path d="M113,436" fill="none" stroke="#ff0099"/>
+<path d="M110,437h 2" fill="none" stroke="#ff0099"/>
+<path d="M115,437h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 113" cy=" 437" r=" 1.5"/>
+</g>
+<path d="M121,435" fill="none" stroke="#ff0099"/>
+<path d="M121,432" fill="none" stroke="#ff0099"/>
+<path d="M117,433h 3" fill="none" stroke="#ff0099"/>
+<path d="M122,433h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 121" cy=" 433" r=" 1.5"/>
+</g>
+<path d="M129,439" fill="none" stroke="#ff0099"/>
+<path d="M129,436" fill="none" stroke="#ff0099"/>
+<path d="M125,438h 2" fill="none" stroke="#ff0099"/>
+<path d="M130,438h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 129" cy=" 438" r=" 1.5"/>
+</g>
+<path d="M136,449v -2" fill="none" stroke="#ff0099"/>
+<path d="M136,445v -1" fill="none" stroke="#ff0099"/>
+<path d="M132,446h 3" fill="none" stroke="#ff0099"/>
+<path d="M137,446h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 136" cy=" 446" r=" 1.5"/>
+</g>
+<path d="M144,448v -1" fill="none" stroke="#ff0099"/>
+<path d="M144,445v -1" fill="none" stroke="#ff0099"/>
+<path d="M140,446h 2" fill="none" stroke="#ff0099"/>
+<path d="M145,446h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 144" cy=" 446" r=" 1.5"/>
+</g>
+<path d="M151,448v -1" fill="none" stroke="#ff0099"/>
+<path d="M151,445v -1" fill="none" stroke="#ff0099"/>
+<path d="M147,446h 3" fill="none" stroke="#ff0099"/>
+<path d="M152,446h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 151" cy=" 446" r=" 1.5"/>
+</g>
+<path d="M159,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M159,451v -2" fill="none" stroke="#ff0099"/>
+<path d="M155,452h 3" fill="none" stroke="#ff0099"/>
+<path d="M160,452h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 159" cy=" 452" r=" 1.5"/>
+</g>
+<path d="M166,451v -1" fill="none" stroke="#ff0099"/>
+<path d="M166,447" fill="none" stroke="#ff0099"/>
+<path d="M163,449h 2" fill="none" stroke="#ff0099"/>
+<path d="M167,449h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 166" cy=" 449" r=" 1.5"/>
+</g>
+<path d="M174,453v -2" fill="none" stroke="#ff0099"/>
+<path d="M174,448v -2" fill="none" stroke="#ff0099"/>
+<path d="M170,449h 3" fill="none" stroke="#ff0099"/>
+<path d="M175,449h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 174" cy=" 449" r=" 1.5"/>
+</g>
+<path d="M181,453v -1" fill="none" stroke="#ff0099"/>
+<path d="M181,449v -1" fill="none" stroke="#ff0099"/>
+<path d="M178,451h 2" fill="none" stroke="#ff0099"/>
+<path d="M183,451h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 181" cy=" 451" r=" 1.5"/>
+</g>
+<path d="M189,450v -1" fill="none" stroke="#ff0099"/>
+<path d="M189,446v -1" fill="none" stroke="#ff0099"/>
+<path d="M185,447h 3" fill="none" stroke="#ff0099"/>
+<path d="M190,447h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 189" cy=" 447" r=" 1.5"/>
+</g>
+<path d="M197,452v -1" fill="none" stroke="#ff0099"/>
+<path d="M197,448v -1" fill="none" stroke="#ff0099"/>
+<path d="M193,449h 2" fill="none" stroke="#ff0099"/>
+<path d="M198,449h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 197" cy=" 449" r=" 1.5"/>
+</g>
+<path d="M204,456v -1" fill="none" stroke="#ff0099"/>
+<path d="M204,453v -1" fill="none" stroke="#ff0099"/>
+<path d="M200,454h 3" fill="none" stroke="#ff0099"/>
+<path d="M205,454h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 204" cy=" 454" r=" 1.5"/>
+</g>
+<path d="M212,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M212,451v -1" fill="none" stroke="#ff0099"/>
+<path d="M208,452h 3" fill="none" stroke="#ff0099"/>
+<path d="M213,452h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 212" cy=" 452" r=" 1.5"/>
+</g>
+<path d="M219,453v -2" fill="none" stroke="#ff0099"/>
+<path d="M219,449v -2" fill="none" stroke="#ff0099"/>
+<path d="M215,450h 3" fill="none" stroke="#ff0099"/>
+<path d="M220,450h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 219" cy=" 450" r=" 1.5"/>
+</g>
+<path d="M227,455v -1" fill="none" stroke="#ff0099"/>
+<path d="M227,452v -1" fill="none" stroke="#ff0099"/>
+<path d="M223,453h 3" fill="none" stroke="#ff0099"/>
+<path d="M228,453h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 227" cy=" 453" r=" 1.5"/>
+</g>
+<path d="M234,458v -2" fill="none" stroke="#ff0099"/>
+<path d="M234,454v -2" fill="none" stroke="#ff0099"/>
+<path d="M231,455h 2" fill="none" stroke="#ff0099"/>
+<path d="M235,455h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 234" cy=" 455" r=" 1.5"/>
+</g>
+<path d="M242,457v -1" fill="none" stroke="#ff0099"/>
+<path d="M242,454v -1" fill="none" stroke="#ff0099"/>
+<path d="M238,455h 3" fill="none" stroke="#ff0099"/>
+<path d="M243,455h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 242" cy=" 455" r=" 1.5"/>
+</g>
+<path d="M249,459" fill="none" stroke="#ff0099"/>
+<path d="M249,456" fill="none" stroke="#ff0099"/>
+<path d="M246,458h 2" fill="none" stroke="#ff0099"/>
+<path d="M251,458h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 249" cy=" 458" r=" 1.5"/>
+</g>
+<path d="M257,453v -2" fill="none" stroke="#ff0099"/>
+<path d="M257,448v -2" fill="none" stroke="#ff0099"/>
+<path d="M253,449h 3" fill="none" stroke="#ff0099"/>
+<path d="M258,449h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 257" cy=" 449" r=" 1.5"/>
+</g>
+<path d="M265,456v -2" fill="none" stroke="#ff0099"/>
+<path d="M265,451v -2" fill="none" stroke="#ff0099"/>
+<path d="M261,452h 2" fill="none" stroke="#ff0099"/>
+<path d="M266,452h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 265" cy=" 452" r=" 1.5"/>
+</g>
+<path d="M272,458v -2" fill="none" stroke="#ff0099"/>
+<path d="M272,454v -2" fill="none" stroke="#ff0099"/>
+<path d="M268,455h 3" fill="none" stroke="#ff0099"/>
+<path d="M273,455h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 272" cy=" 455" r=" 1.5"/>
+</g>
+<path d="M280,454v -5" fill="none" stroke="#ff0099"/>
+<path d="M280,446v -5" fill="none" stroke="#ff0099"/>
+<path d="M276,447h 3" fill="none" stroke="#ff0099"/>
+<path d="M281,447h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 280" cy=" 447" r=" 1.5"/>
+</g>
+<path d="M287,458v -3" fill="none" stroke="#ff0099"/>
+<path d="M287,452v -3" fill="none" stroke="#ff0099"/>
+<path d="M283,453h 3" fill="none" stroke="#ff0099"/>
+<path d="M288,453h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 287" cy=" 453" r=" 1.5"/>
+</g>
+<path d="M295,456v -4" fill="none" stroke="#ff0099"/>
+<path d="M295,450v -4" fill="none" stroke="#ff0099"/>
+<path d="M291,451h 3" fill="none" stroke="#ff0099"/>
+<path d="M296,451h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 295" cy=" 451" r=" 1.5"/>
+</g>
+<path d="M302,458v -4" fill="none" stroke="#ff0099"/>
+<path d="M302,452v -4" fill="none" stroke="#ff0099"/>
+<path d="M299,453h 2" fill="none" stroke="#ff0099"/>
+<path d="M304,453h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 302" cy=" 453" r=" 1.5"/>
+</g>
+<path d="M310,459v -2" fill="none" stroke="#ff0099"/>
+<path d="M310,455v -1" fill="none" stroke="#ff0099"/>
+<path d="M306,456h 3" fill="none" stroke="#ff0099"/>
+<path d="M311,456h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 310" cy=" 456" r=" 1.5"/>
+</g>
+<path d="M317,456v -4" fill="none" stroke="#ff0099"/>
+<path d="M317,450v -4" fill="none" stroke="#ff0099"/>
+<path d="M314,451h 2" fill="none" stroke="#ff0099"/>
+<path d="M319,451h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 317" cy=" 451" r=" 1.5"/>
+</g>
+<path d="M325,460v -3" fill="none" stroke="#ff0099"/>
+<path d="M325,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M321,456h 3" fill="none" stroke="#ff0099"/>
+<path d="M326,456h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 325" cy=" 456" r=" 1.5"/>
+</g>
+<path d="M333,459v -5" fill="none" stroke="#ff0099"/>
+<path d="M333,452v -5" fill="none" stroke="#ff0099"/>
+<path d="M329,453h 2" fill="none" stroke="#ff0099"/>
+<path d="M334,453h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 333" cy=" 453" r=" 1.5"/>
+</g>
+<path d="M340,460v -3" fill="none" stroke="#ff0099"/>
+<path d="M340,455v -2" fill="none" stroke="#ff0099"/>
+<path d="M336,456h 3" fill="none" stroke="#ff0099"/>
+<path d="M341,456h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 340" cy=" 456" r=" 1.5"/>
+</g>
+<path d="M348,463v -2" fill="none" stroke="#ff0099"/>
+<path d="M348,459v -2" fill="none" stroke="#ff0099"/>
+<path d="M344,460h 3" fill="none" stroke="#ff0099"/>
+<path d="M349,460h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 348" cy=" 460" r=" 1.5"/>
+</g>
+<path d="M355,463v -2" fill="none" stroke="#ff0099"/>
+<path d="M355,459v -2" fill="none" stroke="#ff0099"/>
+<path d="M351,460h 3" fill="none" stroke="#ff0099"/>
+<path d="M356,460h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 355" cy=" 460" r=" 1.5"/>
+</g>
+<path d="M363,461v -3" fill="none" stroke="#ff0099"/>
+<path d="M363,456v -3" fill="none" stroke="#ff0099"/>
+<path d="M359,457h 3" fill="none" stroke="#ff0099"/>
+<path d="M364,457h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 363" cy=" 457" r=" 1.5"/>
+</g>
+<path d="M370,462v -2" fill="none" stroke="#ff0099"/>
+<path d="M370,458v -3" fill="none" stroke="#ff0099"/>
+<path d="M367,459h 2" fill="none" stroke="#ff0099"/>
+<path d="M372,459h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 370" cy=" 459" r=" 1.5"/>
+</g>
+<path d="M378,464v -2" fill="none" stroke="#ff0099"/>
+<path d="M378,460v -2" fill="none" stroke="#ff0099"/>
+<path d="M374,461h 3" fill="none" stroke="#ff0099"/>
+<path d="M379,461h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 378" cy=" 461" r=" 1.5"/>
+</g>
+<path d="M386,462v -3" fill="none" stroke="#ff0099"/>
+<path d="M386,457v -4" fill="none" stroke="#ff0099"/>
+<path d="M382,458h 2" fill="none" stroke="#ff0099"/>
+<path d="M387,458h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 386" cy=" 458" r=" 1.5"/>
+</g>
+<path d="M393,461v -3" fill="none" stroke="#ff0099"/>
+<path d="M393,456v -3" fill="none" stroke="#ff0099"/>
+<path d="M389,457h 3" fill="none" stroke="#ff0099"/>
+<path d="M394,457h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 393" cy=" 457" r=" 1.5"/>
+</g>
+<path d="M401,463v -3" fill="none" stroke="#ff0099"/>
+<path d="M401,458v -3" fill="none" stroke="#ff0099"/>
+<path d="M397,459h 2" fill="none" stroke="#ff0099"/>
+<path d="M402,459h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 401" cy=" 459" r=" 1.5"/>
+</g>
+<path d="M408,465v -2" fill="none" stroke="#ff0099"/>
+<path d="M408,461v -2" fill="none" stroke="#ff0099"/>
+<path d="M404,462h 3" fill="none" stroke="#ff0099"/>
+<path d="M409,462h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 408" cy=" 462" r=" 1.5"/>
+</g>
+<path d="M423,466v -2" fill="none" stroke="#ff0099"/>
+<path d="M423,462v -2" fill="none" stroke="#ff0099"/>
+<path d="M420,463h 2" fill="none" stroke="#ff0099"/>
+<path d="M424,463h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 423" cy=" 463" r=" 1.5"/>
+</g>
+<path d="M431,462v -3" fill="none" stroke="#ff0099"/>
+<path d="M431,456v -3" fill="none" stroke="#ff0099"/>
+<path d="M427,457h 3" fill="none" stroke="#ff0099"/>
+<path d="M432,457h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 431" cy=" 457" r=" 1.5"/>
+</g>
+<path d="M438,465v -1" fill="none" stroke="#ff0099"/>
+<path d="M438,462v -1" fill="none" stroke="#ff0099"/>
+<path d="M435,463h 2" fill="none" stroke="#ff0099"/>
+<path d="M440,463h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 438" cy=" 463" r=" 1.5"/>
+</g>
+<path d="M446,466v -2" fill="none" stroke="#ff0099"/>
+<path d="M446,462v -2" fill="none" stroke="#ff0099"/>
+<path d="M442,463h 3" fill="none" stroke="#ff0099"/>
+<path d="M447,463h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 446" cy=" 463" r=" 1.5"/>
+</g>
+<path d="M454,462v -6" fill="none" stroke="#ff0099"/>
+<path d="M454,453v -7" fill="none" stroke="#ff0099"/>
+<path d="M450,454h 2" fill="none" stroke="#ff0099"/>
+<path d="M455,454h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 454" cy=" 454" r=" 1.5"/>
+</g>
+<path d="M461,464v -2" fill="none" stroke="#ff0099"/>
+<path d="M457,465h 3" fill="none" stroke="#ff0099"/>
+<path d="M462,465h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 461" cy=" 465" r=" 1.5"/>
+</g>
+<path d="M469,464v -3" fill="none" stroke="#ff0099"/>
+<path d="M465,465h 3" fill="none" stroke="#ff0099"/>
+<path d="M470,465h 2" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 469" cy=" 465" r=" 1.5"/>
+</g>
+<path d="M484,463v -22" fill="none" stroke="#ff0099"/>
+<path d="M484,439v -21" fill="none" stroke="#ff0099"/>
+<path d="M480,440h 3" fill="none" stroke="#ff0099"/>
+<path d="M485,440h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 484" cy=" 440" r=" 1.5"/>
+</g>
+<path d="M499,466v -30" fill="none" stroke="#ff0099"/>
+<path d="M499,434v -32" fill="none" stroke="#ff0099"/>
+<path d="M495,435h 3" fill="none" stroke="#ff0099"/>
+<path d="M500,435h 3" fill="none" stroke="#ff0099"/>
+<g stroke="#ff0099" stroke-width="1" fill="#ff0099">
+<circle cx=" 499" cy=" 435" r=" 1.5"/>
+</g></svg>

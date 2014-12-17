@@ -30,19 +30,48 @@ public :
    Int_t           mcMatch;
    Int_t           r9Reweight;
    Int_t           etaReweight;
+   Int_t           ptReweight;
    Int_t           nvtxReweight;
    Int_t           rhoReweight;
+   Int_t           isoReweight;
    TString         tagTightnessLevel;
    Float_t         DeltaMZ;
    TString         outFileNamePrefix;
    TString         r9WeightsFile;
    TString         etaWeightsFile;
+   TString         ptWeightsFile;
    TString         nvtxWeightsFile;
    TString         rhoWeightsFile;
-   
-   TH1F*           r9weights_EB;
-   TH1F*           r9weights_EE;
+   TString         isoWeightsFile;   
+
+   //TH1F*           r9weights_EB;
+   //TH1F*           r9weights_EE;
+   TH1F*           h_R9Weight_lowEB_hlt30;
+   TH1F*           h_R9Weight_lowEB_hlt50;
+   TH1F*           h_R9Weight_lowEB_hlt75;
+   TH1F*           h_R9Weight_lowEB_hlt90;
+   TH1F*           h_R9Weight_lowEB_hlt135;
+   TH1F*           h_R9Weight_lowEB_hlt150;
+   TH1F*           h_R9Weight_highEB_hlt30;
+   TH1F*           h_R9Weight_highEB_hlt50;
+   TH1F*           h_R9Weight_highEB_hlt75;
+   TH1F*           h_R9Weight_highEB_hlt90;
+   TH1F*           h_R9Weight_highEB_hlt135;
+   TH1F*           h_R9Weight_highEB_hlt150;
+   TH1F*           h_R9Weight_lowEE_hlt30;
+   TH1F*           h_R9Weight_lowEE_hlt50;
+   TH1F*           h_R9Weight_lowEE_hlt75;
+   TH1F*           h_R9Weight_lowEE_hlt90;
+   TH1F*           h_R9Weight_lowEE_hlt135;
+   TH1F*           h_R9Weight_lowEE_hlt150;
+   TH1F*           h_R9Weight_highEE_hlt30;
+   TH1F*           h_R9Weight_highEE_hlt50;
+   TH1F*           h_R9Weight_highEE_hlt75;
+   TH1F*           h_R9Weight_highEE_hlt90;
+   TH1F*           h_R9Weight_highEE_hlt135;
+   TH1F*           h_R9Weight_highEE_hlt150;
    TH1F*           h_etaWeight;
+   TH1F*           h_ptWeight;
    TH1F*           h_nvtxWeight;
    TH1F*           h_rhoWeight_mc_hlt30;
    TH1F*           h_rhoWeight_mc_hlt50;
@@ -56,6 +85,9 @@ public :
    TH1F*           h_rhoWeight_data_hlt90;
    TH1F*           h_rhoWeight_data_hlt135;
    TH1F*           h_rhoWeight_data_hlt150;
+
+   TH1F*           h_isoWeight_EB[61];
+   TH1F*           h_isoWeight_EE[18];
 
    // Declaration of leaf types
    Int_t           run;
@@ -371,7 +403,7 @@ public :
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
    virtual void     Init(TTree *tree);
-   virtual void     Loop();
+   virtual void     Loop(int red_factor);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
 
@@ -386,8 +418,10 @@ public :
 
    void     readR9Weights();
    void     readEtaWeights();
+   void     read_ptWeights();
    void     read_nvtxWeights();
    void     read_rhoWeights();
+   void     read_isoWeights_dataZ_40_65_to_mcPhot();
    Float_t  combinedPfIso03(float isoCharged03, float isoNeutral03, float isoPhoton03, const int& pho);
    Float_t  combinedPfIso03(const int& pho);
    Int_t    effectiveAreaRegion(float theEta) ;
@@ -397,7 +431,7 @@ public :
 #endif
 
 #ifdef TagAndProbeAnalysis_cxx
-TagAndProbeAnalysis::TagAndProbeAnalysis(TTree *tree) : fChain(0), mcMatch(0), tagTightnessLevel("Tight"), DeltaMZ(30), outFileNamePrefix("tandp_ntuple"), r9Reweight(0), r9WeightsFile("R9Weights.root"), etaWeightsFile("etaWeights.root"), nvtxWeightsFile("nvtxWeights.root"), rhoWeightsFile("rhoWeights.rootx")
+TagAndProbeAnalysis::TagAndProbeAnalysis(TTree *tree) : fChain(0), mcMatch(1), tagTightnessLevel("Tight"), DeltaMZ(30), outFileNamePrefix("tandp_ntuple"),  r9WeightsFile("R9Weights.root"), etaWeightsFile("etaWeights.root"), nvtxWeightsFile("nvtxWeights.root"), rhoWeightsFile("rhoWeights.rootx")
 
 {
   // if parameter tree is not specified (or zero), connect the file
