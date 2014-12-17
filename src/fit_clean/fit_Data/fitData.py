@@ -87,7 +87,8 @@ def main(options,args):
     bin_EB [57]=dict(hlt='hltcut150', ptMin='290', ptMax='310')
     bin_EB [58]=dict(hlt='hltcut150', ptMin='310', ptMax='340')
     bin_EB [59]=dict(hlt='hltcut150', ptMin='340', ptMax='380')
-    bin_EB [60]=dict(hlt='hltcut150', ptMin='380', ptMax='1000')
+    bin_EB [60]=dict(hlt='hltcut150', ptMin='380', ptMax='480')
+    bin_EB [61]=dict(hlt='hltcut150', ptMin='480', ptMax='1000')
 
 
 #+++++++++++++++++++++++++++++++++++
@@ -112,37 +113,47 @@ def main(options,args):
     bin_EE [16]=dict(hlt='hltcut150', ptMin='225', ptMax='240')
     bin_EE [17]=dict(hlt='hltcut150', ptMin='240', ptMax='270')
     bin_EE [18]=dict(hlt='hltcut150', ptMin='270', ptMax='1000')
-  
+
+#+++++++++++++++++++++++++++++++++++
+#   Binning for signal template
+#++++++++++++++++++++++++++++++++++++
+#     bin={}
+#     bin [1]=dict(hlt='hltcut30', ptMin='40', ptMax='65')
+#     bin [2]=dict(hlt='hltcut50', ptMin='65', ptMax='90')
+#     bin [3]=dict(hlt='hltcut75', ptMin='90', ptMax='135')
+#     bin [4]=dict(hlt='hltcut90', ptMin='135', ptMax='165')
     
-    #ptBins=[bin[1]]
+#    ptBins=[]  
     ptBins_EB=[]
     ptBins_EE=[]
 
-    #ptBins_EB=[bin_EB[1], bin_EB[2]]
-    #ptBins_EE=[bin_EE[1], bin_EE[2]]
+#     ptBins_EB=[bin_EB[1], bin_EB[2]]
+#     ptBins_EE=[bin_EE[1], bin_EE[2]]
 
+ #   ptBins=bin.values()
     ptBins_EB=bin_EB.values()
     ptBins_EE=bin_EE.values()
 
     #hltcut=[30,50,75,135,150]
 
     print "-----------------------"
-    print ("lenght ptBins_EB : %d " % len(ptBins_EB))
-    print ("lenght ptBins_EE : %d " % len(ptBins_EE))
+    print ("lenght ptBins_EB     : %d " % len(ptBins_EB))
+    print ("lenght ptBins_EE     : %d " % len(ptBins_EE))
     print "-----------------------"
 
     
-    gROOT.ProcessLine(".x RooCBmyCrujff.cxx+")
+    #gROOT.ProcessLine(".x RooCBmyCrujff.cxx+")
     #gROOT.ProcessLine(".L fitDebug_Data.C++")
     #gROOT.ProcessLine(".L fitDebug_DataReweighted.C+")
+    #gROOT.ProcessLine(".L fitDebug_data_bkgNonParam.C+")
     gROOT.ProcessLine(".L fitDebug_data_nonParam.C+")
 
     #loop over EB bins
     if options.isEB:
-        i = 0
+        i = 58
         while i < len(ptBins_EB):
 
-            fitDebug_Data('abs(etaPhot)<1.4442  && ptPhot>'+ptBins_EB[i]['ptMin']+'. && ptPhot<'+ptBins_EB[i]["ptMax"]+'.', 'fit_EB_bg_WP095_pt'+ptBins_EB[i]['ptMin']+'_'+ptBins_EB[i]['ptMax'], ptBins_EB[i]['ptMin'], ptBins_EB[i]['ptMax'], ptBins_EB[i]['hlt'], options.config, options.inputdir, options.inputdir_sig, options.outdir, options.isFPR, options.isEB)
+            fitDebug_Data('abs(etaPhot)<1.4442  && ptPhot>'+ptBins_EB[i]['ptMin']+'. && ptPhot<'+ptBins_EB[i]["ptMax"]+'.', 'fit_EB_data_WP095_pt'+ptBins_EB[i]['ptMin']+'_'+ptBins_EB[i]['ptMax'], ptBins_EB[i]['ptMin'], ptBins_EB[i]['ptMax'], ptBins_EB[i]['hlt'], options.config, options.inputdir, options.inputdir_sig, options.outdir, options.isFPR, options.isEB)
 
             i=i+1
 
@@ -151,7 +162,7 @@ def main(options,args):
         i = 0
         while i < len(ptBins_EE):
 
-            fitDebug_Data('abs(etaPhot)>1.556 && abs(etaPhot)<2.5  && ptPhot>'+ptBins_EE[i]['ptMin']+'. && ptPhot<'+ptBins_EE[i]["ptMax"]+'.', 'fit_EE_bg_WP095_pt'+ptBins_EE[i]['ptMin']+'_'+ptBins_EE[i]['ptMax'], ptBins_EE[i]['ptMin'], ptBins_EE[i]['ptMax'], ptBins_EE[i]['hlt'], options.config, options.inputdir, options.inputdir_sig, options.outdir, options.isFPR, options.isEB)
+            fitDebug_Data('abs(etaPhot)>1.556 && abs(etaPhot)<2.5  && ptPhot>'+ptBins_EE[i]['ptMin']+'. && ptPhot<'+ptBins_EE[i]["ptMax"]+'.', 'fit_EE_data_WP095_pt'+ptBins_EE[i]['ptMin']+'_'+ptBins_EE[i]['ptMax'], ptBins_EE[i]['ptMin'], ptBins_EE[i]['ptMax'], ptBins_EE[i]['hlt'], options.config, options.inputdir, options.inputdir_sig, options.outdir, options.isFPR, options.isEB)
               
             i=i+1
 

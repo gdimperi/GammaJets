@@ -34,7 +34,7 @@
 #include "Math/MinimizerOptions.h"
 #include "TLegend.h"
 #include "RooKeysPdf.h"
-
+#include "RooBinning.h"
 
 using namespace RooFit;
 
@@ -51,79 +51,7 @@ void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, str
   RooRealVar mvaIdPhot("mvaIdPhot", "mvaIdPhot", -1.,1.);
   RooRealVar isMatchedPhot("isMatchedPhot","isMatchedPhot", -1., 2.);
   RooRealVar ptPhot("ptPhot", "ptPhot", 0., 1000.);
-  RooRealVar weight("weight","weight", 0., 100.);
-  RooRealVar isoW_EB_hlt30("isoW_EB_hlt30","isoW_EB_hlt30",-9999., 100.);
-  RooRealVar isoW1_EB_hlt30("isoW1_EB_hlt30","isoW1_EB_hlt30",-9999., 100.);
-  RooRealVar isoW2_EB_hlt30("isoW2_EB_hlt30","isoW2_EB_hlt30",-9999., 100.);
-  RooRealVar isoFPRW_EB_hlt30("isoFPRW_EB_hlt30","isoFPRW_EB_hlt30",-9999., 100.);
-  RooRealVar isoFPRW1_EB_hlt30("isoFPRW1_EB_hlt30","isoFPRW1_EB_hlt30",-9999., 100.);
-  RooRealVar isoFPRW2_EB_hlt30("isoFPRW2_EB_hlt30","isoFPRW2_EB_hlt30",-9999., 100.);
-  RooRealVar isoW_EB_hlt50("isoW_EB_hlt50","isoW_EB_hlt50",-9999., 100.);
-  RooRealVar isoW1_EB_hlt50("isoW1_EB_hlt50","isoW1_EB_hlt50",-9999., 100.);
-  RooRealVar isoW2_EB_hlt50("isoW2_EB_hlt50","isoW2_EB_hlt50",-9999., 100.);
-  RooRealVar isoFPRW_EB_hlt50("isoFPRW_EB_hlt50","isoFPRW_EB_hlt50",-9999., 100.);
-  RooRealVar isoFPRW1_EB_hlt50("isoFPRW1_EB_hlt50","isoFPRW1_EB_hlt50",-9999., 100.);
-  RooRealVar isoFPRW2_EB_hlt50("isoFPRW2_EB_hlt50","isoFPRW2_EB_hlt50",-9999., 100.);
-  RooRealVar isoW_EB_hlt75("isoW_EB_hlt75","isoW_EB_hlt75",-9999., 100.);
-  RooRealVar isoW1_EB_hlt75("isoW1_EB_hlt75","isoW1_EB_hlt75",-9999., 100.);
-  RooRealVar isoW2_EB_hlt75("isoW2_EB_hlt75","isoW2_EB_hlt75",-9999., 100.);
-  RooRealVar isoFPRW_EB_hlt75("isoFPRW_EB_hlt75","isoFPRW_EB_hlt75",-9999., 100.);
-  RooRealVar isoFPRW1_EB_hlt75("isoFPRW1_EB_hlt75","isoFPRW1_EB_hlt75",-9999., 100.);
-  RooRealVar isoFPRW2_EB_hlt75("isoFPRW2_EB_hlt75","isoFPRW2_EB_hlt75",-9999., 100.);
-  RooRealVar isoW_EB_hlt90("isoW_EB_hlt90","isoW_EB_hlt90",-9999., 100.);
-  RooRealVar isoW1_EB_hlt90("isoW1_EB_hlt90","isoW1_EB_hlt90",-9999., 100.);
-  RooRealVar isoW2_EB_hlt90("isoW2_EB_hlt90","isoW2_EB_hlt90",-9999., 100.);
-  RooRealVar isoFPRW_EB_hlt90("isoFPRW_EB_hlt90","isoFPRW_EB_hlt90",-9999., 100.);
-  RooRealVar isoFPRW1_EB_hlt90("isoFPRW1_EB_hlt90","isoFPRW1_EB_hlt90",-9999., 100.);
-  RooRealVar isoFPRW2_EB_hlt90("isoFPRW2_EB_hlt90","isoFPRW2_EB_hlt90",-9999., 100.);
-  RooRealVar isoW_EB_hlt135("isoW_EB_hlt135","isoW_EB_hlt135",-9999., 100.);
-  RooRealVar isoW1_EB_hlt135("isoW1_EB_hlt135","isoW1_EB_hlt135",-9999., 100.);
-  RooRealVar isoW2_EB_hlt135("isoW2_EB_hlt135","isoW2_EB_hlt135",-9999., 100.);
-  RooRealVar isoFPRW_EB_hlt135("isoFPRW_EB_hlt135","isoFPRW_EB_hlt135",-9999., 100.);
-  RooRealVar isoFPRW1_EB_hlt135("isoFPRW1_EB_hlt135","isoFPRW1_EB_hlt135",-9999., 100.);
-  RooRealVar isoFPRW2_EB_hlt135("isoFPRW2_EB_hlt135","isoFPRW2_EB_hlt135",-9999., 100.);
-  RooRealVar isoW_EB_hlt150("isoW_EB_hlt150","isoW_EB_hlt150",-9999., 100.);
-  RooRealVar isoW1_EB_hlt150("isoW1_EB_hlt150","isoW1_EB_hlt150",-9999., 100.);
-  RooRealVar isoW2_EB_hlt150("isoW2_EB_hlt150","isoW2_EB_hlt150",-9999., 100.);
-  RooRealVar isoFPRW_EB_hlt150("isoFPRW_EB_hlt150","isoFPRW_EB_hlt150",-9999., 100.);
-  RooRealVar isoFPRW1_EB_hlt150("isoFPRW1_EB_hlt150","isoFPRW1_EB_hlt150",-9999., 100.);
-  RooRealVar isoFPRW2_EB_hlt150("isoFPRW2_EB_hlt150","isoFPRW2_EB_hlt150",-9999., 100.);
-  RooRealVar isoW_EE_hlt30("isoW_EE_hlt30","isoW_EE_hlt30",-9999., 100.);
-  RooRealVar isoW1_EE_hlt30("isoW1_EE_hlt30","isoW1_EE_hlt30",-9999., 100.);
-  RooRealVar isoW2_EE_hlt30("isoW2_EE_hlt30","isoW2_EE_hlt30",-9999., 100.);
-  RooRealVar isoFPRW_EE_hlt30("isoFPRW_EE_hlt30","isoFPRW_EE_hlt30",-9999., 100.);
-  RooRealVar isoFPRW1_EE_hlt30("isoFPRW1_EE_hlt30","isoFPRW1_EE_hlt30",-9999., 100.);
-  RooRealVar isoFPRW2_EE_hlt30("isoFPRW2_EE_hlt30","isoFPRW2_EE_hlt30",-9999., 100.);
-  RooRealVar isoW_EE_hlt50("isoW_EE_hlt50","isoW_EE_hlt50",-9999., 100.);
-  RooRealVar isoW1_EE_hlt50("isoW1_EE_hlt50","isoW1_EE_hlt50",-9999., 100.);
-  RooRealVar isoW2_EE_hlt50("isoW2_EE_hlt50","isoW2_EE_hlt50",-9999., 100.);
-  RooRealVar isoFPRW_EE_hlt50("isoFPRW_EE_hlt50","isoFPRW_EE_hlt50",-9999., 100.);
-  RooRealVar isoFPRW1_EE_hlt50("isoFPRW1_EE_hlt50","isoFPRW1_EE_hlt50",-9999., 100.);
-  RooRealVar isoFPRW2_EE_hlt50("isoFPRW2_EE_hlt50","isoFPRW2_EE_hlt50",-9999., 100.);
-  RooRealVar isoW_EE_hlt75("isoW_EE_hlt75","isoW_EE_hlt75",-9999., 100.);
-  RooRealVar isoW1_EE_hlt75("isoW1_EE_hlt75","isoW1_EE_hlt75",-9999., 100.);
-  RooRealVar isoW2_EE_hlt75("isoW2_EE_hlt75","isoW2_EE_hlt75",-9999., 100.);
-  RooRealVar isoFPRW_EE_hlt75("isoFPRW_EE_hlt75","isoFPRW_EE_hlt75",-9999., 100.);
-  RooRealVar isoFPRW1_EE_hlt75("isoFPRW1_EE_hlt75","isoFPRW1_EE_hlt75",-9999., 100.);
-  RooRealVar isoFPRW2_EE_hlt75("isoFPRW2_EE_hlt75","isoFPRW2_EE_hlt75",-9999., 100.);
-  RooRealVar isoW_EE_hlt90("isoW_EE_hlt90","isoW_EE_hlt90",-9999., 100.);
-  RooRealVar isoW1_EE_hlt90("isoW1_EE_hlt90","isoW1_EE_hlt90",-9999., 100.);
-  RooRealVar isoW2_EE_hlt90("isoW2_EE_hlt90","isoW2_EE_hlt90",-9999., 100.);
-  RooRealVar isoFPRW_EE_hlt90("isoFPRW_EE_hlt90","isoFPRW_EE_hlt90",-9999., 100.);
-  RooRealVar isoFPRW1_EE_hlt90("isoFPRW1_EE_hlt90","isoFPRW1_EE_hlt90",-9999., 100.);
-  RooRealVar isoFPRW2_EE_hlt90("isoFPRW2_EE_hlt90","isoFPRW2_EE_hlt90",-9999., 100.);
-  RooRealVar isoW_EE_hlt135("isoW_EE_hlt135","isoW_EE_hlt135",-9999., 100.);
-  RooRealVar isoW1_EE_hlt135("isoW1_EE_hlt135","isoW1_EE_hlt135",-9999., 100.);
-  RooRealVar isoW2_EE_hlt135("isoW2_EE_hlt135","isoW2_EE_hlt135",-9999., 100.);
-  RooRealVar isoFPRW_EE_hlt135("isoFPRW_EE_hlt135","isoFPRW_EE_hlt135",-9999., 100.);
-  RooRealVar isoFPRW1_EE_hlt135("isoFPRW1_EE_hlt135","isoFPRW1_EE_hlt135",-9999., 100.);
-  RooRealVar isoFPRW2_EE_hlt135("isoFPRW2_EE_hlt135","isoFPRW2_EE_hlt135",-9999., 100.);
-  RooRealVar isoW_EE_hlt150("isoW_EE_hlt150","isoW_EE_hlt150",-9999., 100.);
-  RooRealVar isoW1_EE_hlt150("isoW1_EE_hlt150","isoW1_EE_hlt150",-9999., 100.);
-  RooRealVar isoW2_EE_hlt150("isoW2_EE_hlt150","isoW2_EE_hlt150",-9999., 100.);
-  RooRealVar isoFPRW_EE_hlt150("isoFPRW_EE_hlt150","isoFPRW_EE_hlt150",-9999., 100.);
-  RooRealVar isoFPRW1_EE_hlt150("isoFPRW1_EE_hlt150","isoFPRW1_EE_hlt150",-9999., 100.);
-  RooRealVar isoFPRW2_EE_hlt150("isoFPRW2_EE_hlt150","isoFPRW2_EE_hlt150",-9999., 100.);
+
 
   RooArgSet argSet("argSet");
   //creating set of variables for the datasets
@@ -134,87 +62,7 @@ void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, str
   argSet.add(mvaIdPhot);
   argSet.add(isMatchedPhot);
   argSet.add(ptPhot);
-  argSet.add(weight);
-  argSet.add(isoW_EB_hlt30);
-  argSet.add(isoW1_EB_hlt30);
-  argSet.add(isoW2_EB_hlt30);
-  argSet.add(isoFPRW_EB_hlt30);
-  argSet.add(isoFPRW1_EB_hlt30);
-  argSet.add(isoFPRW2_EB_hlt30);
-  argSet.add(isoW_EB_hlt50);
-  argSet.add(isoW1_EB_hlt50);
-  argSet.add(isoW2_EB_hlt50);
-  argSet.add(isoFPRW_EB_hlt50);
-  argSet.add(isoFPRW1_EB_hlt50);
-  argSet.add(isoFPRW2_EB_hlt50);
-  argSet.add(isoW_EB_hlt75);
-  argSet.add(isoW1_EB_hlt75);
-  argSet.add(isoW2_EB_hlt75);
-  argSet.add(isoFPRW_EB_hlt75);
-  argSet.add(isoFPRW1_EB_hlt75);
-  argSet.add(isoFPRW2_EB_hlt75);
-  argSet.add(isoW_EB_hlt90);
-  argSet.add(isoW1_EB_hlt90);
-  argSet.add(isoW2_EB_hlt90);
-  argSet.add(isoFPRW_EB_hlt90);
-  argSet.add(isoFPRW1_EB_hlt90);
-  argSet.add(isoFPRW2_EB_hlt90);
-  argSet.add(isoW_EB_hlt135);
-  argSet.add(isoW1_EB_hlt135);
-  argSet.add(isoW2_EB_hlt135);
-  argSet.add(isoFPRW_EB_hlt135);
-  argSet.add(isoFPRW1_EB_hlt135);
-  argSet.add(isoFPRW2_EB_hlt135);
-  argSet.add(isoW_EB_hlt150);
-  argSet.add(isoW1_EB_hlt150);
-  argSet.add(isoW2_EB_hlt150);
-  argSet.add(isoFPRW_EB_hlt150);
-  argSet.add(isoFPRW1_EB_hlt150);
-  argSet.add(isoFPRW2_EB_hlt150);
-  argSet.add(isoW_EE_hlt30);
-  argSet.add(isoW1_EE_hlt30);
-  argSet.add(isoW2_EE_hlt30);
-  argSet.add(isoFPRW_EE_hlt30);
-  argSet.add(isoFPRW1_EE_hlt30);
-  argSet.add(isoFPRW2_EE_hlt30);
-  argSet.add(isoW_EE_hlt50);
-  argSet.add(isoW1_EE_hlt50);
-  argSet.add(isoW2_EE_hlt50);
-  argSet.add(isoFPRW_EE_hlt50);
-  argSet.add(isoFPRW1_EE_hlt50);
-  argSet.add(isoFPRW2_EE_hlt50);
-  argSet.add(isoW_EE_hlt75);
-  argSet.add(isoW1_EE_hlt75);
-  argSet.add(isoW2_EE_hlt75);
-  argSet.add(isoFPRW_EE_hlt75);
-  argSet.add(isoFPRW1_EE_hlt75);
-  argSet.add(isoFPRW2_EE_hlt75);
-  argSet.add(isoW_EE_hlt90);
-  argSet.add(isoW1_EE_hlt90);
-  argSet.add(isoW2_EE_hlt90);
-  argSet.add(isoFPRW_EE_hlt90);
-  argSet.add(isoFPRW1_EE_hlt90);
-  argSet.add(isoFPRW2_EE_hlt90);
-  argSet.add(isoW_EE_hlt135);
-  argSet.add(isoW1_EE_hlt135);
-  argSet.add(isoW2_EE_hlt135);
-  argSet.add(isoFPRW_EE_hlt135);
-  argSet.add(isoFPRW1_EE_hlt135);
-  argSet.add(isoFPRW2_EE_hlt135);
-  argSet.add(isoW_EE_hlt150);
-  argSet.add(isoW1_EE_hlt150);
-  argSet.add(isoW2_EE_hlt150);
-  argSet.add(isoFPRW_EE_hlt150);
-  argSet.add(isoFPRW1_EE_hlt150);
-  argSet.add(isoFPRW2_EE_hlt150);
 
-
-  //combinedPfIsoFPR03Phot.setBins(100);
-  //etaPhot.setBins(120);
-  //mvaIdPhot.setBins(180);
-  //isMatchedPhot.setBins(3);
-  //ptPhot.setBins(1200);
-  //weight.setBins(1000);
 
   std::cout<<"set binning"<<std::endl;
 
@@ -223,51 +71,37 @@ void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, str
   TFile* f_ws_bg;
 
   if(isEB) {
-    f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+    // if(hlt=="hltcut30") f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt40_65.root").c_str(), "READ");
+//     else if(hlt=="hltcut50") f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt65_90.root").c_str(), "READ");
+//     else if(hlt=="hltcut75") f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt90_135.root").c_str(), "READ");
+//     else f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt135_165.root").c_str(), "READ");
+  
+    f_ws_sig  = new TFile((inputdir_sig+"workspace_fit_EB_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
     f_ws_bg  = new TFile((inputdir+"workspace_fit_EB_bg_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
   }
   else{
-    f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EE_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
+
+//     if(hlt=="hltcut30") f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EE_sig_WP095_pt40_65.root").c_str(), "READ");
+//     else if(hlt=="hltcut50") f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EE_sig_WP095_pt65_90.root").c_str(), "READ");
+//     else if(hlt=="hltcut75") f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EE_sig_WP095_pt90_135.root").c_str(), "READ");
+//     else f_ws_sig = new TFile((inputdir_sig+"workspace_fit_EE_sig_WP095_pt135_165.root").c_str(), "READ");
+
+    f_ws_sig  = new TFile((inputdir_sig+"workspace_fit_EE_sig_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
     f_ws_bg  = new TFile((inputdir+"workspace_fit_EE_bg_WP095_pt"+ptMin+"_"+ptMax+".root").c_str(), "READ");
   }
 
   RooWorkspace* w_sig =(RooWorkspace*)f_ws_sig->Get("w_sig");
-  w_sig->Print();
+  w_sig->Print();                                            
   RooWorkspace* w_bg =(RooWorkspace*)f_ws_bg->Get("w_bg");
   w_bg->Print();
 
+
+
   //model for signal                                                                                                                                                                                         
-  RooRealVar data_CBC_mean("data_CBC_mean", "data_CBC_mean", w_sig->var("CBC_mean")->getVal(), -2., 3.);
-  data_CBC_mean.Print();
-  RooRealVar data_CBC_sigma("data_CBC_sigma", "data_CBC_sigma", w_sig->var("CBC_sigma")->getVal(), 0., 3.);
-  data_CBC_sigma.Print();
-  RooRealVar data_CBC_alphaCB("data_CBC_alphaCB", "data_CBC_alphaCB", w_sig->var("CBC_alphaCB")->getVal(), 0., 3.);
-  RooRealVar data_CBC_n("data_CBC_n", "data_CBC_n", w_sig->var("CBC_n")->getVal(), 0., 100.);
-
-  RooCBShape* model_sig;
-  if (isFPR)
-    model_sig = new RooCBShape("model_sig", "model_sig", combinedPfIsoFPR03Phot, data_CBC_mean, data_CBC_sigma, data_CBC_alphaCB, data_CBC_n);
-  else   
-    model_sig = new RooCBShape("model_sig", "model_sig", combinedPfIso03Phot, data_CBC_mean, data_CBC_sigma, data_CBC_alphaCB, data_CBC_n);
-
-  if(config==0){
-    data_CBC_mean.setConstant(kTRUE);
-    data_CBC_sigma.setConstant(kTRUE);
-    data_CBC_alphaCB.setConstant(kTRUE);
-    data_CBC_n.setConstant(kTRUE);
-  }
-  if(config==1){
-    data_CBC_sigma.setConstant(kTRUE);
-    data_CBC_alphaCB.setConstant(kTRUE);
-    data_CBC_n.setConstant(kTRUE);
-  }
-  if(config==2){
-    data_CBC_alphaCB.setConstant(kTRUE);
-    data_CBC_n.setConstant(kTRUE);
-  }
-  if(config==3){
-    data_CBC_n.setConstant(kTRUE);
-  }
+  //RooKeysPdf* model_sig = (RooKeysPdf*)w_sig->pdf("kest1");  //smoothing = 1
+  RooKeysPdf* model_sig = (RooKeysPdf*)w_sig->pdf("kest3");  //smoothing = 1.5
+  model_sig->SetName("model_sig");
+  model_sig->SetTitle("model_sig");
 
 
   //model for background
@@ -298,22 +132,19 @@ void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, str
   RooDataSet allData("allData", "allData", argSet, RooFit::Import(data));
 
   std::cout<<"created complete dataset for data"<<endl;
-  
+
   std::cout<<allData.GetName()<<std::endl;
-  
-  RooDataSet* data_scut = (RooDataSet*)allData.reduce((cut+" && mvaIdPhot>0.83548").c_str());
-  RooDataSet* data_rcut = (RooDataSet*)allData.reduce((cut+" && mvaIdPhot<0.6 && mvaIdPhot>-0.6").c_str());
+
+  RooDataSet* data_scut;
+  if(isEB) 
+    data_scut = (RooDataSet*)allData.reduce((cut+" && mvaIdPhot>0.83548").c_str());
+  else
+    data_scut = (RooDataSet*)allData.reduce((cut+" && mvaIdPhot>0.87382").c_str());
+
   std::cout<<"data_scut entries: "<<data_scut->sumEntries()<<std::endl;
-  std::cout<<"data_rcut entries: "<<data_rcut->sumEntries()<<std::endl;
   std::cout<<"created reduced dataset"<<std::endl;
 
-  /*
-  TH1F* h_set_scut = (TH1F*)data_scut->createHistogram("h_set_scut", combinedPfIsoFPR03Phot, RooFit::Binning(combinedPfIsoFPR03Phot.getBinning()));
-  TH1F* h_set_rcut = (TH1F*)data_rcut->createHistogram("h_set_rcut", combinedPfIsoFPR03Phot, RooFit::Binning(combinedPfIsoFPR03Phot.getBinning()));
 
-  RooDataHist datah_scut("datah_scut", "datah_scut", combinedPfIsoFPR03Phot, Import(*h_set_scut));
-  RooDataHist datah_rcut("datah_rcut", "datah_rcut", combinedPfIsoFPR03Phot, Import(*h_set_rcut));
-  */
   //adding and extending models                                                                                                                                                                           
   //option 1: adding sig and bg and extending their sum                                                                                                                                                    
   RooRealVar frac_scut("frac_scut", "frac_scut", 0.5, 0., 1.);                                                                                                                                        
@@ -345,7 +176,7 @@ void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, str
   m.minos();
   std::cout<<"MINOS PARAMETERS"<<std::endl;
   ext_model_scut.getParameters(combinedPfIsoFPR03Phot)->Print("s");
-  
+
   RooFitResult* result = m.save();
   result->Print();*/
 
@@ -356,18 +187,23 @@ void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, str
 
 
   std::cout<<cut<<std::endl;
-
+  // Create binning object with range (-15,15)
+  RooBinning tbins(0,15) ;
+  
+  // Add 60 bins with uniform spacing in range (-15,0)
+  tbins.addUniform(480,0.,15.) ;
+  
   RooPlot* frame_s;
   if(isFPR)
-    frame_s = combinedPfIsoFPR03Phot.frame(RooFit::Title("Fit to combinedPfIsoFPR03Phot, scut region"), Binning(100, -7., 15.));
+    frame_s = combinedPfIsoFPR03Phot.frame(RooFit::Title("Fit to combinedPfIsoFPR03Phot, scut region"), RooFit::Binning(tbins));
   else
-    frame_s = combinedPfIso03Phot.frame(RooFit::Title("Fit to combinedPfIso03Phot, scut region"), Binning(100, -7., 15.));
+    frame_s = combinedPfIso03Phot.frame(RooFit::Title("Fit to combinedPfIso03Phot, scut region"), RooFit::Binning(tbins));
 
-  data_scut->plotOn(frame_s, Name("dh_s"));
+  data_scut->plotOn(frame_s, Name("d_s"));
   ext_model_scut.plotOn(frame_s, Name("pdf_scut"), LineColor(kBlue), Normalization(1.0,RooAbsReal::RelativeExpected));
   model_sig->plotOn(frame_s, Name("pdf_sig"), LineColor(kCyan), Normalization(frac_scut.getVal()/**N_scut.getVal()*/));
   model_bg->plotOn(frame_s, Name("pdf_bg"), LineColor(kMagenta), Normalization((1-frac_scut.getVal())/**N_scut.getVal()*/));
-  
+
   frame_s->SetMinimum(0.00001);
   if(isFPR)
     frame_s->GetXaxis()->SetTitle("combinedPfIsoFPR03Phot [GeV]");
@@ -380,15 +216,14 @@ void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, str
   a->SetFillColor(0);
   a->SetFillStyle(0);
   a->SetTextSize(0.038);
-  a->AddEntry(frame_s->findObject("dh_s"), "Data","p");
+  a->AddEntry(frame_s->findObject("d_s"), "Data","p");
   a->AddEntry(frame_s->findObject("pdf_scut"), "fitting PDF","l");
   a->AddEntry(frame_s->findObject("pdf_sig"), "sig component","l");
   a->AddEntry(frame_s->findObject("pdf_bg"), "bkg component","l");
 
-  //Double_t chi2 = frame_s->chiSquare("pdf_scut", "dh_s", 7);	
-  //Double_t prob = TMath::Prob(chi2, 7);                       
-  Double_t chi2 = frame_s->chiSquare("pdf_scut", "dh_s", 5);	
-  Double_t prob = TMath::Prob(chi2, 5);                       
+
+  Double_t chi2 = frame_s->chiSquare("pdf_scut", "d_s", 2);	
+  Double_t prob = TMath::Prob(chi2*22., 22);                       
   TPaveLabel *t1 = new TPaveLabel(0.6,0.40,0.80,0.50, Form("#chi^{2}/dof = %.3f", chi2),"brNDC");
   TPaveLabel *t2 = new TPaveLabel(0.6,0.50,0.83,0.60, Form("Prob(chi2,dof) = %.3f", prob),"brNDC");
   t1->SetFillColor(0);
@@ -434,8 +269,6 @@ void fitDebug_Data(string cut, string filename,  string ptMin, string ptMax, str
 
   w_data->import(*data_scut);
   w_data->import(ext_model_scut);
-  w_data->import(combinedPfIsoFPR03Phot);
-  w_data->import(combinedPfIso03Phot);
   w_data->import(N_sig_real);
 
   w_data->Print();

@@ -27,7 +27,8 @@ def main(options,args):
         data.Add(samples[sample][1]+"/"+samples[sample][0])
 
     h1=TH1F("h1","",5000,0.,5000.)
-    data.Project("h1","ptPhot", "(ptPhot<5000. && fabs(etaPhot>1.566)  && mvaIdPhot>0.83548 && mvaIdPhot<1.) ")    
+    #data.Project("h1","ptPhot", "(ptPhot<5000. && fabs(etaPhot<1.4442)  && mvaIdPhot>0.83548 && mvaIdPhot<1.) ")
+    data.Project("h1","ptPhot", "(ptPhot<5000. && fabs(etaPhot>1.566)  && mvaIdPhot>0.87382  && mvaIdPhot<1.) ")    
 
 
     binCont=h1.Integral(41,48)
@@ -75,9 +76,12 @@ def main(options,args):
     print("bin content 311 : %f" % (binCont))
     binCont=h1.Integral(341,381)
     print("bin content 341 : %f" % (binCont))
-    binCont=h1.Integral(381,5001)
+    binCont=h1.Integral(381,481)
     print("bin content 381 : %f" % (binCont))
+    binCont=h1.Integral(481,5001)
+    print("bin content 481 : %f" % (binCont))
     
+
 if __name__ == "__main__":
     parser = OptionParser(option_list=[
         make_option("--samplesDat",

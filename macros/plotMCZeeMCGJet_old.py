@@ -7,15 +7,14 @@ import multiprocessing
 import os
 
 treeName_mc="finalTree"
-treeName_dataZ="myTaPDir/myTree"
-dataZ = TChain(treeName_dataZ)
+treeName_mc_Z="myTaPDir/myTree"
+mc_Z = TChain(treeName_mc_Z)
 mc = TChain(treeName_mc)
 
 #Global text print on top of the plots
 text="CMS Preliminary #sqrt{s}=8 TeV"
 
 # associate name of the variable to the expression to print it. This list should contain all the variables to plot
-
 variables_mc={}
 variables_mc['ptPhot']='ptPhot'
 variables_mc['etaPhot']='etaPhot'
@@ -34,34 +33,34 @@ variables_mc['pid_pfIsoFPRPhoton03_presel']='pid_pfIsoFPRPhoton03_presel'
 variables_mc['r9Phot']='r9Phot'      
 
 
-variables_dataZ={}
-variables_dataZ['ptPhot']='probe_pt'
-variables_dataZ['etaPhot']='probe_eta'
-variables_dataZ['mvaIdPhot']='probe_mvaId'
-variables_dataZ['nvtx']='numvtx'
-#variables_dataZ['npu']='npu'
-variables_dataZ['rho']='rho'
-variables_dataZ['combinedPfIso03Phot']='probe_combinedPfIso03'
-variables_dataZ['combinedPfIsoFPR03Phot']='probe_combinedPfIsoFPR03'
-variables_dataZ['pid_pfIsoCharged03ForCiC']='probe_charged03'      
-variables_dataZ['pid_pfIsoNeutrals03ForCiC']='probe_neutral03'
-variables_dataZ['pid_pfIsoPhotons03ForCiC']='probe_photon03'
-variables_dataZ['pid_pfIsoFPRCharged03_presel']='probe_fprCharged03'      
-variables_dataZ['pid_pfIsoFPRNeutral03_presel']='probe_fprNeutral03'
-variables_dataZ['pid_pfIsoFPRPhoton03_presel']='probe_fprPhoton03'
-variables_dataZ['r9Phot']='probe_r9'      
+variables_mc_Z={}
+variables_mc_Z['ptPhot']='probe_pt'
+variables_mc_Z['etaPhot']='probe_eta'
+variables_mc_Z['mvaIdPhot']='probe_mvaId'
+variables_mc_Z['nvtx']='numvtx'
+#variables_mc_Z['npu']='npu'
+variables_mc_Z['rho']='rho'
+variables_mc_Z['combinedPfIso03Phot']='probe_combinedPfIso03'
+variables_mc_Z['combinedPfIsoFPR03Phot']='probe_combinedPfIsoFPR03'
+variables_mc_Z['pid_pfIsoCharged03ForCiC']='probe_charged03'      
+variables_mc_Z['pid_pfIsoNeutrals03ForCiC']='probe_neutral03'
+variables_mc_Z['pid_pfIsoPhotons03ForCiC']='probe_photon03'
+variables_mc_Z['pid_pfIsoFPRCharged03_presel']='probe_fprCharged03'      
+variables_mc_Z['pid_pfIsoFPRNeutral03_presel']='probe_fprNeutral03'
+variables_mc_Z['pid_pfIsoFPRPhoton03_presel']='probe_fprPhoton03'
+variables_mc_Z['r9Phot']='probe_r9'      
 
 
 #characteristics of the plot of a given variable
 plotPars={}
-plotPars['ptPhot']=dict( name='ptPhot', nBins=60, xMin=0., xMax=300., xaxisLabel="#gamma p_{T} (GeV)")
+plotPars['ptPhot']=dict( name='ptPhot', nBins=60, xMin=0., xMax=600., xaxisLabel="#gamma p_{T} (GeV)")
 plotPars['etaPhot']=dict( name='etaPhot', nBins=60, xMin=-3., xMax=3., xaxisLabel="#gamma #eta")
 plotPars['mvaIdPhot']=dict( name='mvaIdPhot', nBins=60, xMin=0., xMax=1., xaxisLabel="#gamma MVA output")
 plotPars['nvtx']=dict( name='nvtx', nBins=41, xMin=-0.5, xMax=40.5, xaxisLabel="nvtx")
 #plotPars['npu']=dict( name='npu', nBins=41, xMin=-0.5, xMax=40.5, xaxisLabel="npu")
 plotPars['rho']=dict( name='rho', nBins=60, xMin=0, xMax=40, xaxisLabel="#rho (GeV)")
-plotPars['combinedPfIso03Phot']=dict( name='combinedPfIso03Phot', nBins=20, xMin=-5, xMax=15, xaxisLabel="combined PfIso #DeltaR=0.3 (GeV)")          
-plotPars['combinedPfIsoFPR03Phot']=dict( name='combinedPfIsoFPR03Phot', nBins=20, xMin=-5, xMax=15, xaxisLabel="combined PfIso FPR #DeltaR=0.3 (GeV)")
+plotPars['combinedPfIso03Phot']=dict( name='combinedPfIso03Phot', nBins=60, xMin=-5, xMax=15, xaxisLabel="combined PfIso #DeltaR=0.3 (GeV)")          
+plotPars['combinedPfIsoFPR03Phot']=dict( name='combinedPfIsoFPR03Phot', nBins=60, xMin=-5, xMax=15, xaxisLabel="combined PfIso FPR #DeltaR=0.3 (GeV)")
 plotPars['pid_pfIsoCharged03ForCiC']=dict( name='pfIsoCharged03', nBins=60, xMin=0, xMax=6, xaxisLabel="PfIso Charged #DeltaR=0.3 (GeV)")          
 plotPars['pid_pfIsoNeutrals03ForCiC']=dict( name='pfIsoNeutrals03', nBins=60, xMin=0, xMax=6, xaxisLabel="PfIso Neutral #DeltaR=0.3 (GeV)")
 plotPars['pid_pfIsoPhotons03ForCiC']=dict( name='pfIsoPhotons03', nBins=60, xMin=0, xMax=6, xaxisLabel="PfIso Photon #DeltaR=0.3 (GeV)")          
@@ -70,34 +69,78 @@ plotPars['pid_pfIsoFPRNeutral03_presel']=dict( name='pfIsoFPRNeutral03', nBins=6
 plotPars['pid_pfIsoFPRPhoton03_presel']=dict( name='pfIsoFPRPhoton03', nBins=60, xMin=0, xMax=6, xaxisLabel="PfIso Photon FPR #DeltaR=0.3 (GeV)")
 plotPars['r9Phot']=dict( name='r9Phot', nBins=60, xMin=0., xMax=1., xaxisLabel="R9 Photon #DeltaR=0.3 (GeV)")
 
+pt_min={}
+pt_max={}
+pt_min['EB']=[40,47,65,73,90,94,99,105,110,117,126,139,155,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,215,220,225,230,235,240,245,250,255,260,265,270,290,310,340,380,480]
+pt_max['EB']=[47,65,73,90,94,99,105,110,117,126,139,155,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,215,220,225,230,235,240,245,250,255,260,265,270,290,310,340,380,480,1000]
+pt_min['EE']=[40,65,90,105,126,165,168,172,176,180,186,192,198,206,215,225,240,270]
+pt_min['EE']=[65,90,105,126,165,168,172,176,180,186,192,198,206,215,225,240,270,1000]
+
+
 #possible selections for the plots
 cuts_mc={}
-#cuts_mc['All']='1' #just to avoid error
-cuts_mc['EB']='fabs(etaPhot)<1.4442'
-cuts_mc['EE']='fabs(etaPhot)>1.566 && fabs(etaPhot)<2.5'
-#cuts_mc['EB']='fabs(etaPhot)<1.4442 && (mvaIdPhot<1. && mvaIdPhot>0.83548)'
-#cuts_mc['EE']='fabs(etaPhot)>1.566 && abs(etaPhot)<2.5 && (mvaIdPhot<1. && mvaIdPhot>0.87382)'
 
-cuts_dataZ={}
-#cuts_dataZ['All']='1' #just to avoid error
-cuts_dataZ['EB']='fabs(probe_eta)<1.4442'
-cuts_dataZ['EE']='fabs(probe_eta)>1.566 && fabs(probe_eta)<2.5'
-#cuts_dataZ['EB']='fabs(probe_eta)<1.4442 && (probe_mvaId<1. && probe_mvaId>0.83548)'
-#cuts_dataZ['EE']='fabs(probe_eta)>1.566 && abs(probe_eta)<2.5 && (probe_mvaId<1. && probe_mvaId>0.87382)'
+for i in range(0,len(pt_max['EB'])):
+    cuts_mc['EB']='abs(etaPhot)<1.4442 && ptPhot>'+pt_min['EB'][i]+" && ptPhot<"pt_max['EB'][i]
+for i in range(0,len(pt_max['EE'])):    
+    cuts_mc['EE']='abs(etaPhot)>1.566 && abs(etaPhot)<2.5 && ptPhot>'+pt_min['EE'][i]+" && ptPhot<"pt_max['EE'][i]
+#cuts_mc['EB']='abs(etaPhot)<1.4442 && (mvaIdPhot<1. && mvaIdPhot>0.83548)'
+#cuts_mc['EE']='abs(etaPhot)>1.566 && abs(etaPhot)<2.5 && (mvaIdPhot<1. && mvaIdPhot>0.87382)'
+
+cuts_mc_Z={}
+
+for i in range(0,len(pt_max['EB'])):
+    cuts_mc_Z['EB']='abs(probe_eta)<1.4442 && probe_pt>'+pt_min['EB'][i]+" && probe_pt<"pt_max['EB'][i]
+for i in range(0,len(pt_max['EE'])):
+    cuts_mc_Z['EE']='abs(probe_eta)>1.566 && abs(probe_eta)<2.5 && probe_pt>'+pt_min['EE'][i]+" && probe_pt<"pt_max['EE'][i]
+#cuts_mc_Z['EB']='abs(probe_eta)<1.4442 && (probe_mvaId<1. && probe_mvaId>0.83548)'
+#cuts_mc_Z['EE']='abs(probe_eta)>1.566 && abs(probe_eta)<2.5 && (probe_mvaId<1. && probe_mvaId>0.87382)'
+
 
 #different types of MC (and corresponding selection to differentiate them using ntuple variables"
 mc_types={}
 mc_types['Signal']="isIsolatedGenPhot==1"
 #mc_types['Bkg']="isIsolatedGenPhot==0"
+#mc_types['Signal']="1"
 
 #name of the variable to use as weight in MC
-weight_var_mc_phot="weight"
+weight_phot="weight"
+#weight_phot="1"
+
+weight_ele={}
+for i in range(0,len(pt_max['EB'])):
+    if(options.hltcut==30):
+        weight_ele['EB'][i]="puW30*rhoWeight30*etaWeight*r9WeightEB_hlt30*isoW_EB_"+pt_min['EB'][i]+"_"+pt_max['EB'][i]
+    elif(options.hltcut==50):
+        weight_ele['EB'][i]="puW50*r9WeightEB_hlt50*etaWeight*rhoWeight50*isoW_EB_"+pt_min['EB'][i]+"_"+pt_max['EB'][i]
+    elif(options.hltcut==75):
+        weight_ele['EB'][i]="puW75*r9WeightEB_hlt75*etaWeight*rhoWeight75*isoW_EB_"+pt_min['EB'][i]+"_"+pt_max['EB'][i]
+    elif(options.hltcut==90):
+        weight_ele['EB'][i]="puW90*r9WeightEB_hlt90*etaWeight*rhoWeight90*isoW_EB_"+pt_min['EB'][i]+"_"+pt_max['EB'][i]
+    elif(options.hltcut==135):
+        weight_ele['EB'][i]="puW135*r9WeightEB_hlt135*etaWeight*rhoWeight135*isoW_EB_"+pt_min['EB'][i]+"_"+pt_max['EB'][i]
+    elif(options.hltcut==150):
+        weight_ele['EB'][i]="puW150*etaWeight*rhoWeight150*r9WeightEB_hlt150*isoW_EB_"+pt_min['EB'][i]+"_"+pt_max['EB'][i]
+
+for i in range(0,len(pt_max['EE'])):
+     if(options.hltcut==30):
+         weight_ele['EE'][i]="puW30*rhoWeight30*etaWeight*r9WeightEE_hlt30*isoW_EE_"+pt_min['EE'][i]+"_"+pt_max['EE'][i]
+     elif(options.hltcut==50):
+         weight_ele['EE'][i]="puW50*r9WeightEE_hlt50*etaWeight*rhoWeight50*isoW_EE_"+pt_min['EE'][i]+"_"+pt_max['EE'][i]
+     elif(options.hltcut==75):
+         weight_ele['EE'][i]="puW75*r9WeightEE_hlt75*etaWeight*rhoWeight75*isoW_EE_"+pt_min['EE'][i]+"_"+pt_max['EE'][i]
+     elif(options.hltcut==90):
+         weight_ele['EE'][i]="puW90*r9WeightEE_hlt90*etaWeight*rhoWeight90*isoW_EE_"+pt_min['EE'][i]+"_"+pt_max['EE'][i]
+     elif(options.hltcut==135):
+         weight_ele['EE'][i]="puW135*r9WeightEE_hlt135*etaWeight*rhoWeight135*isoW_EE_"+pt_min['EE'][i]+"_"+pt_max['EE'][i]
+     elif(options.hltcut==150):
+         weight_ele['EE'][i]="puW150*etaWeight*rhoWeight150*r9WeightEE_hlt150*isoW_EE_"+pt_min['EE'][i]+"_"+pt_max['EE'][i]
 
 
 
-#options to draw dataZ and MC plots
+#options to draw MC Zee and MC phot plots
 draw_opts={}
-draw_opts['dataZ']=dict( SetMarkerSize=0.7,SetMarkerStyle=20,SetLineColor=1 )
+draw_opts['mc_Z']=dict( SetMarkerSize=0.7,SetMarkerStyle=20,SetMarkerColor=kPink+10,SetLineColor=kPink+10 )
 #draw_opts['mc_Bkg']=dict( SetLineColor=kMagenta,SetLineWidth=2,SetFillColor=kMagenta,SetFillStyle=1001 )
 draw_opts['mc_Signal']=dict( SetLineColor=kGreen-9,SetLineWidth=2,SetFillColor=kGreen-9,SetFillStyle=1001 )
 
@@ -142,65 +185,29 @@ def drawText(additional_text):
         tex_m.DrawLatex(0.63,0.63,additional_text)
         
 #def plot(variable,plotsDir,additional_cuts="1",pars['additional_text']="",savefmts=[".C",".png",".pdf"]):
-def plot(pars,savefmts=[".C",".png",".pdf"]):
+def plot(pars,savefmts=[".C",".png",".svg"]):
     c = TCanvas(pars['variable_mc'],pars['variable_mc'],1000,900)
     customizeCanvas(c)
 
-    weight_var_dataZ={}
-    if(options.hltcut==30):
-        #        weight_var_dataZ['All']="etaWeight*rhoWeight30*ptWeight_40_65"
-        #weight_var_dataZ['EB']="etaWeight*r9WeightEB_hlt30*rhoWeight30*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        #weight_var_dataZ['EE']="etaWeight*r9WeightEE_hlt30*rhoWeight30*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        weight_var_dataZ['EB']="etaWeight*r9WeightEB_hlt30*rhoWeight30"
-        weight_var_dataZ['EE']="etaWeight*r9WeightEE_hlt30*rhoWeight30"
-    elif(options.hltcut==50):
-#        weight_var_dataZ['All']="etaWeight*rhoWeight50*ptWeight_40_65"
-        #weight_var_dataZ['EB']="r9WeightEB_hlt50*etaWeight*rhoWeight50*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        #weight_var_dataZ['EE']="r9WeightEE_hlt50*etaWeight*rhoWeight50*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        weight_var_dataZ['EB']="r9WeightEB_hlt50*etaWeight*rhoWeight50"
-        weight_var_dataZ['EE']="r9WeightEE_hlt50*etaWeight*rhoWeight50"
-    elif(options.hltcut==75):
-#        weight_var_dataZ['All']="puW75*etaWeight*rhoWeight75*ptWeight_40_65"
-        #weight_var_dataZ['EB']="r9WeightEB_hlt75*etaWeight*rhoWeight75*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        #weight_var_dataZ['EE']="r9WeightEE_hlt75*etaWeight*rhoWeight75*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        weight_var_dataZ['EB']="r9WeightEB_hlt75*etaWeight*rhoWeight75"
-        weight_var_dataZ['EE']="r9WeightEE_hlt75*etaWeight*rhoWeight75"
-        
-    elif(options.hltcut==90):
-#        weight_var_dataZ['All']="puW90*etaWeight*rhoWeight90*ptWeight_40_65"
-        #weight_var_dataZ['EB']="r9WeightEB_hlt90*etaWeight*rhoWeight90*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        #weight_var_dataZ['EE']="r9WeightEE_hlt90*etaWeight*rhoWeight90*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        weight_var_dataZ['EB']="r9WeightEB_hlt90*etaWeight*rhoWeight90"
-        weight_var_dataZ['EE']="r9WeightEE_hlt90*etaWeight*rhoWeight90"
-    elif(options.hltcut==135):
-#        weight_var_dataZ['All']="puW135*etaWeight*rhoWeight135*ptWeight_40_65"
-        #weight_var_dataZ['EB']="r9WeightEB_hlt135*etaWeight*rhoWeight135*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        #weight_var_dataZ['EE']="r9WeightEE_hlt135*etaWeight*rhoWeight135*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        weight_var_dataZ['EB']="r9WeightEB_hlt135*etaWeight*rhoWeight135"
-        weight_var_dataZ['EE']="r9WeightEE_hlt135*etaWeight*rhoWeight135"        
-    elif(options.hltcut==150):
-#        weight_var_dataZ['All']="puW150etaWeight*rhoWeight150*ptWeight_40_65"
-        #weight_var_dataZ['EB']="r9WeightEB_hlt150*etaWeight*rhoWeight150*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        #weight_var_dataZ['EE']="r9WeightEE_hlt150*etaWeight*rhoWeight150*ptWeight_40_65*isoWeight_dataZ_mcPhot"
-        weight_var_dataZ['EB']="r9WeightEB_hlt150*etaWeight*rhoWeight150"
-        weight_var_dataZ['EE']="r9WeightEE_hlt150*etaWeight*rhoWeight150"
+
     
     for cut in cuts_mc.keys():
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)]=TH1F(str(plotPars[str(pars['variable_mc'])]['name'])+"_dataZ_"+str(cut),str(plotPars[str(pars['variable_mc'])]['name'])+"_dataZ_"+str(cut),int(plotPars[str(pars['variable_mc'])]['nBins']),float(plotPars[str(pars['variable_mc'])]['xMin']),float(plotPars[str(pars['variable_mc'])]['xMax']))
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].Sumw2()
+        
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)]=TH1F(str(plotPars[str(pars['variable_mc'])]['name'])+"_mc_Z_"+str(cut),str(plotPars[str(pars['variable_mc'])]['name'])+"_mc_Z_"+str(cut),int(plotPars[str(pars['variable_mc'])]['nBins']),float(plotPars[str(pars['variable_mc'])]['xMin']),float(plotPars[str(pars['variable_mc'])]['xMax']))
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].Sumw2()
         for type in mc_types.keys():
             histos[str(pars['variable_mc'])+'_mc_'+type+"_"+str(cut)]=TH1F(str(plotPars[str(pars['variable_mc'])]['name'])+"_mc_"+type+"_"+str(cut),str(plotPars[str(pars['variable_mc'])]['name'])+"_mc_"+type+"_"+str(cut),plotPars[str(pars['variable_mc'])]['nBins'],plotPars[str(pars['variable_mc'])]['xMin'],plotPars[str(pars['variable_mc'])]['xMax'])
             histos[str(pars['variable_mc'])+'_mc_'+type+"_"+str(cut)].Sumw2()
         #Filling histos
-        dataZ.Project( histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].GetName(), str(variables_dataZ[str(pars['variable_mc'])]), "("+str(cuts_dataZ[cut])+"&&"+pars['additional_cuts_dataZ']+")*"+ weight_var_dataZ[cut])
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].Print()
+        mc_Z.Project( histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].GetName(), str(variables_mc_Z[str(pars['variable_mc'])]), "("+str(cuts_mc_Z[cut])+"&&"+pars['additional_cuts_mc_Z']+")*"+str(weight_ele[cut]))
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].Print()
         #Now set drawing options
-        for aopt in draw_opts['dataZ'].keys():
-            a=histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)]
-            eval('a.'+str(aopt)+'('+str(draw_opts['dataZ'][aopt])+')')
+        for aopt in draw_opts['mc_Z'].keys():
+            a=histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)]
+            eval('a.'+str(aopt)+'('+str(draw_opts['mc_Z'][aopt])+')')
             
         for mc_type in mc_types.keys():
-            mc.Project( histos[str(pars['variable_mc'])+'_mc_'+mc_type+"_"+str(cut)].GetName(), str(variables_mc[str(pars['variable_mc'])]), "("+str(cuts_mc[cut])+"&&"+pars['additional_cuts_mc']+"&&"+str(mc_types[mc_type])+")*"+weight_var_mc_phot )
+            mc.Project( histos[str(pars['variable_mc'])+'_mc_'+mc_type+"_"+str(cut)].GetName(), str(variables_mc[str(pars['variable_mc'])]), "("+str(cuts_mc[cut])+"&&"+pars['additional_cuts_mc']+"&&"+str(mc_types[mc_type])+")*"+weight_phot) 
             histos[str(pars['variable_mc'])+'_mc_'+mc_type+"_"+str(cut)].Print()
             for aopt in draw_opts['mc_'+mc_type].keys():
                 a=histos[str(pars['variable_mc'])+'_mc_'+mc_type+"_"+str(cut)]
@@ -228,17 +235,17 @@ def plot(pars,savefmts=[".C",".png",".pdf"]):
         #print ("verify the sum of stacked istograms is 1 : %f" % verify)
         #print "--------"
            
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].DrawNormalized("PE")
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].SetMaximum(histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].GetMaximum()*1.4)
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].SetMinimum(0)
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].GetXaxis().SetTitle(str(plotPars[str(pars['variable_mc'])]['xaxisLabel']))
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].GetYaxis().SetTitle('Entries/'+str(histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].GetBinWidth(1)))
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].GetYaxis().SetTitleOffset(1.5)
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].DrawNormalized("PE")
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].SetMaximum(histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].GetMaximum()*1.4)
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].SetMinimum(0)
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].GetXaxis().SetTitle(str(plotPars[str(pars['variable_mc'])]['xaxisLabel']))
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].GetYaxis().SetTitle('Entries/'+str(histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].GetBinWidth(1)))
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].GetYaxis().SetTitleOffset(1.5)
 
         
         #stack.Draw("HSAME")
         histos[str(pars['variable_mc'])+'_mc_Signal_'+str(cut)].DrawNormalized("HSAME")
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].DrawNormalized("PESAME")
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].DrawNormalized("PESAME")
 
         #Legend
         a=TLegend(0.63,0.68,0.88,0.88)
@@ -246,7 +253,7 @@ def plot(pars,savefmts=[".C",".png",".pdf"]):
         a.SetFillColor(0)
         a.SetTextSize(0.038)
         a.SetHeader(str(cut))
-        a.AddEntry( histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)],"DataZ Z #rightarrow ee","PL" )
+        a.AddEntry( histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)],"MC Z #rightarrow ee","PL" )
         for mc_type in range(len(mc_types_keys)):
              a.AddEntry( histos[str(pars['variable_mc'])+'_mc_'+mc_types_keys[mc_type]+"_"+str(cut)], "signal #gamma + jet" , "F" )
         a.Draw()
@@ -266,20 +273,20 @@ def plot(pars,savefmts=[".C",".png",".pdf"]):
         #First pad
         pads[0].cd()
         gPad.SetLogy(1)
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].SetMaximum(histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].GetMaximum()*4.)
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].SetMinimum(0.1)
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].GetYaxis().SetTitleOffset(0.9)
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].DrawNormalized("PE")
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].SetMaximum(histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].GetMaximum()*4.)
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].SetMinimum(0.1)
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].GetYaxis().SetTitleOffset(0.9)
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].DrawNormalized("PE")
         #stack.Draw("HSAME")
         histos[str(pars['variable_mc'])+'_mc_Signal_'+str(cut)].DrawNormalized("HSAME")
-        histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].DrawNormalized("PESAME")
+        histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].DrawNormalized("PESAME")
       
         a=TLegend(0.63,0.68,0.88,0.88)
         a.SetBorderSize(0)
         a.SetFillColor(0)
         a.SetTextSize(0.038)
         a.SetHeader(str(cut))
-        a.AddEntry( histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)],"DataZ Z #rightarrow ee","PL" )
+        a.AddEntry( histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)],"MC Z #rightarrow ee","PL" )
         for mc_type in range(len(mc_types_keys)):
              a.AddEntry( histos[str(pars['variable_mc'])+'_mc_'+mc_types_keys[mc_type]+"_"+str(cut)], "signal #gamma + jet" , "F" )
         a.Draw()
@@ -292,7 +299,7 @@ def plot(pars,savefmts=[".C",".png",".pdf"]):
         pads[1].SetGridy(1)
 
         #prepare ratio histogram
-        ratio=histos[str(pars['variable_dataZ'])+'_dataZ_'+str(cut)].Clone("ratio")
+        ratio=histos[str(pars['variable_mc_Z'])+'_mc_Z_'+str(cut)].Clone("ratio")
         integral=ratio.Integral()
         ratio.Scale(1./integral)
         for mc_type in range(len(mc_types_keys)):
@@ -307,7 +314,7 @@ def plot(pars,savefmts=[".C",".png",".pdf"]):
         ratio.SetMaximum(3)
         ratio.SetMinimum(0.2)
 
-        ratio.GetYaxis().SetTitle("DataZ/MC")
+        ratio.GetYaxis().SetTitle("MC(e)/MC(#gamma)")
         ratio.GetYaxis().SetLabelSize(0.07)
         ratio.GetXaxis().SetLabelSize(0.07)
         ratio.GetXaxis().SetTitleSize(0.08)
@@ -335,7 +342,7 @@ def main(options,args):
 
     plotsDir=options.plotsDir
     additionalText=options.additionalText
-    additionalCuts_data=options.additionalCuts_data
+    additionalCuts_mc_Z=options.additionalCuts_mc_Z
     additionalCuts_mc=options.additionalCuts_mc
 
     #Creating output dir
@@ -344,12 +351,12 @@ def main(options,args):
     except:
         pass
 
-    #Reading data files list
-    lines = [line.strip() for line in open(options.dataFiles)]
+    #Reading MC Z files list
+    lines = [line.strip() for line in open(options.mcZFiles)]
     for line in lines:
         if line.startswith('#'):
             continue
-        dataZ.Add(line)
+        mc_Z.Add(line)
 
     #Reading mc files list
     lines = [line.strip() for line in open(options.mcFiles)]
@@ -368,12 +375,12 @@ def main(options,args):
     #print command
     print "--------------- commands -------------------------"
     for x in variables_mc.keys():
-        print ("pars=[ dict(variable_mc= %s, variable_dataZ=%s, plotsDir=%s, additional_cuts_dataZ=%s, additional_cuts_mc=%s, additional_text=%s) ]" % (variables_mc[x], variables_dataZ[x], plotsDir,additionalCuts_data, additionalCuts_mc,additionalText))
+        print ("pars=[ dict(variable_mc= %s, variable_mc_Z=%s, plotsDir=%s, additional_cuts_mc_Z=%s, additional_cuts_mc=%s, additional_text=%s) ]" % (variables_mc[x], variables_mc_Z[x], plotsDir,additionalCuts_mc_Z, additionalCuts_mc,additionalText))
     print " "
     print "----------------------------------------"
 
     #run all the samples in parallel 
-    pars=[ dict(variable_mc=variables_mc[x], variable_dataZ=variables_dataZ[x], plotsDir=plotsDir,additional_cuts_dataZ=additionalCuts_data,additional_cuts_mc=additionalCuts_mc,additional_text=additionalText) for x in variables_mc.keys() ]
+    pars=[ dict(variable_mc=variables_mc[x], variable_mc_Z=variables_mc_Z[x], plotsDir=plotsDir,additional_cuts_mc_Z=additionalCuts_mc_Z,additional_cuts_mc=additionalCuts_mc,additional_text=additionalText) for x in variables_mc.keys() ]
     pool.map(plot, pars)
 
     #for variable in variables.keys():
@@ -382,19 +389,19 @@ def main(options,args):
     
 if __name__ == "__main__":
     parser = OptionParser(option_list=[
-        make_option("--dataFiles",
-                    action="store", type="string", dest="dataFiles",
-                    default="data.txt",
+        make_option("--mcZFiles",
+                    action="store", type="string", dest="mcZFiles",
+                    #default="data.txt",
                     help="", metavar=""
                     ),
         make_option("--mcFiles",
                     action="store", type="string", dest="mcFiles",
-                    default="mc.txt",
+                    #default="mc.txt",
                     help="", metavar=""
                     ),
         make_option("--plotsDir",
                     action="store", type="string", dest="plotsDir",
-                    default="plots/",
+                    default="./",
                     help="", metavar=""
                     ),
         make_option("--additionalText",
@@ -402,8 +409,8 @@ if __name__ == "__main__":
                     default="",
                     help="", metavar=""
                     ),
-        make_option("--additionalCuts_data",
-                    action="store", type="string", dest="additionalCuts_data",
+        make_option("--additionalCuts_mc_Z",
+                    action="store", type="string", dest="additionalCuts_mc_Z",
                     default="1",
                     help="", metavar=""
                     ),

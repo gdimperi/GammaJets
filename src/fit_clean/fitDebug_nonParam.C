@@ -48,19 +48,30 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   //string input_dir="/cmshome/gdimperi/GammaJet/CMSSW_6_0_1/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
   string input_dir="/cmshome/gdimperi/GammaJet/GammaJetAnalysis/CMSSW_5_3_11/src/GammaJets/src/studioPesi/histo_v6/genIso4/isoWeight/tightPresel2/weights_rebin/";
 
-  if(hlt=="hltcut30")
+  if(hlt=="hltcut30"){
     data.Add((input_dir+"data2012ABCD_withWeights_hlt30.root").c_str());
-  if(hlt=="hltcut50")
-    data.Add((input_dir+"data2012ABCD_withWeights_hlt50.root").c_str());
-  if(hlt=="hltcut75")
-    data.Add((input_dir+"data2012ABCD_withWeights_hlt75.root").c_str());
-  if(hlt=="hltcut90")
-    data.Add((input_dir+"data2012ABCD_withWeights_hlt90.root").c_str());
-  if(hlt=="hltcut135")
-    data.Add((input_dir+"data2012ABCD_withWeights_hlt135.root").c_str());
-  if(hlt=="hltcut150")
-    data.Add((input_dir+"data2012ABCD_withWeights_hlt150.root").c_str());
 
+  }
+  if(hlt=="hltcut50"){
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt50.root").c_str());
+
+  }
+  if(hlt=="hltcut75"){
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt75.root").c_str());
+
+  }
+  if(hlt=="hltcut90"){
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt90.root").c_str());
+
+  }
+  if(hlt=="hltcut135"){
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt135.root").c_str());
+
+  }
+  if(hlt=="hltcut150"){
+    data.Add((input_dir+"data2012ABCD_withWeights_hlt150.root").c_str());
+    
+  }
   std::cout<<"Tot entries chain = " << data.GetEntries() <<std::endl;
 
   // WARNING: weights are allowed to be <0 but they should be used correctly only when positive!
@@ -390,9 +401,9 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   // Plot kernel estimation pdfs with and without mirroring over data
   RooPlot* frame;
   if(isFPR)  
-    frame = combinedPfIsoFPR03Phot.frame(Title("Adaptive kernel estimation pdf with and w/o mirroring"),Bins(20)) ;
+    frame = combinedPfIsoFPR03Phot.frame(Title("Adaptive kernel estimation pdf with and w/o mirroring"),Bins(60)) ;
   else
-    frame = combinedPfIso03Phot.frame(Title("Adaptive kernel estimation pdf with and w/o mirroring"),Bins(20)) ;
+    frame = combinedPfIso03Phot.frame(Title("Adaptive kernel estimation pdf with and w/o mirroring"),Bins(60)) ;
 
   d_bkg->plotOn(frame) ;
   kest1->plotOn(frame) ;    
@@ -402,9 +413,9 @@ void fitDebug(string cut, string filename, string hlt, bool binned, string outdi
   // Plot kernel estimation pdfs with regular and increased bandwidth
   RooPlot* frame2;
   if(isFPR)  
-    frame2 = combinedPfIsoFPR03Phot.frame(Title("Adaptive kernel estimation pdf with regular, increased bandwidth"), Bins(20)) ;
+    frame2 = combinedPfIsoFPR03Phot.frame(Title("Adaptive kernel estimation pdf with regular, increased bandwidth"), Bins(60)) ;
   else
-    frame2 = combinedPfIso03Phot.frame(Title("Adaptive kernel estimation pdf with regular, increased bandwidth"), Bins(20)) ;
+    frame2 = combinedPfIso03Phot.frame(Title("Adaptive kernel estimation pdf with regular, increased bandwidth"), Bins(60)) ;
 
   d_bkg->plotOn(frame2) ;
   kest1->plotOn(frame2, LineColor(kBlue)) ;    

@@ -38,13 +38,13 @@ cuts={}
 cuts['All']='1' #just to avoid error
 #cuts['EB']='abs(etaPhot)<1.4442'
 #cuts['EE']='abs(etaPhot)>1.566 && abs(etaPhot)<2.5'
-cuts['EB']='abs(etaPhot)<1.4442 && (mvaIdPhot<1. && mvaIdPhot>0.766479)'
-cuts['EE']='abs(etaPhot)>1.566 && abs(etaPhot)<2.5 && (mvaIdPhot<1. && mvaIdPhot>0.601807)'
+cuts['EB']='abs(etaPhot)<1.4442 && (mvaIdPhot<1. && mvaIdPhot>0.83548)'
+cuts['EE']='abs(etaPhot)>1.566 && abs(etaPhot)<2.5 && (mvaIdPhot<1. && mvaIdPhot>0.87382)'
 
 #different types of MC (and corresponding selection to differentiate them using ntuple variables"
 mc_types={}
-mc_types['Signal']="isMatchedPhot==1"
-mc_types['Bkg']="isMatchedPhot==0"
+mc_types['Signal']="isIsolatedGenPhot==1"
+mc_types['Bkg']="isIsolatedGenPhot==0"
 
 #name of the variable to use as weight in MC
 weight_var="weight"
@@ -96,7 +96,7 @@ def drawText(additional_text):
         tex_m.DrawLatex(0.63,0.63,additional_text)
         
 #def plot(variable,plotsDir,additional_cuts="1",pars['additional_text']="",savefmts=[".C",".png",".pdf"]):
-def plot(pars,savefmts=[".C",".png",".pdf"]):
+def plot(pars,savefmts=[".svg",".png",".pdf"]):
     c = TCanvas(pars['variable'],pars['variable'],1000,900)
     customizeCanvas(c)
     

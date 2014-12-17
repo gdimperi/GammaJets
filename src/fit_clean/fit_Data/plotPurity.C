@@ -40,7 +40,8 @@ void plotPurity(){
   string inputdir = "fitData_weightedDataCS_config2/";
   string inputdir_w1 = "fitData_weightedDataCS_config2_w1/";
   string inputdir_w2 = "fitData_weightedDataCS_config2_w2/";
-  string inputdir_FPR = "fitData_weightedDataCS_FPR_config2/";
+  //string inputdir_FPR = "fitData_weightedDataCS_FPR_config2/";
+  string inputdir_FPR = "test/";
   string inputdir_FPR_w1 = "fitData_weightedDataCS_FPR_config2_w1/";
   string inputdir_FPR_w2 = "fitData_weightedDataCS_FPR_config2_w2/";
   string inputdir_nonParam = "fitData_nonParam_config3/";
